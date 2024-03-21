@@ -1,5 +1,13 @@
 # @medusajs/ui
 
+## 0.0.2
+
+### Patch Changes
+
+- ef1f199: change package name from medusajs to flowind
+- Updated dependencies [ef1f199]
+  - @flowind/icons@0.0.2
+
 ## 2.4.1
 
 ### Patch Changes
