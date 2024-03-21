@@ -7,7 +7,7 @@
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "release": "changeset publish",
+    "release": "pnpm build && changeset publish",
     "version": "changeset version && pnpm install --no-immutable",
     "release:beta": "changeset publish --no-git-tags --snapshot --tag beta",
     "version:beta": "changeset version --snapshot beta",
