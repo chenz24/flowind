@@ -1,66 +1,137 @@
-import { Slot } from "@radix-ui/react-slot"
-import { VariantProps, cva } from "class-variance-authority"
-import * as React from "react"
+import * as React from 'react';
+import { Slot } from '@radix-ui/react-slot';
+import { cva, VariantProps } from 'cva';
 
-import { clx } from "@/utils/clx"
+import { clx } from '@/utils/clx';
 
-const badgeColorVariants = cva("", {
+const badgeColorVariants = cva({
   variants: {
     color: {
       green:
-        "bg-ui-tag-green-bg text-ui-tag-green-text [&_svg]:text-ui-tag-green-icon border-ui-tag-green-border",
-      red: "bg-ui-tag-red-bg text-ui-tag-red-text [&_svg]:text-ui-tag-red-icon border-ui-tag-red-border",
-      blue: "bg-ui-tag-blue-bg text-ui-tag-blue-text [&_svg]:text-ui-tag-blue-icon border-ui-tag-blue-border",
+        'bg-ui-tag-green-bg text-ui-tag-green-text [&_svg]:text-ui-tag-green-icon border-ui-tag-green-border',
+      red: 'bg-ui-tag-red-bg text-ui-tag-red-text [&_svg]:text-ui-tag-red-icon border-ui-tag-red-border',
+      blue: 'bg-ui-tag-blue-bg text-ui-tag-blue-text [&_svg]:text-ui-tag-blue-icon border-ui-tag-blue-border',
       orange:
-        "bg-ui-tag-orange-bg text-ui-tag-orange-text [&_svg]:text-ui-tag-orange-icon border-ui-tag-orange-border",
-      grey: "bg-ui-tag-neutral-bg text-ui-tag-neutral-text [&_svg]:text-ui-tag-neutral-icon border-ui-tag-neutral-border",
+        'bg-ui-tag-orange-bg text-ui-tag-orange-text [&_svg]:text-ui-tag-orange-icon border-ui-tag-orange-border',
+      grey: 'bg-ui-tag-neutral-bg text-ui-tag-neutral-text [&_svg]:text-ui-tag-neutral-icon border-ui-tag-neutral-border',
       purple:
-        "bg-ui-tag-purple-bg text-ui-tag-purple-text [&_svg]:text-ui-tag-purple-icon border-ui-tag-purple-border",
+        'bg-ui-tag-purple-bg text-ui-tag-purple-text [&_svg]:text-ui-tag-purple-icon border-ui-tag-purple-border',
     },
   },
   defaultVariants: {
-    color: "grey",
+    color: 'grey',
   },
-})
+});
 
-const badgeSizeVariants = cva("inline-flex items-center gap-x-0.5 border", {
+const badgeSizeVariants = cva({
+  base: 'inline-flex items-center gap-x-0.5 border box-border',
   variants: {
     size: {
-      small: "txt-compact-xsmall-plus px-1.5",
-      base: "txt-compact-small-plus px-2 py-0.5",
-      large: "txt-compact-medium-plus px-2.5 py-1",
+      '2xsmall': 'txt-compact-xsmall-plus h-5',
+      xsmall: 'txt-compact-xsmall-plus py-px h-6',
+      small: 'txt-compact-xsmall-plus py-[3px] h-7',
+      base: 'txt-compact-small-plus py-[5px] h-8',
+      large: 'txt-compact-medium-plus py-[7px] h-10',
     },
     rounded: {
-      base: "rounded-md",
-      full: "rounded-full",
+      base: 'rounded-md',
+      full: 'rounded-full',
     },
   },
+  compoundVariants: [
+    {
+      size: '2xsmall',
+      rounded: 'full',
+      className: 'px-1.5',
+    },
+    {
+      size: '2xsmall',
+      rounded: 'base',
+      className: 'px-1',
+    },
+    {
+      size: 'xsmall',
+      rounded: 'full',
+      className: 'px-2',
+    },
+    {
+      size: 'xsmall',
+      rounded: 'base',
+      className: 'px-1.5',
+    },
+    {
+      size: 'small',
+      rounded: 'full',
+      className: 'px-2.5',
+    },
+    {
+      size: 'small',
+      rounded: 'base',
+      className: 'px-2',
+    },
+    {
+      size: 'base',
+      rounded: 'full',
+      className: 'px-3',
+    },
+    {
+      size: 'base',
+      rounded: 'base',
+      className: 'px-2.5',
+    },
+    {
+      size: 'large',
+      rounded: 'full',
+      className: 'px-3.5',
+    },
+    {
+      size: 'large',
+      rounded: 'base',
+      className: 'px-3',
+    },
+  ],
   defaultVariants: {
-    size: "base",
-    rounded: "base",
+    size: 'base',
+    rounded: 'base',
   },
-})
+});
 
 interface BadgeProps
-  extends Omit<React.HTMLAttributes<HTMLSpanElement>, "color">,
+  extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'color'>,
     VariantProps<typeof badgeSizeVariants>,
     VariantProps<typeof badgeColorVariants> {
-  asChild?: boolean
+  asChild?: boolean;
 }
 
+/**
+ * This component is based on the `div` element and supports all of its props
+ */
 const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
   (
     {
       className,
-      size = "base",
-      rounded = "base",
-      color = "grey",
+      /**
+       * The badge's size.
+       */
+      size = 'base',
+      /**
+       * The style of the badge's border radius.
+       */
+      rounded = 'base',
+      /**
+       * The badge's color.
+       */
+      color = 'grey',
+      /**
+       * Whether to remove the wrapper `span` element and use the
+       * passed child element instead.
+       */
       asChild = false,
       ...props
-    },
-    ref
+    }: BadgeProps,
+    ref,
   ) => {
-    const Component = asChild ? Slot : "span"
+    const Component = asChild ? Slot : 'span';
 
     return (
       <Component
@@ -68,13 +139,13 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
         className={clx(
           badgeColorVariants({ color }),
           badgeSizeVariants({ size, rounded }),
-          className
+          className,
         )}
         {...props}
       />
-    )
-  }
-)
-Badge.displayName = "Badge"
+    );
+  },
+);
+Badge.displayName = 'Badge';
 
-export { Badge, badgeColorVariants }
+export { Badge, badgeColorVariants };

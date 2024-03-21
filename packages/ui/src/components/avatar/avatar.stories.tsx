@@ -1,52 +1,52 @@
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from '@storybook/react';
 
-import { Avatar } from "./avatar"
+import { Avatar } from './avatar';
 
 const meta: Meta<typeof Avatar> = {
-  title: "Components/Avatar",
+  title: 'Components/Avatar',
   component: Avatar,
   argTypes: {
     src: {
       control: {
-        type: "text",
+        type: 'text',
       },
     },
     fallback: {
       control: {
-        type: "text",
+        type: 'text',
       },
     },
     variant: {
       control: {
-        type: "select",
-        options: ["rounded", "squared"],
+        type: 'select',
+        options: ['rounded', 'squared'],
       },
     },
     size: {
       control: {
-        type: "select",
-        options: ["default", "large"],
+        type: 'select',
+        options: ['default', 'large'],
       },
     },
   },
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-}
+};
 
-export default meta
+export default meta;
 
-type Story = StoryObj<typeof Avatar>
+type Story = StoryObj<typeof Avatar>;
 
 export const WithImage: Story = {
   args: {
-    src: "https://avatars.githubusercontent.com/u/10656202?v=4",
-    fallback: "J",
+    src: 'https://avatars.githubusercontent.com/u/10656202?v=4',
+    fallback: 'J',
   },
-}
+};
 
 export const WithFallback: Story = {
   args: {
-    fallback: "J",
+    fallback: 'J',
   },
-}
+};

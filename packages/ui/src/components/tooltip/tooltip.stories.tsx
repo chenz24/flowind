@@ -1,19 +1,19 @@
-import type { Meta, StoryObj } from "@storybook/react"
-import * as React from "react"
+import * as React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
 
-import { InformationCircleSolid } from "@medusajs/icons"
-import { Tooltip } from "./tooltip"
+import { InformationCircleSolid } from '@flowind/icons';
+import { Tooltip } from './tooltip';
 
 const meta: Meta<typeof Tooltip> = {
-  title: "Components/Tooltip",
+  title: 'Components/Tooltip',
   component: Tooltip,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
   argTypes: {
     side: {
-      options: ["top", "bottom", "left", "right"],
-      control: { type: "radio" },
+      options: ['top', 'bottom', 'left', 'right'],
+      control: { type: 'radio' },
     },
     children: {
       table: {
@@ -21,16 +21,16 @@ const meta: Meta<typeof Tooltip> = {
       },
     },
   },
-}
+};
 
-export default meta
+export default meta;
 
-type Story = StoryObj<typeof Tooltip>
+type Story = StoryObj<typeof Tooltip>;
 
 export const Default: Story = {
   args: {
-    content: "The quick brown fox jumps over the lazy dog.",
-    side: "top",
+    content: 'The quick brown fox jumps over the lazy dog.',
+    side: 'top',
     children: <InformationCircleSolid />,
   },
-}
+};

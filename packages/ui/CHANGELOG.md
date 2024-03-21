@@ -1,5 +1,62 @@
 # @medusajs/ui
 
+## 2.4.1
+
+### Patch Changes
+
+- [#6357](https://github.com/medusajs/medusa/pull/6357) [`85a44dfd0`](https://github.com/medusajs/medusa/commit/85a44dfd017ab53b539bcfca04a32f1a0786a23c) Thanks [@kasperkristensen](https://github.com/kasperkristensen)! - fix(ui,ui-preset): Fixes an issue where the color styles of two code components was broken
+
+## 2.4.0
+
+### Minor Changes
+
+- [#6310](https://github.com/medusajs/medusa/pull/6310) [`73fd92a1a`](https://github.com/medusajs/medusa/commit/73fd92a1afdec88c0d5f4aeed16349f2bd62cfa2) Thanks [@kasperkristensen](https://github.com/kasperkristensen)! - feat(ui): Add Alert component.
+
+### Patch Changes
+
+- [#6297](https://github.com/medusajs/medusa/pull/6297) [`8cbf6c60f`](https://github.com/medusajs/medusa/commit/8cbf6c60fec7fe8ddf59dcf420b9339f84b8636c) Thanks [@kasperkristensen](https://github.com/kasperkristensen)! - feat(ui,ui-preset): Update to latest version of TailwindCSS. Increase spacing between columns in <Table /> component.
+
+## 2.3.0
+
+### Minor Changes
+
+- [#6061](https://github.com/medusajs/medusa/pull/6061) [`a2c149e7e5`](https://github.com/medusajs/medusa/commit/a2c149e7e588a9ebf080b4b43472bdb5126ed981) Thanks [@kasperkristensen](https://github.com/kasperkristensen)! - feat(ui): Updates spacing and sizing of components. Introduces new `size` variants for some components, such as `Button`, `IconButton`, and `Avatar`. Change most `:focus` styles to `:focus-visible` styles, to prevenent focus styles from being visible when not needed, such as on button clicks.
+  feat(ui-preset): Publishes latest updates to our design system styles, as well as adding new colors. Noticable changes include changing `ui-code-text-*` styles to `ui-code-fg-*` for better consistency.
+  feat(icons): Updates the `LockClosedSolid` and `LockOpenSolid` icons, and introduces four new icons: `LockClosedSolidMini`, `TriangleLeftMini`, `TriangleRightMini`, and `TriangleMini`.
+
+### Patch Changes
+
+- [#6162](https://github.com/medusajs/medusa/pull/6162) [`c37c82c5b`](https://github.com/medusajs/medusa/commit/c37c82c5b5c046124b82750530d555b2996147cc) Thanks [@kasperkristensen](https://github.com/kasperkristensen)! - feature(ui): Adds a `size` variant to `<Copy />` component, and prevent clicks from propigating to parent elements". Also adds additional sizes to the `<Avatar />` component.
+
+- [#6120](https://github.com/medusajs/medusa/pull/6120) [`e49b6944e3`](https://github.com/medusajs/medusa/commit/e49b6944e3380a4ee0de086e173901d643ec800c) Thanks [@kasperkristensen](https://github.com/kasperkristensen)! - fix(ui): Fix broken responsive style of Drawer between `sm` and `md`.
+
+- Updated dependencies [[`a2c149e7e5`](https://github.com/medusajs/medusa/commit/a2c149e7e588a9ebf080b4b43472bdb5126ed981)]:
+  - @flowind/icons@1.2.0
+
+## 2.2.4
+
+### Patch Changes
+
+- [#5818](https://github.com/medusajs/medusa/pull/5818) [`591ba2388`](https://github.com/medusajs/medusa/commit/591ba2388d9768f70ca2faf48d353e5a65e4e123) Thanks [@kasperkristensen](https://github.com/kasperkristensen)! - fix(ui): Bump 'class-variance-authority' to 'cva@beta' and update usage to new API. Also fix the naming of usePrompt types
+
+## 2.2.3
+
+### Patch Changes
+
+- [#5692](https://github.com/medusajs/medusa/pull/5692) [`b25b29fe7`](https://github.com/medusajs/medusa/commit/b25b29fe7ba3bc9fca8da7a6b10461437a3e4d2d) Thanks [@kasperkristensen](https://github.com/kasperkristensen)! - fix(ui): Update the styling of CodeBlock
+
+## 2.2.2
+
+### Patch Changes
+
+- [#5640](https://github.com/medusajs/medusa/pull/5640) [`a67a8e7e9`](https://github.com/medusajs/medusa/commit/a67a8e7e90f35636c8d99858fc5b19358df4c174) Thanks [@kasperkristensen](https://github.com/kasperkristensen)! - fix(ui): Fix the width of line numbers in the CodeBlock component, such that they are always the same width as the widest line number.
+
+## 2.2.1
+
+### Patch Changes
+
+- [#5596](https://github.com/medusajs/medusa/pull/5596) [`e3f1da92d`](https://github.com/medusajs/medusa/commit/e3f1da92db1a5bb07ae8d79a90f0d1d04f9bfee3) Thanks [@kasperkristensen](https://github.com/kasperkristensen)! - fix(admin-ui,ui): Align @types/react versions
+
 ## 2.2.0
 
 ### Minor Changes
@@ -39,7 +96,7 @@
 
   - Updated several colors, shadows, and gradient effects.
 
-  ## `@medusajs/icons`
+  ## `@flowind/icons`
 
   - Introduces 6 new icons: QuestionMark, SparklesMiniSolid, SparklesMini, ThumbDown, ThumbUp, and UserCircleMini.
   - There have been slight adjustments made to ArrowPathMini, EllipseBlueSolid, EllipseGreenSolid, EllipseGreySolid, EllipseOrangeSolid, EllipsePurpleSolid, and EllipseRedSolid.
@@ -47,7 +104,7 @@
 ### Patch Changes
 
 - Updated dependencies [035fa72]
-  - @medusajs/icons@1.1.0
+  - @flowind/icons@1.1.0
 
 ## 2.0.0
 
@@ -83,7 +140,7 @@
   - `Table.Pagination` has been tweaked to ensure that it displays the correct number of pages when there is no data.
   - `Calendar` has been tweaked to prevent clicking a date from submitting any forms that precede it in the DOM.
 
-  # Changes in `@medusajs/icons`
+  # Changes in `@flowind/icons`
 
   ## New icons
 
@@ -101,15 +158,15 @@
 ### Patch Changes
 
 - Updated dependencies [ef98084]
-  - @medusajs/icons@1.0.1
+  - @flowind/icons@1.0.1
 
 ## 1.0.0
 
 ### Major Changes
 
-- 8d31ce6: Release of the Medusa UI design system, includes three new packages: `@medusajs/ui` a set of React components, hooks, and utils; `@medusajs/icons` a set of React icons; `@medusajs/ui-preset` a Tailwind CSS preset containing Medusa UI design tokens.
+- 8d31ce6: Release of the Medusa UI design system, includes three new packages: `@medusajs/ui` a set of React components, hooks, and utils; `@flowind/icons` a set of React icons; `@medusajs/ui-preset` a Tailwind CSS preset containing Medusa UI design tokens.
 
 ### Patch Changes
 
 - Updated dependencies [8d31ce6]
-  - @medusajs/icons@1.0.0
+  - @flowind/icons@1.0.0

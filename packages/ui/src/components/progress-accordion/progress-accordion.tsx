@@ -1,62 +1,60 @@
-"use client"
+'use client';
 
-import {
-  CheckCircleSolid,
-  CircleDottedLine,
-  CircleHalfSolid,
-  Plus,
-} from "@medusajs/icons"
-import * as Primitves from "@radix-ui/react-accordion"
-import * as React from "react"
+import * as React from 'react';
+import * as Primitves from '@radix-ui/react-accordion';
 
-import { ProgressStatus } from "@/types"
-import { clx } from "@/utils/clx"
-import { IconButton } from "../icon-button"
+import { CheckCircleSolid, CircleDottedLine, CircleHalfSolid, Plus } from '@flowind/icons';
+import { ProgressStatus } from '@/types';
+import { clx } from '@/utils/clx';
+import { IconButton } from '../icon-button';
 
-const Root = (props: React.ComponentPropsWithoutRef<typeof Primitves.Root>) => {
-  return <Primitves.Root {...props} />
-}
-Root.displayName = "ProgressAccordion"
+/**
+ * This component is based on the [Radix UI Accordion](https://radix-ui.com/primitives/docs/components/accordion) primitves.
+ */
+const Root = (props: React.ComponentPropsWithoutRef<typeof Primitves.Root>) => (
+  <Primitves.Root {...props} />
+);
+Root.displayName = 'ProgressAccordion';
 
 const Item = React.forwardRef<
   React.ElementRef<typeof Primitves.Item>,
   React.ComponentPropsWithoutRef<typeof Primitves.Item>
->(({ className, ...props }, ref) => {
-  return (
-    <Primitves.Item
-      ref={ref}
-      className={clx(
-        "border-ui-border-base border-b last-of-type:border-b-0",
-        className
-      )}
-      {...props}
-    />
-  )
-})
-Item.displayName = "ProgressAccordion.Item"
+>(({ className, ...props }, ref) => (
+  <Primitves.Item
+    ref={ref}
+    className={clx('border-ui-border-base border-b last-of-type:border-b-0', className)}
+    {...props}
+  />
+));
+Item.displayName = 'ProgressAccordion.Item';
 
-interface HeaderProps
-  extends React.ComponentPropsWithoutRef<typeof Primitves.Header> {
-  status?: ProgressStatus
+interface HeaderProps extends React.ComponentPropsWithoutRef<typeof Primitves.Header> {
+  status?: ProgressStatus;
 }
 
-interface StatusIndicatorProps extends React.ComponentPropsWithoutRef<"span"> {
-  status: ProgressStatus
+interface StatusIndicatorProps extends React.ComponentPropsWithoutRef<'span'> {
+  status: ProgressStatus;
 }
 
-const ProgressIndicator = ({ status, ...props }: StatusIndicatorProps) => {
+const ProgressIndicator = ({
+  /**
+   * The current status.
+   */
+  status,
+  ...props
+}: StatusIndicatorProps) => {
   const Icon = React.useMemo(() => {
     switch (status) {
-      case "not-started":
-        return CircleDottedLine
-      case "in-progress":
-        return CircleHalfSolid
-      case "completed":
-        return CheckCircleSolid
+      case 'not-started':
+        return CircleDottedLine;
+      case 'in-progress':
+        return CircleHalfSolid;
+      case 'completed':
+        return CheckCircleSolid;
       default:
-        return CircleDottedLine
+        return CircleDottedLine;
     }
-  }, [status])
+  }, [status]);
 
   return (
     <span
@@ -65,19 +63,28 @@ const ProgressIndicator = ({ status, ...props }: StatusIndicatorProps) => {
     >
       <Icon />
     </span>
-  )
-}
+  );
+};
+ProgressIndicator.displayName = 'ProgressAccordion.ProgressIndicator';
 
-const Header = React.forwardRef<
-  React.ElementRef<typeof Primitves.Header>,
-  HeaderProps
->(({ className, status = "not-started", children, ...props }, ref) => {
-  return (
+const Header = React.forwardRef<React.ElementRef<typeof Primitves.Header>, HeaderProps>(
+  (
+    {
+      className,
+      /**
+       * The current status.
+       */
+      status = 'not-started',
+      children,
+      ...props
+    }: HeaderProps,
+    ref,
+  ) => (
     <Primitves.Header
       ref={ref}
       className={clx(
-        "h3-core text-ui-fg-base group flex w-full flex-1 items-center gap-4 px-8",
-        className
+        'h3-core text-ui-fg-base group flex w-full flex-1 items-center gap-4 px-6',
+        className,
       )}
       {...props}
     >
@@ -89,32 +96,30 @@ const Header = React.forwardRef<
         </IconButton>
       </Primitves.Trigger>
     </Primitves.Header>
-  )
-})
-Header.displayName = "ProgressAccordion.Header"
+  ),
+);
+Header.displayName = 'ProgressAccordion.Header';
 
 const Content = React.forwardRef<
   React.ElementRef<typeof Primitves.Content>,
   React.ComponentPropsWithoutRef<typeof Primitves.Content>
->(({ className, ...props }, ref) => {
-  return (
-    <Primitves.Content
-      ref={ref}
-      className={clx(
-        "overflow-hidden",
-        "data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down pl-24 pr-8",
-        className
-      )}
-      {...props}
-    />
-  )
-})
-Content.displayName = "ProgressAccordion.Content"
+>(({ className, ...props }, ref) => (
+  <Primitves.Content
+    ref={ref}
+    className={clx(
+      'overflow-hidden',
+      'data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down pl-[88px] pr-6',
+      className,
+    )}
+    {...props}
+  />
+));
+Content.displayName = 'ProgressAccordion.Content';
 
 const ProgressAccordion = Object.assign(Root, {
   Item,
   Header,
   Content,
-})
+});
 
-export { ProgressAccordion }
+export { ProgressAccordion };

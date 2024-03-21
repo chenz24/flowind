@@ -1,1 +1,1 @@
-export { usePrompt } from "./use-prompt"
+export { usePrompt } from './use-prompt';

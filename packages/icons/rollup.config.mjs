@@ -4,8 +4,10 @@ import replace from "@rollup/plugin-replace"
 import esbuild from "rollup-plugin-esbuild"
 import license from "rollup-plugin-license"
 import { visualizer } from "rollup-plugin-visualizer"
+import fs from "fs"
+import path from "path"
 
-import pkg from "./package.json" assert { type: "json" }
+const pkg = JSON.parse(fs.readFileSync(path.resolve("./package.json"), "utf-8"))
 
 const plugins = (pkg, minify, esbuildOptions = {}) =>
   [
@@ -25,7 +27,7 @@ const plugins = (pkg, minify, esbuildOptions = {}) =>
   ].filter(Boolean)
 
 const packageName = pkg.name
-const outputFileName = "medusa-icons"
+const outputFileName = "flowind-icons"
 const outputDir = "dist"
 const inputs = ["src/components/index.ts"]
 

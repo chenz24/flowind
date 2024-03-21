@@ -1,14 +1,14 @@
 {
-  "name": "@medusajs/ui-preset",
-  "version": "1.0.2",
-  "description": "Medusa UI preset",
+  "name": "@flowind/ui-preset",
+  "version": "0.0.1",
+  "description": "Flowind UI preset",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/medusajs/ui.git",
+    "url": "https://github.com/chenz24/flowind.git",
     "directory": "packages/ui-preset"
   },
-  "author": "Kasper Kristensen <kasper@medusajs.com>",
+  "author": "Chenz24 <chenz24@gmail.com>",
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
@@ -19,7 +19,8 @@
   "types": "./dist/index.d.ts",
   "main": "./dist/index.js",
   "scripts": {
-    "build": "tsup"
+    "build": "tsup",
+    "generate": "toolbox tokens -o './src/theme'"
   },
   "dependencies": {
     "@tailwindcss/forms": "^0.5.3",
@@ -29,15 +30,9 @@
     "tailwindcss": ">=3.0.0"
   },
   "devDependencies": {
-    "@medusajs/eslint-config-ui": "*",
-    "@medusajs/tsconfig-ui": "*",
-    "eslint": "^7.32.0",
-    "tailwindcss": "^3.3.2",
-    "tsup": "^7.1.0",
-    "typescript": "^5.1.6"
+    "tsup": "^7.1.0"
   },
   "publishConfig": {
     "access": "public"
-  },
-  "packageManager": "yarn@3.5.0"
+  }
 }

@@ -1,78 +1,78 @@
-import type { Meta, StoryObj } from "@storybook/react"
-import * as React from "react"
+import * as React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
 
-import { PlusMini } from "@medusajs/icons"
-import { Button } from "./button"
+import { PlusMini } from '@flowind/icons';
+import { Button } from './button';
 
 const meta: Meta<typeof Button> = {
-  title: "Components/Button",
+  title: 'Components/Button',
   component: Button,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-}
+};
 
-export default meta
+export default meta;
 
-type Story = StoryObj<typeof Button>
+type Story = StoryObj<typeof Button>;
 
 export const Primary: Story = {
   args: {
-    children: "Action",
+    children: 'Action',
   },
-}
+};
 
 export const Secondary: Story = {
   args: {
-    children: "Action",
-    variant: "secondary",
+    children: 'Action',
+    variant: 'secondary',
   },
-}
+};
 
 export const Transparent: Story = {
   args: {
-    children: "Action",
-    variant: "transparent",
+    children: 'Action',
+    variant: 'transparent',
   },
-}
+};
 
 export const Danger: Story = {
   args: {
-    children: "Action",
-    variant: "danger",
+    children: 'Action',
+    variant: 'danger',
   },
-}
+};
 
 export const Disabled: Story = {
   args: {
-    children: "Action",
+    children: 'Action',
     disabled: true,
   },
-}
+};
 
 export const WithIcon: Story = {
   args: {
-    children: ["Action", <PlusMini key={1} />],
+    children: ['Action', <PlusMini key={1} />],
   },
-}
+};
 
 export const Loading: Story = {
   args: {
-    children: "Action",
+    children: 'Action',
     isLoading: true,
   },
-}
+};
 
 export const Large: Story = {
   args: {
-    children: "Action",
-    size: "large",
+    children: 'Action',
+    size: 'large',
   },
-}
+};
 
 export const XLarge: Story = {
   args: {
-    children: "Action",
-    size: "xlarge",
+    children: 'Action',
+    size: 'xlarge',
   },
-}
+};

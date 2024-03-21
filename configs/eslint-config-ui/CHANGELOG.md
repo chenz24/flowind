@@ -1,4 +1,4 @@
-# @medusajs/eslint-config-ui
+# @flowind/eslint-config-ui
 
 ## 0.0.1
 

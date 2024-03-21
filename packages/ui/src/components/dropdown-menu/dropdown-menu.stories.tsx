@@ -1,28 +1,27 @@
-import { EllipsisHorizontal, PencilSquare, Plus, Trash } from "@medusajs/icons"
-import type { Meta, StoryObj } from "@storybook/react"
-import * as React from "react"
+import * as React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
 
-import { Button } from "@/components/button"
-import { IconButton } from "@/components/icon-button"
-import { Select } from "@/components/select"
-
-import { DatePicker } from "../date-picker"
-import { FocusModal } from "../focus-modal"
-import { DropdownMenu } from "./dropdown-menu"
+import { EllipsisHorizontal, PencilSquare, Plus, Trash } from '@flowind/icons';
+import { Button } from '@/components/button';
+import { IconButton } from '@/components/icon-button';
+import { Select } from '@/components/select';
+import { DatePicker } from '../date-picker';
+import { FocusModal } from '../focus-modal';
+import { DropdownMenu } from './dropdown-menu';
 
 const meta: Meta<typeof DropdownMenu> = {
-  title: "Components/DropdownMenu",
+  title: 'Components/DropdownMenu',
   component: DropdownMenu,
-}
+};
 
-export default meta
+export default meta;
 
-type Story = StoryObj<typeof DropdownMenu>
+type Story = StoryObj<typeof DropdownMenu>;
 
-type SortingState = "asc" | "desc" | "alpha" | "alpha-reverse" | "none"
+type SortingState = 'asc' | 'desc' | 'alpha' | 'alpha-reverse' | 'none';
 
 const SortingDemo = () => {
-  const [sort, setSort] = React.useState<SortingState>("none")
+  const [sort, setSort] = React.useState<SortingState>('none');
 
   return (
     <div className="flex flex-col gap-y-2">
@@ -33,13 +32,8 @@ const SortingDemo = () => {
           </IconButton>
         </DropdownMenu.Trigger>
         <DropdownMenu.Content className="w-[300px]">
-          <DropdownMenu.RadioGroup
-            value={sort}
-            onValueChange={(v) => setSort(v as SortingState)}
-          >
-            <DropdownMenu.RadioItem value="none">
-              No Sorting
-            </DropdownMenu.RadioItem>
+          <DropdownMenu.RadioGroup value={sort} onValueChange={(v) => setSort(v as SortingState)}>
+            <DropdownMenu.RadioItem value="none">No Sorting</DropdownMenu.RadioItem>
             <DropdownMenu.Separator />
             <DropdownMenu.RadioItem value="alpha">
               Alphabetical
@@ -64,34 +58,32 @@ const SortingDemo = () => {
         <pre>Sorting by: {sort}</pre>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export const SortingMenu: Story = {
-  render: () => {
-    return <SortingDemo />
-  },
-}
+  render: () => <SortingDemo />,
+};
 
 const SelectDemo = () => {
-  const [currencies, setCurrencies] = React.useState<string[]>([])
-  const [regions, setRegions] = React.useState<string[]>([])
+  const [currencies, setCurrencies] = React.useState<string[]>([]);
+  const [regions, setRegions] = React.useState<string[]>([]);
 
   const onSelectCurrency = (currency: string) => {
     if (currencies.includes(currency)) {
-      setCurrencies(currencies.filter((c) => c !== currency))
+      setCurrencies(currencies.filter((c) => c !== currency));
     } else {
-      setCurrencies([...currencies, currency])
+      setCurrencies([...currencies, currency]);
     }
-  }
+  };
 
   const onSelectRegion = (region: string) => {
     if (regions.includes(region)) {
-      setRegions(regions.filter((r) => r !== region))
+      setRegions(regions.filter((r) => r !== region));
     } else {
-      setRegions([...regions, region])
+      setRegions([...regions, region]);
     }
-  }
+  };
 
   return (
     <div className="flex flex-col gap-y-2">
@@ -105,30 +97,30 @@ const SelectDemo = () => {
           <DropdownMenu.Group>
             <DropdownMenu.Label>Currencies</DropdownMenu.Label>
             <DropdownMenu.CheckboxItem
-              checked={currencies.includes("EUR")}
+              checked={currencies.includes('EUR')}
               onSelect={(e) => {
-                e.preventDefault()
-                onSelectCurrency("EUR")
+                e.preventDefault();
+                onSelectCurrency('EUR');
               }}
             >
               EUR
               <DropdownMenu.Hint>Euro</DropdownMenu.Hint>
             </DropdownMenu.CheckboxItem>
             <DropdownMenu.CheckboxItem
-              checked={currencies.includes("USD")}
+              checked={currencies.includes('USD')}
               onSelect={(e) => {
-                e.preventDefault()
-                onSelectCurrency("USD")
+                e.preventDefault();
+                onSelectCurrency('USD');
               }}
             >
               USD
               <DropdownMenu.Hint>US Dollar</DropdownMenu.Hint>
             </DropdownMenu.CheckboxItem>
             <DropdownMenu.CheckboxItem
-              checked={currencies.includes("DKK")}
+              checked={currencies.includes('DKK')}
               onSelect={(e) => {
-                e.preventDefault()
-                onSelectCurrency("DKK")
+                e.preventDefault();
+                onSelectCurrency('DKK');
               }}
             >
               DKK
@@ -139,28 +131,28 @@ const SelectDemo = () => {
           <DropdownMenu.Group>
             <DropdownMenu.Label>Regions</DropdownMenu.Label>
             <DropdownMenu.CheckboxItem
-              checked={regions.includes("NA")}
+              checked={regions.includes('NA')}
               onSelect={(e) => {
-                e.preventDefault()
-                onSelectRegion("NA")
+                e.preventDefault();
+                onSelectRegion('NA');
               }}
             >
               North America
             </DropdownMenu.CheckboxItem>
             <DropdownMenu.CheckboxItem
-              checked={regions.includes("EU")}
+              checked={regions.includes('EU')}
               onSelect={(e) => {
-                e.preventDefault()
-                onSelectRegion("EU")
+                e.preventDefault();
+                onSelectRegion('EU');
               }}
             >
               Europe
             </DropdownMenu.CheckboxItem>
             <DropdownMenu.CheckboxItem
-              checked={regions.includes("DK")}
+              checked={regions.includes('DK')}
               onSelect={(e) => {
-                e.preventDefault()
-                onSelectRegion("DK")
+                e.preventDefault();
+                onSelectRegion('DK');
               }}
             >
               Denmark
@@ -169,107 +161,99 @@ const SelectDemo = () => {
         </DropdownMenu.Content>
       </DropdownMenu>
       <div>
-        <pre>Currencies: {currencies.join(", ")}</pre>
-        <pre>Regions: {regions.join(", ")}</pre>
+        <pre>Currencies: {currencies.join(', ')}</pre>
+        <pre>Regions: {regions.join(', ')}</pre>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export const SelectMenu: Story = {
-  render: () => {
-    return <SelectDemo />
-  },
-}
+  render: () => <SelectDemo />,
+};
 
 export const SimpleMenu: Story = {
-  render: () => {
-    return (
-      <DropdownMenu>
-        <DropdownMenu.Trigger asChild>
-          <IconButton>
-            <EllipsisHorizontal />
-          </IconButton>
-        </DropdownMenu.Trigger>
-        <DropdownMenu.Content>
-          <DropdownMenu.Item className="gap-x-2">
-            <PencilSquare className="text-ui-fg-subtle" />
-            Edit
-          </DropdownMenu.Item>
-          <DropdownMenu.Item className="gap-x-2">
-            <Plus className="text-ui-fg-subtle" />
-            Add
-          </DropdownMenu.Item>
-          <DropdownMenu.Separator />
-          <DropdownMenu.Item className="gap-x-2">
-            <Trash className="text-ui-fg-subtle" />
-            Delete
-          </DropdownMenu.Item>
-        </DropdownMenu.Content>
-      </DropdownMenu>
-    )
-  },
-}
+  render: () => (
+    <DropdownMenu>
+      <DropdownMenu.Trigger asChild>
+        <IconButton>
+          <EllipsisHorizontal />
+        </IconButton>
+      </DropdownMenu.Trigger>
+      <DropdownMenu.Content>
+        <DropdownMenu.Item className="gap-x-2">
+          <PencilSquare className="text-ui-fg-subtle" />
+          Edit
+        </DropdownMenu.Item>
+        <DropdownMenu.Item className="gap-x-2">
+          <Plus className="text-ui-fg-subtle" />
+          Add
+        </DropdownMenu.Item>
+        <DropdownMenu.Separator />
+        <DropdownMenu.Item className="gap-x-2">
+          <Trash className="text-ui-fg-subtle" />
+          Delete
+        </DropdownMenu.Item>
+      </DropdownMenu.Content>
+    </DropdownMenu>
+  ),
+};
 
-const ComplexMenuDemo = () => {
-  return (
-    <FocusModal>
-      <FocusModal.Trigger asChild>
-        <Button>Open</Button>
-      </FocusModal.Trigger>
-      <FocusModal.Content>
-        <FocusModal.Header>
-          <Button>Save</Button>
-        </FocusModal.Header>
-        <FocusModal.Body className="item-center flex justify-center">
-          <div>
-            <DropdownMenu>
-              <DropdownMenu.Trigger asChild>
-                <Button>View</Button>
-              </DropdownMenu.Trigger>
-              <DropdownMenu.Content>
-                <DropdownMenu.Item className="gap-x-2">
-                  <PencilSquare className="text-ui-fg-subtle" />
-                  Edit
-                </DropdownMenu.Item>
-                <DropdownMenu.Item className="gap-x-2">
-                  <Plus className="text-ui-fg-subtle" />
-                  Add
-                </DropdownMenu.Item>
-                <DropdownMenu.Separator />
-                <DropdownMenu.Item className="gap-x-2">
-                  <Trash className="text-ui-fg-subtle" />
-                  Delete
-                </DropdownMenu.Item>
-                <DropdownMenu.Separator />
-                <div className="flex flex-col gap-y-2 p-2">
-                  <Select>
-                    <Select.Trigger>
-                      <Select.Value placeholder="Select" />
-                    </Select.Trigger>
-                    <Select.Content>
-                      <Select.Item value="1">One</Select.Item>
-                      <Select.Item value="2">Two</Select.Item>
-                      <Select.Item value="3">Three</Select.Item>
-                    </Select.Content>
-                  </Select>
-                  <DatePicker />
-                </div>
-                <div className="border-ui-border-base flex items-center gap-x-2 border-t p-2">
-                  <Button variant="secondary">Clear</Button>
-                  <Button>Apply</Button>
-                </div>
-              </DropdownMenu.Content>
-            </DropdownMenu>
-          </div>
-        </FocusModal.Body>
-      </FocusModal.Content>
-    </FocusModal>
-  )
-}
+const ComplexMenuDemo = () => (
+  <FocusModal>
+    <FocusModal.Trigger asChild>
+      <Button>Open</Button>
+    </FocusModal.Trigger>
+    <FocusModal.Content>
+      <FocusModal.Header>
+        <Button>Save</Button>
+      </FocusModal.Header>
+      <FocusModal.Body className="item-center flex justify-center">
+        <div>
+          <DropdownMenu>
+            <DropdownMenu.Trigger asChild>
+              <Button>View</Button>
+            </DropdownMenu.Trigger>
+            <DropdownMenu.Content>
+              <DropdownMenu.Item className="gap-x-2">
+                <PencilSquare className="text-ui-fg-subtle" />
+                Edit
+              </DropdownMenu.Item>
+              <DropdownMenu.Item className="gap-x-2">
+                <Plus className="text-ui-fg-subtle" />
+                Add
+              </DropdownMenu.Item>
+              <DropdownMenu.Separator />
+              <DropdownMenu.Item className="gap-x-2">
+                <Trash className="text-ui-fg-subtle" />
+                Delete
+              </DropdownMenu.Item>
+              <DropdownMenu.Separator />
+              <div className="flex flex-col gap-y-2 p-2">
+                <Select>
+                  <Select.Trigger>
+                    <Select.Value placeholder="Select" />
+                  </Select.Trigger>
+                  <Select.Content>
+                    <Select.Item value="1">One</Select.Item>
+                    <Select.Item value="2">Two</Select.Item>
+                    <Select.Item value="3">Three</Select.Item>
+                  </Select.Content>
+                </Select>
+                <DatePicker />
+              </div>
+              <div className="border-ui-border-base flex items-center gap-x-2 border-t p-2">
+                <Button variant="secondary">Clear</Button>
+                <Button>Apply</Button>
+              </div>
+            </DropdownMenu.Content>
+          </DropdownMenu>
+        </div>
+      </FocusModal.Body>
+    </FocusModal.Content>
+  </FocusModal>
+);
 
 export const ComplexMenu: Story = {
-  render: () => {
-    return <ComplexMenuDemo />
-  },
-}
+  render: () => <ComplexMenuDemo />,
+};

@@ -1,48 +1,44 @@
-"use client"
+'use client';
 
-import * as React from "react"
-import { createRoot } from "react-dom/client"
-import { DialogProps } from "./dialog"
+import * as React from 'react';
+import { createRoot } from 'react-dom/client';
+import { RenderPrompt, RenderPromptProps } from './render-prompt';
 
-import Dialog from "./dialog"
-
-type PromptProps = Omit<DialogProps, "onConfirm" | "onCancel" | "open">
+type UsePromptProps = Omit<RenderPromptProps, 'onConfirm' | 'onCancel' | 'open'>;
 
 const usePrompt = () => {
-  const dialog = async (props: PromptProps): Promise<boolean> => {
-    return new Promise((resolve) => {
-      let open = true
+  const prompt = async (props: UsePromptProps): Promise<boolean> => new Promise((resolve) => {
+      let open = true;
 
       const onCancel = () => {
-        open = false
-        render()
-        resolve(false)
-      }
+        open = false;
+        render();
+        resolve(false);
+      };
 
       const onConfirm = () => {
-        open = false
-        resolve(true)
-        render()
-      }
+        open = false;
+        resolve(true);
+        render();
+      };
 
-      const mountRoot = createRoot(document.createElement("div"))
+      const mountRoot = createRoot(document.createElement('div'));
 
       const render = () => {
         mountRoot.render(
-          <Dialog
+          <RenderPrompt
             open={open}
             onConfirm={onConfirm}
             onCancel={onCancel}
             {...props}
           />
-        )
-      }
+        );
+      };
 
-      render()
-    })
-  }
+      render();
+    });
 
-  return dialog
-}
+  return prompt;
+};
 
-export { usePrompt }
+export { usePrompt };

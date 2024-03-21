@@ -1,4 +1,8 @@
 module.exports = {
   root: true,
-  extends: ["@medusajs/eslint-config-ui"],
+  extends: ["@flowind/eslint-config-ui"],
+  parserOptions: {
+    project: './tsconfig.json',
+    tsconfigRootDir: __dirname
+  },
 }

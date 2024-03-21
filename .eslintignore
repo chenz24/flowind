@@ -1,3 +1,13 @@
 node_modules/*
 **/dist
 **/build
+lib
+esm
+cjs
+dist
+public
+.cache
+.eslintrc.js
+*.d.ts
+
+packages/icons/src/components

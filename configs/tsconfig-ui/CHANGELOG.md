@@ -1,4 +1,4 @@
-# @medusajs/tsconfig-ui
+# @flowind/tsconfig-ui
 
 ## 0.0.1
 

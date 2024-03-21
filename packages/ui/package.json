@@ -1,11 +1,11 @@
 {
-  "name": "@medusajs/ui",
-  "version": "2.2.0",
-  "author": "Kasper Kristensen <kasper@medusajs.com>",
+  "name": "@flowind/ui",
+  "version": "0.0.1",
+  "author": "Chenz24 <chenz24@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/medusajs/ui.git",
+    "url": "https://github.com/chenz24/flowind.git",
     "directory": "packages/ui"
   },
   "main": "./dist/cjs/index.js",
@@ -29,7 +29,7 @@
     "styles.css"
   ],
   "scripts": {
-    "build": "yarn clean && yarn build:js:cjs && yarn build:js:esm",
+    "build": "pnpm clean && pnpm build:js:cjs && pnpm build:js:esm",
     "build:js:cjs": "tsc --project tsconfig.cjs.json && tsc-alias -p tsconfig.cjs.json",
     "build:js:esm": "tsc --project tsconfig.esm.json && tsc-alias -p tsconfig.esm.json",
     "clean": "rimraf dist",
@@ -42,9 +42,7 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@medusajs/eslint-config-ui": "*",
-    "@medusajs/tsconfig-ui": "*",
-    "@medusajs/ui-preset": "^1.0.2",
+    "@flowind/ui-preset": "*",
     "@storybook/addon-essentials": "^7.0.23",
     "@storybook/addon-interactions": "^7.0.23",
     "@storybook/addon-links": "^7.0.23",
@@ -53,36 +51,24 @@
     "@storybook/react": "^7.0.23",
     "@storybook/react-vite": "^7.0.23",
     "@storybook/testing-library": "^0.0.14-next.2",
-    "@testing-library/dom": "^9.3.1",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^14.0.0",
-    "@testing-library/user-event": "^14.4.3",
-    "@types/jsdom": "^21.1.1",
-    "@types/react": "^18.2.0",
-    "@types/react-dom": "^18.2.0",
     "@vitejs/plugin-react": "^4.0.1",
     "@vitest/coverage-v8": "^0.32.2",
-    "autoprefixer": "^10.4.14",
+    "autoprefixer": "^10.4.17",
     "chromatic": "^6.20.0",
-    "eslint": "^7.32.0",
-    "eslint-plugin-storybook": "^0.6.12",
+    "eslint-plugin-storybook": "^0.8.0",
     "jsdom": "^22.1.0",
-    "postcss": "^8.4.24",
+    "postcss": "^8.4.33",
     "prop-types": "^15.8.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
     "resize-observer-polyfill": "^1.5.1",
-    "rimraf": "^5.0.1",
     "storybook": "^7.0.23",
-    "tailwindcss": "^3.3.2",
     "tsc-alias": "^1.8.7",
-    "typescript": "^5.1.6",
     "vite": "^4.3.9",
     "vite-plugin-turbosnap": "^1.0.2",
     "vitest": "^0.32.2"
   },
   "dependencies": {
-    "@medusajs/icons": "*",
+    "@internationalized/date": "^3.5.2",
+    "@flowind/icons": "*",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-alert-dialog": "^1.0.4",
     "@radix-ui/react-avatar": "^1.0.3",
@@ -102,23 +88,19 @@
     "@radix-ui/react-tooltip": "^1.0.6",
     "@react-aria/datepicker": "^3.5.0",
     "@react-stately/datepicker": "^3.5.0",
-    "class-variance-authority": "^0.6.1",
     "clsx": "^1.2.1",
     "copy-to-clipboard": "^3.3.3",
+    "cva": "1.0.0-beta.1",
     "date-fns": "^2.30.0",
     "prism-react-renderer": "^2.0.6",
+    "prismjs": "^1.29.0",
     "react-currency-input-field": "^3.6.11",
     "react-day-picker": "^8.8.0",
-    "tailwind-merge": "^1.13.2"
+    "tailwind-merge": "^2.2.1"
   },
   "peerDependencies": {
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
-  },
-  "eslintConfig": {
-    "extends": [
-      "plugin:storybook/recommended"
-    ]
   },
   "browserslist": [
     "last 3 chrome versions",
