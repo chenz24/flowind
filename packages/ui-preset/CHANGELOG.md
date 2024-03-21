@@ -1,5 +1,11 @@
 # @medusajs/ui-preset
 
+## 0.0.2
+
+### Patch Changes
+
+- ef1f199: change package name from medusajs to flowind
+
 ## 1.1.2
 
 ### Patch Changes
