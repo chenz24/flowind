@@ -13,7 +13,6 @@
     "version:beta": "changeset version --snapshot beta",
     "release:alpha": "changeset publish --no-git-tags --snapshot --tag alpha",
     "version:alpha": "changeset version --snapshot alpha",
-    "release:snapshot": "changeset publish --no-git-tags --snapshot --tag snapshot",
     "generate:icons": "rimraf ./packages/icons/src/components && toolbox icons -o './packages/icons/src/components'",
     "generate:tokens": "toolbox tokens -o './packages/ui-preset/src/theme'"
   },

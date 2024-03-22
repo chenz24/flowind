@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     branches:
       - develop
-      
+
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
@@ -13,12 +13,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
-      - name: Setup Node.js 16.x
-        uses: actions/setup-node@v2
+      - name: Install Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 16.x
+          node-version: 18
 
       - name: Creating .npmrc
         run: |
@@ -27,23 +27,42 @@ jobs:
           EOF
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          
-      - name: Configure npm node prepend 
-        run: npm config set scripts-prepend-node-path auto
+
+#      - name: Configure npm node prepend
+#        run: npm config set scripts-prepend-node-path auto
+
+      - uses: pnpm/action-setup@v3
+        name: Install pnpm
+        with:
+          version: 8
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
 
       - name: Install Dependencies
-        run: yarn
+        run: pnpm install
 
       - name: Build all packages
-        run: yarn build
+        run: pnpm build
 
       - name: Version packages
-        run: yarn version:alpha
+        run: pnpm version:alpha
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install Dependencies
-        run: yarn install --no-immutable
-        
+        run: pnpm install
+
       - name: Publish packages under alpha tag
-        run: yarn release:alpha
+        run: pnpm release:alpha

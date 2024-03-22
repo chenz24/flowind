@@ -1,15 +1,15 @@
-name: Beta release
+name: Master release
 
 on:
-  workflow_dispatch:
+  push:
     branches:
-      - develop
+      - master
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   release:
-    name: Beta Release
+    name: Master Release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
