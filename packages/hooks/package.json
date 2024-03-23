@@ -1,0 +1,41 @@
+{
+  "name": "@flowind/hooks",
+  "version": "0.0.1",
+  "main": "cjs/index.js",
+  "module": "esm/index.js",
+  "types": "lib/index.d.ts",
+  "license": "MIT",
+  "author": "Vitaly Rtishchev <rtivital@gmail.com>",
+  "sideEffects": false,
+  "homepage": "https://flowind.dev",
+  "repository": {
+    "url": "https://github.com/flowinddev/flowind.git",
+    "type": "git",
+    "directory": "packages/hooks"
+  },
+  "keywords": [
+    "react",
+    "next",
+    "nextjs",
+    "library",
+    "frontend",
+    "react-hooks",
+    "hooks",
+    "state"
+  ],
+  "scripts": {
+    "build": "pnpm clean && pnpm build:js:cjs && pnpm build:js:esm",
+    "build:js:cjs": "tsc --project tsconfig.cjs.json && tsc-alias -p tsconfig.cjs.json",
+    "build:js:esm": "tsc --project tsconfig.esm.json && tsc-alias -p tsconfig.esm.json",
+    "clean": "rimraf dist",
+    "test": "vitest --run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest --run --coverage",
+    "lint": "eslint \"**/*.ts*\""
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

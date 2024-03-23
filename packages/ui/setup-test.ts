@@ -1,14 +1,16 @@
-import "@testing-library/jest-dom"
-import { JSDOM } from "jsdom"
-import ResizeObserver from "resize-observer-polyfill"
+import '@testing-library/jest-dom';
+import '@testing-library/jest-dom/extend-expect';
 
-const { window } = new JSDOM()
+import { JSDOM } from 'jsdom';
+import ResizeObserver from 'resize-observer-polyfill';
 
-window.ResizeObserver = ResizeObserver
-global.ResizeObserver = ResizeObserver
+const { window } = new JSDOM();
+
+window.ResizeObserver = ResizeObserver;
+global.ResizeObserver = ResizeObserver;
 window.Element.prototype.scrollTo = () => {
   // no-op
-}
-window.requestAnimationFrame = (cb) => setTimeout(cb, 1000 / 60)
+};
+window.requestAnimationFrame = (cb) => setTimeout(cb, 1000 / 60);
 
-Object.assign(global, { window, document: window.document })
+Object.assign(global, { window, document: window.document });
