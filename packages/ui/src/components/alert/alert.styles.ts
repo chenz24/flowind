@@ -26,14 +26,22 @@ const useStyles = createStyles(
         root: `relative overflow-hidden py-3 px-3.5 ${theme.radius[radius]} ${colors.color} ${colors.background} ${colors.border}`,
         wrapper: 'flex',
         body: 'flex-1',
-        title:
-          'flex items-center justify-between box-border m-0 mb-1 font-medium text-sm leading-relaxed',
+        title: 'flex items-center justify-between box-border m-0 mb-1 font-medium text-sm',
         label: 'block overflow-hidden text-ellipsis',
         message: 'overflow-hidden text-ellipsis text-sm leading-normal',
-        icon: 'w-5 h-5 flex items-center justify-start mr-3',
+        icon: 'w-5 h-5 flex items-center justify-center mr-3',
         closeButton: colors.color,
       },
-      styles: {},
+      styles: {
+        root: {},
+        wrapper: {},
+        body: {},
+        title: {},
+        label: {},
+        message: {},
+        icon: {},
+        closeButton: {},
+      },
     };
   },
 );

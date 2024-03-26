@@ -89,9 +89,9 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>((props: AlertProps, 
       warning: ExclamationCircleSolid,
     }[type];
 
-  const { classes, cx } = useStyles(
+  const { classes, styls, cx } = useStyles(
     { color, radius, type },
-    { classNames, unstyled, variant, name: 'Alert' },
+    { classNames, styles, unstyled, variant, name: 'Alert' },
   );
 
   const rootId = useId(id);
@@ -108,23 +108,27 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>((props: AlertProps, 
       ref={ref}
       {...others}
     >
-      <div className={classes.wrapper}>
+      <div className={classes.wrapper} style={styls.wrapper}>
         {Icon && (
-          <div className={classes.icon}>
+          <div className={classes.icon} style={styls.icon}>
             <Icon />
           </div>
         )}
 
-        <div className={classes.body}>
+        <div className={classes.body} style={styls.body}>
           {title && (
-            <div className={classes.title} data-with-close-button={dismissible || undefined}>
-              <span id={titleId} className={classes.label}>
+            <div
+              className={classes.title}
+              style={styls.title}
+              data-with-close-button={dismissible || undefined}
+            >
+              <span id={titleId} className={classes.label} style={styls.label}>
                 {title}
               </span>
             </div>
           )}
 
-          <div id={bodyId} className={classes.message}>
+          <div id={bodyId} className={classes.message} style={styls.message}>
             {children}
           </div>
         </div>
@@ -132,6 +136,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>((props: AlertProps, 
         {dismissible && (
           <CloseButton
             className={classes.closeButton}
+            style={styls.closeButton}
             onClick={onClose}
             iconSize={16}
             type={type}
