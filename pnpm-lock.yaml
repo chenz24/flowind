@@ -250,6 +250,9 @@ importers:
 
   packages/ui:
     dependencies:
+      '@flowind/hooks':
+        specifier: '*'
+        version: link:../hooks
       '@flowind/icons':
         specifier: '*'
         version: link:../icons

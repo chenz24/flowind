@@ -3,7 +3,7 @@ import { vi } from 'vitest';
 
 import { useShallowEffect } from './use-shallow-effect';
 
-describe('@mantine/hooks/use-shallow-effect', () => {
+describe('@flowind/hooks/use-shallow-effect', () => {
   beforeEach(() => {
     vi.clearAllMocks();
   });

@@ -27,7 +27,7 @@ module.exports = {
         ignoreTemplateLiterals: true,
       },
     ],
-
+    '@typescript-eslint/ban-types': 'off',
     '@typescript-eslint/lines-between-class-members': 'off',
     '@typescript-eslint/method-signature-style': ['error', 'property'],
     '@typescript-eslint/indent': 'off',

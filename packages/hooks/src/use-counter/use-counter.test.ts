@@ -2,7 +2,7 @@ import { act, renderHook } from '@testing-library/react';
 
 import { useCounter } from './use-counter';
 
-describe('@mantine/hooks/use-counter', () => {
+describe('@flowind/hooks/use-counter', () => {
   it('correctly returns initial state', () => {
     const hook = renderHook(() => useCounter(20, { min: 0, max: 100 }));
     expect(hook.result.current[0]).toBe(20);
