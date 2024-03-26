@@ -36,6 +36,18 @@ export function variants() {
   );
 }
 
+export function colors() {
+  return (
+    <Stack>
+      <Badge color="gray">Gray</Badge>
+      <Badge color="red">Red</Badge>
+      <Badge color="green">Green</Badge>
+      <Badge color="blue">Blue</Badge>
+      <Badge color="yellow">Yellow</Badge>
+    </Stack>
+  );
+}
+
 export function radius() {
   return (
     <Stack>
