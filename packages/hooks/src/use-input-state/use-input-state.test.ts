@@ -12,7 +12,7 @@ const changeEventBoolean = {
   nativeEvent: {},
 } as any;
 
-describe('@mantine/hooks/use-input-state', () => {
+describe('@flowind/hooks/use-input-state', () => {
   it('sets correct initial state', () => {
     const hook = renderHook(() => useInputState('test-value'));
     const [value] = hook.result.current;

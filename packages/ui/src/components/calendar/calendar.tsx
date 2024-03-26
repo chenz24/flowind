@@ -11,7 +11,8 @@ import {
 
 import { TriangleLeftMini, TriangleRightMini } from '@flowind/icons';
 import { clx } from '@/utils/clx';
-import { iconButtonVariants } from '../icon-button';
+
+// import { iconButtonVariants } from '../icon-button';
 
 type OmitKeys<T, K extends keyof T> = {
   [P in keyof T as P extends K ? never : P]: T[P];
@@ -79,7 +80,7 @@ const Calendar = ({
       caption_label:
         'txt-compact-small-plus absolute bottom-0 left-0 right-0 top-0 flex items-center justify-center text-ui-fg-base',
       nav: 'space-x-1 flex items-center bg-ui-bg-base-pressed rounded-md w-full h-full justify-between p-0.5',
-      nav_button: clx(iconButtonVariants({ variant: 'transparent', size: 'small' })),
+      // nav_button: clx(iconButtonVariants({ variant: 'transparent', size: 'small' })),
       nav_button_previous: '!absolute left-0.5',
       nav_button_next: '!absolute right-0.5',
       table: 'w-full border-collapse space-y-1',

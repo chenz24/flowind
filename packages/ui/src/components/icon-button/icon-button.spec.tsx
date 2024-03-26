@@ -18,7 +18,7 @@ describe('IconButton', () => {
   it('renders a button as a link', () => {
     render(
       <IconButton asChild>
-        <a href="https://www.medusajs.com">
+        <a href="https://www.flowmind.com">
           <Plus />
         </a>
       </IconButton>,

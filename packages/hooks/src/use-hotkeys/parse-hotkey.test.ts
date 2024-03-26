@@ -1,6 +1,6 @@
 import { getHotkeyMatcher, parseHotkey } from './parse-hotkey';
 
-describe('@mantine/hooks/use-hot-key/parse-hotkey', () => {
+describe('@flowind/hooks/use-hot-key/parse-hotkey', () => {
   it('should parse hotkey correctly', () => {
     expect(parseHotkey('meta+S')).toMatchObject({
       alt: false,

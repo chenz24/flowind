@@ -1,0 +1,136 @@
+const subtleClasses: object = {
+  slate: {
+    background: '',
+    hoverBackground: '[&:not(:disabled,[data-loading=true])]:hover:bg-slate-100/80 dark:[&:not(:disabled,[data-loading=true])]:hover:bg-slate-900/60',
+    color: 'text-slate-500 dark:text-slate-200',
+    border: '',
+  },
+  gray: {
+    background: '',
+    hoverBackground: '[&:not(:disabled,[data-loading=true])]:hover:bg-gray-100/80 dark:[&:not(:disabled,[data-loading=true])]:hover:bg-gray-900/60',
+    color: 'text-gray-500 dark:text-gray-200',
+    border: '',
+  },
+  zinc: {
+    background: '',
+    hoverBackground: '[&:not(:disabled,[data-loading=true])]:hover:bg-zinc-100/80 dark:[&:not(:disabled,[data-loading=true])]:hover:bg-zinc-900/60',
+    color: 'text-zinc-500 dark:text-zinc-200',
+    border: '',
+  },
+  neutral: {
+    background: '',
+    hoverBackground: '[&:not(:disabled,[data-loading=true])]:hover:bg-neutral-100/80 dark:[&:not(:disabled,[data-loading=true])]:hover:bg-neutral-900/60',
+    color: 'text-neutral-500 dark:text-neutral-200',
+    border: 'border-neutral-400 dark:border-neutral-500',
+  },
+  stone: {
+    background: '',
+    hoverBackground: '[&:not(:disabled,[data-loading=true])]:hover:bg-stone-100/80 dark:[&:not(:disabled,[data-loading=true])]:hover:bg-stone-900/60',
+    color: 'text-stone-500 dark:text-stone-200',
+    border: 'border-stone-400 dark:border-stone-500',
+  },
+  red: {
+    background: '',
+    hoverBackground: '[&:not(:disabled,[data-loading=true])]:hover:bg-red-100/80 dark:[&:not(:disabled,[data-loading=true])]:hover:bg-red-900/60',
+    color: 'text-red-500 dark:text-red-200',
+    border: 'border-red-400 dark:border-red-500',
+  },
+  orange: {
+    background: '',
+    hoverBackground: '[&:not(:disabled,[data-loading=true])]:hover:bg-orange-100/80 dark:[&:not(:disabled,[data-loading=true])]:hover:bg-orange-900/60',
+    color: 'text-orange-500 dark:text-orange-200',
+    border: 'border-orange-400 dark:border-orange-500',
+  },
+  amber: {
+    background: '',
+    hoverBackground: '[&:not(:disabled,[data-loading=true])]:hover:bg-amber-100/80 dark:[&:not(:disabled,[data-loading=true])]:hover:bg-amber-900/60',
+    color: 'text-amber-500 dark:text-amber-200',
+    border: 'border-amber-400 dark:border-amber-500',
+  },
+  yellow: {
+    background: '',
+    hoverBackground: '[&:not(:disabled,[data-loading=true])]:hover:bg-yellow-100/80 dark:[&:not(:disabled,[data-loading=true])]:hover:bg-yellow-900/60',
+    color: 'text-yellow-500 dark:text-yellow-200',
+    border: 'border-yellow-400 dark:border-yellow-500',
+  },
+  lime: {
+    background: '',
+    hoverBackground: '[&:not(:disabled,[data-loading=true])]:hover:bg-lime-100/80 dark:[&:not(:disabled,[data-loading=true])]:hover:bg-lime-900/60',
+    color: 'text-lime-500 dark:text-lime-200',
+    border: 'border-lime-400 dark:border-lime-500',
+  },
+  green: {
+    background: '',
+    hoverBackground: '[&:not(:disabled,[data-loading=true])]:hover:bg-green-100/80 dark:[&:not(:disabled,[data-loading=true])]:hover:bg-green-900/60',
+    color: 'text-green-500 dark:text-green-200',
+    border: 'border-green-400 dark:border-green-500',
+  },
+  emerald: {
+    background: '',
+    hoverBackground: '[&:not(:disabled,[data-loading=true])]:hover:bg-emerald-100/80 dark:[&:not(:disabled,[data-loading=true])]:hover:bg-emerald-900/60',
+    color: 'text-emerald-500 dark:text-emerald-200',
+    border: 'border-emerald-400 dark:border-emerald-500',
+  },
+  teal: {
+    background: '',
+    hoverBackground: '[&:not(:disabled,[data-loading=true])]:hover:bg-teal-100/80 dark:[&:not(:disabled,[data-loading=true])]:hover:bg-teal-900/60',
+    color: 'text-teal-500 dark:text-teal-200',
+    border: 'border-teal-400 dark:border-teal-500',
+  },
+  cyan: {
+    background: '',
+    hoverBackground: '[&:not(:disabled,[data-loading=true])]:hover:bg-cyan-100/80 dark:[&:not(:disabled,[data-loading=true])]:hover:bg-cyan-900/60',
+    color: 'text-cyan-500 dark:text-cyan-200',
+    border: 'border-cyan-400 dark:border-cyan-500',
+  },
+  sky: {
+    background: '',
+    hoverBackground: '[&:not(:disabled,[data-loading=true])]:hover:bg-sky-100/80 dark:[&:not(:disabled,[data-loading=true])]:hover:bg-sky-900/60',
+    color: 'text-sky-500 dark:text-sky-200',
+    border: 'border-sky-400 dark:border-sky-500',
+  },
+  blue: {
+    background: '',
+    hoverBackground: '[&:not(:disabled,[data-loading=true])]:hover:bg-blue-100/80 dark:[&:not(:disabled,[data-loading=true])]:hover:bg-blue-900/60',
+    color: 'text-blue-500 dark:text-blue-200',
+    border: 'border-blue-400 dark:border-blue-500',
+  },
+  indigo: {
+    background: '',
+    hoverBackground: '[&:not(:disabled,[data-loading=true])]:hover:bg-indigo-100/80 dark:[&:not(:disabled,[data-loading=true])]:hover:bg-indigo-900/60',
+    color: 'text-indigo-500 dark:text-indigo-200',
+    border: 'border-indigo-400 dark:border-indigo-500',
+  },
+  violet: {
+    background: '',
+    hoverBackground: '[&:not(:disabled,[data-loading=true])]:hover:bg-violet-100/80 dark:[&:not(:disabled,[data-loading=true])]:hover:bg-violet-900/60',
+    color: 'text-violet-500 dark:text-violet-200',
+    border: 'border-violet-400 dark:border-violet-500',
+  },
+  purple: {
+    background: '',
+    hoverBackground: '[&:not(:disabled,[data-loading=true])]:hover:bg-purple-100/80 dark:[&:not(:disabled,[data-loading=true])]:hover:bg-purple-900/60',
+    color: 'text-purple-500 dark:text-purple-200',
+    border: 'border-purple-400 dark:border-purple-500',
+  },
+  fuchsia: {
+    background: '',
+    hoverBackground: '[&:not(:disabled,[data-loading=true])]:hover:bg-fuchsia-100/80 dark:[&:not(:disabled,[data-loading=true])]:hover:bg-fuchsia-900/60',
+    color: 'text-fuchsia-500 dark:text-fuchsia-200',
+    border: 'border-fuchsia-400 dark:border-fuchsia-500',
+  },
+  pink: {
+    background: '',
+    hoverBackground: '[&:not(:disabled,[data-loading=true])]:hover:bg-pink-100/80 dark:[&:not(:disabled,[data-loading=true])]:hover:bg-pink-900/60',
+    color: 'text-pink-500 dark:text-pink-200',
+    border: 'border-pink-400 dark:border-pink-500',
+  },
+  rose: {
+    background: '',
+    hoverBackground: '[&:not(:disabled,[data-loading=true])]:hover:bg-rose-100/80 dark:[&:not(:disabled,[data-loading=true])]:hover:bg-rose-900/60',
+    color: 'text-rose-500 dark:text-rose-200',
+    border: 'border-rose-400 dark:border-rose-500',
+  },
+};
+
+export default subtleClasses;

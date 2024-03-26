@@ -1,87 +1,146 @@
-import * as React from 'react';
+import React, { forwardRef } from 'react';
 
+import { useId } from '@flowind/hooks';
 import {
   CheckCircleSolid,
   ExclamationCircleSolid,
   InformationCircleSolid,
   XCircleSolid,
-  XMarkMini,
 } from '@flowind/icons';
-import { IconButton } from '@/components/icon-button';
-import { clx } from '@/utils/clx';
+import {
+  DefaultProps,
+  FlowindColor,
+  FlowindSize,
+  Selectors,
+  StatusType,
+  useComponentDefaultProps,
+} from '@/styles';
+import { Box } from '../box';
+import { CloseButton } from '../close-button';
+import useStyles, { type AlertStylesParams, type AlertVariant } from './alert.styles';
 
-interface AlertProps extends React.ComponentPropsWithoutRef<'div'> {
-  variant?: 'error' | 'success' | 'warning' | 'info';
+export type AlertStylesNames = Selectors<typeof useStyles>;
+
+export interface AlertProps
+  extends DefaultProps<AlertStylesNames, AlertStylesParams>,
+    Omit<React.ComponentPropsWithoutRef<'div'>, 'title'> {
+  /** Alert title */
+  title?: React.ReactNode;
+
+  type?: StatusType;
+
+  /** Controls Alert background, color and border styles, "light" by default */
+  variant?: AlertVariant;
+
+  /** Alert message */
+  children: React.ReactNode;
+
+  /** Key of theme.colors */
+  color?: FlowindColor;
+
+  /** Icon displayed next to the title */
+  icon?: React.ReactNode;
+
+  /** Determines whether close button should be displayed, false by default */
   dismissible?: boolean;
+
+  /** Called when close button is clicked */
+  onClose?: () => void;
+
+  /** Close button aria-label */
+  closeButtonLabel?: string;
+
+  /** Key of theme.radius or any valid CSS value to set border-radius, theme.defaultRadius by default */
+  radius?: FlowindSize;
 }
 
-/**
- * This component is based on the div element and supports all of its props
- *
- * @excludeExternal
- */
-export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
-  (
-    {
-      /**
-       * The variant of the alert
-       */
-      variant = 'info',
-      /**
-       * Whether the alert is dismissible
-       */
-      dismissible = false,
-      className,
-      children,
-      ...props
-    }: AlertProps,
-    ref,
-  ) => {
-    const [dismissed, setDismissed] = React.useState(false);
+const defaultProps: Partial<AlertProps> = {
+  variant: 'light',
+  radius: 'sm',
+  type: 'primary',
+};
 
-    const Icon = {
+export const Alert = forwardRef<HTMLDivElement, AlertProps>((props: AlertProps, ref) => {
+  const {
+    id,
+    className,
+    title,
+    type,
+    variant,
+    children,
+    color,
+    classNames,
+    icon,
+    styles,
+    onClose,
+    radius,
+    dismissible,
+    closeButtonLabel,
+    unstyled,
+    ...others
+  } = useComponentDefaultProps('Alert', defaultProps, props);
+
+  const Icon =
+    icon ||
+    {
       info: InformationCircleSolid,
-      error: XCircleSolid,
+      danger: XCircleSolid,
       success: CheckCircleSolid,
       warning: ExclamationCircleSolid,
-    }[variant];
+    }[type];
 
-    const handleDismiss = () => {
-      setDismissed(true);
-    };
+  const { classes, cx } = useStyles(
+    { color, radius, type },
+    { classNames, unstyled, variant, name: 'Alert' },
+  );
 
-    if (dismissed) {
-      return null;
-    }
+  const rootId = useId(id);
+  const titleId = title && `${rootId}-title`;
+  const bodyId = `${rootId}-body`;
 
-    return (
-      <div
-        ref={ref}
-        className={clx(
-          'bg-ui-bg-subtle text-pretty txt-compact-small grid items-start gap-x-3 rounded-lg border p-3',
-          {
-            'grid-cols-[20px_1fr]': !dismissible,
-            'grid-cols-[20px_1fr_20px]': dismissible,
-          },
-          className,
+  return (
+    <Box
+      id={rootId}
+      role="alert"
+      aria-labelledby={titleId}
+      aria-describedby={bodyId}
+      className={cx(classes.root, className)}
+      ref={ref}
+      {...others}
+    >
+      <div className={classes.wrapper}>
+        {Icon && (
+          <div className={classes.icon}>
+            <Icon />
+          </div>
         )}
-        {...props}
-      >
-        <Icon
-          className={clx({
-            'text-ui-tag-red-icon': variant === 'error',
-            'text-ui-tag-green-icon': variant === 'success',
-            'text-ui-tag-orange-icon': variant === 'warning',
-            'text-ui-tag-neutral-icon': variant === 'info',
-          })}
-        />
-        <div>{children}</div>
+
+        <div className={classes.body}>
+          {title && (
+            <div className={classes.title} data-with-close-button={dismissible || undefined}>
+              <span id={titleId} className={classes.label}>
+                {title}
+              </span>
+            </div>
+          )}
+
+          <div id={bodyId} className={classes.message}>
+            {children}
+          </div>
+        </div>
+
         {dismissible && (
-          <IconButton size="2xsmall" variant="transparent" type="button" onClick={handleDismiss}>
-            <XMarkMini className="text-ui-fg-muted" />
-          </IconButton>
+          <CloseButton
+            className={classes.closeButton}
+            onClick={onClose}
+            iconSize={16}
+            type={type}
+            aria-label={closeButtonLabel}
+          />
         )}
       </div>
-    );
-  },
-);
+    </Box>
+  );
+});
+
+Alert.displayName = 'Alert';

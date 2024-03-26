@@ -1,6 +1,6 @@
 import { lowerFirst } from './lower-first';
 
-describe('@mantine/hooks/lower-first', () => {
+describe('@flowind/hooks/lower-first', () => {
   it('converts first letter to lower case', () => {
     expect(lowerFirst('Hello')).toBe('hello');
     expect(lowerFirst('HELLO')).toBe('hELLO');

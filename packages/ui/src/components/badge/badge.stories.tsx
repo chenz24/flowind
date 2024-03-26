@@ -1,97 +1,58 @@
-import { Meta, StoryObj } from "@storybook/react"
-import * as React from "react"
+import * as React from 'react';
+import { Meta, StoryObj } from '@storybook/react';
 
-import { Badge } from "./badge"
+import { Pencil } from '@flowind/icons';
+import { Stack } from '../stack';
+import { Badge } from './badge';
 
 const meta: Meta<typeof Badge> = {
-  title: "Components/Badge",
+  title: 'Components/Badge',
   component: Badge,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  render: ({ children, ...args }) => (
-    <Badge {...args}>{children || "Badge"}</Badge>
-  ),
-}
+  // render: ({ children, ...args }) => <Badge {...args}>{children || 'Badge'}</Badge>,
+};
 
-export default meta
+export default meta;
 
-type Story = StoryObj<typeof Badge>
+type Story = StoryObj<typeof Badge>;
 
 export const Grey: Story = {
   args: {
-    color: "grey",
+    color: 'gray',
+    children: 'Badge',
   },
+};
+
+export function variants() {
+  return (
+    <Stack>
+      <Badge variant="light">Light</Badge>
+      <Badge variant="filled">Filled</Badge>
+      <Badge variant="outline">Outline</Badge>
+      <Badge variant="dot">Dot</Badge>
+    </Stack>
+  );
 }
 
-export const Green: Story = {
-  args: {
-    color: "green",
-  },
+export function radius() {
+  return (
+    <Stack>
+      <Badge radius="xs">XS</Badge>
+      <Badge radius="sm">Small</Badge>
+      <Badge radius="md">Medium</Badge>
+      <Badge radius="lg">Large</Badge>
+      <Badge radius="xl">Extra Large</Badge>
+    </Stack>
+  );
 }
 
-export const Red: Story = {
-  args: {
-    color: "red",
-  },
-}
-
-export const Blue: Story = {
-  args: {
-    color: "blue",
-  },
-}
-
-export const Orange: Story = {
-  args: {
-    color: "orange",
-  },
-}
-
-export const Purple: Story = {
-  args: {
-    color: "purple",
-  },
-}
-
-export const Default: Story = {
-  args: {
-    rounded: "base",
-  },
-}
-
-export const Rounded: Story = {
-  args: {
-    rounded: "full",
-  },
-}
-
-export const XXSmall: Story = {
-  args: {
-    size: "2xsmall",
-  },
-}
-
-export const XSmall: Story = {
-  args: {
-    size: "xsmall",
-  },
-}
-
-export const Small: Story = {
-  args: {
-    size: "small",
-  },
-}
-
-export const Base: Story = {
-  args: {
-    size: "base",
-  },
-}
-
-export const Large: Story = {
-  args: {
-    size: "large",
-  },
+export function icon() {
+  return (
+    <Stack>
+      <Badge leftSection={<Pencil />}>Left Section</Badge>
+      <Badge rightSection={<Pencil />}>Right Section</Badge>
+    </Stack>
+  );
 }

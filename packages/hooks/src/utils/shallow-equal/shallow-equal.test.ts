@@ -1,6 +1,6 @@
 import { shallowEqual } from './shallow-equal';
 
-describe('@mantine/hooks/shallow-equal', () => {
+describe('@flowind/hooks/shallow-equal', () => {
   it('correctly compares primitive types', () => {
     expect(shallowEqual(1, 1)).toBe(true);
     expect(shallowEqual(-1.0001, -1.0001)).toBe(true);

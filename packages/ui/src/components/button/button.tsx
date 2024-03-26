@@ -1,133 +1,169 @@
-import * as React from 'react';
-import { Slot } from '@radix-ui/react-slot';
-import { cva, type VariantProps } from 'cva';
+import React, { forwardRef } from 'react';
 
-import { Spinner } from '@flowind/icons';
-import { clx } from '@/utils/clx';
+import {
+  DefaultProps,
+  FlowindColor,
+  FlowindSize,
+  Selectors,
+  StatusType,
+  useComponentDefaultProps,
+} from '@/styles';
+import { createPolymorphicComponent } from '@/utils/create-polymorphic-component';
+import { Loader, LoaderProps } from '../loader';
+import { UnstyledButton } from '../unstyled-button';
+import { ButtonGroup } from './button-group/button-group';
+import useStyles, { ButtonStylesParams } from './button.styles';
 
-const buttonVariants = cva({
-  base: clx(
-    'transition-fg relative inline-flex w-fit items-center justify-center overflow-hidden rounded-md outline-none',
-    'disabled:bg-ui-bg-disabled disabled:border-ui-border-base disabled:text-ui-fg-disabled disabled:shadow-buttons-neutral disabled:after:hidden',
-    "after:transition-fg after:absolute after:inset-0 after:content-['']",
-  ),
-  variants: {
-    variant: {
-      primary: clx(
-        'shadow-buttons-inverted text-ui-fg-on-inverted bg-ui-button-inverted after:button-inverted-gradient',
-        'hover:bg-ui-button-inverted-hover hover:after:button-inverted-hover-gradient',
-        'active:bg-ui-button-inverted-pressed active:after:button-inverted-pressed-gradient',
-        'focus-visible:!shadow-buttons-inverted-focus',
-      ),
-      secondary: clx(
-        'shadow-buttons-neutral text-ui-fg-base bg-ui-button-neutral after:button-neutral-gradient',
-        'hover:bg-ui-button-neutral-hover hover:after:button-neutral-hover-gradient',
-        'active:bg-ui-button-neutral-pressed active:after:button-neutral-pressed-gradient',
-        'focus-visible:shadow-buttons-neutral-focus',
-      ),
-      transparent: clx(
-        'after:hidden',
-        'text-ui-fg-base bg-ui-button-transparent',
-        'hover:bg-ui-button-transparent-hover',
-        'active:bg-ui-button-transparent-pressed',
-        'focus-visible:shadow-buttons-neutral-focus focus-visible:bg-ui-bg-base',
-        'disabled:!bg-transparent disabled:!shadow-none',
-      ),
-      danger: clx(
-        'shadow-buttons-colored shadow-buttons-danger text-ui-fg-on-color bg-ui-button-danger after:button-danger-gradient',
-        'hover:bg-ui-button-danger-hover hover:after:button-danger-hover-gradient',
-        'active:bg-ui-button-danger-pressed active:after:button-danger-pressed-gradient',
-        'focus-visible:shadow-buttons-danger-focus',
-      ),
-    },
-    size: {
-      small: 'txt-compact-small-plus gap-x-1 px-2 py-1',
-      base: 'txt-compact-small-plus gap-x-1.5 px-3 py-1.5',
-      large: 'txt-compact-medium-plus gap-x-1.5 px-4 py-2.5',
-      xlarge: 'txt-compact-large-plus gap-x-1.5 px-5 py-3.5',
-    },
-  },
-  defaultVariants: {
-    size: 'base',
-    variant: 'primary',
-  },
-});
+export type ButtonStylesNames = Selectors<typeof useStyles>;
 
-interface ButtonProps
-  extends React.ComponentPropsWithoutRef<'button'>,
-    VariantProps<typeof buttonVariants> {
-  isLoading?: boolean;
-  asChild?: boolean;
+export interface ButtonProps extends DefaultProps<ButtonStylesNames, ButtonStylesParams> {
+  /** Predefined button size */
+  size?: FlowindSize;
+
+  type?: StatusType;
+
+  /** Button type attribute */
+  htmlType?: 'submit' | 'button' | 'reset';
+
+  /** Button color from theme */
+  color?: FlowindColor;
+
+  /** Content displayed on the left side of the button label */
+  leftIcon?: React.ReactNode;
+
+  /** Adds icon after button label  */
+  rightIcon?: React.ReactNode;
+
+  /** Sets button width to 100% of parent element */
+  fullWidth?: boolean;
+
+  /** Key of theme.radius or any valid CSS value to set border-radius, theme.defaultRadius by default */
+  radius?: FlowindSize;
+
+  /** Controls button appearance */
+  variant?: 'filled' | 'outline' | 'light' | 'default' | 'subtle';
+
+  /** Reduces vertical and horizontal spacing */
+  compact?: boolean;
+
+  /** Indicate loading state */
+  loading?: boolean;
+
+  /** Props spread to Loader component */
+  loaderProps?: LoaderProps;
+
+  /** Loader position relative to button label */
+  loaderPosition?: 'left' | 'right' | 'center';
+
+  /** Button label */
+  children?: React.ReactNode;
+
+  /** Disabled state */
+  disabled?: boolean;
+
+  /** The native button click event handler. */
+  onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
-/**
- * This component is based on the `button` element and supports all of its props
- */
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  (
+const defaultProps: Partial<ButtonProps> = {
+  size: 'sm',
+  radius: 'sm',
+  htmlType: 'button',
+  variant: 'filled',
+  loaderPosition: 'left',
+  type: 'primary',
+};
+
+export const _Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
+  const {
+    className,
+    size,
+    color,
+    htmlType,
+    type,
+    disabled,
+    children,
+    leftIcon,
+    rightIcon,
+    fullWidth,
+    variant,
+    radius,
+    compact,
+    loading,
+    loaderPosition,
+    loaderProps,
+    classNames,
+    styles,
+    unstyled,
+    onClick,
+    ...others
+  } = useComponentDefaultProps('Button', defaultProps, props);
+
+  const { classes, cx } = useStyles(
     {
-      /**
-       * The button's style.
-       */
-      variant = 'primary',
-      /**
-       * The button's size.
-       */
-      size = 'base',
-      className,
-      /**
-       * Whether to remove the wrapper `button` element and use the
-       * passed child element instead.
-       */
-      asChild = false,
-      children,
-      /**
-       * Whether to show a loading spinner.
-       */
-      isLoading = false,
-      disabled,
-      ...props
-    }: ButtonProps,
-    ref,
-  ) => {
-    const Component = asChild ? Slot : 'button';
+      radius,
+      color,
+      fullWidth,
+      compact,
+      withLeftIcon: !!leftIcon,
+      withRightIcon: !!rightIcon,
+      type,
+    },
+    { name: 'Button', unstyled, classNames, styles, variant, size },
+  );
 
-    /**
-     * In the case of a button where asChild is true, and isLoading is true, we ensure that
-     * only on element is passed as a child to the Slot component. This is because the Slot
-     * component only accepts a single child.
-     */
-    const renderInner = () => {
-      if (isLoading) {
-        return (
-          <span className="pointer-events-none">
-            <div
-              className={clx(
-                'bg-ui-bg-disabled absolute inset-0 flex items-center justify-center rounded-md',
-              )}
-            >
-              <Spinner className="animate-spin" />
-            </div>
-            {children}
+  const loader = <Loader className={classes.loader} size={size} {...loaderProps} />;
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    if (loading || disabled) {
+      event.preventDefault();
+      return;
+    }
+
+    onClick && onClick(event);
+  };
+
+  return (
+    <UnstyledButton
+      className={cx(classes.root, className)}
+      type={htmlType}
+      disabled={disabled || loading}
+      data-button
+      data-disabled={disabled || undefined}
+      data-loading={loading || undefined}
+      ref={ref}
+      unstyled={unstyled}
+      onClick={handleClick}
+      {...others}
+    >
+      <div className={classes.inner}>
+        {(leftIcon || (loading && loaderPosition === 'left')) && (
+          <span className={cx(classes.icon, classes.leftIcon)}>
+            {loading && loaderPosition === 'left' ? loader : leftIcon}
           </span>
-        );
-      }
+        )}
 
-      return children;
-    };
+        {loading && loaderPosition === 'center' && (
+          <span className={classes.centerLoader}>{loader}</span>
+        )}
 
-    return (
-      <Component
-        ref={ref}
-        {...props}
-        className={clx(buttonVariants({ variant, size }), className)}
-        disabled={disabled || isLoading}
-      >
-        {renderInner()}
-      </Component>
-    );
-  },
-);
-Button.displayName = 'Button';
+        <span className={classes.label}>{children}</span>
 
-export { Button, buttonVariants };
+        {(rightIcon || (loading && loaderPosition === 'right')) && (
+          <span className={cx(classes.icon, classes.rightIcon)}>
+            {loading && loaderPosition === 'right' ? loader : rightIcon}
+          </span>
+        )}
+      </div>
+    </UnstyledButton>
+  );
+}) as any;
+
+_Button.displayName = 'Button';
+_Button.Group = ButtonGroup;
+
+export const Button = createPolymorphicComponent<
+  'button',
+  ButtonProps,
+  { Group: typeof ButtonGroup }
+>(_Button);

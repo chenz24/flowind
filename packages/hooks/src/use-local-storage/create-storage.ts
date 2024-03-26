@@ -26,7 +26,7 @@ function serializeJSON<T>(value: T, hookName: string = 'use-local-storage') {
   try {
     return JSON.stringify(value);
   } catch (error) {
-    throw new Error(`@mantine/hooks ${hookName}: Failed to serialize the value`);
+    throw new Error(`@flowind/hooks ${hookName}: Failed to serialize the value`);
   }
 }
 
@@ -70,7 +70,7 @@ function createStorageHandler(type: StorageType) {
 }
 
 export function createStorage<T>(type: StorageType, hookName: string) {
-  const eventName = type === 'localStorage' ? 'mantine-local-storage' : 'mantine-session-storage';
+  const eventName = type === 'localStorage' ? 'flowind-local-storage' : 'flowind-session-storage';
   const { getItem, setItem, removeItem } = createStorageHandler(type);
 
   return function useStorage({
