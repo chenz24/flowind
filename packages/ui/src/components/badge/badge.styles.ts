@@ -1,8 +1,8 @@
 import { createStyles, cva, FlowindColor, FlowindSize, FlowindTheme } from '@/styles';
 
-export type BadgeVariant = 'light' | 'filled' | 'outline' | 'dot';
+export type BadgeVariant = 'light' | 'lighter' | 'filled' | 'outline' | 'dot';
 
-const BADGE_VARIANTS = ['light', 'filled', 'outline', 'dot'];
+const BADGE_VARIANTS = ['light', 'lighter', 'filled', 'outline', 'dot'];
 
 export interface BadgeStylesParams {
   color: FlowindColor;
@@ -56,7 +56,7 @@ const dot = cva({
 });
 
 const root = cva({
-  base: 'no-underline box-border items-center justify-center font-bold text-ellipsis overflow-hidden border border-solid',
+  base: 'no-underline box-border items-center justify-center font-medium text-ellipsis overflow-hidden border border-solid',
   variants: {
     size: {
       xs: 'text-[9px] h-4 px-1',
@@ -70,6 +70,7 @@ const root = cva({
       false: 'w-auto inline-flex',
     },
     variant: {
+      lighter: '',
       light: '',
       filled: '',
       outline: '',

@@ -23,6 +23,30 @@ export const Base: Story = {
   },
 };
 
+export function colors() {
+  return (
+    <Stack>
+      <CloseButton size="sm" type="primary" />
+      <CloseButton size="sm" type="secondary" />
+      <CloseButton size="sm" type="danger" />
+      <CloseButton size="sm" type="warning" />
+      <CloseButton size="sm" type="info" />
+    </Stack>
+  );
+}
+
+export function variants() {
+  return (
+    <Stack>
+      <CloseButton size="sm" variant="subtle" />
+      <CloseButton size="sm" variant="filled" />
+      <CloseButton size="sm" variant="outline" />
+      <CloseButton size="sm" variant="light" />
+      <CloseButton size="sm" variant="default" />
+    </Stack>
+  );
+}
+
 // export const BaseTransparent: Story = {
 //   args: {
 //     variant: 'transparent',

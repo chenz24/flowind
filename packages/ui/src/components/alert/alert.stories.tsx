@@ -51,21 +51,21 @@ export function types() {
         使用 Figma 的 Transform 功能：在 Figma 的 Editor 视图中，选择多个图片，并在 Transform
         面板中输入相同的尺寸值。这将将所有选定的图片calaulated to the same size.
       </Alert>
-      <Alert variant="filled" type="secondary" className="w-[400px]">
+      <Alert variant="filled" type="secondary" className="w-[400px]" dismissible>
         Secondary
       </Alert>
-      <Alert variant="filled" type="danger" className="w-[400px]">
+      <Alert variant="filled" type="danger" className="w-[400px]" dismissible>
         Danger
       </Alert>
-      <Alert variant="filled" type="warning" className="w-[400px]">
+      <Alert variant="filled" type="warning" className="w-[400px]" dismissible>
         使用 Figma 的 Transform 功能：在 Figma 的 Editor 视图中，选择多个图片，并在 Transform
         面板中输入相同的尺寸值。这将将所有选定的图片calaulated to the same size.
       </Alert>
-      <Alert variant="filled" type="info" className="w-[400px]">
+      <Alert variant="filled" type="info" className="w-[400px]" dismissible>
         使用 Figma 的 Transform 功能：在 Figma 的 Editor 视图中，选择多个图片，并在 Transform
         面板中输入相同的尺寸值。这将将所有选定的图片calaulated to the same size.
       </Alert>
-      <Alert variant="filled" type="success" className="w-[400px]">
+      <Alert variant="filled" type="success" className="w-[400px]" dismissible>
         使用 Figma 的 Transform 功能：在 Figma 的 Editor 视图中，选择多个图片，并在 Transform
         面板中输入相同的尺寸值。这将将所有选定的图片calaulated to the same size.
       </Alert>
@@ -95,6 +95,37 @@ export function types() {
         面板中输入相同的尺寸值。这将将所有选定的图片calaulated to the same size.
       </Alert>
       <Alert variant="default" type="success" className="w-[400px]" title="这是标题" dismissible>
+        使用 Figma 的 Transform 功能：在 Figma 的 Editor 视图中，选择多个图片，并在 Transform
+        面板中输入相同的尺寸值。这将将所有选定的图片calaulated to the same size.
+      </Alert>
+    </Stack>
+  );
+}
+
+export function lighter() {
+  return (
+    <Stack direction="col">
+      <Alert variant="lighter" type="primary" className="w-[400px]" title="这是标题" dismissible>
+        使用 Figma 的 Transform 功能：在 Figma 的 Editor 视图中，选择多个图片，并在 Transform
+        面板中输入相同的尺寸值。这将将所有选定的图片calaulated to the same size.
+      </Alert>
+      <Alert variant="lighter" type="secondary" className="w-[400px]" title="这是标题" dismissible>
+        使用 Figma 的 Transform 功能：在 Figma 的 Editor 视图中，选择多个图片，并在 Transform
+        面板中输入相同的尺寸值。这将将所有选定的图片calaulated to the same size.
+      </Alert>
+      <Alert variant="lighter" type="danger" className="w-[400px]" title="这是标题" dismissible>
+        使用 Figma 的 Transform 功能：在 Figma 的 Editor 视图中，选择多个图片，并在 Transform
+        面板中输入相同的尺寸值。这将将所有选定的图片calaulated to the same size.
+      </Alert>
+      <Alert variant="lighter" type="warning" className="w-[400px]" title="这是标题" dismissible>
+        使用 Figma 的 Transform 功能：在 Figma 的 Editor 视图中，选择多个图片，并在 Transform
+        面板中输入相同的尺寸值。这将将所有选定的图片calaulated to the same size.
+      </Alert>
+      <Alert variant="lighter" type="info" className="w-[400px]" title="这是标题" dismissible>
+        使用 Figma 的 Transform 功能：在 Figma 的 Editor 视图中，选择多个图片，并在 Transform
+        面板中输入相同的尺寸值。这将将所有选定的图片calaulated to the same size.
+      </Alert>
+      <Alert variant="lighter" type="success" className="w-[400px]" title="这是标题" dismissible>
         使用 Figma 的 Transform 功能：在 Figma 的 Editor 视图中，选择多个图片，并在 Transform
         面板中输入相同的尺寸值。这将将所有选定的图片calaulated to the same size.
       </Alert>

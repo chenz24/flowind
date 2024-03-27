@@ -23,6 +23,7 @@ export default createStyles(
   (theme, { radius, color, type }: IconButtonStylesParams, { variant, size }) => {
     const variantColor = color || type;
     const colors = theme.fn.variantColors({ color: variantColor, variant });
+
     return {
       classes: {
         root: `${root({ size })} ${theme.radius[radius]} ${colors.border} 

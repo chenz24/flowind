@@ -98,6 +98,8 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>((props: AlertProps, 
   const titleId = title && `${rootId}-title`;
   const bodyId = `${rootId}-body`;
 
+  const closeButtonVariant = variant === 'filled' ? 'filled' : 'subtle';
+
   return (
     <Box
       id={rootId}
@@ -140,6 +142,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>((props: AlertProps, 
             onClick={onClose}
             iconSize={16}
             type={type}
+            variant={closeButtonVariant}
             aria-label={closeButtonLabel}
           />
         )}

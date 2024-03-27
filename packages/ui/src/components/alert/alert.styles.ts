@@ -20,6 +20,10 @@ const useStyles = createStyles(
   ) => {
     const variantColor = color || type;
     const colors = theme.fn.variantColors({ color: variantColor, variant });
+    const iconClasses =
+      variant === 'default'
+        ? theme.fn.variantColors({ color: variantColor, variant: 'light' }).color
+        : '';
 
     return {
       classes: {
@@ -29,7 +33,7 @@ const useStyles = createStyles(
         title: 'flex items-center justify-between box-border m-0 mb-1 font-medium text-sm',
         label: 'block overflow-hidden text-ellipsis',
         message: 'overflow-hidden text-ellipsis text-sm leading-normal',
-        icon: 'w-5 h-5 flex items-center justify-center mr-3',
+        icon: `w-5 h-5 flex items-center justify-center mr-3 ${iconClasses}`,
         closeButton: colors.color,
       },
       styles: {

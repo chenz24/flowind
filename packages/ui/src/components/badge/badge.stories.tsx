@@ -29,6 +29,7 @@ export function variants() {
   return (
     <Stack>
       <Badge variant="light">Light</Badge>
+      <Badge variant="lighter">Light</Badge>
       <Badge variant="filled">Filled</Badge>
       <Badge variant="outline">Outline</Badge>
       <Badge variant="dot">Dot</Badge>
@@ -44,6 +45,31 @@ export function colors() {
       <Badge color="green">Green</Badge>
       <Badge color="blue">Blue</Badge>
       <Badge color="yellow">Yellow</Badge>
+    </Stack>
+  );
+}
+
+export function lighterColors() {
+  return (
+    <Stack>
+      <Badge color="gray" variant="lighter">
+        Gray
+      </Badge>
+      <Badge color="red" variant="lighter">
+        Red
+      </Badge>
+      <Badge color="green" variant="lighter">
+        Green
+      </Badge>
+      <Badge color="blue" variant="lighter">
+        Blue
+      </Badge>
+      <Badge color="yellow" variant="lighter">
+        Yellow
+      </Badge>
+      <Badge color="rose" variant="lighter">
+        Yellow
+      </Badge>
     </Stack>
   );
 }
