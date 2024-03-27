@@ -66,7 +66,7 @@ export interface ButtonProps extends DefaultProps<ButtonStylesNames, ButtonStyle
 }
 
 const defaultProps: Partial<ButtonProps> = {
-  size: 'sm',
+  size: 'md',
   radius: 'sm',
   htmlType: 'button',
   variant: 'filled',

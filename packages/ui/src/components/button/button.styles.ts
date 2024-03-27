@@ -17,9 +17,9 @@ const root = cva({
     size: {
       xs: 'h-6 px-2.5 text-xs',
       sm: 'h-8 px-3 text-sm',
-      md: 'h-9 px-3.5 text-base',
-      lg: 'h-10 px-4 text-lg',
-      xl: 'h-11 px-5 text-xl',
+      md: 'h-9 px-3.5 text-sm',
+      lg: 'h-10 px-4 text-base',
+      xl: 'h-11 px-5 text-base',
     },
     fullWidth: {
       true: 'block w-full',
@@ -57,7 +57,7 @@ export default createStyles(
 
     return {
       classes: {
-        root: `${root({ size, fullWidth, compact })} ${theme.radius[radius]} 
+        root: `${root({ size, fullWidth, compact })} ${theme.radius[radius]} ${theme.focusRing} 
         ${colors.color} ${colors.background} ${colors.border} ${colors.hover}`,
         icon: 'flex items-center',
         leftIcon: 'mr-1.5',
