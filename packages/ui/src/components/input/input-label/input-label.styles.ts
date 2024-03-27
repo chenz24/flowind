@@ -1,5 +1,12 @@
 import { createStyles } from '@/styles';
-import { fontSizes } from '../input-description/input-description.styles';
+
+export const fontSizes = {
+  xs: 'text-xs',
+  sm: 'text-sm',
+  md: 'text-sm',
+  lg: 'text-base',
+  xl: 'text-base',
+};
 
 export default createStyles((theme, _params, { size }) => ({
   classes: {

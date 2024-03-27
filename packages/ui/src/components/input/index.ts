@@ -9,7 +9,7 @@ export type {
   InputWrapperProps,
   InputWrapperStylesNames,
   InputWrapperBaseProps,
-} from './input-wrapper/InputWrapper';
+} from './input-wrapper/input-wrapper';
 export type { InputLabelProps, InputLabelStylesNames } from './input-label/input-label';
 export type { InputErrorProps, InputErrorStylesNames } from './input-error/input-error';
 export type {

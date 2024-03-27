@@ -1,11 +1,11 @@
 import { createStyles } from '@/styles';
 
 export const fontSizes = {
-  xs: 'text-[10px]',
-  sm: 'text-[12px]',
-  md: 'text-[14px]',
-  lg: 'text-[16px]',
-  xl: 'text-[18px]',
+  xs: 'text-xs',
+  sm: 'text-xs',
+  md: 'text-xs',
+  lg: 'text-sm',
+  xl: 'text-sm',
 };
 
 export default createStyles((theme, _params, { size }) => ({

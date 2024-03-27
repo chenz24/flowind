@@ -1,9 +1,5 @@
 import React, { forwardRef } from 'react';
 
-import { InputError } from '@/components/input/input-error/input-error';
-import { InputLabel } from '@/components/input/input-label/input-label';
-import { InputPlaceholder } from '@/components/input/input-placeholder/input-placeholder';
-import { InputWrapper } from '@/components/input/input-wrapper/InputWrapper';
 import {
   DefaultProps,
   FlowindSize,
@@ -15,7 +11,11 @@ import {
 import { createPolymorphicComponent } from '@/utils/create-polymorphic-component';
 import { Box } from '../box';
 import { InputDescription } from './input-description/input-description';
+import { InputError } from './input-error/input-error';
+import { InputLabel } from './input-label/input-label';
+import { InputPlaceholder } from './input-placeholder/input-placeholder';
 import { useInputWrapperContext } from './input-wrapper.context';
+import { InputWrapper } from './input-wrapper/input-wrapper';
 import useStyles from './Input.styles';
 
 export type InputStylesNames = Selectors<typeof useStyles>;
@@ -82,7 +82,7 @@ export interface InputProps extends InputSharedProps, DefaultProps<InputStylesNa
 }
 
 const defaultProps: Partial<InputProps> = {
-  size: 'sm',
+  size: 'md',
   variant: 'default',
   radius: 'sm',
 };
@@ -111,7 +111,7 @@ export const _Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     // sx,
     unstyled,
     pointer,
-    // ...others
+    ...others
   } = useComponentDefaultProps('Input', defaultProps, props);
   const { offsetBottom, offsetTop, describedBy } = useInputWrapperContext();
 
@@ -132,6 +132,7 @@ export const _Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   );
 
   // const { systemStyles, rest } = extractSystemStyles(others);
+  console.log('prefix', prefix);
 
   const hasAddon = addonBefore || addonAfter;
 
@@ -160,6 +161,7 @@ export const _Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
         data-invalid={!!error || undefined}
         className={classes.input}
         style={styls.input}
+        {...others}
       />
       {suffix && (
         <Box className={classes.suffixWrapper} style={styls.suffixWrapper}>

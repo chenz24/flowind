@@ -1,6 +1,7 @@
 import type { FlowindColor, FlowindThemeBase, StatusType } from '../../../types';
 import filledClasses from './styles/filled';
 import lightClasses from './styles/light';
+import lighterClasses from './styles/lighter';
 import outlineClasses from './styles/outline';
 import subtleClasses from './styles/subtle';
 
@@ -36,6 +37,16 @@ export function variantColors(theme: FlowindThemeBase) {
         const classes = lightClasses[variantColor];
         return {
           border: 'border border-solid border-transparent',
+          background: classes.background,
+          color: classes.color,
+          hover: classes.hoverBackground,
+        };
+      }
+
+      case 'lighter': {
+        const classes = lighterClasses[variantColor];
+        return {
+          border: `border border-solid ${classes.border}`,
           background: classes.background,
           color: classes.color,
           hover: classes.hoverBackground,

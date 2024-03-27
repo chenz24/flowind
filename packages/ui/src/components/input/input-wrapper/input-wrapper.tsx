@@ -10,7 +10,7 @@ import { InputError, InputErrorStylesNames } from '../input-error/input-error';
 import { InputLabel, InputLabelStylesNames } from '../input-label/input-label';
 import { InputWrapperProvider } from '../input-wrapper.context';
 import { getInputOffsets } from './get-input-offsets';
-import useStyles from './InputWrapper.styles';
+import useStyles from './input-wrapper.styles';
 
 export type InputWrapperStylesNames =
   | Selectors<typeof useStyles>
@@ -76,7 +76,7 @@ const defaultProps: Partial<InputWrapperProps> = {
   labelElement: 'label',
   size: 'sm',
   inputContainer: (children) => children,
-  inputWrapperOrder: ['label', 'description', 'input', 'error'],
+  inputWrapperOrder: ['label', 'input', 'description', 'error'],
 };
 
 export const InputWrapper = forwardRef<HTMLDivElement, InputWrapperProps>((props, ref) => {

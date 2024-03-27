@@ -18,6 +18,8 @@ export interface FlowindTheme {
   fn: FlowindThemeFunctions;
   primaryColor: FlowindColor;
   secondaryColor: FlowindColor;
+  focusRing: string; //
+  focusInput: string; // input, select, textarea
 }
 
 export type FlowindThemeComponents = Record<string, ThemeComponent>;

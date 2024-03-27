@@ -1,5 +1,6 @@
 import React from 'react';
-import { MANTINE_SIZES } from '@flowind/styles';
+
+import { MANTINE_SIZES } from '@/styles';
 import { Input } from './Input';
 
 export default { title: 'Input' };

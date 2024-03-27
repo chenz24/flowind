@@ -1,7 +1,7 @@
 import { CSSProperties } from 'react';
 
 import { clx, createStyles, FlowindSize, FlowindTheme, rem } from '@/styles';
-import { fontSizes } from './input-description/input-description.styles';
+import { fontSizes } from './input-label/input-label.styles';
 
 // 配置表加样式计算
 
@@ -18,19 +18,11 @@ export interface InputStylesParams {
   pointer: boolean;
 }
 
-// export const sizes = {
-//   xs: rem(30),
-//   sm: rem(36),
-//   md: rem(42),
-//   lg: rem(50),
-//   xl: rem(60),
-// };
-
 export const sizes = {
   xs: {
     height: 'h-6',
     minHeight: 'min-h-6',
-    padding: 'px-2.5',
+    padding: 'px-2',
     affix: 'w-6',
     withSuffixPadding: 'pr-6',
     withPrefixPadding: 'pl-6',
@@ -38,7 +30,7 @@ export const sizes = {
   sm: {
     height: 'h-8',
     minHeight: 'min-h-8',
-    padding: 'px-3',
+    padding: 'px-2.5',
     affix: 'w-8',
     withSuffixPadding: 'pr-8',
     withPrefixPadding: 'pl-8',
@@ -46,7 +38,7 @@ export const sizes = {
   md: {
     height: 'h-9',
     minHeight: 'min-h-9',
-    padding: 'px-3.5',
+    padding: 'px-3',
     affix: 'w-9',
     withSuffixPadding: 'pr-9',
     withPrefixPadding: 'pl-9',
@@ -54,7 +46,7 @@ export const sizes = {
   lg: {
     height: 'h-10',
     minHeight: 'min-h-10',
-    padding: 'px-4',
+    padding: 'px-3.5',
     affix: 'w-10',
     withSuffixPadding: 'pr-10',
     withPrefixPadding: 'pl-10',
@@ -62,14 +54,14 @@ export const sizes = {
   xl: {
     height: 'h-11',
     minHeight: 'min-h-11',
-    padding: 'px-5',
+    padding: 'px-3.5',
     affix: 'w-11',
     withSuffixPadding: 'pr-11',
     withPrefixPadding: 'pl-11',
   },
 };
 
-const INPUT_VARIANTS = ['default', 'filled', 'unstyled'];
+// const INPUT_VARIANTS = ['default', 'filled', 'unstyled'];
 
 interface GetSizeStylesInput {
   size: FlowindSize;
@@ -86,7 +78,7 @@ const getSizeClasses = ({
   withSuffix,
   suffixWidth,
   prefixWidth,
-  multiline,
+  // multiline,
 }: GetSizeStylesInput) => {
   const _sizes = sizes[size];
 
@@ -133,9 +125,10 @@ export default createStyles(
 
     return {
       classes: {
-        wrapper: `relative flex transition border border-solid border-zinc-200 dark:border-gray-700
+        wrapper: `relative flex transition border border-solid border-gray-200 dark:border-gray-700
         hover:border-neutral-300 dark:hover:border-gray-600 dark:focus-within:border-gray-600
-        [&:has(input:is(:disabled))]:bg-slate-50 dark:[&:has(input:is(:disabled))]:bg-zinc-800
+        [&:has(input:is(:disabled))]:bg-slate-50 dark:[&:has(input:is(:disabled))]:bg-zinc-800 dark:bg-slate-900 
+        ${theme.focusInput} 
         ${radiusClasses} ${clx({
           'mt-1.5': offsetTop,
           'mb-1.5': offsetBottom,
@@ -156,8 +149,8 @@ export default createStyles(
             [sizeClasses.affix]: !suffixWidth,
           },
         )}`,
-        input: `w-full min-h-full outline-none
-        ${radiusClasses} resize-none appearance-none box-border block text-left text-slate-900 dark:text-slate-200
+        input: `w-full min-h-full outline-none dark:bg-slate-900 
+        ${radiusClasses} resize-none appearance-none box-border block text-left text-slate-900 dark:text-gray-400
         ${clx({
           'cursor-pointer': pointer,
         })} ${fontSizes[size]} ${getSizeClasses({

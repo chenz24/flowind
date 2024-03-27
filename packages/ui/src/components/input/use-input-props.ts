@@ -1,8 +1,8 @@
 import { useId } from '@flowind/hooks';
-import { InputWrapperBaseProps } from '@/components/input/input-wrapper/InputWrapper';
 import { DefaultProps, useComponentDefaultProps } from '@/styles';
 // import { extractSystemStyles } from '../box';
 import { InputSharedProps } from './Input';
+import { InputWrapperBaseProps } from './input-wrapper/input-wrapper';
 
 interface BaseProps extends InputWrapperBaseProps, InputSharedProps, DefaultProps {
   __staticSelector?: string;
@@ -35,7 +35,7 @@ export function useInputProps<T extends BaseProps, U extends Partial<T>>(
     inputWrapperOrder,
     withAsterisk,
     variant,
-    // ...others
+    ...others
   } = useComponentDefaultProps<T>(component, defaultProps, props);
 
   const uid = useId(id);
@@ -66,7 +66,7 @@ export function useInputProps<T extends BaseProps, U extends Partial<T>>(
   };
 
   return {
-    // ...rest,
+    ...others,
     classNames,
     styles,
     unstyled,
