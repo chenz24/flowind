@@ -132,7 +132,6 @@ export const _Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   );
 
   // const { systemStyles, rest } = extractSystemStyles(others);
-  console.log('prefix', prefix);
 
   const hasAddon = addonBefore || addonAfter;
 
