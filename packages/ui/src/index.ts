@@ -25,6 +25,7 @@ export { Label } from './components/label';
 export { Loader } from './components/loader';
 export { NumberInput } from './components/number-input';
 export { PasswordInput } from './components/password-input';
+export { PinInput } from './components/pin-input';
 export { Popover } from './components/popover';
 export { ProgressAccordion } from './components/progress-accordion';
 export { ProgressTabs } from './components/progress-tabs';
