@@ -28,6 +28,7 @@ module.exports = {
       },
     ],
     '@typescript-eslint/ban-types': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off',
     '@typescript-eslint/lines-between-class-members': 'off',
     '@typescript-eslint/method-signature-style': ['error', 'property'],
     '@typescript-eslint/indent': 'off',
