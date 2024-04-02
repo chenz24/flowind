@@ -1,158 +1,142 @@
-import type { Meta, StoryObj } from "@storybook/react"
-import * as React from "react"
+import * as React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
 
-import { Select } from "./select"
+import { Select } from './select';
 
 const meta: Meta<typeof Select> = {
-  title: "Components/Select",
+  title: 'Components/Select',
   component: Select,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-}
+};
 
-export default meta
+export default meta;
 
-type Story = StoryObj<typeof Select>
+type Story = StoryObj<typeof Select>;
 
 const data = [
   {
-    label: "Shirts",
+    label: 'Shirts',
     items: [
       {
-        value: "dress-shirt-striped",
-        label: "Striped Dress Shirt",
+        value: 'dress-shirt-striped',
+        label: 'Striped Dress Shirt',
       },
       {
-        value: "relaxed-button-down",
-        label: "Relaxed Fit Button Down",
+        value: 'relaxed-button-down',
+        label: 'Relaxed Fit Button Down',
       },
       {
-        value: "slim-button-down",
-        label: "Slim Fit Button Down",
+        value: 'slim-button-down',
+        label: 'Slim Fit Button Down',
       },
       {
-        value: "dress-shirt-solid",
-        label: "Solid Dress Shirt",
+        value: 'dress-shirt-solid',
+        label: 'Solid Dress Shirt',
       },
       {
-        value: "dress-shirt-check",
-        label: "Check Dress Shirt",
+        value: 'dress-shirt-check',
+        label: 'Check Dress Shirt',
       },
     ],
   },
   {
-    label: "T-Shirts",
+    label: 'T-Shirts',
     items: [
       {
-        value: "v-neck",
-        label: "V-Neck",
+        value: 'v-neck',
+        label: 'V-Neck',
       },
       {
-        value: "crew-neck",
-        label: "Crew Neck",
+        value: 'crew-neck',
+        label: 'Crew Neck',
       },
       {
-        value: "henley",
-        label: "Henley",
+        value: 'henley',
+        label: 'Henley',
       },
       {
-        value: "polo",
-        label: "Polo",
+        value: 'polo',
+        label: 'Polo',
       },
       {
-        value: "mock-neck",
-        label: "Mock Neck",
+        value: 'mock-neck',
+        label: 'Mock Neck',
       },
       {
-        value: "turtleneck",
-        label: "Turtleneck",
+        value: 'turtleneck',
+        label: 'Turtleneck',
       },
       {
-        value: "scoop-neck",
-        label: "Scoop Neck",
+        value: 'scoop-neck',
+        label: 'Scoop Neck',
       },
     ],
   },
-]
+];
+
+const data2 = ['React', 'Angular', 'Vue', 'Svelte'];
 
 export const Default: Story = {
-  render: () => {
-    return (
-      <div className="w-[250px]">
-        <Select>
-          <Select.Trigger>
-            <Select.Value placeholder="Select" />
-          </Select.Trigger>
-          <Select.Content>
-            {data.map((group) => (
-              <Select.Group key={group.label}>
-                <Select.Label>{group.label}</Select.Label>
-                {group.items.map((item) => (
-                  <Select.Item key={item.value} value={item.value}>
-                    {item.label}
-                  </Select.Item>
-                ))}
-              </Select.Group>
-            ))}
-          </Select.Content>
-        </Select>
-      </div>
-    )
-  },
-}
+  render: () => (
+    <div className="w-[250px]">
+      <Select data={data2} clearable defaultValue="React" searchable />
+    </div>
+  ),
+};
 
-export const Disabled: Story = {
-  render: () => {
-    return (
-      <div className="w-[250px]">
-        <Select>
-          <Select.Trigger disabled={true}>
-            <Select.Value placeholder="Select" />
-          </Select.Trigger>
-          <Select.Content>
-            {data.map((group) => (
-              <Select.Group key={group.label}>
-                <Select.Label>{group.label}</Select.Label>
-                {group.items.map((item) => (
-                  <Select.Item key={item.value} value={item.value}>
-                    {item.label}
-                  </Select.Item>
-                ))}
-              </Select.Group>
-            ))}
-          </Select.Content>
-        </Select>
-      </div>
-    )
-  },
-}
-
-export const Small: Story = {
-  render: () => {
-    return (
-      <div className="w-[250px]">
-        <Select size="small">
-          <Select.Trigger>
-            <Select.Value placeholder="Select" />
-          </Select.Trigger>
-          <Select.Content>
-            {data.map((group) => (
-              <Select.Group key={group.label}>
-                <Select.Label>{group.label}</Select.Label>
-                {group.items.map((item) => (
-                  <Select.Item key={item.value} value={item.value}>
-                    {item.label}
-                  </Select.Item>
-                ))}
-              </Select.Group>
-            ))}
-          </Select.Content>
-        </Select>
-      </div>
-    )
-  },
-}
+// export const Disabled: Story = {
+//   render: () => {
+//     return (
+//       <div className="w-[250px]">
+//         <Select>
+//           <Select.Trigger disabled={true}>
+//             <Select.Value placeholder="Select" />
+//           </Select.Trigger>
+//           <Select.Content>
+//             {data.map((group) => (
+//               <Select.Group key={group.label}>
+//                 <Select.Label>{group.label}</Select.Label>
+//                 {group.items.map((item) => (
+//                   <Select.Item key={item.value} value={item.value}>
+//                     {item.label}
+//                   </Select.Item>
+//                 ))}
+//               </Select.Group>
+//             ))}
+//           </Select.Content>
+//         </Select>
+//       </div>
+//     )
+//   },
+// }
+//
+// export const Small: Story = {
+//   render: () => {
+//     return (
+//       <div className="w-[250px]">
+//         <Select size="small">
+//           <Select.Trigger>
+//             <Select.Value placeholder="Select" />
+//           </Select.Trigger>
+//           <Select.Content>
+//             {data.map((group) => (
+//               <Select.Group key={group.label}>
+//                 <Select.Label>{group.label}</Select.Label>
+//                 {group.items.map((item) => (
+//                   <Select.Item key={item.value} value={item.value}>
+//                     {item.label}
+//                   </Select.Item>
+//                 ))}
+//               </Select.Group>
+//             ))}
+//           </Select.Content>
+//         </Select>
+//       </div>
+//     )
+//   },
+// }
 
 // const InModalDemo = () => {
 //   const [open, setOpen] = React.useState(false)
