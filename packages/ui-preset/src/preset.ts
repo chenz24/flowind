@@ -1,10 +1,19 @@
-import type { Config } from "tailwindcss"
+import type { Config } from 'tailwindcss';
 
-import plugin from "./plugin"
+import plugin from './plugin';
 
 const preset = {
   content: [],
-  plugins: [plugin, require("tailwindcss-animate")] as Config["plugins"],
-} satisfies Config
+  plugins: [
+    plugin,
+    // eslint-disable-next-line global-require
+    require('tailwindcss-animate'),
+    // @ts-ignore
+    // eslint-disable-next-line global-require,@typescript-eslint/no-var-requires
+    require('tailwindcss/plugin')(({ addVariant }) => {
+      addVariant('search-cancel', '&::-webkit-search-cancel-button');
+    }),
+  ] as Config['plugins'],
+} satisfies Config;
 
-export { preset }
+export { preset };

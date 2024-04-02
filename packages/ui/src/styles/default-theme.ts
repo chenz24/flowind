@@ -40,8 +40,17 @@ export const _DEFAULT_THEME: FlowindThemeBase = {
     lg: 'rounded-3xl',
     xl: 'rounded-full',
   },
+  shadows: {
+    xs: 'shadow-sm',
+    sm: 'shadow',
+    md: 'shadow-md',
+    lg: 'shadow-lg',
+    xl: 'shadow-xl',
+  },
   primaryColor: 'blue',
   secondaryColor: 'gray',
+  respectReducedMotion: true,
+  transitionTimingFunction: 'ease',
   focusRing:
     'outline outline-offset-2 outline-0 focus-visible:outline-2 outline-blue-500 dark:outline-blue-500',
   focusInput:

@@ -1,7 +1,7 @@
 import { useId } from '@flowind/hooks';
 import { DefaultProps, useComponentDefaultProps } from '@/styles';
 // import { extractSystemStyles } from '../box';
-import { InputSharedProps } from './Input';
+import { InputSharedProps } from './input';
 import { InputWrapperBaseProps } from './input-wrapper/input-wrapper';
 
 interface BaseProps extends InputWrapperBaseProps, InputSharedProps, DefaultProps {

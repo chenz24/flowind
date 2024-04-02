@@ -1,33 +1,49 @@
 import React from 'react';
+import { Meta, StoryObj } from '@storybook/react';
 
-import { MANTINE_SIZES } from '@/styles';
-import { Input } from './Input';
+import { FlowindSize } from '@/styles';
+import { Input } from './input';
 
-export default { title: 'Input' };
+const meta: Meta<typeof Input> = {
+  title: 'Components/Input',
+  component: Input,
+  parameters: {
+    layout: 'centered',
+  },
+};
+
+export default meta;
+
+// type Story = StoryObj<typeof Input>;
+
+const SIZES = ['xs', 'sm', 'md', 'lg', 'xl'] as FlowindSize[];
 
 export function Variants() {
   return (
     <div style={{ padding: 40 }}>
       <Input placeholder="default" />
-      <Input placeholder="invalid" mt="md" error />
-      <Input placeholder="disabled" mt="md" disabled />
-      <Input placeholder="with icon" mt="md" icon="$" />
-      <Input placeholder="filled" variant="filled" mt="md" />
-      <Input placeholder="unstyled" variant="unstyled" mt="md" />
+      <Input placeholder="invalid" error />
+      <Input placeholder="disabled" disabled />
+      <Input placeholder="with icon" prefix="$" />
+      <Input placeholder="filled" variant="filled" />
+      <Input placeholder="unstyled" variant="unstyled" />
     </div>
   );
 }
 
 export function Sizes() {
-  const sizes = MANTINE_SIZES.map((size) => (
+  const sizes = SIZES.map((size) => (
     <Input
       placeholder={`Input ${size}`}
       size={size}
       key={size}
-      icon={size}
+      prefix={size}
       rightSection={size}
-      mt="md"
-      styles={{ rightSection: { backgroundColor: 'pink' }, icon: { backgroundColor: 'cyan' } }}
+      className="mb-4"
+      styles={{
+        addonAfter: { backgroundColor: 'pink' },
+        prefixWrapper: { backgroundColor: 'cyan' },
+      }}
     />
   ));
 

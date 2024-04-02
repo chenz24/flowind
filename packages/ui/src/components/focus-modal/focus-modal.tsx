@@ -25,7 +25,7 @@ FocusModalRoot.displayName = 'FocusModal';
 const FocusModalTrigger = React.forwardRef<
   React.ElementRef<typeof FocusModalPrimitives.Trigger>,
   React.ComponentPropsWithoutRef<typeof FocusModalPrimitives.Trigger>
->((props, ref) => <FocusModalPrimitives.Trigger ref={ref} {...props} />);
+>((props, ref) => <FocusModalPrimitives.Trigger type={undefined} ref={ref} {...props} />);
 FocusModalTrigger.displayName = 'FocusModal.Trigger';
 
 const FocusModalClose = FocusModalPrimitives.Close;
@@ -90,8 +90,8 @@ const FocusModalHeader = React.forwardRef<HTMLDivElement, React.ComponentPropsWi
       {...props}
     >
       <div className="flex items-center gap-x-2">
-        <FocusModalPrimitives.Close asChild>
-          <IconButton size="small" type="button" variant="transparent">
+        <FocusModalPrimitives.Close type={undefined} asChild>
+          <IconButton size="sm" htmlType="button" variant="subtle">
             <XMark />
           </IconButton>
         </FocusModalPrimitives.Close>

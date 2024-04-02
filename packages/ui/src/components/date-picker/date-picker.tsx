@@ -4,221 +4,18 @@ import * as React from 'react';
 import { Time } from '@internationalized/date';
 import * as Primitives from '@radix-ui/react-popover';
 import { TimeValue } from '@react-aria/datepicker';
-import { cva } from 'cva';
 import { format, type Locale } from 'date-fns';
 
-import { Calendar as CalendarIcon, Minus } from '@flowind/icons';
-import { Button } from '@/components/button';
-import { Calendar as CalendarPrimitive } from '@/components/calendar';
-import { TimeInput } from '@/components/time-input';
+import { Minus } from '@flowind/icons';
 import type { DateRange } from '@/types';
 import { clx } from '@/utils/clx';
 import { isBrowserLocaleClockType24h } from '@/utils/is-browser-locale-hour-cycle-24h';
-
-const displayVariants = cva({
-  base: clx(
-    'text-ui-fg-base bg-ui-bg-field transition-fg shadow-buttons-neutral flex w-full items-center gap-x-2 rounded-md outline-none',
-    'hover:bg-ui-bg-field-hover',
-    'focus-visible:shadow-borders-interactive-with-active data-[state=open]:shadow-borders-interactive-with-active',
-    'disabled:bg-ui-bg-disabled disabled:text-ui-fg-disabled disabled:shadow-buttons-neutral',
-    'aria-[invalid=true]:!shadow-borders-error',
-  ),
-  variants: {
-    size: {
-      base: 'txt-compact-small h-8 px-2 py-1.5',
-      small: 'txt-compact-small h-7 px-2 py-1',
-    },
-  },
-  defaultVariants: {
-    size: 'base',
-  },
-});
-
-interface DisplayProps extends React.ComponentProps<'button'> {
-  placeholder?: string;
-  size?: 'small' | 'base';
-}
-
-const Display = React.forwardRef<HTMLButtonElement, DisplayProps>(
-  (
-    {
-      className,
-      children,
-      /**
-       * Placeholder of the date picker's input.
-       */
-      placeholder,
-      /**
-       * The size of the date picker's input.
-       */
-      size = 'base',
-      ...props
-    }: DisplayProps,
-    ref,
-  ) => (
-    <Primitives.Trigger asChild>
-      <button ref={ref} className={clx(displayVariants({ size }), className)} {...props}>
-        <CalendarIcon className="text-ui-fg-muted" />
-        <span className="flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-left">
-          {children ||
-            (placeholder ? <span className="text-ui-fg-muted">{placeholder}</span> : null)}
-        </span>
-      </button>
-    </Primitives.Trigger>
-  ),
-);
-Display.displayName = 'DatePicker.Display';
-
-const Flyout = React.forwardRef<
-  React.ElementRef<typeof Primitives.Content>,
-  React.ComponentProps<typeof Primitives.Content>
->(({ className, children, ...props }, ref) => (
-  <Primitives.Portal>
-    <Primitives.Content
-      ref={ref}
-      sideOffset={8}
-      align="center"
-      className={clx(
-        'txt-compact-small shadow-elevation-flyout bg-ui-bg-base w-fit rounded-lg',
-        'animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95',
-        'data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
-        className,
-      )}
-      {...props}
-    >
-      {children}
-    </Primitives.Content>
-  </Primitives.Portal>
-));
-Flyout.displayName = 'DatePicker.Flyout';
-
-interface Preset {
-  /**
-   * The preset's label.
-   */
-  label: string;
-}
-
-interface DatePreset extends Preset {
-  /**
-   * The preset's selected date.
-   */
-  date: Date;
-}
-
-interface DateRangePreset extends Preset {
-  /**
-   * The preset's selected date range.
-   */
-  dateRange: DateRange;
-}
-
-type PresetContainerProps<TPreset extends Preset, TValue> = {
-  presets: TPreset[] | TPreset[];
-  onSelect: (value: TValue) => void;
-  currentValue?: TValue;
-};
-
-const PresetContainer = <TPreset extends Preset, TValue>({
-  /**
-   * Selectable preset configurations.
-   */
-  presets,
-  /**
-   * A function that handles the event when a preset is selected.
-   */
-  onSelect,
-  /**
-   * The currently selected preset.
-   */
-  currentValue,
-}: PresetContainerProps<TPreset, TValue>) => {
-  const isDateRangePresets = (preset: any): preset is DateRangePreset => 'dateRange' in preset;
-
-  const isDatePresets = (preset: any): preset is DatePreset => 'date' in preset;
-
-  const handleClick = (preset: TPreset) => {
-    if (isDateRangePresets(preset)) {
-      onSelect(preset.dateRange as TValue);
-    } else if (isDatePresets(preset)) {
-      onSelect(preset.date as TValue);
-    }
-  };
-
-  const compareDates = (date1: Date, date2: Date) =>
-    date1.getDate() === date2.getDate() &&
-    date1.getMonth() === date2.getMonth() &&
-    date1.getFullYear() === date2.getFullYear();
-
-  const compareRanges = (range1: DateRange, range2: DateRange) => {
-    const from1 = range1.from;
-    const from2 = range2.from;
-
-    let equalFrom = false;
-
-    if (from1 && from2) {
-      const sameFrom = compareDates(from1, from2);
-
-      if (sameFrom) {
-        equalFrom = true;
-      }
-    }
-
-    const to1 = range1.to;
-    const to2 = range2.to;
-
-    let equalTo = false;
-
-    if (to1 && to2) {
-      const sameTo = compareDates(to1, to2);
-
-      if (sameTo) {
-        equalTo = true;
-      }
-    }
-
-    return equalFrom && equalTo;
-  };
-
-  const matchesCurrent = (preset: TPreset) => {
-    if (isDateRangePresets(preset)) {
-      const value = currentValue as DateRange | undefined;
-
-      return value && compareRanges(value, preset.dateRange);
-    }
-    if (isDatePresets(preset)) {
-      const value = currentValue as Date | undefined;
-
-      return value && compareDates(value, preset.date);
-    }
-
-    return false;
-  };
-
-  return (
-    <ul className="flex flex-col items-start">
-      {presets.map((preset, index) => (
-        <li key={index} className="w-full">
-          <button
-            className={clx(
-              'txt-compact-small-plus w-full overflow-hidden text-ellipsis whitespace-nowrap rounded-md p-2 text-left',
-              'text-ui-fg-subtle hover:bg-ui-bg-base-hover outline-none transition-all',
-              'focus-visible:bg-ui-bg-base-hover',
-              {
-                '!bg-ui-bg-base-pressed': matchesCurrent(preset),
-              },
-            )}
-            onClick={() => handleClick(preset)}
-            aria-label={`Select ${preset.label}`}
-          >
-            {preset.label}
-          </button>
-        </li>
-      ))}
-    </ul>
-  );
-};
-PresetContainer.displayName = 'DatePicker.PresetContainer';
+import { Button } from '../button';
+import { Calendar as CalendarPrimitive } from '../calendar';
+import { TimeInput } from '../time-input';
+import { Display } from './display';
+import { Flyout } from './flyout';
+import { PresetContainer, type DatePreset, type DateRangePreset } from './preset-container';
 
 const formatDate = (date: Date, includeTime?: boolean) => {
   const usesAmPm = !isBrowserLocaleClockType24h();
@@ -504,19 +301,20 @@ const SingleDatePicker = ({
               )}
               <div className="border-ui-border-base flex items-center gap-x-2 border-t p-3">
                 <Button
-                  variant="secondary"
-                  size="small"
+                  type="secondary"
+                  variant="default"
+                  size="sm"
                   className="w-full"
-                  type="button"
+                  htmlType="button"
                   onClick={onCancel}
                 >
                   {translations?.cancel ?? 'Cancel'}
                 </Button>
                 <Button
-                  variant="primary"
-                  size="small"
+                  type="primary"
+                  size="sm"
                   className="w-full"
-                  type="button"
+                  htmlType="button"
                   onClick={onApply}
                 >
                   {translations?.apply ?? 'Apply'}
@@ -803,10 +601,16 @@ const RangeDatePicker = ({
                   {displayRange}
                 </p>
                 <div className="flex items-center gap-x-2">
-                  <Button size="small" variant="secondary" type="button" onClick={onCancel}>
+                  <Button
+                    size="sm"
+                    variant="default"
+                    type="secondary"
+                    htmlType="button"
+                    onClick={onCancel}
+                  >
                     {translations?.cancel ?? 'Cancel'}
                   </Button>
-                  <Button size="small" variant="primary" type="button" onClick={onApply}>
+                  <Button size="sm" type="primary" htmlType="button" onClick={onApply}>
                     {translations?.apply ?? 'Apply'}
                   </Button>
                 </div>

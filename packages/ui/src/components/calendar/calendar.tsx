@@ -10,7 +10,7 @@ import {
 } from 'react-day-picker';
 
 import { TriangleLeftMini, TriangleRightMini } from '@flowind/icons';
-import { clx } from '@/utils/clx';
+import { clx, cva } from '@/styles';
 
 // import { iconButtonVariants } from '../icon-button';
 
@@ -37,6 +37,42 @@ type CalendarProps =
       mode: 'range';
     } & RangeProps);
 
+const iconButtonVariants = cva({
+  base: clx(
+    'transition-fg relative inline-flex w-fit items-center justify-center overflow-hidden rounded-md outline-none',
+    'disabled:bg-ui-bg-disabled disabled:shadow-buttons-neutral disabled:text-ui-fg-disabled disabled:after:hidden',
+  ),
+  variants: {
+    variant: {
+      primary: clx(
+        'shadow-buttons-neutral text-ui-fg-subtle bg-ui-button-neutral after:button-neutral-gradient',
+        'hover:bg-ui-button-neutral-hover hover:after:button-neutral-hover-gradient',
+        'active:bg-ui-button-neutral-pressed active:after:button-neutral-pressed-gradient',
+        'focus-visible:shadow-buttons-neutral-focus',
+        "after:absolute after:inset-0 after:content-['']",
+      ),
+      transparent: clx(
+        'text-ui-fg-subtle bg-ui-button-transparent',
+        'hover:bg-ui-button-transparent-hover',
+        'active:bg-ui-button-transparent-pressed',
+        'focus-visible:shadow-buttons-neutral-focus focus-visible:bg-ui-bg-base',
+        'disabled:!bg-transparent disabled:!shadow-none',
+      ),
+    },
+    size: {
+      '2xsmall': 'h-5 w-5',
+      xsmall: 'h-6 w-6 p-1',
+      small: 'h-7 w-7 p-1',
+      base: 'h-8 w-8 p-1.5',
+      large: 'h-10 w-10 p-2.5',
+      xlarge: 'h-12 w-12 p-3.5',
+    },
+  },
+  defaultVariants: {
+    variant: 'primary',
+    size: 'base',
+  },
+});
 /**
  * This component is based on the [react-date-picker](https://www.npmjs.com/package/react-date-picker) package.
  *
@@ -80,7 +116,7 @@ const Calendar = ({
       caption_label:
         'txt-compact-small-plus absolute bottom-0 left-0 right-0 top-0 flex items-center justify-center text-ui-fg-base',
       nav: 'space-x-1 flex items-center bg-ui-bg-base-pressed rounded-md w-full h-full justify-between p-0.5',
-      // nav_button: clx(iconButtonVariants({ variant: 'transparent', size: 'small' })),
+      nav_button: clx(iconButtonVariants({ variant: 'transparent', size: 'small' })),
       nav_button_previous: '!absolute left-0.5',
       nav_button_next: '!absolute right-0.5',
       table: 'w-full border-collapse space-y-1',

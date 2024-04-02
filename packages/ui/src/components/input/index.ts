@@ -1,8 +1,8 @@
-export { Input } from './Input';
+export { Input } from './input';
 export { sizes as INPUT_SIZES } from './Input.styles';
 export { useInputProps } from './use-input-props';
 
-export type { InputProps, InputSharedProps, InputStylesNames } from './Input';
+export type { InputProps, InputSharedProps, InputStylesNames } from './input';
 export type { InputStylesParams } from './Input.styles';
 
 export type {
