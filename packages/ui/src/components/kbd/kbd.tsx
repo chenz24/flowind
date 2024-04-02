@@ -1,28 +1,40 @@
-import * as React from "react"
+import React, { forwardRef } from 'react';
 
-import { clx } from "@/utils/clx"
+import { DefaultProps, FlowindSize, useComponentDefaultProps } from '@/styles';
+import { Box } from '../box';
+import useStyles from './kbd.styles';
 
-/**
- * This component is based on the `kbd` element and supports all of its props
- */
-const Kbd = React.forwardRef<
-  HTMLElement,
-  React.ComponentPropsWithoutRef<"kbd">
->(({ children, className, ...props }, ref) => {
+export interface KbdProps extends DefaultProps, React.ComponentPropsWithoutRef<'kbd'> {
+  variant?: string;
+
+  /** Keyboard key */
+  children: React.ReactNode;
+
+  /** Controls component size, 'sm' by default */
+  size?: FlowindSize;
+}
+
+const defaultProps: Partial<KbdProps> = {
+  size: 'sm',
+};
+
+export const Kbd = forwardRef<HTMLElement, KbdProps>((props: KbdProps, ref) => {
+  const { className, children, unstyled, variant, size, style, ...others } =
+    useComponentDefaultProps('Kbd', defaultProps, props);
+
+  const { classes, styls, cx } = useStyles(null, { name: 'Kbd', unstyled, variant, size });
+
   return (
-    <kbd
-      {...props}
+    <Box
+      component="kbd"
+      className={cx(classes.root, className)}
+      style={{ ...styls.root, ...style }}
       ref={ref}
-      className={clx(
-        "bg-ui-tag-neutral-bg text-ui-tag-neutral-text border-ui-tag-neutral-border inline-flex h-5 w-fit min-w-[20px] items-center justify-center rounded-md border px-1",
-        "txt-compact-xsmall-plus",
-        className
-      )}
+      {...others}
     >
       {children}
-    </kbd>
-  )
-})
-Kbd.displayName = "Kbd"
+    </Box>
+  );
+});
 
-export { Kbd }
+Kbd.displayName = 'Kbd';
