@@ -36,6 +36,7 @@ export { Prompt } from './components/prompt';
 export { RadioGroup } from './components/radio-group';
 export * from './components/rating';
 export { ScrollArea } from './components/scroll-area';
+export * from './components/segmented-control';
 export { Select } from './components/select';
 export { StatusBadge } from './components/status-badge';
 export { Switch } from './components/switch';
