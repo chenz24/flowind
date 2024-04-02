@@ -1,3 +1,5 @@
+'use client';
+
 import React, { forwardRef } from 'react';
 
 import {
@@ -23,6 +25,8 @@ export interface IconButtonProps
   children?: React.ReactNode;
 
   type?: StatusType;
+
+  htmlType?: 'button' | 'submit' | 'reset';
 
   /** Controls appearance, subtle by default */
   variant?: 'filled' | 'outline' | 'light' | 'default' | 'subtle';
@@ -51,6 +55,7 @@ const defaultProps: Partial<IconButtonProps> = {
   size: 'sm',
   variant: 'subtle',
   radius: 'sm',
+  htmlType: 'button',
 };
 
 export const _IconButton = forwardRef<HTMLButtonElement, IconButtonProps>((props, ref) => {
@@ -66,6 +71,7 @@ export const _IconButton = forwardRef<HTMLButtonElement, IconButtonProps>((props
     loaderProps,
     loading,
     unstyled,
+    htmlType,
     type,
     __staticSelector,
     ...others
@@ -91,6 +97,7 @@ export const _IconButton = forwardRef<HTMLButtonElement, IconButtonProps>((props
       data-disabled={disabled || undefined}
       data-loading={loading || undefined}
       unstyled={unstyled}
+      type={htmlType}
       {...others}
     >
       {loading ? loader : children}

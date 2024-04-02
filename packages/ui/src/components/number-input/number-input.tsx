@@ -1,3 +1,5 @@
+'use client';
+
 import React, { forwardRef, useEffect, useRef, useState } from 'react';
 
 import { assignRef, clamp, useMergedRef, useOs } from '@flowind/hooks';
