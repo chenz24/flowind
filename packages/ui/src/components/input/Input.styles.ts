@@ -1,6 +1,6 @@
 import { CSSProperties } from 'react';
 
-import { clx, createStyles, FlowindSize, FlowindTheme, rem } from '@/styles';
+import { clx, createStyles, FlowindSize, rem } from '@/styles';
 import { fontSizes } from './input-label/input-label.styles';
 
 // 配置表加样式计算
