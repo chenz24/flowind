@@ -34,6 +34,7 @@ export { ProgressAccordion } from './components/progress-accordion';
 export { ProgressTabs } from './components/progress-tabs';
 export { Prompt } from './components/prompt';
 export { RadioGroup } from './components/radio-group';
+export * from './components/rating';
 export { ScrollArea } from './components/scroll-area';
 export { Select } from './components/select';
 export { StatusBadge } from './components/status-badge';
