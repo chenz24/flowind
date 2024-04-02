@@ -1,72 +1,163 @@
-"use client"
+'use client';
 
-import * as Primitives from "@radix-ui/react-switch"
-import { VariantProps, cva } from "cva"
-import * as React from "react"
+import React, { forwardRef } from 'react';
 
-import { clx } from "@/utils/clx"
+import { useId, useUncontrolled } from '@flowind/hooks';
+import { DefaultProps, FlowindSize, Selectors, useComponentDefaultProps } from '@/styles';
+import { ForwardRefWithStaticComponents } from '@/utils/forwardRef-with-static-components';
+// import { extractSystemStyles } from '../box';
+import { InlineInput, InlineInputStylesNames } from '../inline-input';
+import { useSwitchGroupContext } from './switch-group.context';
+import { SwitchGroup } from './switch-group/switch-group';
+import useStyles, { SwitchStylesParams } from './switch.styles';
 
-const switchVariants = cva({
-  base: "bg-ui-bg-switch-off hover:bg-ui-bg-switch-off-hover data-[state=unchecked]:hover:after:bg-switch-off-hover-gradient before:shadow-details-switch-background focus-visible:shadow-details-switch-background-focus data-[state=checked]:bg-ui-bg-interactive disabled:!bg-ui-bg-disabled group relative inline-flex items-center rounded-full outline-none transition-all before:absolute before:inset-0 before:rounded-full before:content-[''] after:absolute after:inset-0 after:rounded-full after:content-[''] disabled:cursor-not-allowed",
-  variants: {
-    size: {
-      small: "h-[16px] w-[28px]",
-      base: "h-[18px] w-[32px]",
-    },
-  },
-  defaultVariants: {
-    size: "base",
-  },
-})
+export type SwitchStylesNames = Selectors<typeof useStyles> | InlineInputStylesNames;
 
-const thumbVariants = cva({
-  base: "bg-ui-fg-on-color shadow-details-switch-handle group-disabled:bg-ui-fg-disabled pointer-events-none h-[14px] w-[14px] rounded-full transition-all group-disabled:shadow-none",
-  variants: {
-    size: {
-      small:
-        "h-[12px] w-[12px] data-[state=checked]:translate-x-3.5 data-[state=unchecked]:translate-x-0.5",
-      base: "h-[14px] w-[14px] transition-transform data-[state=checked]:translate-x-4 data-[state=unchecked]:translate-x-0.5",
-    },
-  },
-  defaultVariants: {
-    size: "base",
-  },
-})
+export interface SwitchProps
+  extends DefaultProps<SwitchStylesNames, SwitchStylesParams>,
+    Omit<React.ComponentPropsWithRef<'input'>, 'type' | 'size'> {
+  variant?: string;
 
-interface SwitchProps
-  extends Omit<
-      React.ComponentPropsWithoutRef<typeof Primitives.Root>,
-      "asChild"
-    >,
-    VariantProps<typeof switchVariants> {}
+  /** Id is used to bind input and label, if not passed unique id will be generated for each input */
+  id?: string;
 
-/**
- * This component is based on the [Radix UI Switch](https://www.radix-ui.com/primitives/docs/components/switch) primitive.
- */
-const Switch = React.forwardRef<
-  React.ElementRef<typeof Primitives.Root>,
-  SwitchProps
->(
-  (
-    {
-      className,
-      /**
-       * The switch's size.
-       */
-      size = "base",
-      ...props
-    }: SwitchProps,
-    ref
-  ) => (
-    <Primitives.Root
-      className={clx(switchVariants({ size }), className)}
-      {...props}
-      ref={ref}
+  /** Switch label */
+  label?: React.ReactNode;
+
+  /** Inner label when Switch is in unchecked state */
+  offLabel?: React.ReactNode;
+
+  /** Inner label when Switch is in checked state */
+  onLabel?: React.ReactNode;
+
+  /** Predefined size value */
+  size?: FlowindSize;
+
+  /** Key of theme.radius or any valid CSS value to set border-radius, "xl" by default */
+  radius?: FlowindSize;
+
+  /** Props spread to wrapper element */
+  wrapperProps?: Record<string, any>;
+
+  /** Icon inside the thumb of switch */
+  thumbIcon?: React.ReactNode;
+
+  /** Position of label */
+  labelPosition?: 'left' | 'right';
+
+  /** description, displayed after label */
+  description?: React.ReactNode;
+
+  /** Displays error message after input */
+  error?: React.ReactNode;
+}
+
+const defaultProps: Partial<SwitchProps> = {
+  offLabel: '',
+  onLabel: '',
+  size: 'sm',
+  radius: 'xl',
+  error: false,
+};
+
+type SwitchComponent = ForwardRefWithStaticComponents<SwitchProps, { Group: typeof SwitchGroup }>;
+
+export const Switch: SwitchComponent = forwardRef<HTMLInputElement, SwitchProps>((props, ref) => {
+  const {
+    className,
+    label,
+    offLabel,
+    onLabel,
+    id,
+    style,
+    size,
+    radius,
+    wrapperProps,
+    children,
+    unstyled,
+    styles,
+    classNames,
+    thumbIcon,
+    checked,
+    defaultChecked,
+    onChange,
+    labelPosition,
+    description,
+    error,
+    disabled,
+    variant,
+    ...others
+  } = useComponentDefaultProps('Switch', defaultProps, props);
+
+  const ctx = useSwitchGroupContext();
+  const _size = ctx?.size || size;
+
+  const { classes, styls } = useStyles(
+    { radius, labelPosition, error: !!error },
+    { name: 'Switch', classNames, styles, unstyled, size: _size, variant },
+  );
+
+  // const { systemStyles, rest } = extractSystemStyles(others);
+  const uuid = useId(id);
+
+  const contextProps = ctx
+    ? {
+        checked: ctx.value.includes(others.value as string),
+        onChange: ctx.onChange,
+      }
+    : {};
+
+  const [_checked, handleChange] = useUncontrolled({
+    value: contextProps.checked ?? checked,
+    defaultValue: defaultChecked,
+    finalValue: false,
+  });
+
+  return (
+    <InlineInput
+      className={className}
+      style={style}
+      id={uuid}
+      size={ctx?.size || size}
+      labelPosition={labelPosition}
+      label={label}
+      description={description}
+      error={error}
+      disabled={disabled}
+      __staticSelector="Switch"
+      classNames={classNames}
+      styles={styles}
+      unstyled={unstyled}
+      data-checked={contextProps.checked || undefined}
+      variant={variant}
+      {...wrapperProps}
     >
-      <Primitives.Thumb className={clx(thumbVariants({ size }))} />
-    </Primitives.Root>
-  )
-)
-Switch.displayName = "Switch"
+      <input
+        {...others}
+        disabled={disabled}
+        checked={_checked}
+        onChange={(event) => {
+          ctx ? contextProps.onChange(event) : onChange?.(event);
+          handleChange(event.currentTarget.checked);
+        }}
+        id={uuid}
+        ref={ref}
+        type="checkbox"
+        className={classes.input}
+        style={styls.input}
+      />
 
-export { Switch }
+      <label htmlFor={uuid} className={classes.track} style={styls.track}>
+        <div className={classes.thumb} style={styls.thumb}>
+          {thumbIcon}
+        </div>
+        <div className={classes.trackLabel} style={styls.trackLabel}>
+          {_checked ? onLabel : offLabel}
+        </div>
+      </label>
+    </InlineInput>
+  );
+}) as any;
+
+Switch.displayName = 'Switch';
+Switch.Group = SwitchGroup;
