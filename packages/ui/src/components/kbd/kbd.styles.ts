@@ -13,7 +13,7 @@ export default createStyles((theme, _params, { size }) => {
   return {
     classes: {
       root: `font-code ${_size} font-medium rounded bg-gray-100 dark:bg-zinc-800 text-gray-600 dark:text-slate-400
-      border border-solid border-b-2 border-gray-200 dark:border-gray-600 w-fit`,
+      border border-solid border-b-2 border-gray-200 dark:border-zinc-700 w-fit`,
     },
     styles: {
       root: {},
