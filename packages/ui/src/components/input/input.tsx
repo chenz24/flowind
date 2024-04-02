@@ -142,7 +142,7 @@ export const _Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
       className={cx({
         [classes.wrapper]: !hasAddon,
         'relative w-full': hasAddon,
-        className: !hasAddon,
+        [className]: !hasAddon,
       })}
     >
       {prefix && (
