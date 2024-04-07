@@ -1,9 +1,9 @@
 import React, { forwardRef } from 'react';
 
-import { XMark } from '@flowind/icons';
 import { rem, useComponentDefaultProps } from '@/styles';
 import { createPolymorphicComponent } from '@/utils/create-polymorphic-component';
 import { IconButton, IconButtonProps } from '../icon-button';
+import { CloseIcon } from './close-icon';
 
 export interface CloseButtonProps
   extends Omit<IconButtonProps, 'children'>,
@@ -21,7 +21,7 @@ const iconSizes = {
 };
 
 const defaultProps: Partial<CloseButtonProps> = {
-  size: 'xs',
+  size: 'sm',
   type: 'secondary',
   variant: 'subtle',
 };
@@ -33,12 +33,11 @@ export const _CloseButton = forwardRef<HTMLButtonElement, CloseButtonProps>((pro
     props,
   );
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const _iconSize = rem(iconSize || iconSizes[size]);
 
   return (
     <IconButton ref={ref} __staticSelector="CloseButton" size={size} variant={variant} {...others}>
-      {children || <XMark />}
+      {children || <CloseIcon width={_iconSize} height={_iconSize} />}
     </IconButton>
   );
 });

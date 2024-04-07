@@ -47,6 +47,18 @@ export function variants() {
   );
 }
 
+export function sizes() {
+  return (
+    <Stack>
+      <CloseButton size="xs" />
+      <CloseButton size="sm" />
+      <CloseButton size="md" />
+      <CloseButton size="lg" />
+      <CloseButton size="xl" />
+    </Stack>
+  );
+}
+
 // export const BaseTransparent: Story = {
 //   args: {
 //     variant: 'transparent',
