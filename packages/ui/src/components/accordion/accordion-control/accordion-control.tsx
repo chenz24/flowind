@@ -1,3 +1,5 @@
+'use client';
+
 import React, { forwardRef } from 'react';
 
 import { DefaultProps, Selectors, useComponentDefaultProps } from '@/styles';
@@ -35,7 +37,6 @@ export const AccordionControl = forwardRef<HTMLButtonElement, AccordionControlPr
     const { value } = useAccordionItemContext();
     const { classes, cx } = useStyles(
       {
-        transitionDuration: ctx.transitionDuration,
         chevronPosition: ctx.chevronPosition,
         radius: ctx.radius,
       },
