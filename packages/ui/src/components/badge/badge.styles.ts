@@ -46,6 +46,7 @@ const dot = cva({
   base: 'block',
   variants: {
     size: {
+      none: '',
       xs: 'w-1 h-1 rounded pl-1 mr-1',
       sm: 'w-1 h-1 rounded pl-1 mr-1',
       md: 'w-1.5 h-1.5 rounded-md pl-1.5 mr-1.5',
@@ -59,6 +60,7 @@ const root = cva({
   base: 'no-underline box-border items-center justify-center font-medium text-ellipsis overflow-hidden border border-solid',
   variants: {
     size: {
+      none: '',
       xs: 'text-[9px] h-4 px-1',
       sm: 'text-[10px] h-[18px] px-1.5',
       md: 'text-[11px] h-5 px-2',
@@ -74,7 +76,7 @@ const root = cva({
       light: '',
       filled: '',
       outline: '',
-      dot: 'bg-transparent border border-solid border-slate-300 dark:border-zinc-700 text-slate:500 dark:text-slate:400',
+      dot: 'bg-transparent border border-solid border-border-neutral-lighter text-fg-subtle',
     },
   },
 });

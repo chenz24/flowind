@@ -18,13 +18,6 @@ export default meta;
 
 type Story = StoryObj<typeof Badge>;
 
-export const Grey: Story = {
-  args: {
-    color: 'gray',
-    children: 'Badge',
-  },
-};
-
 export function variants() {
   return (
     <Stack>
@@ -40,9 +33,9 @@ export function variants() {
 export function colors() {
   return (
     <Stack>
-      <Badge color="gray">Gray</Badge>
+      <Badge color="neutral">Gray</Badge>
       <Badge color="red">Red</Badge>
-      <Badge color="green">Green</Badge>
+      <Badge color="emerald">Green</Badge>
       <Badge color="blue">Blue</Badge>
       <Badge color="yellow">Yellow</Badge>
     </Stack>
@@ -52,13 +45,13 @@ export function colors() {
 export function lighterColors() {
   return (
     <Stack>
-      <Badge color="gray" variant="lighter">
+      <Badge color="neutral" variant="lighter">
         Gray
       </Badge>
       <Badge color="red" variant="lighter">
         Red
       </Badge>
-      <Badge color="green" variant="lighter">
+      <Badge color="emerald" variant="lighter">
         Green
       </Badge>
       <Badge color="blue" variant="lighter">
@@ -67,7 +60,7 @@ export function lighterColors() {
       <Badge color="yellow" variant="lighter">
         Yellow
       </Badge>
-      <Badge color="rose" variant="lighter">
+      <Badge color="cyan" variant="lighter">
         Yellow
       </Badge>
     </Stack>
