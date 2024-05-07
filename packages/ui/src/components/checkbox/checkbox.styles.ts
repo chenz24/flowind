@@ -28,7 +28,7 @@ export default createStyles(
         } peer-checked:opacity-100 peer-checked:translate-y-0 peer-checked:scale-100 peer-checked:text-white`,
         inner: `relative ${labelPosition === 'left' ? 'order-2' : 'order-1'} ${_size}`,
         input: `peer block appearance-none p-0 m-0 border border-solid border-neutral-300 dark:border-gray-600
-        bg-slate-50 dark:bg-zinc-800 shadow-sm
+        bg-slate-50 dark:bg-zinc-800 shadow-sm focus-visible:shadow-borders-interactive-with-focus outline-none 
         ${_size} ${theme.radius[radius]} checked:bg-blue-500 checked:border-blue-500 disabled:cursor-not-allowed
         disabled:opacity-60`,
       },
