@@ -17,6 +17,6 @@ type Story = StoryObj<typeof Kbd>;
 export const Default: Story = {
   args: {
     children: '⌘ + K',
-    size: 'sm',
+    size: 'xs',
   },
 };

@@ -10,12 +10,12 @@ export interface KbdProps extends DefaultProps, React.ComponentPropsWithoutRef<'
   /** Keyboard key */
   children: React.ReactNode;
 
-  /** Controls component size, 'sm' by default */
+  /** Controls component size, 'xs' by default */
   size?: FlowindSize;
 }
 
 const defaultProps: Partial<KbdProps> = {
-  size: 'sm',
+  size: 'xs',
 };
 
 export const Kbd = forwardRef<HTMLElement, KbdProps>((props: KbdProps, ref) => {
