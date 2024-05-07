@@ -7,56 +7,56 @@ import { cva, type VariantProps } from 'cva';
 import { clx } from '@/utils/clx';
 
 const avatarVariants = cva({
-  base: 'border-ui-border-strong flex shrink-0 items-center justify-center overflow-hidden border',
+  base: 'border-border-strong flex shrink-0 items-center justify-center overflow-hidden border',
   variants: {
     variant: {
       squared: '',
       rounded: 'rounded-full',
     },
     size: {
-      '2xsmall': 'h-5 w-5',
-      xsmall: 'h-6 w-6',
-      small: 'h-7 w-7',
-      base: 'h-8 w-8',
-      large: 'h-10 w-10',
-      xlarge: 'h-12 w-12',
+      '2xs': 'h-5 w-5',
+      xs: 'h-6 w-6',
+      sm: 'h-7 w-7',
+      md: 'h-8 w-8',
+      lg: 'h-10 w-10',
+      xl: 'h-12 w-12',
     },
   },
   compoundVariants: [
     {
       variant: 'squared',
-      size: '2xsmall',
+      size: '2xs',
       className: 'rounded-md',
     },
     {
       variant: 'squared',
-      size: 'xsmall',
+      size: 'xs',
       className: 'rounded-md',
     },
     {
       variant: 'squared',
-      size: 'small',
+      size: 'sm',
       className: 'rounded-md',
     },
     {
       variant: 'squared',
-      size: 'base',
+      size: 'md',
       className: 'rounded-md',
     },
     {
       variant: 'squared',
-      size: 'large',
+      size: 'lg',
       className: 'rounded-lg',
     },
     {
       variant: 'squared',
-      size: 'xlarge',
+      size: 'xl',
       className: 'rounded-xl',
     },
   ],
   defaultVariants: {
     variant: 'rounded',
-    size: 'base',
+    size: 'md',
   },
 });
 
@@ -68,49 +68,49 @@ const innerVariants = cva({
       rounded: 'rounded-full',
     },
     size: {
-      '2xsmall': 'txt-compact-xsmall-plus h-4 w-4',
-      xsmall: 'txt-compact-xsmall-plus h-5 w-5',
-      small: 'txt-compact-small-plus h-6 w-6',
-      base: 'txt-compact-small-plus h-7 w-7',
-      large: 'txt-compact-medium-plus h-9 w-9',
-      xlarge: 'txt-compact-large-plus h-11 w-11',
+      '2xs': 'txt-compact-xs-plus h-4 w-4',
+      xs: 'txt-compact-xs-plus h-5 w-5',
+      sm: 'txt-compact-sm-plus h-6 w-6',
+      md: 'txt-compact-sm-plus h-7 w-7',
+      lg: 'txt-compact-md-plus h-9 w-9',
+      xl: 'txt-compact-lg-plus h-11 w-11',
     },
   },
   compoundVariants: [
     {
       variant: 'squared',
-      size: '2xsmall',
+      size: '2xs',
       className: 'rounded-sm',
     },
     {
       variant: 'squared',
-      size: 'xsmall',
+      size: 'xs',
       className: 'rounded-sm',
     },
     {
       variant: 'squared',
-      size: 'small',
+      size: 'sm',
       className: 'rounded-[4px]',
     },
     {
       variant: 'squared',
-      size: 'base',
+      size: 'md',
       className: 'rounded-[4px]',
     },
     {
       variant: 'squared',
-      size: 'large',
+      size: 'lg',
       className: 'rounded-md',
     },
     {
       variant: 'squared',
-      size: 'xlarge',
+      size: 'xl',
       className: 'rounded-[10px]',
     },
   ],
   defaultVariants: {
     variant: 'rounded',
-    size: 'base',
+    size: 'md',
   },
 });
 
@@ -145,7 +145,7 @@ const Avatar = React.forwardRef<React.ElementRef<typeof Primitives.Root>, Avatar
       /**
        * The size of the avatar's border radius.
        */
-      size = 'base',
+      size = 'md',
       className,
       ...props
     }: AvatarProps,
@@ -160,7 +160,7 @@ const Avatar = React.forwardRef<React.ElementRef<typeof Primitives.Root>, Avatar
       <Primitives.Fallback
         className={clx(
           innerVariants({ variant, size }),
-          'bg-ui-bg-component text-ui-fg-subtle pointer-events-none flex select-none items-center justify-center',
+          'bg-bg-component text-fg-subtle pointer-events-none flex select-none items-center justify-center',
         )}
       >
         {fallback}
