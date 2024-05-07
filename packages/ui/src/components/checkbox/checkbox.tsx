@@ -1,34 +1,142 @@
-'use client';
+import React, { forwardRef } from 'react';
 
-import * as React from 'react';
-import * as Primitives from '@radix-ui/react-checkbox';
+import { useId } from '@flowind/hooks';
+import { DefaultProps, FlowindSize, Selectors, useComponentDefaultProps } from '@/styles';
+import { ForwardRefWithStaticComponents } from '@/utils/forwardRef-with-static-components';
+import { InlineInput, InlineInputStylesNames } from '../inline-input';
+import { useCheckboxGroupContext } from './checkbox-group.context';
+import { CheckboxGroup } from './checkbox-group/checkbox-group';
+import { CheckboxIcon } from './checkbox-icon';
+import useStyles, { CheckboxStylesParams } from './checkbox.styles';
 
-import { CheckMini, MinusMini } from '@flowind/icons';
-import { clx } from '@/utils/clx';
+export type CheckboxStylesNames = Selectors<typeof useStyles> | InlineInputStylesNames;
 
-/**
- * This component is based on the [Radix UI Checkbox](https://www.radix-ui.com/primitives/docs/components/checkbox) primitive.
- */
-const Checkbox = React.forwardRef<
-  React.ElementRef<typeof Primitives.Root>,
-  React.ComponentPropsWithoutRef<typeof Primitives.Root>
->(({ className, checked, ...props }, ref) => (
-  <Primitives.Root
-    {...props}
-    ref={ref}
-    checked={checked}
-    className={clx(
-      'group relative inline-flex h-5 w-5 items-center justify-center outline-none ',
+export interface CheckboxProps
+  extends DefaultProps<CheckboxStylesNames, CheckboxStylesParams>,
+    Omit<React.ComponentPropsWithRef<'input'>, 'type' | 'size'> {
+  variant?: string;
+
+  /** Key of theme.radius or any valid CSS value to set border-radius, theme.defaultRadius by default */
+  radius?: FlowindSize;
+
+  /** Controls label font-size and checkbox width and height */
+  size?: FlowindSize;
+
+  /** Checkbox label */
+  label?: React.ReactNode;
+
+  /** Indeterminate state of checkbox, if set, `checked` prop is ignored */
+  indeterminate?: boolean;
+
+  /** Props added to the root element */
+  wrapperProps?: Record<string, any>;
+
+  /** Icon rendered when checkbox has checked or indeterminate state */
+  icon?: React.FC<{ indeterminate: boolean; className: string }>;
+
+  /** Position of the label */
+  labelPosition?: 'left' | 'right';
+
+  /** Description, displayed after the label */
+  description?: React.ReactNode;
+
+  /** Error message displayed after the input */
+  error?: React.ReactNode;
+}
+
+const defaultProps: Partial<CheckboxProps> = {
+  size: 'sm',
+  radius: 'sm',
+  icon: CheckboxIcon,
+  labelPosition: 'right',
+};
+
+type CheckboxComponent = ForwardRefWithStaticComponents<
+  CheckboxProps,
+  { Group: typeof CheckboxGroup }
+>;
+
+export const Checkbox: CheckboxComponent = forwardRef<HTMLInputElement, CheckboxProps>(
+  (props, ref) => {
+    const {
       className,
-    )}
-  >
-    <div className="text-ui-fg-on-inverted bg-ui-bg-base shadow-borders-base group-hover:bg-ui-bg-base-hover group-focus-visible:!shadow-borders-interactive-with-focus group-data-[state=checked]:bg-ui-bg-interactive group-data-[state=checked]:shadow-borders-interactive-with-shadow group-data-[state=indeterminate]:bg-ui-bg-interactive group-data-[state=indeterminate]:shadow-borders-interactive-with-shadow [&_path]:shadow-details-contrast-on-bg-interactive group-disabled:text-ui-fg-disabled group-disabled:!bg-ui-bg-disabled group-disabled:!shadow-borders-base transition-fg h-[14px] w-[14px] rounded-[3px]">
-      <Primitives.Indicator className="absolute inset-0">
-        {checked === 'indeterminate' ? <MinusMini /> : <CheckMini />}
-      </Primitives.Indicator>
-    </div>
-  </Primitives.Root>
-));
-Checkbox.displayName = 'Checkbox';
+      style,
+      checked,
+      disabled,
+      label,
+      indeterminate,
+      id,
+      size,
+      radius,
+      wrapperProps,
+      // children,
+      classNames,
+      styles,
+      icon: Icon,
+      unstyled,
+      labelPosition,
+      description,
+      error,
+      variant,
+      ...others
+    } = useComponentDefaultProps('Checkbox', defaultProps, props);
 
-export { Checkbox };
+    const ctx = useCheckboxGroupContext();
+    const uuid = useId(id);
+    // const { systemStyles, rest } = extractSystemStyles(others);
+    const { classes } = useStyles(
+      {
+        radius,
+        labelPosition,
+        error: !!error,
+        indeterminate,
+      },
+      { name: 'Checkbox', classNames, styles, unstyled, variant, size: ctx?.size || size },
+    );
+
+    const contextProps = ctx
+      ? {
+          checked: ctx.value.includes(others.value as string),
+          onChange: ctx.onChange,
+        }
+      : {};
+
+    return (
+      <InlineInput
+        className={className}
+        style={style}
+        id={uuid}
+        size={ctx?.size || size}
+        labelPosition={labelPosition}
+        label={label}
+        description={description}
+        error={error}
+        disabled={disabled}
+        __staticSelector="Checkbox"
+        classNames={classNames}
+        styles={styles}
+        unstyled={unstyled}
+        data-checked={contextProps.checked || undefined}
+        variant={variant}
+        {...wrapperProps}
+      >
+        <div className={classes.inner}>
+          <input
+            id={uuid}
+            ref={ref}
+            type="checkbox"
+            className={classes.input}
+            checked={checked}
+            disabled={disabled}
+            {...others}
+            {...contextProps}
+          />
+          <Icon indeterminate={indeterminate} className={classes.icon} />
+        </div>
+      </InlineInput>
+    );
+  },
+) as any;
+
+Checkbox.displayName = 'Checkbox';
+Checkbox.Group = CheckboxGroup;
