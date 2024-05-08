@@ -54,8 +54,10 @@ export function Label() {
         className="mt-3"
         size="xl"
         radius="xl"
+        striped
+        animate
         sections={[
-          { value: 30, color: 'blue', label: 'Documents' },
+          { value: 30, color: 'blue', label: 'Documents', tooltip: 'Documents' },
           { value: 30, color: 'emerald', label: 'Apps' },
           { value: 25, color: 'red', label: 'Other' },
         ]}
