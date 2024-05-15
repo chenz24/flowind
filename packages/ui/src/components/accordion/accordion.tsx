@@ -2,6 +2,7 @@
 
 import React from 'react';
 
+import { ChevronDownMini } from '@flowind/icons';
 import { clx, DefaultProps, useComponentDefaultProps } from '@/styles';
 import { Box } from '../box';
 import {
@@ -11,7 +12,6 @@ import {
 import { AccordionItem, AccordionItemStylesNames } from './accordion-item/accordion-item';
 import { AccordionPanel, AccordionPanelStylesNames } from './accordion-panel/accordion-panel';
 import { AccordionProvider, AccordionProviderProps } from './accordion-provider';
-import { ChevronIcon } from './chevron-icon';
 import { AccordionStylesParams } from './types';
 
 export type AccordionStylesNames =
@@ -31,7 +31,7 @@ const defaultProps: Partial<AccordionProps> = {
   chevronPosition: 'right',
   variant: 'default',
   chevronSize: 24,
-  chevron: <ChevronIcon />,
+  chevron: <ChevronDownMini />,
 };
 
 export function Accordion<Multiple extends boolean = false>(props: AccordionProps<Multiple>) {

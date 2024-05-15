@@ -49,4 +49,4 @@ export function AccordionPanel(props: AccordionPanelProps) {
   );
 }
 
-AccordionPanel.displayName = '@mantine/core/AccordionPanel';
+AccordionPanel.displayName = 'AccordionPanel';
