@@ -34,7 +34,6 @@ export const _CloseButton = forwardRef<HTMLButtonElement, CloseButtonProps>((pro
   );
 
   const _iconSize = rem(iconSize || iconSizes[size]);
-
   return (
     <IconButton ref={ref} __staticSelector="CloseButton" size={size} variant={variant} {...others}>
       {children || <CloseIcon width={_iconSize} height={_iconSize} />}
