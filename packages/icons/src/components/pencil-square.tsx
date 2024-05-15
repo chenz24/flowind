@@ -1,26 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const PencilSquare = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          stroke={color}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="m14.052 3.74 1.405-1.408a1.563 1.563 0 0 1 2.21 2.21l-8.849 8.85a3.75 3.75 0 0 1-1.58.941L5 15l.667-2.238a3.75 3.75 0 0 1 .941-1.58l7.444-7.443Zm0 0 2.198 2.197M15 11.667v3.958a1.875 1.875 0 0 1-1.875 1.875h-8.75A1.875 1.875 0 0 1 2.5 15.625v-8.75A1.875 1.875 0 0 1 4.375 5h3.958"
-        />
-      </svg>
-    )
-  }
-)
-PencilSquare.displayName = "PencilSquare"
-export default PencilSquare
+import * as React from "react";
+import type { IconProps } from "../types";
+const PencilSquare = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="m16.862 4.487 1.687-1.688a1.875 1.875 0 0 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" /></svg>;
+});
+PencilSquare.displayName = "PencilSquare";
+export default PencilSquare;

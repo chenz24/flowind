@@ -1,26 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const Users = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          stroke={color}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M12.5 15.94c.71.206 1.447.31 2.188.31a7.782 7.782 0 0 0 3.434-.793 3.438 3.438 0 0 0-6.278-2.078m.656 2.561v-.002c0-.928-.237-1.8-.655-2.559m.655 2.561v.088A10.265 10.265 0 0 1 7.187 17.5c-1.943 0-3.76-.538-5.312-1.472v-.09a5.312 5.312 0 0 1 9.97-2.559M10 5.313a2.812 2.812 0 1 1-5.625 0 2.812 2.812 0 0 1 5.625 0v0Zm6.875 1.875a2.188 2.188 0 1 1-4.375 0 2.188 2.188 0 0 1 4.375 0v0Z"
-        />
-      </svg>
-    )
-  }
-)
-Users.displayName = "Users"
-export default Users
+import * as React from "react";
+import type { IconProps } from "../types";
+const Users = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 19.128a9.4 9.4 0 0 0 2.625.372 9.3 9.3 0 0 0 4.121-.952 4.126 4.126 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.3 12.3 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0m8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0" /></svg>;
+});
+Users.displayName = "Users";
+export default Users;

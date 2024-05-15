@@ -1,27 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const InboxSolid = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          fill={color}
-          d="M10 2a.75.75 0 0 1 .75.75v5.59l1.95-2.1a.75.75 0 0 1 1.1 1.02l-3.25 3.5a.752.752 0 0 1-1.1 0L6.2 7.26a.75.75 0 1 1 1.1-1.02l1.95 2.1V2.75A.75.75 0 0 1 10 2Z"
-        />
-        <path
-          fill={color}
-          d="M5.273 4.5a1.25 1.25 0 0 0-1.205.918l-1.523 5.52c-.006.02-.01.041-.015.062H6a1 1 0 0 1 .894.553l.448.894a1 1 0 0 0 .894.553h3.438a1 1 0 0 0 .86-.49l.606-1.02A1 1 0 0 1 14 11h3.47a1.301 1.301 0 0 0-.015-.062l-1.523-5.52a1.25 1.25 0 0 0-1.205-.918h-.977a.75.75 0 1 1 0-1.5h.977a2.75 2.75 0 0 1 2.651 2.019l1.523 5.52c.066.239.099.485.099.732V15a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3.73c0-.246.033-.492.099-.73l1.523-5.521A2.75 2.75 0 0 1 5.273 3h.977a.75.75 0 0 1 0 1.5h-.977Z"
-        />
-      </svg>
-    )
-  }
-)
-InboxSolid.displayName = "InboxSolid"
-export default InboxSolid
+import * as React from "react";
+import type { IconProps } from "../types";
+const InboxSolid = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path fill={color} d="M12 2.4a.9.9 0 0 1 .9.9v6.708l2.34-2.52a.9.9 0 0 1 1.32 1.224l-3.9 4.2a.9.9 0 0 1-1.32 0l-3.9-4.2a.9.9 0 1 1 1.32-1.224l2.34 2.52V3.3a.9.9 0 0 1 .9-.9" /><path fill={color} d="M6.328 5.4a1.5 1.5 0 0 0-1.446 1.102l-1.828 6.624q-.01.036-.018.074H7.2a1.2 1.2 0 0 1 1.073.664l.537 1.072a1.2 1.2 0 0 0 1.073.664h4.126a1.2 1.2 0 0 0 1.032-.588l.727-1.224A1.2 1.2 0 0 1 16.8 13.2h4.164l-.018-.074-1.828-6.624A1.5 1.5 0 0 0 17.672 5.4H16.5a.9.9 0 0 1 0-1.8h1.172a3.3 3.3 0 0 1 3.182 2.423l1.827 6.624q.12.432.119.878V18a2.4 2.4 0 0 1-2.4 2.4H3.6A2.4 2.4 0 0 1 1.2 18v-4.476c0-.295.04-.59.119-.876l1.827-6.625A3.3 3.3 0 0 1 6.328 3.6H7.5a.9.9 0 1 1 0 1.8z" /></svg>;
+});
+InboxSolid.displayName = "InboxSolid";
+export default InboxSolid;

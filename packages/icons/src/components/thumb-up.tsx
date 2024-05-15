@@ -1,26 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const ThumbUp = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          stroke={color}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M5.527 8.75c.672 0 1.278-.372 1.693-.9a7.534 7.534 0 0 1 2.384-2c.603-.32 1.125-.797 1.378-1.43.177-.442.268-.915.268-1.393V2.5a.625.625 0 0 1 .625-.625A1.875 1.875 0 0 1 13.75 3.75c0 .96-.217 1.87-.602 2.682-.222.465.089 1.068.604 1.068h2.605c.855 0 1.62.578 1.711 1.43a9.959 9.959 0 0 1-2.15 7.338c-.324.401-.823.607-1.338.607h-3.347c-.402 0-.803-.065-1.186-.192l-2.595-.866a3.751 3.751 0 0 0-1.185-.192H4.92m0 0c.07.17.144.338.225.502.164.333-.065.748-.436.748h-.756c-.741 0-1.428-.432-1.644-1.14a10 10 0 0 1-.434-2.922c0-1.295.246-2.53.692-3.665.255-.646.905-1.023 1.6-1.023h.877c.394 0 .621.463.417.8a7.465 7.465 0 0 0-1.085 3.887c0 .995.193 1.945.545 2.813H4.92ZM11.875 7.5h1.875"
-        />
-      </svg>
-    )
-  }
-)
-ThumbUp.displayName = "ThumbUp"
-export default ThumbUp
+import * as React from "react";
+import type { IconProps } from "../types";
+const ThumbUp = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6.633 10.5c.806 0 1.533-.446 2.031-1.08a9 9 0 0 1 2.861-2.4c.723-.384 1.35-.956 1.653-1.715.213-.532.322-1.1.322-1.672V3a.75.75 0 0 1 .75-.75A2.25 2.25 0 0 1 16.5 4.5c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282h3.126c1.026 0 1.945.694 2.054 1.715q.068.633.068 1.285a11.95 11.95 0 0 1-2.649 7.521c-.388.482-.987.729-1.605.729H13.48a4.5 4.5 0 0 1-1.423-.23l-3.114-1.04a4.5 4.5 0 0 0-1.423-.23H5.904m0 0q.125.307.27.602c.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 0 1-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 10.203 4.167 9.75 5 9.75h1.053c.472 0 .745.556.5.96a8.96 8.96 0 0 0-1.302 4.665 9 9 0 0 0 .654 3.375zM14.25 9h2.25" /></svg>;
+});
+ThumbUp.displayName = "ThumbUp";
+export default ThumbUp;

@@ -1,25 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const ChannelsSolid = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          fill={color}
-          fillRule="evenodd"
-          d="M12.399 3.438a2.439 2.439 0 1 1 0 1.5h-1.243a.75.75 0 0 0-.75.75V9.25h1.993a2.439 2.439 0 1 1 0 1.5h-1.993v3.563c0 .414.335.75.75.75h1.243a2.439 2.439 0 1 1 0 1.5h-1.243a2.25 2.25 0 0 1-2.25-2.25V10.75H6.913a2.439 2.439 0 1 1 0-1.5h1.993V5.688a2.25 2.25 0 0 1 2.25-2.25h1.243Z"
-          clipRule="evenodd"
-        />
-      </svg>
-    )
-  }
-)
-ChannelsSolid.displayName = "ChannelsSolid"
-export default ChannelsSolid
+import * as React from "react";
+import type { IconProps } from "../types";
+const ChannelsSolid = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path fill={color} fillRule="evenodd" d="M14.879 4.125a2.926 2.926 0 0 1 5.709.9 2.925 2.925 0 0 1-5.71.9h-1.491a.9.9 0 0 0-.9.9V11.1h2.392a2.926 2.926 0 0 1 5.709.9 2.925 2.925 0 0 1-5.71.9h-2.391v4.275a.9.9 0 0 0 .9.9h1.492a2.926 2.926 0 0 1 5.709.9 2.925 2.925 0 0 1-5.71.9h-1.491a2.7 2.7 0 0 1-2.7-2.7V12.9h-2.39a2.926 2.926 0 0 1-5.71-.9 2.925 2.925 0 0 1 5.71-.9h2.39V6.825a2.7 2.7 0 0 1 2.7-2.7z" clipRule="evenodd" /></svg>;
+});
+ChannelsSolid.displayName = "ChannelsSolid";
+export default ChannelsSolid;

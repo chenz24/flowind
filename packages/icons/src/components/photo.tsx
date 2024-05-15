@@ -1,26 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const Photo = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          stroke={color}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="m1.875 13.125 4.3-4.3a1.875 1.875 0 0 1 2.65 0l4.3 4.3m-1.25-1.25 1.174-1.174a1.874 1.874 0 0 1 2.652 0l2.424 2.424m-15 3.125h13.75a1.25 1.25 0 0 0 1.25-1.25V5a1.25 1.25 0 0 0-1.25-1.25H3.125A1.25 1.25 0 0 0 1.875 5v10a1.25 1.25 0 0 0 1.25 1.25Zm8.75-9.375h.007v.007h-.007v-.007Zm.313 0a.312.312 0 1 1-.625 0 .312.312 0 0 1 .624 0Z"
-        />
-      </svg>
-    )
-  }
-)
-Photo.displayName = "Photo"
-export default Photo
+import * as React from "react";
+import type { IconProps } from "../types";
+const Photo = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5m10.5-11.25h.008v.008h-.008zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0" /></svg>;
+});
+Photo.displayName = "Photo";
+export default Photo;

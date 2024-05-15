@@ -1,26 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const ShoppingBag = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          stroke={color}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M13.125 8.75V5a3.125 3.125 0 1 0-6.25 0v3.75m9.463-1.66 1.053 10a.937.937 0 0 1-.933 1.035H3.542a.938.938 0 0 1-.934-1.036l1.054-10a.937.937 0 0 1 .932-.839h10.812c.48 0 .882.362.932.84Zm-9.15 1.66a.312.312 0 1 1-.625 0 .312.312 0 0 1 .625 0Zm6.25 0a.312.312 0 1 1-.625 0 .312.312 0 0 1 .624 0Z"
-        />
-      </svg>
-    )
-  }
-)
-ShoppingBag.displayName = "ShoppingBag"
-export default ShoppingBag
+import * as React from "react";
+import type { IconProps } from "../types";
+const ShoppingBag = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15.75 10.5V6a3.75 3.75 0 0 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.126 1.126 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007M8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0m7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0" /></svg>;
+});
+ShoppingBag.displayName = "ShoppingBag";
+export default ShoppingBag;

@@ -1,25 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const PhotoSolid = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          fill={color}
-          fillRule="evenodd"
-          d="M1.25 5a1.875 1.875 0 0 1 1.875-1.875h13.75A1.875 1.875 0 0 1 18.75 5v10a1.875 1.875 0 0 1-1.875 1.875H3.125A1.875 1.875 0 0 1 1.25 15V5Zm1.25 8.383V15c0 .345.28.625.625.625h13.75A.624.624 0 0 0 17.5 15v-1.617l-2.242-2.24a1.25 1.25 0 0 0-1.766 0l-.734.732.809.808a.627.627 0 0 1 .015.9.623.623 0 0 1-.899-.016l-4.3-4.3a1.25 1.25 0 0 0-1.766 0L2.5 13.384Zm8.438-6.508a.938.938 0 1 1 1.875 0 .938.938 0 0 1-1.876 0Z"
-          clipRule="evenodd"
-        />
-      </svg>
-    )
-  }
-)
-PhotoSolid.displayName = "PhotoSolid"
-export default PhotoSolid
+import * as React from "react";
+import type { IconProps } from "../types";
+const PhotoSolid = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path fill={color} fillRule="evenodd" d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0 1 22.5 6v12a2.25 2.25 0 0 1-2.25 2.25H3.75A2.25 2.25 0 0 1 1.5 18zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0 0 21 18v-1.94l-2.69-2.689a1.5 1.5 0 0 0-2.12 0l-.88.879.97.97a.75.75 0 1 1-1.06 1.06l-5.16-5.159a1.5 1.5 0 0 0-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0" clipRule="evenodd" /></svg>;
+});
+PhotoSolid.displayName = "PhotoSolid";
+export default PhotoSolid;

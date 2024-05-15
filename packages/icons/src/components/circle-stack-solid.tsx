@@ -1,35 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const CircleStackSolid = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          fill={color}
-          d="M17.5 5.313c0 2.243-3.358 4.062-7.5 4.062-4.142 0-7.5-1.82-7.5-4.063C2.5 3.07 5.858 1.25 10 1.25c4.142 0 7.5 1.82 7.5 4.063Z"
-        />
-        <path
-          fill={color}
-          d="M10 10.625c2.238 0 4.325-.488 5.898-1.34A6.901 6.901 0 0 0 17.48 8.13c.014.1.021.203.021.307 0 2.243-3.358 4.062-7.5 4.062-4.142 0-7.5-1.82-7.5-4.062 0-.104.007-.206.02-.307.47.457 1.003.846 1.582 1.153 1.572.853 3.66 1.341 5.898 1.341Z"
-        />
-        <path
-          fill={color}
-          d="M10 13.75c2.238 0 4.325-.488 5.898-1.34a6.903 6.903 0 0 0 1.581-1.154c.014.1.021.203.021.306 0 2.244-3.358 4.063-7.5 4.063-4.142 0-7.5-1.82-7.5-4.063 0-.103.007-.205.02-.306.47.457 1.003.846 1.582 1.153 1.572.853 3.66 1.341 5.898 1.341Z"
-        />
-        <path
-          fill={color}
-          d="M10 16.875c2.238 0 4.325-.488 5.898-1.34a6.903 6.903 0 0 0 1.581-1.154c.014.1.021.203.021.306 0 2.244-3.358 4.063-7.5 4.063-4.142 0-7.5-1.82-7.5-4.063 0-.103.007-.205.02-.306.47.457 1.003.846 1.582 1.153 1.572.853 3.66 1.341 5.898 1.341Z"
-        />
-      </svg>
-    )
-  }
-)
-CircleStackSolid.displayName = "CircleStackSolid"
-export default CircleStackSolid
+import * as React from "react";
+import type { IconProps } from "../types";
+const CircleStackSolid = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path fill={color} d="M21 6.375c0 2.692-4.03 4.875-9 4.875S3 9.067 3 6.375 7.03 1.5 12 1.5s9 2.183 9 4.875" /><path fill={color} d="M12 12.75c2.685 0 5.19-.586 7.078-1.609a8.3 8.3 0 0 0 1.897-1.384q.024.182.025.368C21 12.817 16.97 15 12 15s-9-2.183-9-4.875q0-.186.025-.368a8.3 8.3 0 0 0 1.897 1.384c1.887 1.023 4.393 1.61 7.078 1.61" /><path fill={color} d="M12 16.5c2.685 0 5.19-.586 7.078-1.609a8.3 8.3 0 0 0 1.897-1.384q.024.182.025.368c0 2.692-4.03 4.875-9 4.875s-9-2.183-9-4.875q0-.186.025-.368a8.3 8.3 0 0 0 1.897 1.384c1.887 1.023 4.393 1.61 7.078 1.61" /><path fill={color} d="M12 20.25c2.685 0 5.19-.586 7.078-1.609a8.3 8.3 0 0 0 1.897-1.384q.024.182.025.368c0 2.692-4.03 4.875-9 4.875s-9-2.183-9-4.875q0-.186.025-.368a8.3 8.3 0 0 0 1.897 1.384c1.887 1.023 4.393 1.61 7.078 1.61" /></svg>;
+});
+CircleStackSolid.displayName = "CircleStackSolid";
+export default CircleStackSolid;

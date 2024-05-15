@@ -1,26 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const ArrowDownTray = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          stroke={color}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M2.5 13.75v1.875A1.875 1.875 0 0 0 4.375 17.5h11.25a1.875 1.875 0 0 0 1.875-1.875V13.75M13.75 10 10 13.75m0 0L6.25 10M10 13.75V2.5"
-        />
-      </svg>
-    )
-  }
-)
-ArrowDownTray.displayName = "ArrowDownTray"
-export default ArrowDownTray
+import * as React from "react";
+import type { IconProps } from "../types";
+const ArrowDownTray = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>;
+});
+ArrowDownTray.displayName = "ArrowDownTray";
+export default ArrowDownTray;

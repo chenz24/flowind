@@ -1,29 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const BellAlertSolid = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          fill={color}
-          d="M4.875 2.917a.625.625 0 0 0-.93-.834 8.1 8.1 0 0 0-1.957 4.064.625.625 0 0 0 1.232.206 6.85 6.85 0 0 1 1.655-3.436Zm11.18-.834a.625.625 0 1 0-.93.834 6.85 6.85 0 0 1 1.655 3.436.625.625 0 0 0 1.233-.206 8.098 8.098 0 0 0-1.957-4.064Z"
-        />
-        <path
-          fill={color}
-          fillRule="evenodd"
-          d="M10 1.875A5.625 5.625 0 0 0 4.375 7.5v.625a6.847 6.847 0 0 1-1.766 4.6.625.625 0 0 0 .248 1.005 20.46 20.46 0 0 0 4.026 1.036 3.125 3.125 0 1 0 6.234 0 20.488 20.488 0 0 0 4.025-1.037.625.625 0 0 0 .248-1.004 6.847 6.847 0 0 1-1.765-4.6V7.5A5.625 5.625 0 0 0 10 1.875ZM8.125 15c0-.028 0-.056.002-.083 1.246.112 2.5.112 3.746 0l.002.083a1.875 1.875 0 1 1-3.75 0Z"
-          clipRule="evenodd"
-        />
-      </svg>
-    )
-  }
-)
-BellAlertSolid.displayName = "BellAlertSolid"
-export default BellAlertSolid
+import * as React from "react";
+import type { IconProps } from "../types";
+const BellAlertSolid = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path fill={color} d="M5.85 3.5a.75.75 0 0 0-1.117-1 9.7 9.7 0 0 0-2.348 4.876.75.75 0 0 0 1.479.248A8.2 8.2 0 0 1 5.85 3.5m13.417-1a.75.75 0 1 0-1.118 1 8.2 8.2 0 0 1 1.987 4.124.75.75 0 0 0 1.48-.248A9.7 9.7 0 0 0 19.267 2.5" /><path fill={color} fillRule="evenodd" d="M12 2.25A6.75 6.75 0 0 0 5.25 9v.75a8.22 8.22 0 0 1-2.119 5.52.75.75 0 0 0 .298 1.206c1.544.57 3.16.99 4.831 1.243a3.75 3.75 0 1 0 7.48 0 24.6 24.6 0 0 0 4.83-1.244.75.75 0 0 0 .298-1.205 8.22 8.22 0 0 1-2.118-5.52V9A6.75 6.75 0 0 0 12 2.25M9.75 18q0-.05.002-.1c1.496.135 3 .135 4.496 0l.002.1a2.25 2.25 0 1 1-4.5 0" clipRule="evenodd" /></svg>;
+});
+BellAlertSolid.displayName = "BellAlertSolid";
+export default BellAlertSolid;

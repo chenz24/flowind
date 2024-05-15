@@ -1,26 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const FlagMini = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          stroke={color}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="m4.886 11.667.633-6.97a.4.4 0 0 1 .399-.364h9.196a.4.4 0 0 1 .399.437l-.594 6.533a.4.4 0 0 1-.399.364H4.886Zm0 0-.4 4M7.552 6.667l4.667 2.667"
-        />
-      </svg>
-    )
-  }
-)
-FlagMini.displayName = "FlagMini"
-export default FlagMini
+import * as React from "react";
+import type { IconProps } from "../types";
+const FlagMini = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="m5.863 14 .76-8.363a.48.48 0 0 1 .478-.437h11.036a.48.48 0 0 1 .478.523l-.712 7.84a.48.48 0 0 1-.479.437zm0 0-.48 4.8M9.063 8l5.6 3.2" /></svg>;
+});
+FlagMini.displayName = "FlagMini";
+export default FlagMini;

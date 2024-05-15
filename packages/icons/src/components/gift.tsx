@@ -1,26 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const Gift = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          stroke={color}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M16.815 9.7v6.6c0 .318-.125.623-.347.848a1.178 1.178 0 0 1-.838.352H4.37c-.314 0-.615-.126-.838-.352a1.207 1.207 0 0 1-.347-.848V9.7m6.519-5.1c0-.415-.122-.821-.35-1.167a2.08 2.08 0 0 0-.93-.773 2.05 2.05 0 0 0-2.261.455 2.124 2.124 0 0 0-.45 2.289c.157.383.423.711.764.942.341.23.742.354 1.153.354h2.074m0-2.1v2.1m0-2.1c0-.415.121-.821.35-1.167a2.08 2.08 0 0 1 .93-.773 2.05 2.05 0 0 1 2.26.455 2.124 2.124 0 0 1 .45 2.289 2.095 2.095 0 0 1-.764.942c-.341.23-.742.354-1.152.354H9.704m0 0v10.8M2.889 9.7H17.11c.49 0 .889-.403.889-.9V7.6c0-.497-.398-.9-.889-.9H2.89A.895.895 0 0 0 2 7.6v1.2c0 .497.398.9.889.9Z"
-        />
-      </svg>
-    )
-  }
-)
-Gift.displayName = "Gift"
-export default Gift
+import * as React from "react";
+import type { IconProps } from "../types";
+const Gift = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20.178 11.64v7.92c0 .382-.15.748-.417 1.018s-.628.422-1.005.422H5.244c-.377 0-.739-.152-1.005-.422a1.45 1.45 0 0 1-.417-1.018v-7.92m7.822-6.12c0-.498-.146-.986-.42-1.4a2.5 2.5 0 0 0-1.116-.928 2.46 2.46 0 0 0-2.712.546 2.55 2.55 0 0 0-.54 2.746c.188.46.507.854.917 1.131.409.277.89.425 1.382.425h2.49m0-2.52v2.52m0-2.52c0-.498.145-.986.419-1.4a2.5 2.5 0 0 1 1.117-.928 2.46 2.46 0 0 1 2.712.546 2.55 2.55 0 0 1 .54 2.746c-.189.46-.508.854-.917 1.131s-.89.425-1.383.425h-2.489m0 0V21m-8.177-9.36h17.066c.589 0 1.067-.484 1.067-1.08V9.12c0-.596-.478-1.08-1.067-1.08H3.467c-.59 0-1.067.484-1.067 1.08v1.44c0 .596.478 1.08 1.067 1.08" /></svg>;
+});
+Gift.displayName = "Gift";
+export default Gift;

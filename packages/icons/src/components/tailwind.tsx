@@ -1,40 +1,12 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const Tailwind = React.forwardRef<SVGSVGElement, Omit<IconProps, "color">>(
-  (props, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <mask
-          id="a"
-          width={18}
-          height={12}
-          x={1}
-          y={4}
-          maskUnits="userSpaceOnUse"
-          style={{
-            maskType: "luminance",
-          }}
-        >
-          <path fill="#fff" d="M1 4.6h18v10.8H1V4.6Z" />
-        </mask>
-        <g mask="url(#a)">
-          <path
-            fill="#38BDF8"
-            fillRule="evenodd"
-            d="M10 4.6c-2.4 0-3.9 1.2-4.5 3.6.9-1.2 1.95-1.65 3.15-1.35.685.171 1.174.668 1.716 1.218C11.248 8.963 12.269 10 14.5 10c2.4 0 3.9-1.2 4.5-3.6-.9 1.2-1.95 1.65-3.15 1.35-.685-.17-1.174-.668-1.716-1.218C13.252 5.637 12.231 4.6 10 4.6ZM5.5 10c-2.4 0-3.9 1.2-4.5 3.6.9-1.2 1.95-1.65 3.15-1.35.685.171 1.174.668 1.716 1.218.882.895 1.903 1.932 4.134 1.932 2.4 0 3.9-1.2 4.5-3.6-.9 1.2-1.95 1.65-3.15 1.35-.685-.17-1.174-.668-1.716-1.218C8.752 11.037 7.731 10 5.5 10Z"
-            clipRule="evenodd"
-          />
-        </g>
-      </svg>
-    )
-  }
-)
-Tailwind.displayName = "Tailwind"
-export default Tailwind
+import * as React from "react";
+import type { IconProps } from "../types";
+const Tailwind = React.forwardRef<SVGSVGElement, Omit<IconProps, "color">>(({
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><mask id="a" width={22} height={14} x={1} y={5} maskUnits="userSpaceOnUse" style={{
+      maskType: "luminance"
+    }}><path fill="#fff" d="M1.2 5.52h21.6v12.96H1.2z" /></mask><g mask="url(#a)"><path fill="#38BDF8" fillRule="evenodd" d="M12 5.52q-4.32 0-5.4 4.32 1.62-2.16 3.78-1.62c.822.205 1.409.802 2.059 1.461C13.498 10.756 14.723 12 17.4 12q4.32 0 5.4-4.32-1.62 2.16-3.78 1.62c-.822-.205-1.409-.802-2.059-1.461C15.902 6.764 14.677 5.52 12 5.52M6.6 12q-4.32 0-5.4 4.32 1.62-2.16 3.78-1.62c.822.206 1.409.802 2.059 1.461C8.098 17.236 9.323 18.48 12 18.48q4.32 0 5.4-4.32-1.62 2.16-3.78 1.62c-.822-.205-1.409-.802-2.059-1.461C10.502 13.244 9.277 12 6.6 12" clipRule="evenodd" /></g></svg>;
+});
+Tailwind.displayName = "Tailwind";
+export default Tailwind;

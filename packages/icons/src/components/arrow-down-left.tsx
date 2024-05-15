@@ -1,33 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const ArrowDownLeft = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          stroke={color}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M7.502 8.333 3.335 12.5l4.167 4.166"
-        />
-        <path
-          stroke={color}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M16.668 3.333v5.833a3.333 3.333 0 0 1-3.333 3.334h-10"
-        />
-      </svg>
-    )
-  }
-)
-ArrowDownLeft.displayName = "ArrowDownLeft"
-export default ArrowDownLeft
+import * as React from "react";
+import type { IconProps } from "../types";
+const ArrowDownLeft = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="m9.002 10-5 5 5 5" /><path stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20.002 4v7a4 4 0 0 1-4 4h-12" /></svg>;
+});
+ArrowDownLeft.displayName = "ArrowDownLeft";
+export default ArrowDownLeft;

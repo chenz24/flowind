@@ -1,26 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const ArrowDown = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          stroke={color}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M16.25 11.25 10 17.5m0 0-6.25-6.25M10 17.5v-15"
-        />
-      </svg>
-    )
-  }
-)
-ArrowDown.displayName = "ArrowDown"
-export default ArrowDown
+import * as React from "react";
+import type { IconProps } from "../types";
+const ArrowDown = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3" /></svg>;
+});
+ArrowDown.displayName = "ArrowDown";
+export default ArrowDown;

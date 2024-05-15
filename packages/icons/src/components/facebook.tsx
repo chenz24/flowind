@@ -1,38 +1,10 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const Facebook = React.forwardRef<SVGSVGElement, Omit<IconProps, "color">>(
-  (props, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          fill="url(#a)"
-          fillRule="evenodd"
-          d="M1 10c0 4.455 3.24 8.145 7.515 8.91l.053-.044-.008-.001V12.52H6.31V10h2.25V8.02c0-2.25 1.44-3.51 3.51-3.51.63 0 1.35.09 1.98.18v2.295h-1.17c-1.08 0-1.35.54-1.35 1.26V10h2.385l-.405 2.52h-1.98v6.345l-.082.015.037.03C15.76 18.145 19 14.455 19 10c0-4.95-4.05-9-9-9s-9 4.05-9 9Z"
-          clipRule="evenodd"
-        />
-        <defs>
-          <linearGradient
-            id="a"
-            x1={10}
-            x2={10}
-            y1={18.374}
-            y2={0.997}
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stopColor="#0062E0" />
-            <stop offset={1} stopColor="#19AFFF" />
-          </linearGradient>
-        </defs>
-      </svg>
-    )
-  }
-)
-Facebook.displayName = "Facebook"
-export default Facebook
+import * as React from "react";
+import type { IconProps } from "../types";
+const Facebook = React.forwardRef<SVGSVGElement, Omit<IconProps, "color">>(({
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path fill="url(#a)" fillRule="evenodd" d="M1.2 12c0 5.346 3.888 9.774 9.018 10.692l.064-.052-.01-.002v-7.614h-2.7V12h2.7V9.624c0-2.7 1.728-4.212 4.212-4.212.756 0 1.62.108 2.376.216v2.754h-1.404c-1.296 0-1.62.648-1.62 1.512V12h2.862l-.486 3.024h-2.376v7.614l-.099.017.045.037C18.912 21.774 22.8 17.346 22.8 12c0-5.94-4.86-10.8-10.8-10.8S1.2 6.06 1.2 12" clipRule="evenodd" /><defs><linearGradient id="a" x1={12.001} x2={12.001} y1={22.049} y2={1.196} gradientUnits="userSpaceOnUse"><stop stopColor="#0062E0" /><stop offset={1} stopColor="#19AFFF" /></linearGradient></defs></svg>;
+});
+Facebook.displayName = "Facebook";
+export default Facebook;

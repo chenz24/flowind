@@ -1,26 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const Server = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          stroke={color}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M18.125 14.375v-.19c0-.289-.034-.577-.1-.858l-1.89-8.034a2.813 2.813 0 0 0-2.738-2.168H6.603a2.813 2.813 0 0 0-2.737 2.168l-1.89 8.034c-.066.281-.1.569-.1.858v.19m16.25 0a2.5 2.5 0 0 1-2.5 2.5H4.375a2.5 2.5 0 0 1-2.5-2.5m16.25 0a2.5 2.5 0 0 0-2.5-2.5H4.375a2.5 2.5 0 0 0-2.5 2.5m13.75 0h.007v.007h-.007v-.007Zm-2.5 0h.007v.007h-.007v-.007Z"
-        />
-      </svg>
-    )
-  }
-)
-Server.displayName = "Server"
-export default Server
+import * as React from "react";
+import type { IconProps } from "../types";
+const Server = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21.75 17.25v-.228a4.5 4.5 0 0 0-.12-1.03l-2.268-9.64a3.375 3.375 0 0 0-3.285-2.602H7.923a3.375 3.375 0 0 0-3.285 2.602l-2.268 9.64a4.5 4.5 0 0 0-.12 1.03v.228m19.5 0a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3m19.5 0a3 3 0 0 0-3-3H5.25a3 3 0 0 0-3 3m16.5 0h.008v.008h-.008zm-3 0h.008v.008h-.008z" /></svg>;
+});
+Server.displayName = "Server";
+export default Server;

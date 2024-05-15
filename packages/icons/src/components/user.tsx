@@ -1,26 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const User = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          stroke={color}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M12.909 5.346a2.909 2.909 0 1 1-5.818 0 2.909 2.909 0 0 1 5.818 0v0Zm-8.726 10.95a5.818 5.818 0 0 1 11.633 0A13.91 13.91 0 0 1 10 17.564c-2.076 0-4.046-.453-5.817-1.266Z"
-        />
-      </svg>
-    )
-  }
-)
-User.displayName = "User"
-export default User
+import * as React from "react";
+import type { IconProps } from "../types";
+const User = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15.49 6.415a3.49 3.49 0 1 1-6.98 0 3.49 3.49 0 0 1 6.98 0M5.02 19.556a6.98 6.98 0 0 1 13.96 0A16.7 16.7 0 0 1 12 21.075c-2.49 0-4.855-.544-6.98-1.519" /></svg>;
+});
+User.displayName = "User";
+export default User;

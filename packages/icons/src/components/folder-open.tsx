@@ -1,26 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const FolderOpen = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          stroke={color}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M3.495 8.247c.089-.014.18-.02.272-.02h12.466c.092 0 .183.006.27.02m-13.008 0a1.774 1.774 0 0 0-1.484 2.004l.675 4.73a1.774 1.774 0 0 0 1.756 1.523h11.116a1.774 1.774 0 0 0 1.756-1.523l.675-4.73a1.774 1.774 0 0 0-1.485-2.004m-13.009 0 .001-2.977A1.774 1.774 0 0 1 5.27 3.496h3.058c.314 0 .615.125.836.347l1.673 1.671c.222.222.522.347.836.347h3.058a1.774 1.774 0 0 1 1.774 1.774v.612"
-        />
-      </svg>
-    )
-  }
-)
-FolderOpen.displayName = "FolderOpen"
-export default FolderOpen
+import * as React from "react";
+import type { IconProps } from "../types";
+const FolderOpen = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.194 9.896a2 2 0 0 1 .326-.025h14.96q.166 0 .325.025m-15.61 0A2.13 2.13 0 0 0 2.412 12.3l.81 5.676a2.13 2.13 0 0 0 2.108 1.828h13.338a2.13 2.13 0 0 0 2.107-1.828l.811-5.676a2.13 2.13 0 0 0-1.782-2.405m-15.61 0V6.324a2.13 2.13 0 0 1 2.128-2.129h3.67c.376 0 .737.15 1.003.416l2.007 2.006a1.42 1.42 0 0 0 1.003.416h3.67a2.13 2.13 0 0 1 2.129 2.129v.734" /></svg>;
+});
+FolderOpen.displayName = "FolderOpen";
+export default FolderOpen;

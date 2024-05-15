@@ -1,27 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const EnvelopeSolid = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          fill={color}
-          d="M1.625 7.344v6.844a2.393 2.393 0 0 0 2.393 2.392h11.964a2.393 2.393 0 0 0 2.393-2.392V7.344l-7.121 4.381a2.393 2.393 0 0 1-2.508 0L1.625 7.344Z"
-        />
-        <path
-          fill={color}
-          d="M18.375 5.938v-.126a2.393 2.393 0 0 0-2.393-2.392H4.018a2.393 2.393 0 0 0-2.393 2.392v.126l7.748 4.769a1.196 1.196 0 0 0 1.254 0l7.748-4.769Z"
-        />
-      </svg>
-    )
-  }
-)
-EnvelopeSolid.displayName = "EnvelopeSolid"
-export default EnvelopeSolid
+import * as React from "react";
+import type { IconProps } from "../types";
+const EnvelopeSolid = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path fill={color} d="M1.95 8.813v8.212a2.87 2.87 0 0 0 2.871 2.872H19.18a2.87 2.87 0 0 0 2.871-2.872V8.813l-8.545 5.257a2.87 2.87 0 0 1-3.01 0z" /><path fill={color} d="M22.05 7.126v-.151a2.87 2.87 0 0 0-2.871-2.871H4.82a2.87 2.87 0 0 0-2.871 2.87v.152l9.298 5.722a1.44 1.44 0 0 0 1.504 0z" /></svg>;
+});
+EnvelopeSolid.displayName = "EnvelopeSolid";
+export default EnvelopeSolid;

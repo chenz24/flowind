@@ -1,23 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const ShoppingCartSolid = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          fill={color}
-          d="M2.08 2.035a.613.613 0 1 0 0 1.225h1.132c.138 0 .26.093.295.227l2.09 7.836a3.065 3.065 0 0 0-2.292 2.966c0 .338.274.613.612.613h12.867a.612.612 0 1 0 0-1.226H4.634a1.838 1.838 0 0 1 1.734-1.225h9.165a.613.613 0 0 0 .55-.344 49.303 49.303 0 0 0 2.419-5.905.611.611 0 0 0-.43-.788A49.723 49.723 0 0 0 4.883 3.88l-.19-.708a1.532 1.532 0 0 0-1.48-1.137H2.079ZM3.304 16.74a1.225 1.225 0 1 1 2.45 0 1.225 1.225 0 0 1-2.45 0Zm10.416 0a1.225 1.225 0 1 1 2.45 0 1.225 1.225 0 0 1-2.45 0Z"
-        />
-      </svg>
-    )
-  }
-)
-ShoppingCartSolid.displayName = "ShoppingCartSolid"
-export default ShoppingCartSolid
+import * as React from "react";
+import type { IconProps } from "../types";
+const ShoppingCartSolid = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path fill={color} d="M2.495 2.442a.735.735 0 0 0 0 1.47h1.359c.167 0 .312.112.355.273l2.508 9.403a3.68 3.68 0 0 0-2.751 3.559c0 .406.33.735.735.735h15.44a.735.735 0 0 0 0-1.47H5.561a2.21 2.21 0 0 1 2.081-1.47h10.997a.74.74 0 0 0 .661-.414 59 59 0 0 0 2.902-7.086.734.734 0 0 0-.515-.946 59.7 59.7 0 0 0-15.83-1.84l-.227-.85a1.84 1.84 0 0 0-1.776-1.364zm1.47 17.646a1.47 1.47 0 1 1 2.942 0 1.47 1.47 0 0 1-2.941 0m12.5 0a1.47 1.47 0 1 1 2.94 0 1.47 1.47 0 0 1-2.94 0" /></svg>;
+});
+ShoppingCartSolid.displayName = "ShoppingCartSolid";
+export default ShoppingCartSolid;

@@ -1,28 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const LockOpenSolid = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <g fill={color} clipPath="url(#a)">
-          <path d="M8.056 10a.834.834 0 0 1-.834-.833V5.556a2.782 2.782 0 0 0-2.778-2.778 2.782 2.782 0 0 0-2.777 2.778v1.388a.834.834 0 0 1-1.667 0V5.556A4.449 4.449 0 0 1 4.444 1.11 4.449 4.449 0 0 1 8.89 5.556v3.61c0 .46-.373.834-.833.834Z" />
-          <path d="M14.722 8.333H6.39a3.058 3.058 0 0 0-3.056 3.056v4.444A3.058 3.058 0 0 0 6.39 18.89h8.333a3.058 3.058 0 0 0 3.056-3.056V11.39a3.058 3.058 0 0 0-3.056-3.056Zm-3.333 5.834a.834.834 0 0 1-1.667 0v-1.111a.834.834 0 0 1 1.667 0v1.11Z" />
-        </g>
-        <defs>
-          <clipPath id="a">
-            <path fill="#fff" d="M0 0h20v20H0z" />
-          </clipPath>
-        </defs>
-      </svg>
-    )
-  }
-)
-LockOpenSolid.displayName = "LockOpenSolid"
-export default LockOpenSolid
+import * as React from "react";
+import type { IconProps } from "../types";
+const LockOpenSolid = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><g fill={color} clipPath="url(#a)"><path d="M9.667 12a1 1 0 0 1-1-1V6.667a3.34 3.34 0 0 0-3.334-3.334A3.34 3.34 0 0 0 2 6.667v1.666a1 1 0 0 1-2 0V6.667a5.34 5.34 0 0 1 5.333-5.334 5.34 5.34 0 0 1 5.334 5.334V11a1 1 0 0 1-1 1" /><path d="M17.667 10h-10A3.67 3.67 0 0 0 4 13.667V19a3.67 3.67 0 0 0 3.667 3.667h10A3.67 3.67 0 0 0 21.333 19v-5.333A3.67 3.67 0 0 0 17.667 10m-4 7a1 1 0 0 1-2 0v-1.333a1 1 0 0 1 2 0z" /></g><defs><clipPath id="a"><path fill="#fff" d="M0 0h24v24H0z" /></clipPath></defs></svg>;
+});
+LockOpenSolid.displayName = "LockOpenSolid";
+export default LockOpenSolid;

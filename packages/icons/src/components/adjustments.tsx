@@ -1,19 +1,11 @@
-import * as React from 'react';
-
-import type { IconProps } from '../types';
-
-const Adjustments = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = 'currentColor', ...props }, ref) => (
-    <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} fill="none" ref={ref} {...props}>
-      <path
-        stroke={color}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={1.25}
-        d="M8.75 5h8.125M8.75 5a1.25 1.25 0 0 1-2.5 0m2.5 0a1.25 1.25 0 0 0-2.5 0M3.125 5H6.25m2.5 10h8.125M8.75 15a1.25 1.25 0 0 1-2.5 0m2.5 0a1.25 1.25 0 0 0-2.5 0m-3.125 0H6.25m7.5-5h3.125m-3.125 0a1.25 1.25 0 0 1-2.5 0m2.5 0a1.25 1.25 0 0 0-2.5 0m-8.125 0h8.125"
-      />
-    </svg>
-  ),
-);
-Adjustments.displayName = 'Adjustments';
+import * as React from "react";
+import type { IconProps } from "../types";
+const Adjustments = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.25} d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0m-9.75 0h9.75" /></svg>;
+});
+Adjustments.displayName = "Adjustments";
 export default Adjustments;

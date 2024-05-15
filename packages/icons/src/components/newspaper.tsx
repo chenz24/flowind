@@ -1,26 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const Newspaper = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          stroke={color}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M10 6.25h1.25M10 8.75h1.25M5 11.25h6.25M5 13.75h6.25m2.5-7.5h2.813c.517 0 .937.42.937.938V15a1.875 1.875 0 0 1-1.875 1.875M13.75 6.25V15a1.875 1.875 0 0 0 1.875 1.875M13.75 6.25V4.062a.938.938 0 0 0-.938-.937H3.438a.938.938 0 0 0-.938.938V15a1.875 1.875 0 0 0 1.875 1.875h11.25M5 6.25h2.5v2.5H5v-2.5Z"
-        />
-      </svg>
-    )
-  }
-)
-Newspaper.displayName = "Newspaper"
-export default Newspaper
+import * as React from "react";
+import type { IconProps } from "../types";
+const Newspaper = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6z" /></svg>;
+});
+Newspaper.displayName = "Newspaper";
+export default Newspaper;

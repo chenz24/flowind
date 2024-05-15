@@ -1,28 +1,10 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const Klarna = React.forwardRef<SVGSVGElement, Omit<IconProps, "color">>(
-  (props, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path fill="#FFB3C7" d="M10 19a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z" />
-        <path
-          fill="#000"
-          d="M12.041 6.137h-1.64A4.159 4.159 0 0 1 8.723 9.49l-.641.476 2.492 3.397h2.045l-2.293-3.108a5.734 5.734 0 0 0 1.715-4.118ZM7.874 6.137H6.211v7.234h1.663V6.137Z"
-        />
-        <path
-          fill="#000"
-          d="M13.713 11.293a1.096 1.096 0 1 0-.001 2.191 1.096 1.096 0 0 0 .001-2.191Z"
-        />
-      </svg>
-    )
-  }
-)
-Klarna.displayName = "Klarna"
-export default Klarna
+import * as React from "react";
+import type { IconProps } from "../types";
+const Klarna = React.forwardRef<SVGSVGElement, Omit<IconProps, "color">>(({
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path fill="#FFB3C7" d="M12 22.8c5.965 0 10.8-4.835 10.8-10.8S17.965 1.2 12 1.2 1.2 6.035 1.2 12 6.035 22.8 12 22.8" /><path fill="#000" d="M14.45 7.364h-1.968a4.99 4.99 0 0 1-2.015 4.024l-.769.571 2.991 4.076h2.454l-2.752-3.729a6.88 6.88 0 0 0 2.058-4.942M9.449 7.364H7.453v8.681H9.45z" /><path fill="#000" d="M16.456 13.552a1.314 1.314 0 1 0-.002 2.628 1.314 1.314 0 0 0 .002-2.628" /></svg>;
+});
+Klarna.displayName = "Klarna";
+export default Klarna;

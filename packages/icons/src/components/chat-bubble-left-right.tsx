@@ -1,26 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const ChatBubbleLeftRight = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          stroke={color}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M16.875 7.093c.737.236 1.25.94 1.25 1.747v3.572c0 .946-.706 1.75-1.65 1.827-.283.023-.567.043-.85.06v2.576l-2.5-2.5a41.25 41.25 0 0 1-3.35-.136 1.763 1.763 0 0 1-.688-.202m7.788-6.945a1.772 1.772 0 0 0-.397-.079 40.532 40.532 0 0 0-6.706 0c-.943.079-1.647.881-1.647 1.827v3.572c0 .697.383 1.316.963 1.625m7.787-6.945V5.532c0-1.351-.96-2.522-2.3-2.696a40.378 40.378 0 0 0-10.4 0c-1.34.174-2.3 1.345-2.3 2.696v5.188c0 1.351.96 2.522 2.3 2.696.48.063.964.117 1.45.162V17.5l3.463-3.463"
-        />
-      </svg>
-    )
-  }
-)
-ChatBubbleLeftRight.displayName = "ChatBubbleLeftRight"
-export default ChatBubbleLeftRight
+import * as React from "react";
+import type { IconProps } from "../types";
+const ChatBubbleLeftRight = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193q-.51.041-1.02.072v3.091l-3-3a50 50 0 0 1-4.02-.163 2.1 2.1 0 0 1-.825-.242m9.345-8.334a2 2 0 0 0-.476-.095 48.6 48.6 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.5 48.5 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235q.865.113 1.74.194V21l4.155-4.155" /></svg>;
+});
+ChatBubbleLeftRight.displayName = "ChatBubbleLeftRight";
+export default ChatBubbleLeftRight;
