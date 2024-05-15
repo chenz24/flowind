@@ -111,11 +111,11 @@ export const PresetContainer = <TPreset extends Preset, TValue>({
         <li key={index} className="w-full">
           <button
             className={clx(
-              'txt-compact-small-plus w-full overflow-hidden text-ellipsis whitespace-nowrap rounded-md p-2 text-left',
-              'text-ui-fg-subtle hover:bg-ui-bg-base-hover outline-none transition-all',
-              'focus-visible:bg-ui-bg-base-hover',
+              'txt-compact-sm-plus w-full overflow-hidden text-ellipsis whitespace-nowrap rounded-md p-2 text-left',
+              'text-fg-subtle hover:bg-bg-base-hover outline-none transition-all',
+              'focus-visible:bg-bg-base-hover',
               {
-                '!bg-ui-bg-base-pressed': matchesCurrent(preset),
+                '!bg-bg-base-pressed': matchesCurrent(preset),
               },
             )}
             onClick={() => handleClick(preset)}

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-shadow */
+
 'use client';
 
 import * as React from 'react';
@@ -289,7 +291,7 @@ const SingleDatePicker = ({
                 {...props}
               />
               {showTimePicker && (
-                <div className="border-ui-border-base border-t p-3">
+                <div className="border-border-base border-t p-3">
                   <TimeInput
                     aria-label="Time"
                     onChange={onTimeChange}
@@ -299,7 +301,7 @@ const SingleDatePicker = ({
                   />
                 </div>
               )}
-              <div className="border-ui-border-base flex items-center gap-x-2 border-t p-3">
+              <div className="border-border-base flex items-center gap-x-2 border-t p-3">
                 <Button
                   type="secondary"
                   variant="default"
@@ -566,14 +568,14 @@ const RangeDatePicker = ({
                 numberOfMonths={2}
                 disabled={disabled}
                 classNames={{
-                  months: 'flex flex-row divide-x divide-ui-border-base',
+                  months: 'flex flex-row divide-x divide-border-base',
                 }}
                 {...props}
               />
               {showTimePicker && (
-                <div className="border-ui-border-base flex items-center justify-evenly gap-x-3 border-t p-3">
+                <div className="border-border-base flex items-center justify-evenly gap-x-3 border-t p-3">
                   <div className="flex flex-1 items-center gap-x-2">
-                    <span className="text-ui-fg-subtle">{translations?.start ?? 'Start'}:</span>
+                    <span className="text-fg-subtle">{translations?.start ?? 'Start'}:</span>
                     <TimeInput
                       value={startTime}
                       onChange={(v) => onTimeChange(v, 'start')}
@@ -582,9 +584,9 @@ const RangeDatePicker = ({
                       isRequired={props.required}
                     />
                   </div>
-                  <Minus className="text-ui-fg-muted" />
+                  <Minus className="text-fg-muted" />
                   <div className="flex flex-1 items-center gap-x-2">
-                    <span className="text-ui-fg-subtle">{translations?.end ?? 'End'}:</span>
+                    <span className="text-fg-subtle">{translations?.end ?? 'End'}:</span>
                     <TimeInput
                       value={endTime}
                       onChange={(v) => onTimeChange(v, 'end')}
@@ -596,8 +598,8 @@ const RangeDatePicker = ({
                 </div>
               )}
               <div className="flex items-center justify-between border-t p-3">
-                <p className={clx('text-ui-fg-subtle txt-compact-small-plus')}>
-                  <span className="text-ui-fg-muted">{translations?.range ?? 'Range'}:</span>{' '}
+                <p className={clx('text-fg-subtle txt-compact-sm-plus')}>
+                  <span className="text-fg-muted">{translations?.range ?? 'Range'}:</span>{' '}
                   {displayRange}
                 </p>
                 <div className="flex items-center gap-x-2">
@@ -766,7 +768,7 @@ const validatePresets = (presets: DateRangePreset[] | DatePreset[], rules: Picke
 
 /**
  * This component is based on the [Calendar](https://docs.medusajs.com/ui/components/calendar)
- * component and [Radix UI Popover](https://www.radix-ui.com/primitives/docs/components/popover).
+ * component and [Radix UI Popover](https://www.radix.com/primitives/docs/components/popover).
  */
 const DatePicker = ({
   /**

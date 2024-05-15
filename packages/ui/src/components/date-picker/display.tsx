@@ -12,16 +12,16 @@ interface DisplayProps extends React.ComponentProps<'button'> {
 
 const displayVariants = cva({
   base: clx(
-    'text-ui-fg-base bg-ui-bg-field transition-fg shadow-buttons-neutral flex w-full items-center gap-x-2 rounded-md outline-none',
-    'hover:bg-ui-bg-field-hover',
+    'text-fg-base bg-bg-field transition-fg shadow-buttons-neutral flex w-full items-center gap-x-2 rounded-md outline-none',
+    'hover:bg-bg-field-hover',
     'focus-visible:shadow-borders-interactive-with-active data-[state=open]:shadow-borders-interactive-with-active',
-    'disabled:bg-ui-bg-disabled disabled:text-ui-fg-disabled disabled:shadow-buttons-neutral',
+    'disabled:bg-bg-disabled disabled:text-fg-disabled disabled:shadow-buttons-neutral',
     'aria-[invalid=true]:!shadow-borders-error',
   ),
   variants: {
     size: {
-      base: 'txt-compact-small h-8 px-2 py-1.5',
-      small: 'txt-compact-small h-7 px-2 py-1',
+      base: 'txt-compact-sm h-8 px-2 py-1.5',
+      small: 'txt-compact-sm h-7 px-2 py-1',
     },
   },
   defaultVariants: {
@@ -53,10 +53,9 @@ export const Display = React.forwardRef<HTMLButtonElement, DisplayProps>(
         className={clx(displayVariants({ size }), className)}
         {...props}
       >
-        <CalendarIcon className="text-ui-fg-muted" />
+        <CalendarIcon className="text-fg-muted" />
         <span className="flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-left">
-          {children ||
-            (placeholder ? <span className="text-ui-fg-muted">{placeholder}</span> : null)}
+          {children || (placeholder ? <span className="text-fg-muted">{placeholder}</span> : null)}
         </span>
       </button>
     </Primitives.Trigger>
