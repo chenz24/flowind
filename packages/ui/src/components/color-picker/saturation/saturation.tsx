@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useRef, useState } from 'react';
 
 import { clampUseMovePosition, useMove, UseMovePosition } from '@flowind/hooks';

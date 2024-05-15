@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 
 import { DefaultProps, FlowindSize, Selectors } from '@/styles';
