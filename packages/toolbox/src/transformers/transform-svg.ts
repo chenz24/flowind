@@ -16,13 +16,16 @@ export async function transformSvg({ code, componentName, fixed = false }: Trans
     code,
     {
       typescript: true,
+      dimensions: false,
       replaceAttrValues: !fixed
         ? {
-            '#030712': '{color}',
+            '#09090B': '{color}',
           }
         : undefined,
       svgProps: {
         ref: '{ref}',
+        width: '{size}',
+        height: '{size}',
       },
       expandProps: 'end',
       plugins: [svgo, jsx],
@@ -38,6 +41,7 @@ export async function transformSvg({ code, componentName, fixed = false }: Trans
             params: {
               overrides: {
                 removeTitle: false,
+                removeViewBox: false,
               },
             },
           },
