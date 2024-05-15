@@ -1,3 +1,5 @@
+'use client';
+
 import React, { forwardRef, useRef, useState } from 'react';
 
 import { useDidUpdate, useUncontrolled } from '@flowind/hooks';

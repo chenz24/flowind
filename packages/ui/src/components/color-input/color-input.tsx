@@ -1,3 +1,5 @@
+'use client';
+
 import React, { forwardRef, useEffect, useState } from 'react';
 
 import { useDidUpdate, useEyeDropper, useUncontrolled } from '@flowind/hooks';
@@ -80,11 +82,11 @@ export interface ColorInputProps
 }
 
 const SWATCH_SIZES = {
-  xs: rem(16),
-  sm: rem(18),
-  md: rem(22),
-  lg: rem(28),
-  xl: rem(36),
+  xs: rem(14),
+  sm: rem(16),
+  md: rem(18),
+  lg: rem(22),
+  xl: rem(26),
 };
 
 const EYE_DROPPER_SIZES = {
@@ -96,7 +98,7 @@ const EYE_DROPPER_SIZES = {
 };
 
 const defaultProps: Partial<ColorInputProps> = {
-  size: 'sm',
+  size: 'md',
   format: 'hex',
   fixOnBlur: true,
   withPreview: true,
