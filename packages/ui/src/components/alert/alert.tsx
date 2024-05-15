@@ -111,11 +111,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>((props: AlertProps, 
       {...others}
     >
       <div className={classes.wrapper} style={styls.wrapper}>
-        {Icon && (
-          <div className={classes.icon} style={styls.icon}>
-            <Icon />
-          </div>
-        )}
+        {Icon && <Icon className={classes.icon} style={styls.icon} />}
 
         <div className={classes.body} style={styls.body}>
           {title && (
