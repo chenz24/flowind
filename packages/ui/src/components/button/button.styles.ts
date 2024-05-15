@@ -11,15 +11,16 @@ export interface ButtonStylesParams {
 }
 
 const root = cva({
-  base: `relative font-medium select-none cursor-pointer transition-all leading-none
-   disabled:cursor-not-allowed disabled:opacity-60 disabled:shadow-none`,
+  base: `relative font-medium select-none cursor-pointer transition-all
+   disabled:pointer-events-none disabled:opacity-60 disabled:shadow-none`,
   variants: {
     size: {
-      xs: 'h-6 px-2.5 text-xs',
-      sm: 'h-8 px-3 text-sm',
-      md: 'h-9 px-3.5 text-sm',
-      lg: 'h-10 px-4 text-base',
-      xl: 'h-11 px-5 text-base',
+      none: 'txt-compact-xs-plus gap-x-1',
+      xs: 'txt-compact-xs-plus gap-x-1 px-1.5 h-6',
+      sm: 'txt-compact-sm-plus gap-x-1 px-2 h-7',
+      md: 'txt-compact-sm-plus gap-x-1.5 px-3 h-8',
+      lg: 'txt-compact-md-plus gap-x-1.5 px-4 h-9',
+      xl: 'txt-compact-lg-plus gap-x-1.5 px-5 h-10',
     },
     fullWidth: {
       true: 'block w-full',

@@ -1,9 +1,10 @@
 import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { PlusMini } from '@flowind/icons';
+import { Plus } from '@flowind/icons';
 import { Stack } from '../stack';
 import { Button } from './button';
+import { FancyButton } from './fancy-button';
 
 const meta: Meta<typeof Button> = {
   title: 'Components/Button',
@@ -100,7 +101,7 @@ export const Disabled: Story = {
 export const WithIcon: Story = {
   args: {
     children: 'Action',
-    leftIcon: <PlusMini key={1} />,
+    leftIcon: <Plus key={1} />,
   },
 };
 
@@ -141,10 +142,45 @@ export function Types() {
   );
 }
 
+export function FancyButtonDemo() {
+  return (
+    <Stack>
+      <Button variant="fancy" type="primary" size="xs">
+        Extra small
+      </Button>
+      <Button variant="fancy" type="secondary" size="sm">
+        Button
+      </Button>
+      <FancyButton variant="danger">Medium</FancyButton>
+      <FancyButton variant="secondary">Button</FancyButton>
+      <FancyButton variant="success" size="lg">
+        Large
+      </FancyButton>
+      <FancyButton variant="warning">Large</FancyButton>
+      <FancyButton variant="info" size="xl">
+        Extra large
+      </FancyButton>
+    </Stack>
+  );
+}
+
+export const ButtonGroup: Story = {
+  render: () => (
+    <Button.Group>
+      <Button variant="filled">First</Button>
+      <Button variant="default">Second</Button>
+      <Button variant="default">Third</Button>
+      <Button variant="outline">Forth</Button>
+      <Button variant="outline">Last</Button>
+    </Button.Group>
+  ),
+};
+
 export const Loading: Story = {
   args: {
     children: 'Action',
     loading: true,
+    size: 'md',
   },
 };
 
