@@ -1,27 +1,39 @@
-import type { Meta, StoryObj } from "@storybook/react"
-import * as React from "react"
+import * as React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
 
-import { Heading } from "@/components/heading"
-import { Text } from "@/components/text"
-import { Container } from "./container"
+import { Heading } from '@/components/heading';
+import { Text } from '@/components/text';
+import { Container } from './container';
 
 const meta: Meta<typeof Container> = {
-  title: "Components/Container",
+  title: 'Components/Container',
   component: Container,
-}
+  parameters: {
+    layout: 'centered',
+  },
+};
 
-export default meta
+export default meta;
 
-type Story = StoryObj<typeof Container>
+type Story = StoryObj<typeof Container>;
 
 export const Default: Story = {
   args: {
     children: <Text>Hello World</Text>,
   },
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-}
+};
+
+export const Usage = () => (
+  <Container shadow="xs">
+    <Heading>Container</Heading>
+    <Text>
+      Container is a layout component that provides a consistent padding, border, and shadow styles.
+    </Text>
+  </Container>
+);
 
 export const InLayout: Story = {
   render: () => (
@@ -43,6 +55,6 @@ export const InLayout: Story = {
     </div>
   ),
   parameters: {
-    layout: "fullscreen",
+    layout: 'fullscreen',
   },
-}
+};
