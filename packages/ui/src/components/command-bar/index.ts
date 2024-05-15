@@ -1,1 +1,1 @@
-export * from "./command-bar"
+export * from './command-bar';
