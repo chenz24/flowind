@@ -50,7 +50,7 @@ export function defaultFilter(value: string, item: AutocompleteItem) {
 
 const defaultProps: Partial<AutocompleteProps> = {
   required: false,
-  size: 'sm',
+  size: 'md',
   shadow: 'sm',
   limit: 5,
   itemComponent: DefaultItem,

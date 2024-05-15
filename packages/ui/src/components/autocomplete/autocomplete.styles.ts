@@ -4,5 +4,7 @@ export default createStyles(() => ({
   classes: {
     wrapper: 'relative',
   },
-  styles: {},
+  styles: {
+    wrapper: {},
+  },
 }));
