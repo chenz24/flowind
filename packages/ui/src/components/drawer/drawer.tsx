@@ -1,147 +1,76 @@
-'use client';
+import React from 'react';
 
-import * as React from 'react';
-import * as DrawerPrimitives from '@radix-ui/react-dialog';
+import { useComponentDefaultProps } from '@/styles';
+import {
+  ModalBase,
+  ModalBaseCloseButtonProps,
+  ModalBaseDefaultProps,
+  ModalBaseOverlayProps,
+} from '../modal-base';
+import { DrawerContent } from './drawer-content/drawer-content';
+import { DrawerRoot, DrawerRootProps } from './drawer-root/drawer-root';
 
-import { XMark } from '@flowind/icons';
-import { Heading } from '@/components/heading';
-import { IconButton } from '@/components/icon-button';
-import { Kbd } from '@/components/kbd';
-import { Text } from '@/components/text';
-import { clx } from '@/utils/clx';
+export interface DrawerProps extends Omit<DrawerRootProps, 'title'> {
+  /** Modal title */
+  title?: React.ReactNode;
 
-/**
- * This component is based on the [Radix UI Dialog](https://www.radix-ui.com/primitives/docs/components/dialog) primitives.
- */
-const DrawerRoot = (props: React.ComponentPropsWithoutRef<typeof DrawerPrimitives.Root>) => (
-  <DrawerPrimitives.Root {...props} />
-);
-DrawerRoot.displayName = 'Drawer';
+  /** Determines whether overlay should be rendered, true by default */
+  withOverlay?: boolean;
 
-const DrawerTrigger = React.forwardRef<
-  React.ElementRef<typeof DrawerPrimitives.Trigger>,
-  React.ComponentPropsWithoutRef<typeof DrawerPrimitives.Trigger>
->(({ className, ...props }, ref) => (
-  <DrawerPrimitives.Trigger ref={ref} className={clx(className)} {...props} />
-));
-DrawerTrigger.displayName = 'Drawer.Trigger';
+  /** Props added to Overlay component, use configure opacity, background color, styles and other properties */
+  overlayProps?: ModalBaseOverlayProps;
 
-const DrawerClose = React.forwardRef<
-  React.ElementRef<typeof DrawerPrimitives.Close>,
-  React.ComponentPropsWithoutRef<typeof DrawerPrimitives.Close>
->(({ className, ...props }, ref) => (
-  <DrawerPrimitives.Close ref={ref} className={clx(className)} {...props} />
-));
-DrawerClose.displayName = 'Drawer.Close';
+  /** Modal content */
+  children?: React.ReactNode;
 
-const DrawerPortal = (props: DrawerPrimitives.DialogPortalProps) => (
-  <DrawerPrimitives.DialogPortal {...props} />
-);
-DrawerPortal.displayName = 'Drawer.Portal';
+  /** Determines whether close button should be rendered, true by default */
+  withCloseButton?: boolean;
 
-const DrawerOverlay = React.forwardRef<
-  React.ElementRef<typeof DrawerPrimitives.Overlay>,
-  React.ComponentPropsWithoutRef<typeof DrawerPrimitives.Overlay>
->(({ className, ...props }, ref) => (
-  <DrawerPrimitives.Overlay
-    ref={ref}
-    className={clx(
-      'bg-ui-bg-overlay fixed inset-0',
-      'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0',
-      className,
-    )}
-    {...props}
-  />
-));
-DrawerOverlay.displayName = 'Drawer.Overlay';
+  /** Props added to close button */
+  closeButtonProps?: ModalBaseCloseButtonProps;
+}
 
-const DrawerContent = React.forwardRef<
-  React.ElementRef<typeof DrawerPrimitives.Content>,
-  React.ComponentPropsWithoutRef<typeof DrawerPrimitives.Content>
->(({ className, ...props }, ref) => (
-  <DrawerPortal>
-    <DrawerOverlay />
-    <DrawerPrimitives.Content
-      ref={ref}
-      className={clx(
-        'bg-ui-bg-base shadow-elevation-modal border-ui-border-base fixed inset-y-2 flex w-full flex-1 flex-col rounded-lg border focus:outline-none max-sm:inset-x-2 max-sm:w-[calc(100%-16px)] sm:right-2 sm:max-w-[560px]',
-        'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:slide-out-to-right-1/2 data-[state=open]:slide-in-from-right-1/2 duration-200',
-        className,
-      )}
-      {...props}
-    />
-  </DrawerPortal>
-));
-DrawerContent.displayName = 'Drawer.Content';
+const defaultProps: Partial<DrawerProps> = {
+  ...ModalBaseDefaultProps,
+  withOverlay: true,
+  withCloseButton: true,
+};
 
-const DrawerHeader = React.forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<'div'>>(
-  ({ children, className, ...props }, ref) => (
-    <div
-      ref={ref}
-      className="border-ui-border-base flex items-start justify-between gap-x-4 border-b px-6 py-4"
-      {...props}
-    >
-      <div className={clx('flex flex-col gap-y-1', className)}>{children}</div>
-      <div className="flex items-center gap-x-2">
-        <Kbd>esc</Kbd>
-        <DrawerPrimitives.Close asChild>
-          <IconButton size="small" type="button" variant="transparent">
-            <XMark />
-          </IconButton>
-        </DrawerPrimitives.Close>
-      </div>
-    </div>
-  ),
-);
-DrawerHeader.displayName = 'Drawer.Header';
+export function Drawer(props: DrawerProps) {
+  const {
+    title,
+    withOverlay,
+    overlayProps,
+    withCloseButton,
+    closeButtonProps,
+    children,
+    ...others
+  } = useComponentDefaultProps('Drawer', defaultProps, props);
 
-const DrawerBody = React.forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<'div'>>(
-  ({ className, ...props }, ref) => (
-    <div ref={ref} className={clx('flex-1 px-6 py-4', className)} {...props} />
-  ),
-);
-DrawerBody.displayName = 'Drawer.Body';
+  const hasHeader = !!title || withCloseButton;
 
-const DrawerFooter = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div
-    className={clx(
-      'border-ui-border-base flex items-center justify-end space-x-2 overflow-y-auto border-t px-6 py-4',
-      className,
-    )}
-    {...props}
-  />
-);
-DrawerFooter.displayName = 'Drawer.Footer';
+  return (
+    <DrawerRoot {...others}>
+      {withOverlay && <ModalBase.Overlay {...overlayProps} />}
+      <DrawerContent>
+        {hasHeader && (
+          <ModalBase.Header>
+            {title && <ModalBase.Title>{title}</ModalBase.Title>}
+            {withCloseButton && <ModalBase.CloseButton {...closeButtonProps} />}
+          </ModalBase.Header>
+        )}
 
-const DrawerTitle = React.forwardRef<
-  React.ElementRef<typeof DrawerPrimitives.Title>,
-  React.ComponentPropsWithoutRef<typeof DrawerPrimitives.Title>
->(({ className, children, ...props }, ref) => (
-  <DrawerPrimitives.Title ref={ref} className={clx(className)} asChild {...props}>
-    <Heading level="h1">{children}</Heading>
-  </DrawerPrimitives.Title>
-));
-DrawerTitle.displayName = 'Drawer.Title';
+        <ModalBase.Body>{children}</ModalBase.Body>
+      </DrawerContent>
+    </DrawerRoot>
+  );
+}
 
-const DrawerDescription = React.forwardRef<
-  React.ElementRef<typeof DrawerPrimitives.Description>,
-  React.ComponentPropsWithoutRef<typeof DrawerPrimitives.Description>
->(({ className, children, ...props }, ref) => (
-  <DrawerPrimitives.Description ref={ref} className={clx(className)} asChild {...props}>
-    <Text>{children}</Text>
-  </DrawerPrimitives.Description>
-));
-DrawerDescription.displayName = 'Drawer.Description';
-
-const Drawer = Object.assign(DrawerRoot, {
-  Body: DrawerBody,
-  Close: DrawerClose,
-  Content: DrawerContent,
-  Description: DrawerDescription,
-  Footer: DrawerFooter,
-  Header: DrawerHeader,
-  Title: DrawerTitle,
-  Trigger: DrawerTrigger,
-});
-
-export { Drawer };
+Drawer.Root = DrawerRoot;
+Drawer.CloseButton = ModalBase.CloseButton;
+Drawer.Overlay = ModalBase.Overlay;
+Drawer.Content = DrawerContent;
+Drawer.Header = ModalBase.Header;
+Drawer.Title = ModalBase.Title;
+Drawer.Body = ModalBase.Body;
+Drawer.NativeScrollArea = ModalBase.NativeScrollArea;
