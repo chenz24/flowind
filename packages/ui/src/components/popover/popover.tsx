@@ -1,5 +1,6 @@
-/* eslint-disable react/no-unused-prop-types */
+'use client';
 
+/* eslint-disable react/no-unused-prop-types */
 import React, { useCallback, useRef, useState } from 'react';
 
 import { useClickOutside, useId } from '@flowind/hooks';

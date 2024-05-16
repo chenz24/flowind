@@ -7,8 +7,8 @@ export interface PopoverStylesParams {
 
 export default createStyles((theme, { radius, shadow }: PopoverStylesParams) => ({
   classes: {
-    dropdown: `absolute bg-white dark:bg-zinc-800 border border-solid border-zinc-200 dark:border-gray-700
-    focus:outline-none py-3 px-4 ${theme.radius[radius || 'sm']} ${theme.shadows[shadow] || ''}`,
+    dropdown: `absolute bg-bg-base text-fg-base shadow-elevation-flyout
+    focus:outline-none py-2 px-3 ${theme.radius[radius || 'sm']}`,
     arrow: 'z-[1] bg-inherit border border-solid border-neutral-300 dark:border-gray-600',
   },
 }));

@@ -1,3 +1,5 @@
+'use client';
+
 import React, { forwardRef, useState } from 'react';
 import * as RadixScrollArea from '@radix-ui/react-scroll-area';
 

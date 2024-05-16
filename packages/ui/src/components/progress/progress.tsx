@@ -1,9 +1,10 @@
+'use client';
+
 import React, { forwardRef } from 'react';
 
 import {
   DefaultProps,
   FlowindColor,
-  FlowindNumberSize,
   FlowindSize,
   Selectors,
   useComponentDefaultProps,

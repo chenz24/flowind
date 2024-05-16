@@ -1,3 +1,5 @@
+'use client';
+
 /* eslint-disable react/no-unused-prop-types */
 import React, { ReactPortal, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
