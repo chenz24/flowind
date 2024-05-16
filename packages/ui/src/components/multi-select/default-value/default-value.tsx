@@ -54,7 +54,6 @@ export function DefaultValue({
           aria-hidden
           onMouseDown={onRemove}
           size="xs"
-          color="blue"
           variant="subtle"
           iconSize="70%"
           className={classes.defaultValueRemove}
@@ -66,4 +65,4 @@ export function DefaultValue({
   );
 }
 
-DefaultValue.displayName = 'MultiSelect-DefaultValue';
+// DefaultValue.displayName = 'MultiSelect-DefaultValue';

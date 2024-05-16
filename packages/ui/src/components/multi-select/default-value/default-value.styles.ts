@@ -33,10 +33,10 @@ const removeSizes = {
 export default createStyles(
   (theme, { disabled, radius, readOnly }: DefaultLabelStyles, { size, variant }) => ({
     classes: {
-      defaultValue: `flex items-center user-select-none bg-gray-100 dark:bg-zinc-800 text-gray-600 
+      defaultValue: `flex items-center select-none bg-bg-base border border-border-base text-fg-subtle 
       dark:text-gray-400 ${removeSizes[size]} ${sizes[size]} ${fontSizes[size]} ${theme.radius[radius]} 
       ${disabled ? 'cursor-not-allowed' : 'cursor-default'} ${disabled || readOnly ? '' : 'pr-0'}`,
-      defaultValueRemove: 'text-zinc-600 dark:text-stone-300 ml-1',
+      defaultValueRemove: 'text-zinc-600 dark:text-stone-300 mx-0.5',
       defaultValueLabel: 'block overflow-hidden text-ellipsis whitespace-nowrap',
     },
   }),
