@@ -78,19 +78,19 @@ const Toast = React.forwardRef<React.ElementRef<typeof Primitives.Root>, ToastPr
 
     switch (variant) {
       case 'success':
-        Icon = <CheckCircleSolid className="text-ui-tag-green-icon" />;
+        Icon = <CheckCircleSolid className="text-tag-green-icon" />;
         break;
       case 'warning':
-        Icon = <ExclamationCircleSolid className="text-ui-tag-orange-icon" />;
+        Icon = <ExclamationCircleSolid className="text-tag-orange-icon" />;
         break;
       case 'error':
-        Icon = <XCircleSolid className="text-ui-tag-red-icon" />;
+        Icon = <XCircleSolid className="text-tag-red-icon" />;
         break;
       case 'loading':
-        Icon = <Spinner className="text-ui-tag-blue-icon animate-spin" />;
+        Icon = <Spinner className="text-tag-blue-icon animate-spin" />;
         break;
       default:
-        Icon = <InformationCircleSolid className="text-ui-fg-base" />;
+        Icon = <InformationCircleSolid className="text-fg-base" />;
         break;
     }
 
@@ -106,22 +106,22 @@ const Toast = React.forwardRef<React.ElementRef<typeof Primitives.Root>, ToastPr
       <Primitives.Root
         ref={ref}
         className={clx(
-          'bg-ui-bg-base border-ui-border-base flex h-fit min-h-[74px] w-full overflow-hidden rounded-md border shadow-[0_4px_12px_rgba(0,0,0,0.05)] md:max-w-[440px]',
+          'bg-bg-base border-border-base flex h-fit min-h-[74px] w-full overflow-hidden rounded-md border shadow-[0_4px_12px_rgba(0,0,0,0.05)] md:max-w-[440px]',
           'data-[state=open]:animate-in data-[state=closed]:animate-out data-[swipe=end]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:slide-out-to-right-full data-[state=open]:slide-in-from-top-full data-[swipe=cancel]:translate-x-0 data-[swipe=end]:translate-x-[var(--radix-toast-swipe-end-x)] data-[swipe=move]:translate-x-[var(--radix-toast-swipe-move-x)] data-[swipe=move]:transition-none',
           className,
         )}
         {...props}
       >
-        <div className="border-ui-border-base flex flex-1 items-start space-x-3 border-r p-4">
+        <div className="border-border-base flex flex-1 items-start space-x-3 border-r p-4">
           <span aria-hidden>{Icon}</span>
           <div>
             {title && (
-              <Primitives.Title className="text-ui-fg-base txt-compact-small-plus">
+              <Primitives.Title className="text-fg-base txt-compact-sm-plus">
                 {title}
               </Primitives.Title>
             )}
             {description && (
-              <Primitives.Description className="text-ui-fg-subtle txt-compact-medium">
+              <Primitives.Description className="text-fg-subtle txt-compact-md">
                 {description}
               </Primitives.Description>
             )}
@@ -133,9 +133,9 @@ const Toast = React.forwardRef<React.ElementRef<typeof Primitives.Root>, ToastPr
               <Primitives.Action
                 altText={action.altText}
                 className={clx(
-                  'txt-compact-small-plus text-ui-fg-base bg-ui-bg-base hover:bg-ui-bg-base-hover active:bg-ui-bg-base-pressed flex flex-1 items-center justify-center px-6 transition-colors',
+                  'txt-compact-sm-plus text-fg-base bg-bg-base hover:bg-bg-base-hover active:bg-bg-base-pressed flex flex-1 items-center justify-center px-6 transition-colors',
                   {
-                    'text-ui-fg-error': variant === 'error',
+                    'text-fg-error': variant === 'error',
                   },
                 )}
                 onClick={(e) => {
@@ -146,13 +146,13 @@ const Toast = React.forwardRef<React.ElementRef<typeof Primitives.Root>, ToastPr
               >
                 {action.label}
               </Primitives.Action>
-              <div className="bg-ui-border-base h-px w-full" />
+              <div className="bg-border-base h-px w-full" />
             </>
           )}
           {!disableDismiss && (
             <Primitives.Close
               className={clx(
-                'txt-compact-small-plus text-ui-fg-subtle bg-ui-bg-base hover:bg-ui-bg-base-hover active:bg-ui-bg-base-pressed flex flex-1 items-center justify-center px-6 transition-colors',
+                'txt-compact-sm-plus text-fg-subtle bg-bg-base hover:bg-bg-base-hover active:bg-bg-base-pressed flex flex-1 items-center justify-center px-6 transition-colors',
                 {
                   'h-1/2': action,
                   'h-full': !action,
