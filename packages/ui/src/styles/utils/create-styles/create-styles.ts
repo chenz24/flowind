@@ -145,7 +145,7 @@ export function createStyles<
 
     const contextParams = { variant: options?.variant, size: options?.size };
     const cssObject: Record<string, any> = options?.unstyled
-      ? {}
+      ? { classes: {}, styles: {} }
       : getCssObject(theme, params, contextParams);
     const componentClasses = getClasses(options?.classNames, theme, params, contextParams);
     const providerClasses = getClasses(context, theme, params, contextParams);

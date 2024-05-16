@@ -1,28 +1,6 @@
 import { Tuple } from './tuple';
 
-export type DefaultFlowindColor =
-  | 'slate'
-  | 'gray'
-  | 'zinc'
-  | 'neutral'
-  | 'stone'
-  | 'red'
-  | 'orange'
-  | 'amber'
-  | 'yellow'
-  | 'lime'
-  | 'green'
-  | 'emerald'
-  | 'teal'
-  | 'cyan'
-  | 'sky'
-  | 'blue'
-  | 'indigo'
-  | 'violet'
-  | 'purple'
-  | 'fuchsia'
-  | 'pink'
-  | 'rose';
+export type DefaultFlowindColor = 'neutral' | 'red' | 'yellow' | 'emerald' | 'cyan' | 'blue';
 
 export type FlowindThemeColorsOverride = NonNullable<unknown>;
 

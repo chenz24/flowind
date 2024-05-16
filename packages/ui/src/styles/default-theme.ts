@@ -34,6 +34,7 @@ export const _DEFAULT_THEME: FlowindThemeBase = {
   components: {},
   loader: 'oval',
   radius: {
+    none: 'rounded-none',
     xs: 'rounded-sm',
     sm: 'rounded',
     md: 'rounded-lg',
@@ -41,6 +42,7 @@ export const _DEFAULT_THEME: FlowindThemeBase = {
     xl: 'rounded-full',
   },
   shadows: {
+    none: 'shadow-none',
     xs: 'shadow-sm',
     sm: 'shadow',
     md: 'shadow-md',
@@ -48,7 +50,7 @@ export const _DEFAULT_THEME: FlowindThemeBase = {
     xl: 'shadow-xl',
   },
   primaryColor: 'blue',
-  secondaryColor: 'gray',
+  secondaryColor: 'neutral',
   respectReducedMotion: true,
   transitionTimingFunction: 'ease',
   focusRing:
