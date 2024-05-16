@@ -10,8 +10,8 @@ export const fontSizes = {
 
 export default createStyles((theme, _params, { size }) => ({
   classes: {
-    label: `inline-block ${fontSizes[size]} font-medium break-words cursor-default
-    text-slate-900 dark:text-slate-200`,
+    label: `inline-block ${fontSizes[size]} break-words cursor-default
+    text-fg-base`,
     required: 'text-red-500 dark:text-red-700',
   },
 }));

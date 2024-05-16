@@ -1,3 +1,5 @@
+'use client';
+
 import React, { forwardRef, Fragment } from 'react';
 
 import { DefaultProps, FlowindSize, Selectors, useComponentDefaultProps } from '@/styles';

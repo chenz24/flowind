@@ -22,39 +22,39 @@ export const sizes = {
   xs: {
     height: 'h-6',
     minHeight: 'min-h-6',
-    padding: 'px-2',
+    padding: 'px-1.5',
     affix: 'w-6',
     withSuffixPadding: 'pr-6',
     withPrefixPadding: 'pl-6',
   },
   sm: {
+    height: 'h-7',
+    minHeight: 'min-h-7',
+    padding: 'px-1.5',
+    affix: 'w-7',
+    withSuffixPadding: 'pr-7',
+    withPrefixPadding: 'pl-7',
+  },
+  md: {
     height: 'h-8',
     minHeight: 'min-h-8',
-    padding: 'px-2.5',
+    padding: 'px-2',
     affix: 'w-8',
     withSuffixPadding: 'pr-8',
     withPrefixPadding: 'pl-8',
   },
-  md: {
+  lg: {
     height: 'h-9',
     minHeight: 'min-h-9',
-    padding: 'px-3',
+    padding: 'px-2.5',
     affix: 'w-9',
     withSuffixPadding: 'pr-9',
     withPrefixPadding: 'pl-9',
   },
-  lg: {
-    height: 'h-10',
-    minHeight: 'min-h-10',
-    padding: 'px-3.5',
-    affix: 'w-10',
-    withSuffixPadding: 'pr-10',
-    withPrefixPadding: 'pl-10',
-  },
   xl: {
     height: 'h-11',
     minHeight: 'min-h-11',
-    padding: 'px-3.5',
+    padding: 'px-3',
     affix: 'w-11',
     withSuffixPadding: 'pr-11',
     withPrefixPadding: 'pl-11',
@@ -125,17 +125,14 @@ export default createStyles(
 
     return {
       classes: {
-        wrapper: `relative flex transition border border-solid border-gray-200 dark:border-gray-700
-        hover:border-neutral-300 dark:hover:border-gray-600 dark:focus-within:border-gray-600
-        [&:has(input:is(:disabled))]:bg-slate-50 dark:[&:has(input:is(:disabled))]:bg-zinc-800 dark:bg-slate-900 
-        ${theme.focusInput} 
+        wrapper: `relative flex transition shadow-borders-base focus-within:shadow-borders-interactive-with-active
+        [&:has(input:is(:disabled))]:bg-bg-disabled transition-fg bg-bg-field hover:bg-bg-field-hover 
         ${radiusClasses} ${clx({
           'mt-1.5': offsetTop,
           'mb-1.5': offsetBottom,
           'h-auto': multiline,
           [sizeClasses.minHeight]: multiline,
-          'focus-within:!border-slate-400': !invalid,
-          '!border-red-500 dark:!border-red-700': invalid,
+          '!shadow-borders-error': invalid,
           [sizeClasses.height]: !multiline,
         })}`,
         innerWrapper: 'relative',
@@ -149,8 +146,8 @@ export default createStyles(
             [sizeClasses.affix]: !suffixWidth,
           },
         )}`,
-        input: `w-full min-h-full outline-none dark:bg-slate-900 
-        ${radiusClasses} resize-none appearance-none box-border block text-left text-slate-900 dark:text-gray-400
+        input: `w-full min-h-full outline-none caret-fg-base bg-transparent disabled:text-fg-disabled disabled:cursor-not-allowed
+        ${radiusClasses} resize-none appearance-none box-border block text-left text-fg-base 
         ${clx({
           'cursor-pointer': pointer,
         })} ${fontSizes[size]} ${getSizeClasses({
