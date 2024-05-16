@@ -1,45 +1,41 @@
-import { cva, type VariantProps } from "cva"
-import * as React from "react"
+import * as React from 'react';
+import { cva, type VariantProps } from 'cva';
 
-import { clx } from "@/utils/clx"
+import { clx } from '@/utils/clx';
 
 const headingVariants = cva({
-  base: "font-sans font-medium",
+  base: 'font-sans font-medium',
   variants: {
     level: {
-      h1: "h1-core",
-      h2: "h2-core",
-      h3: "h3-core",
+      h1: 'h1-core',
+      h2: 'h2-core',
+      h3: 'h3-core',
     },
   },
   defaultVariants: {
-    level: "h1",
+    level: 'h1',
   },
-})
+});
 
-interface HeadingProps extends VariantProps<typeof headingVariants>,
-  React.HTMLAttributes<HTMLHeadingElement> {}
+interface HeadingProps
+  extends VariantProps<typeof headingVariants>,
+    React.HTMLAttributes<HTMLHeadingElement> {}
 
 /**
  * This component is based on the heading element (`h1`, `h2`, etc...) depeneding on the specified level
  * and supports all of its props
  */
-const Heading = ({ 
+const Heading = ({
   /**
    * The heading level which specifies which heading element is used.
    */
-  level = "h1", 
-  className, 
+  level = 'h1',
+  className,
   ...props
 }: HeadingProps) => {
-  const Component = level || "h1"
+  const Component = level || 'h1';
 
-  return (
-    <Component
-      className={clx(headingVariants({ level }), className)}
-      {...props}
-    />
-  )
-}
+  return <Component className={clx(headingVariants({ level }), className)} {...props} />;
+};
 
-export { Heading, headingVariants }
+export { Heading, headingVariants };
