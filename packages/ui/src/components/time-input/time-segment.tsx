@@ -10,9 +10,9 @@ type TimeSegmentProps = {
 };
 
 const inputBaseStyles = clx(
-  'caret-ui-fg-base bg-ui-bg-field hover:bg-ui-bg-field-hover shadow-borders-base placeholder-ui-fg-muted text-ui-fg-base transition-fg relative w-full appearance-none rounded-md outline-none',
+  'caret-fg-base bg-bg-field hover:bg-bg-field-hover shadow-borders-base placeholder-fg-muted text-fg-base transition-fg relative w-full appearance-none rounded-md outline-none',
   'focus-visible:shadow-borders-interactive-with-active',
-  'disabled:text-ui-fg-disabled disabled:!bg-ui-bg-disabled disabled:placeholder-ui-fg-disabled disabled:cursor-not-allowed',
+  'disabled:text-fg-disabled disabled:!bg-bg-disabled disabled:placeholder-fg-disabled disabled:cursor-not-allowed',
   'aria-[invalid=true]:!shadow-borders-error  invalid:!shadow-borders-error',
 );
 
@@ -31,27 +31,23 @@ export const TimeSegment = ({ segment, state }: TimeSegmentProps) => {
       {...segmentProps}
       ref={ref}
       className={clx(
-        'txt-compact-small w-full rounded-md px-2 py-1 text-left uppercase tabular-nums',
+        'txt-compact-sm w-full rounded-md px-2 py-1 text-left uppercase tabular-nums',
         inputBaseStyles,
         'group-aria-[invalid=true]/time-input:!shadow-borders-error group-invalid/time-input:!shadow-borders-error',
         {
-          'text-ui-fg-muted !w-fit border-none bg-transparent px-0 shadow-none': isDecorator,
+          'text-fg-muted !w-fit border-none bg-transparent px-0 shadow-none': isDecorator,
           hidden: isSpace,
-          'text-ui-fg-disabled bg-ui-bg-disabled border-ui-border-base shadow-none':
-            state.isDisabled,
-          '!text-ui-fg-muted !bg-transparent': !segment.isEditable,
+          'text-fg-disabled bg-bg-disabled border-border-base shadow-none': state.isDisabled,
+          '!text-fg-muted !bg-transparent': !segment.isEditable,
         },
       )}
     >
       <span
         aria-hidden="true"
-        className={clx(
-          'txt-compact-small text-ui-fg-muted pointer-events-none block w-full text-left',
-          {
-            hidden: !segment.isPlaceholder,
-            'h-0': !segment.isPlaceholder,
-          },
-        )}
+        className={clx('txt-compact-sm text-fg-muted pointer-events-none block w-full text-left', {
+          hidden: !segment.isPlaceholder,
+          'h-0': !segment.isPlaceholder,
+        })}
       >
         {segment.placeholder}
       </span>
