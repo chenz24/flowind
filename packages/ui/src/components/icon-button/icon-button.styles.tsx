@@ -10,6 +10,7 @@ const root = cva({
   base: 'relative inline-flex items-center justify-center leading-none p-0',
   variants: {
     size: {
+      none: '',
       xs: 'size-[1.125rem]',
       sm: 'size-[1.375rem]',
       md: 'size-[1.75rem]',

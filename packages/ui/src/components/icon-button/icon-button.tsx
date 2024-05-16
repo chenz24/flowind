@@ -51,7 +51,7 @@ export interface IconButtonProps
 }
 
 const defaultProps: Partial<IconButtonProps> = {
-  type: 'primary',
+  type: 'secondary',
   size: 'sm',
   variant: 'subtle',
   radius: 'sm',
