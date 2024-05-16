@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-shadow */
 import * as React from 'react';
 
 import { Minus } from '@flowind/icons';
@@ -20,7 +21,7 @@ const Root = React.forwardRef<HTMLTableElement, React.HTMLAttributes<HTMLTableEl
   ({ className, ...props }, ref) => (
     <table
       ref={ref}
-      className={clx('text-ui-fg-subtle txt-compact-small w-full', className)}
+      className={clx('text-fg-subtle txt-compact-sm w-full', className)}
       {...props}
     />
   ),
@@ -32,7 +33,7 @@ const Row = React.forwardRef<HTMLTableRowElement, React.HTMLAttributes<HTMLTable
     <tr
       ref={ref}
       className={clx(
-        'bg-ui-bg-base hover:bg-ui-bg-base-hover border-ui-border-base transition-fg border-b',
+        'bg-bg-base hover:bg-bg-base-hover border-border-base transition-fg border-b',
         '[&_td:last-child]:pr-6 [&_th:last-child]:pr-6',
         '[&_td:first-child]:pl-6 [&_th:first-child]:pl-6',
         className,
@@ -57,7 +58,7 @@ const Header = React.forwardRef<
   <thead
     ref={ref}
     className={clx(
-      'border-ui-border-base txt-compact-small-plus [&_tr:hover]:bg-ui-bg-base border-y',
+      'border-border-base txt-compact-sm-plus [&_tr:hover]:bg-bg-base border-y',
       className,
     )}
     {...props}
@@ -69,11 +70,7 @@ const HeaderCell = React.forwardRef<
   HTMLTableCellElement,
   React.TdHTMLAttributes<HTMLTableCellElement>
 >(({ className, ...props }, ref) => (
-  <th
-    ref={ref}
-    className={clx('txt-compact-small-plus h-12 pr-6 text-left', className)}
-    {...props}
-  />
+  <th ref={ref} className={clx('txt-compact-sm-plus h-12 pr-6 text-left', className)} {...props} />
 ));
 HeaderCell.displayName = 'Table.HeaderCell';
 
@@ -81,7 +78,7 @@ const Body = React.forwardRef<
   HTMLTableSectionElement,
   React.HTMLAttributes<HTMLTableSectionElement>
 >(({ className, ...props }, ref) => (
-  <tbody ref={ref} className={clx('border-ui-border-base border-b', className)} {...props} />
+  <tbody ref={ref} className={clx('border-border-base border-b', className)} {...props} />
 ));
 Body.displayName = 'Table.Body';
 
@@ -170,14 +167,14 @@ const Pagination = React.forwardRef<HTMLDivElement, TablePaginationProps>(
       <div
         ref={ref}
         className={clx(
-          'text-ui-fg-subtle txt-compact-small-plus flex w-full items-center justify-between px-3 py-4',
+          'text-fg-subtle txt-compact-sm-plus flex w-full items-center justify-between px-3 py-4',
           className,
         )}
         {...props}
       >
         <div className="inline-flex items-center gap-x-1 px-3 py-[5px]">
           <p>{from}</p>
-          <Minus className="text-ui-fg-muted" />
+          <Minus className="text-fg-muted" />
           <p>{`${to} ${translations.of} ${count} ${translations.results}`}</p>
         </div>
         <div className="flex items-center gap-x-2">
@@ -187,14 +184,21 @@ const Pagination = React.forwardRef<HTMLDivElement, TablePaginationProps>(
             </p>
           </div>
           <Button
-            type="button"
-            variant="transparent"
+            htmlType="button"
+            variant="default"
             onClick={previousPage}
             disabled={!canPreviousPage}
+            size="sm"
           >
             {translations.prev}
           </Button>
-          <Button type="button" variant="transparent" onClick={nextPage} disabled={!canNextPage}>
+          <Button
+            htmlType="button"
+            variant="default"
+            size="sm"
+            onClick={nextPage}
+            disabled={!canNextPage}
+          >
             {translations.next}
           </Button>
         </div>
