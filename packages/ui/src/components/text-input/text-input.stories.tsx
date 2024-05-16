@@ -89,3 +89,28 @@ export function InputWrapperOrder() {
     </div>
   );
 }
+
+export function sizes() {
+  return (
+    <div style={{ width: 300, padding: 20 }}>
+      <TextInput className="mt-5" placeholder="size-xs" size="xs" />
+      <TextInput className="mt-5" placeholder="size-sm" size="sm" />
+      <TextInput className="mt-5" placeholder="size-md" size="md" />
+      <TextInput className="mt-5" placeholder="size-lg" size="lg" />
+      <TextInput className="mt-5" placeholder="size-xl" size="xl" />
+    </div>
+  );
+}
+
+export function Disable() {
+  return (
+    <div style={{ width: 300, padding: 20 }}>
+      <TextInput
+        defaultValue="Default"
+        label="Input label"
+        description="Input description"
+        disabled
+      />
+    </div>
+  );
+}
