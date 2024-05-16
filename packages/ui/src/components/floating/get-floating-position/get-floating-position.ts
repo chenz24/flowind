@@ -12,3 +12,12 @@ export function getFloatingPosition(
 
   return position;
 }
+
+export function getFloatingSide(dir: 'rtl' | 'ltr', position: FloatingPosition) {
+  const [side] = position.split('-') as [FloatingSide];
+  if (dir === 'rtl') {
+    return side === 'right' ? 'left' : 'right';
+  }
+
+  return side;
+}
