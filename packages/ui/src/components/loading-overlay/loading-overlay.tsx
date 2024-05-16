@@ -1,3 +1,5 @@
+'use client';
+
 import React, { forwardRef } from 'react';
 
 import { DefaultProps, FlowindSize, getDefaultZIndex, useComponentDefaultProps } from '@/styles';
