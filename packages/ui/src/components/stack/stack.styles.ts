@@ -5,7 +5,7 @@ import { createStyles, FlowindNumberSize, rem } from '@/styles';
 export type StackPosition = 'right' | 'center' | 'left' | 'apart';
 export type StackDirection = 'row' | 'col';
 
-export interface GroupStylesParams {
+export interface StackStylesParams {
   direction: StackDirection;
   justify: React.CSSProperties['justifyContent'];
   noWrap: boolean;
@@ -46,7 +46,7 @@ export const ALIGNMENTS = {
 };
 
 export default createStyles(
-  (theme, { spacing, justify, direction, noWrap, grow, align }: GroupStylesParams) => {
+  (theme, { spacing, justify, direction, noWrap, grow, align }: StackStylesParams) => {
     const gapClass = GAP[spacing] || '';
     const gapStyle = spacing && !GAP[spacing] ? { gap: rem(spacing) } : {};
 
