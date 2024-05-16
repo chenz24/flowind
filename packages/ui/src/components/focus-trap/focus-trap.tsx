@@ -1,3 +1,5 @@
+'use client';
+
 import React, { cloneElement } from 'react';
 
 import { useFocusTrap, useMergedRef } from '@flowind/hooks';
