@@ -57,10 +57,19 @@ export default plugin(
             from: { height: 'var(--radix-accordion-content-height)' },
             to: { height: '0px' },
           },
+          'stripes-animation': {
+            from: { backgroundPosition: '0 0' },
+            to: { backgroundPosition: '40px 0' },
+          },
         },
         animation: {
           'accordion-down': 'accordion-down 0.2s ease-out',
           'accordion-up': 'accordion-up 0.2s ease-out',
+          'stripes-animation': 'stripes-animation 1000ms linear infinite',
+        },
+        backgroundImage: {
+          'progress-striped':
+            'linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)',
         },
       },
     },
