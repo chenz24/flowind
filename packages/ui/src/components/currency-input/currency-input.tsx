@@ -10,7 +10,7 @@ import { clx } from '@/utils/clx';
 const currencyInputVariants = cva({
   base: clx(
     'flex items-center gap-x-1',
-    'bg-ui-bg-field hover:bg-ui-bg-field-hover shadow-buttons-neutral placeholder-ui-fg-muted text-ui-fg-base transition-fg relative w-full rounded-md',
+    'bg-bg-field hover:bg-bg-field-hover shadow-buttons-neutral placeholder-fg-muted text-fg-base transition-fg relative w-full rounded-md',
     'focus-within:shadow-borders-interactive-with-active',
   ),
   variants: {
@@ -90,7 +90,7 @@ const CurrencyInput = React.forwardRef<HTMLInputElement, CurrencyInputProps>(
           'w-full cursor-text justify-between overflow-hidden',
           currencyInputVariants({ size }),
           {
-            'text-ui-fg-disabled !bg-ui-bg-disabled !shadow-buttons-neutral !placeholder-ui-fg-disabled cursor-not-allowed':
+            'text-fg-disabled !bg-bg-disabled !shadow-buttons-neutral !placeholder-fg-disabled cursor-not-allowed':
               disabled,
             '!shadow-borders-error invalid:!shadow-borders-error': props['aria-invalid'] || !valid,
           },
@@ -107,8 +107,8 @@ const CurrencyInput = React.forwardRef<HTMLInputElement, CurrencyInputProps>(
           <Text
             size="sm"
             leading="compact"
-            className={clx('text-ui-fg-muted pointer-events-none select-none uppercase', {
-              'text-ui-fg-disabled': disabled,
+            className={clx('text-fg-muted pointer-events-none select-none uppercase', {
+              'text-fg-disabled': disabled,
             })}
           >
             {code}
@@ -134,8 +134,8 @@ const CurrencyInput = React.forwardRef<HTMLInputElement, CurrencyInputProps>(
           <Text
             size="sm"
             leading="compact"
-            className={clx('text-ui-fg-muted pointer-events-none select-none', {
-              'text-ui-fg-disabled': disabled,
+            className={clx('text-fg-muted pointer-events-none select-none', {
+              'text-fg-disabled': disabled,
             })}
           >
             {symbol}

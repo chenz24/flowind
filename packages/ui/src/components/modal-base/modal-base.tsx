@@ -5,7 +5,6 @@ import React, { useState } from 'react';
 import { RemoveScroll } from 'react-remove-scroll';
 
 import { useFocusReturn, useId, useWindowEvent } from '@flowind/hooks';
-// import { getDefaultZIndex, MantineNumberSize, MantineShadow } from '@flowind/styles';
 import {
   ClassNames,
   DefaultProps,
