@@ -18,7 +18,9 @@ const _NavigationMenu = forwardRef<HTMLDivElement, NavigationMenuProps>((props, 
     defaultProps,
     props,
   );
-  const { classes, cx } = useStyles({}, { classNames, name: 'Badge' });
+
+  const { classes, cx } = useStyles({}, { classNames, name: 'NavigationMenu' });
+
   return (
     <NavigationMenuPrimitive.Root className={cx(classes.root, className)} ref={ref} {...others}>
       {children}
