@@ -69,8 +69,11 @@ const SubMenuContent = React.forwardRef<
       ref={ref}
       collisionPadding={collisionPadding}
       className={clx(
-        'bg-bg-base text-fg-base shadow-elevation-flyout max-h-[var(--radix-popper-available-height)] min-w-[8rem] overflow-hidden rounded-lg p-1',
-        'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
+        `bg-bg-base text-fg-base shadow-elevation-flyout max-h-[var(--radix-popper-available-height)] 
+        min-w-[8rem] overflow-hidden rounded-lg p-1`,
+        `data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 
+        data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 
+        data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2`,
         className,
       )}
       {...props}
@@ -94,7 +97,9 @@ const Content = React.forwardRef<
       collisionPadding={collisionPadding}
       className={clx(
         'bg-bg-base text-fg-base shadow-elevation-flyout max-h-[var(--radix-popper-available-height)] min-w-[220px] overflow-hidden rounded-lg p-1',
-        'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
+        `data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 
+        data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 
+        data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2`,
         className,
       )}
       {...props}
@@ -113,7 +118,9 @@ const Item = React.forwardRef<
   <Primitives.Item
     ref={ref}
     className={clx(
-      'bg-bg-base hover:bg-bg-base-hover focus-visible:bg-bg-base-pressed text-fg-base data-[disabled]:text-fg-disabled txt-compact-sm relative flex cursor-pointer select-none items-center rounded-md px-2 py-1.5 outline-none transition-colors data-[disabled]:pointer-events-none',
+      `bg-bg-base hover:bg-bg-base-hover focus-visible:bg-bg-base-pressed text-fg-base data-[disabled]:text-fg-disabled 
+      txt-compact-sm relative flex cursor-pointer select-none items-center rounded-md px-2 py-1.5 outline-none transition-colors 
+      data-[disabled]:pointer-events-none`,
       className,
     )}
     {...props}
@@ -131,7 +138,9 @@ const CheckboxItem = React.forwardRef<
   <Primitives.CheckboxItem
     ref={ref}
     className={clx(
-      'focus-visible:bg-bg-base-pressed hover:bg-bg-base-hover text-fg-base data-[disabled]:text-fg-disabled relative flex cursor-pointer select-none items-center rounded-md py-1.5 pl-9 pr-2 text-sm outline-none transition-colors data-[disabled]:pointer-events-none',
+      `focus-visible:bg-bg-base-pressed hover:bg-bg-base-hover text-fg-base data-[disabled]:text-fg-disabled 
+      relative flex cursor-pointer select-none items-center rounded-md py-1.5 pl-9 pr-2 text-sm outline-none 
+      transition-colors data-[disabled]:pointer-events-none`,
       className,
     )}
     checked={checked}
@@ -157,7 +166,9 @@ const RadioItem = React.forwardRef<
   <Primitives.RadioItem
     ref={ref}
     className={clx(
-      'focus-visible:bg-bg-base-pressed hover:bg-base-hover bg-bg-base txt-compact-sm relative flex cursor-pointer select-none items-center rounded-md py-1.5 pl-9 pr-2 text-sm outline-none transition-colors data-[disabled]:pointer-events-none data-[state=checked]:font-medium data-[disabled]:opacity-50',
+      `focus-visible:bg-bg-base-pressed hover:bg-base-hover bg-bg-base txt-compact-sm relative flex cursor-pointer 
+      select-none items-center rounded-md py-1.5 pl-9 pr-2 text-sm outline-none transition-colors 
+      data-[disabled]:pointer-events-none data-[state=checked]:font-medium data-[disabled]:opacity-50`,
       className,
     )}
     {...props}
@@ -207,7 +218,7 @@ Separator.displayName = 'DropdownMenu.Separator';
  */
 const Shortcut = ({ className, ...props }: React.HTMLAttributes<HTMLSpanElement>) => (
   <span
-    className={clx('text-fg-subtle txt-compact-sm ml-auto tracking-widest', className)}
+    className={clx('text-fg-muted txt-compact-sm ml-auto tracking-widest', className)}
     {...props}
   />
 );
