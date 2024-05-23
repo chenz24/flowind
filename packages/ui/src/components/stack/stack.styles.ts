@@ -52,7 +52,7 @@ export default createStyles(
 
     return {
       classes: {
-        root: `box-border flex ${DIRECTIONS[direction || 'row']} ${ALIGNMENTS[align || 'center']} ${
+        root: `w-full box-border flex ${DIRECTIONS[direction || 'row']} ${ALIGNMENTS[align || 'center']} ${
           noWrap ? 'flex-nowrap' : 'flex-wrap'
         }
     ${JUSTIFY[justify] || ''} ${gapClass} [&>*]:box-border ${grow ? '[&>*]:grow' : '[&>*]:grow-0'}`,

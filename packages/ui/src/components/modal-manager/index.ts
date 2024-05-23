@@ -6,13 +6,14 @@ export {
   closeAllModals,
   openConfirmModal,
   openContextModal,
+  openInfoModal,
   modals,
 } from './events';
 
 export type { ModalsProviderProps } from './modals-provider';
 export type {
   ContextModalProps,
-  MantineModalsOverride,
-  MantineModals,
-  MantineModal,
+  FlowindModalsOverride,
+  FlowindModals,
+  FlowindModal,
 } from './context';

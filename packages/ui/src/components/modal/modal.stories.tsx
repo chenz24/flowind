@@ -2,7 +2,10 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { useDisclosure } from '@flowind/hooks';
+import { CubeSolid } from '@flowind/icons';
 import { Button } from '../button';
+import { MediaObject } from '../media-object';
+import { Stack } from '../stack';
 import { Modal } from './modal';
 
 const meta: Meta<typeof Modal> = {
@@ -27,6 +30,21 @@ const content = Array(20)
     </p>
   ));
 
+const title = (
+  <MediaObject
+    title="Modal Title"
+    description="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+    image={<CubeSolid size={24} className="text-fg-subtle" />}
+  />
+);
+
+const footer = (
+  <Stack justify="flex-end">
+    <Button variant="default">Cancel</Button>
+    <Button type="primary">Save</Button>
+  </Stack>
+);
+
 export function Usage() {
   const [opened, { open, close }] = useDisclosure(false);
   return (
@@ -34,8 +52,21 @@ export function Usage() {
       <Button onClick={open}>Open modal</Button>
       {content}
       <Button onClick={open}>Open modal</Button>
-      <Modal opened={opened} onClose={close} title="Just a Modal" width="md" zIndex={73812}>
-        <input data-autofocus />
+      <Modal
+        opened={opened}
+        onClose={close}
+        footer={footer}
+        title={title}
+        width="lg"
+        zIndex={73812}
+      >
+        Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id
+        consequat veniam incididunt duis in sint irure nisi. Mollit officia cillum Lorem ullamco
+        minim nostrud elit officia tempor esse quis. Sunt ad dolore quis aute consequat. Magna
+        exercitation reprehenderit magna aute tempor cupidatat consequat elit dolor adipisicing.
+        Mollit dolor eiusmod sunt ex incididunt cillum quis. Velit duis sit officia eiusmod Lorem
+        aliqua enim laboris do dolor eiusmod. Et mollit incididunt nisi consectetur esse laborum
+        eiusmod pariatur proident Lorem eiusmod et. Culpa deserunt nostrud ad veniam.
       </Modal>
     </div>
   );
@@ -85,7 +116,7 @@ export function FullScreen() {
 export function WithScroll() {
   return (
     <div style={{ padding: 40 }}>
-      <Modal opened onClose={() => {}} title="Just a Modal" width="md">
+      <Modal opened onClose={() => {}} footer={footer} title="Just a Modal" width="md">
         {content}
       </Modal>
     </div>

@@ -16,6 +16,9 @@ export interface ModalProps extends Omit<ModalRootProps, 'title'> {
   /** Modal title */
   title?: React.ReactNode;
 
+  /** Modal footer */
+  footer?: React.ReactNode;
+
   /** Determines whether overlay should be rendered, true by default */
   withOverlay?: boolean;
 
@@ -42,6 +45,7 @@ const defaultProps: Partial<ModalProps> = {
 export function Modal(props: ModalProps) {
   const {
     title,
+    footer,
     withOverlay,
     overlayProps,
     withCloseButton,
@@ -63,7 +67,9 @@ export function Modal(props: ModalProps) {
           </ModalBase.Header>
         )}
 
-        <ModalBase.Body>{children}</ModalBase.Body>
+        {!!children && <ModalBase.Body>{children}</ModalBase.Body>}
+
+        {!!footer && <ModalBase.Footer>{footer}</ModalBase.Footer>}
       </ModalContent>
     </ModalRoot>
   );

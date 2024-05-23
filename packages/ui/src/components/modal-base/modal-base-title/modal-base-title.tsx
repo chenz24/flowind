@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect } from 'react';
+import React, { forwardRef } from 'react';
 
 import { DefaultProps, Selectors, useComponentDefaultProps } from '@/styles';
 import { Box } from '../../box';
@@ -20,11 +20,6 @@ export const ModalBaseTitle = forwardRef<HTMLHeadingElement, ModalBaseTitleProps
   );
 
   const { classes, cx } = useStyles(null, ctx.stylesApi);
-
-  useEffect(() => {
-    ctx.setTitleMounted(true);
-    return () => ctx.setTitleMounted(false);
-  }, []);
 
   return (
     <Box

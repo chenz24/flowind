@@ -1,20 +1,24 @@
 import { createUseExternalEvents } from '@/utils/create-use-external-events/create-use-external-events';
 import {
-  MantineModal,
-  MantineModals,
+  FlowindModal,
+  FlowindModals,
   ModalSettings,
   OpenConfirmModal,
   OpenContextModal,
+  OpenStateModal,
 } from './context';
 
 type ModalsEvents = {
   openModal: (payload: ModalSettings) => void;
   closeModal: (id: string) => void;
-  closeContextModal: <TKey extends MantineModal>(id: TKey) => void;
+  closeContextModal: <TKey extends FlowindModal>(id: TKey) => void;
   closeAllModals: () => void;
   openConfirmModal: (payload: OpenConfirmModal) => void;
-  openContextModal: <TKey extends MantineModal>(
-    payload: OpenContextModal<Parameters<MantineModals[TKey]>[0]['innerProps']> & { modal: TKey },
+  openInfoModal: (payload: OpenStateModal) => void;
+  openWarningModal: (payload: OpenStateModal) => void;
+  openErrorModal: (payload: OpenStateModal) => void;
+  openContextModal: <TKey extends FlowindModal>(
+    payload: OpenContextModal<Parameters<FlowindModals[TKey]>[0]['innerProps']> & { modal: TKey },
   ) => void;
 };
 
@@ -23,13 +27,16 @@ export const [useModalsEvents, createEvent] =
 
 export const openModal = createEvent('openModal');
 export const closeModal = createEvent('closeModal');
-export const closeContextModal: ModalsEvents['closeContextModal'] = <TKey extends MantineModal>(
+export const closeContextModal: ModalsEvents['closeContextModal'] = <TKey extends FlowindModal>(
   id: TKey,
 ) => createEvent('closeContextModal')(id);
 export const closeAllModals = createEvent('closeAllModals');
 export const openConfirmModal = createEvent('openConfirmModal');
-export const openContextModal: ModalsEvents['openContextModal'] = <TKey extends MantineModal>(
-  payload: OpenContextModal<Parameters<MantineModals[TKey]>[0]['innerProps']> & { modal: TKey },
+export const openInfoModal = createEvent('openInfoModal');
+export const openWarningModal = createEvent('openWarningModal');
+export const openErrorModal = createEvent('openErrorModal');
+export const openContextModal: ModalsEvents['openContextModal'] = <TKey extends FlowindModal>(
+  payload: OpenContextModal<Parameters<FlowindModals[TKey]>[0]['innerProps']> & { modal: TKey },
 ) => createEvent('openContextModal')(payload);
 
 export const modals = {
@@ -38,4 +45,7 @@ export const modals = {
   closeAll: closeAllModals,
   openConfirmModal,
   openContextModal,
+  info: openInfoModal,
+  warning: openWarningModal,
+  error: openErrorModal,
 };

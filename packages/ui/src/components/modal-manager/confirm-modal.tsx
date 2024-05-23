@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { Box } from '../box';
 import { Button, type ButtonProps } from '../button';
 import { Stack, StackProps } from '../stack';
 import { ConfirmLabels } from './context';
@@ -8,7 +7,10 @@ import { useModals } from './use-modals/use-modals';
 
 export interface ConfirmModalProps {
   id?: string;
-  children?: React.ReactNode;
+  footerLeftSection?: React.ReactNode;
+  title?: React.ReactNode;
+  description?: React.ReactNode;
+  icon?: React.ReactNode;
   onCancel?: () => void;
   onConfirm?: () => void;
   closeOnConfirm?: boolean;
@@ -16,11 +18,15 @@ export interface ConfirmModalProps {
   cancelProps?: ButtonProps & React.ComponentPropsWithoutRef<'button'>;
   confirmProps?: ButtonProps & React.ComponentPropsWithoutRef<'button'>;
   groupProps?: StackProps;
+  hasConfirmButton?: boolean;
+  hasCancelButton?: boolean;
   labels?: ConfirmLabels;
 }
 
 export function ConfirmModal({
   id,
+  hasConfirmButton = true,
+  hasCancelButton = true,
   cancelProps,
   confirmProps,
   labels = { cancel: '', confirm: '' },
@@ -29,7 +35,7 @@ export function ConfirmModal({
   groupProps,
   onCancel,
   onConfirm,
-  children,
+  footerLeftSection,
 }: ConfirmModalProps) {
   const { cancel: cancelLabel, confirm: confirmLabel } = labels;
   const ctx = useModals();
@@ -48,16 +54,20 @@ export function ConfirmModal({
 
   return (
     <>
-      {children && <Box>{children}</Box>}
+      {footerLeftSection}
 
       <Stack justify="flex-end" {...groupProps}>
-        <Button variant="default" {...cancelProps} onClick={handleCancel}>
-          {cancelProps?.children || cancelLabel}
-        </Button>
+        {hasCancelButton && (
+          <Button variant="default" {...cancelProps} onClick={handleCancel}>
+            {cancelProps?.children || cancelLabel}
+          </Button>
+        )}
 
-        <Button {...confirmProps} onClick={handleConfirm}>
-          {confirmProps?.children || confirmLabel}
-        </Button>
+        {hasConfirmButton && (
+          <Button {...confirmProps} onClick={handleConfirm}>
+            {confirmProps?.children || confirmLabel}
+          </Button>
+        )}
       </Stack>
     </>
   );

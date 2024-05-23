@@ -36,7 +36,7 @@ function handleCloseModal(modal: ModalState, canceled?: boolean) {
 
 export function modalsReducer(
   state: ModalsState,
-  action: OpenAction | CloseAction | CloseAllAction
+  action: OpenAction | CloseAction | CloseAllAction,
 ): ModalsState {
   switch (action.type) {
     case 'OPEN': {

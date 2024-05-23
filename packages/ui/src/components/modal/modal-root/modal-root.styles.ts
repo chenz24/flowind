@@ -17,14 +17,14 @@ interface ModalRootStylesParams {
 }
 
 export default createStyles(
-  (theme, { yOffset, xOffset, centered, fullScreen }: ModalRootStylesParams, { size }) => ({
+  (theme, { yOffset, xOffset, centered, fullScreen, width }: ModalRootStylesParams, { size }) => ({
     classes: {
       content: `max-w-full overflow-y-auto ${fullScreen ? 'rounded-none h-screen' : ''}`,
       inner: `flex justify-center ${centered ? 'items-center' : 'items-start'}`,
     },
     styles: {
       content: {
-        flex: fullScreen ? '0 0 100%' : `0 0 ${getSize({ size, sizes })}`,
+        flex: fullScreen ? '0 0 100%' : `0 0 ${getSize({ size: width, sizes })}`,
         maxHeight: fullScreen ? undefined : `calc(100vh - (${rem(yOffset)} * 2))`,
       },
       inner: {

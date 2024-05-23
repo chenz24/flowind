@@ -27,6 +27,7 @@ import {
   ModalBaseContent,
   ModalBaseContentStylesNames,
 } from './modal-base-content/modal-base-content';
+import { ModalBaseFooter, ModalBaseFooterStylesNames } from './modal-base-footer/modal-base-footer';
 import { ModalBaseHeader, ModalBaseHeaderStylesNames } from './modal-base-header/modal-base-header';
 import {
   ModalBaseOverlay,
@@ -45,6 +46,7 @@ export type ModalBaseStylesNames =
   | ModalBaseContentStylesNames
   | ModalBaseHeaderStylesNames
   | ModalBaseTitleStylesNames
+  | ModalBaseFooterStylesNames
   | ModalBaseBodyStylesNames;
 
 export interface ModalBaseSettings extends DefaultProps, React.ComponentPropsWithoutRef<'div'> {
@@ -232,6 +234,7 @@ ModalBase.CloseButton = ModalBaseCloseButton;
 ModalBase.Overlay = ModalBaseOverlay;
 ModalBase.Content = ModalBaseContent;
 ModalBase.Header = ModalBaseHeader;
+ModalBase.Footer = ModalBaseFooter;
 ModalBase.Title = ModalBaseTitle;
 ModalBase.Body = ModalBaseBody;
 ModalBase.NativeScrollArea = NativeScrollArea;

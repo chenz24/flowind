@@ -35,6 +35,7 @@ export * from './components/kbd';
 export { Label } from './components/label';
 export * from './components/loader';
 export * from './components/loading-overlay';
+export * from './components/media-object';
 export * from './components/menu-bar';
 export * from './components/modal';
 export * from './components/modal-base';

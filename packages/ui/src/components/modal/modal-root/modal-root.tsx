@@ -63,6 +63,7 @@ export function ModalRoot(props: ModalRootProps) {
           inner: cx(classes.inner, classNames?.inner),
         }}
         styles={{
+          ...styles,
           content: styls.content,
           inner: styls.inner,
         }}

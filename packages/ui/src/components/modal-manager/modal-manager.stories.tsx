@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { openErrorModal, openWarningModal } from '@/components/modal-manager/events';
 import { Button } from '../button';
 import { Stack } from '../stack';
 import { Text } from '../text';
+import { TextInput } from '../text-input';
 import {
   closeAllModals,
   closeModal,
@@ -11,6 +13,7 @@ import {
   ModalsProvider,
   openConfirmModal,
   openContextModal,
+  openInfoModal,
   openModal,
   useModals,
 } from './index';
@@ -52,9 +55,52 @@ export function Usage() {
       onClose: () => console.log('content modal 1 closed'),
     });
 
+  const showInfoModal = () =>
+    openInfoModal({
+      modalId: 'info-modal',
+      title: 'Hello there info modal',
+      description:
+        'Insert your status modal description here. It would look better as two lines of text.',
+      footerLeftSection: (
+        <Text color="blue" onClick={() => closeModal('info-modal')}>
+          Left
+        </Text>
+      ),
+      onClose: () => console.log('content modal 1 closed'),
+    });
+
+  const showWarningModal = () =>
+    openWarningModal({
+      modalId: 'info-modal',
+      title: 'Hello there info modal',
+      description:
+        'Insert your status modal description here. It would look better as two lines of text.',
+      onClose: () => console.log('content modal 1 closed'),
+    });
+
+  const showErrorModal = () =>
+    openErrorModal({
+      modalId: 'info-modal',
+      title: 'Hello there info modal',
+      description:
+        'Insert your status modal description here. It would look better as two lines of text.',
+      onClose: () => console.log('content modal 1 closed'),
+    });
+
   const showSingleConfirmModal = () =>
     openConfirmModal({
-      title: 'Just confirm',
+      title: 'Delete Something',
+      description: 'Are you sure? This cannot be undone.',
+      children: (
+        <div className="pt-1.5">
+          <p className="txt-sm text-fg-subtle">
+            Please type <span className="font-semibold">project</span> to confirm
+          </p>
+          <div>
+            <TextInput />
+          </div>
+        </div>
+      ),
       onCancel: () => console.log('Single confirm modal cancelled'),
       onConfirm: () => console.log('Single confirm modal confirmed'),
       onClose: () => console.log('Single confirm modal closed'),
@@ -111,6 +157,15 @@ export function Usage() {
         </Button>
         <Button onClick={showContentModal} color="blue">
           Open content modal
+        </Button>
+        <Button onClick={showInfoModal} color="blue">
+          Open info modal
+        </Button>
+        <Button onClick={showWarningModal} color="yellow">
+          Open warning modal
+        </Button>
+        <Button onClick={showErrorModal} color="red">
+          Open error modal
         </Button>
       </Stack>
     </ModalsProvider>
