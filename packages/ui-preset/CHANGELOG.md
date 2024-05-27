@@ -1,5 +1,15 @@
 # @medusajs/ui-preset
 
+## 0.1.0
+
+### Minor Changes
+
+- a32e231: release 0.1
+
+### Patch Changes
+
+- 18c4f15: ...
+
 ## 0.0.2
 
 ### Patch Changes
