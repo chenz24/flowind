@@ -110,4 +110,4 @@ export const LoadingOverlay = forwardRef<HTMLDivElement, LoadingOverlayProps>((p
   );
 });
 
-LoadingOverlay.displayName = '@flowind/core/LoadingOverlay';
+LoadingOverlay.displayName = 'LoadingOverlay';

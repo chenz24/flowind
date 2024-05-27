@@ -1,7 +1,6 @@
 import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Plus } from '@flowind/icons';
 import { Stack } from '../stack';
 import { CloseButton } from './close-button';
 

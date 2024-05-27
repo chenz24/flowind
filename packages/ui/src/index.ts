@@ -51,7 +51,6 @@ export * from './components/pin-input';
 export * from './components/popover';
 export * from './components/portal';
 export * from './components/progress';
-export { Prompt } from './components/prompt';
 export * from './components/radio';
 export * from './components/rating';
 export * from './components/scroll-area';
@@ -79,8 +78,6 @@ export * from './components/transition';
 export { UnstyledButton } from './components/unstyled-button';
 
 // Hooks
-export { usePrompt } from './hooks/use-prompt';
-export { useToast } from './hooks/use-toast';
 export { useToggleState } from './hooks/use-toggle-state';
 
 // Utils

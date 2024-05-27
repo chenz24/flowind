@@ -3,6 +3,7 @@ import type { Meta } from '@storybook/react';
 
 import { useDisclosure } from '@flowind/hooks';
 import { Button } from '../button';
+import { TextInput } from '../text-input';
 import { FocusTrap } from './focus-trap';
 
 const meta: Meta<typeof FocusTrap> = {
@@ -22,9 +23,9 @@ export function Usage() {
       <Button onClick={handlers.toggle}>Toggle</Button>
       <FocusTrap active={active}>
         <div>
-          <input />
-          <input />
-          <input />
+          <TextInput />
+          <TextInput data-autofocus />
+          <TextInput />
         </div>
       </FocusTrap>
     </>
