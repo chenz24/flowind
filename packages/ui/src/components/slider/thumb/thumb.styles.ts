@@ -1,13 +1,14 @@
-import { createStyles, FlowindColor, getSize, rem } from '@/styles';
+import { createStyles, FlowindColor, FlowindNumberSize, getSize, rem } from '@/styles';
 import { sizes } from '../slider-root/slider-root.styles';
 
 interface ThumbStyles {
   color: FlowindColor;
   disabled: boolean;
   thumbSize: number | string;
+  size: FlowindNumberSize;
 }
 
-export default createStyles((theme, { color, disabled, thumbSize }: ThumbStyles, { size }) => {
+export default createStyles((theme, { color, disabled, thumbSize, size }: ThumbStyles) => {
   const { border } = theme.fn.variantColors({ variant: 'outline', color });
   return {
     classes: {

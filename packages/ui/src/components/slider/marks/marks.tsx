@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { DefaultProps, FlowindColor, FlowindSize, Selectors } from '@/styles';
+import { DefaultProps, FlowindColor, FlowindNumberSize, Selectors } from '@/styles';
 import { Box } from '../../box';
 import { getPosition } from '../utils/get-position/get-position';
 import { isMarkFilled } from './is-mark-filled';
@@ -10,7 +10,7 @@ export type MarksStylesNames = Selectors<typeof useStyles>;
 
 export interface MarksProps extends DefaultProps<MarksStylesNames> {
   marks: { value: number; label?: React.ReactNode }[];
-  size: FlowindSize;
+  size: FlowindNumberSize;
   thumbSize?: number;
   color: FlowindColor;
   min: number;
@@ -41,8 +41,8 @@ export function Marks({
   variant,
 }: MarksProps) {
   const { classes, styls, cx } = useStyles(
-    { color, disabled, thumbSize },
-    { name: 'Slider', classNames, styles, unstyled, variant, size },
+    { color, disabled, thumbSize, size },
+    { name: 'Slider', classNames, styles, unstyled, variant },
   );
 
   const items = marks.map((mark, index) => (

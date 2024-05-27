@@ -7,6 +7,7 @@ interface TrackStyles {
   disabled: boolean;
   inverted: boolean;
   thumbSize?: number;
+  size?: FlowindNumberSize;
 }
 
 export default createStyles(
