@@ -7,6 +7,7 @@ import { clx } from '@/utils/clx';
 const textVariants = cva({
   variants: {
     size: {
+      none: '',
       xs: '',
       sm: '',
       md: '',

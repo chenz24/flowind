@@ -1,6 +1,7 @@
 import { createStyles } from '@/styles';
 
 const paddings = {
+  none: '',
   xs: 'py-1 px-1.5 txt-compact-xs',
   sm: 'py-1.5 px-2 txt-compact-sm',
   md: 'py-1.5 px-2.5 txt-compact-md',

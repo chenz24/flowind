@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 
 import { useDidUpdate } from '@flowind/hooks';
@@ -210,6 +212,7 @@ export function Spotlight(props: SpotlightProps) {
       padding={0}
       radius={radius}
       scrollAreaComponent={Modal.NativeScrollArea}
+      className={className}
       classNames={{
         ...classNames,
         content: cx(classes.content, classNames?.content),
