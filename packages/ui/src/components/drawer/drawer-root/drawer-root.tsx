@@ -38,10 +38,10 @@ const defaultProps: Partial<DrawerRootProps> = {
 };
 
 export function DrawerRoot(props: DrawerRootProps) {
-  const { classNames, variant, size, scrollAreaComponent, position, transitionProps, ...others } =
+  const { classNames, variant, width, scrollAreaComponent, position, transitionProps, ...others } =
     useComponentDefaultProps('DrawerRoot', defaultProps, props);
 
-  const { classes, cx, theme, styls } = useStyles({ position }, { name: 'Drawer', variant, size });
+  const { classes, cx, theme, styls } = useStyles({ position }, { name: 'Drawer', variant });
 
   const drawerTransition = (theme.dir === 'rtl' ? rtlTransitions : transitions)[position];
 
@@ -49,7 +49,7 @@ export function DrawerRoot(props: DrawerRootProps) {
     <DrawerProvider value={{ scrollAreaComponent }}>
       <ModalBase
         __staticSelector="Drawer"
-        size={size}
+        width={width}
         variant={variant}
         transitionProps={{ transition: drawerTransition, duration: 200, ...transitionProps }}
         classNames={{
