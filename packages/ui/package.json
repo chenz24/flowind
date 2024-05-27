@@ -78,6 +78,7 @@
     "@react-aria/datepicker": "^3.5.0",
     "@react-stately/datepicker": "^3.5.0",
     "clsx": "^1.2.1",
+    "cmdk": "^1.0.0",
     "copy-to-clipboard": "^3.3.3",
     "cva": "1.0.0-beta.1",
     "date-fns": "^2.30.0",
