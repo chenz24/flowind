@@ -1,6 +1,7 @@
 import type { FlowindColor, FlowindThemeBase, StatusType } from '../../../types';
 import filledClasses from './styles/filled';
 import lightClasses from './styles/light';
+import lighterClasses from './styles/lighter';
 import outlineClasses from './styles/outline';
 import subtleClasses from './styles/subtle';
 
@@ -23,7 +24,7 @@ export function variantColors(theme: FlowindThemeBase) {
     primary: theme.primaryColor,
     secondary: theme.secondaryColor,
     danger: 'red',
-    success: 'green',
+    success: 'emerald',
     warning: 'yellow',
     info: 'cyan',
   };
@@ -35,7 +36,17 @@ export function variantColors(theme: FlowindThemeBase) {
       case 'light': {
         const classes = lightClasses[variantColor];
         return {
-          border: 'border border-solid border-transparent',
+          border: 'border-none',
+          background: classes.background,
+          color: classes.color,
+          hover: classes.hoverBackground,
+        };
+      }
+
+      case 'lighter': {
+        const classes = lighterClasses[variantColor];
+        return {
+          border: `border border-solid ${classes.border}`,
           background: classes.background,
           color: classes.color,
           hover: classes.hoverBackground,
@@ -68,7 +79,7 @@ export function variantColors(theme: FlowindThemeBase) {
           return null;
         }
         return {
-          border: 'border border-solid border-transparent',
+          border: 'border-none',
           background: classes.background,
           color: classes.color,
           hover: classes.hoverBackground,
@@ -78,10 +89,10 @@ export function variantColors(theme: FlowindThemeBase) {
 
       default: {
         return {
-          border: 'border border-solid border-gray-200 dark:border-gray-700',
-          background: 'bg-white dark:bg-zinc-800',
-          color: 'text-gray-800 dark:text-white',
-          hover: 'hover:bg-gray-50 dark:hover:bg-gray-800',
+          border: 'border border-solid border-neutral-200 dark:border-neutral-700',
+          background: 'bg-white dark:bg-transparent',
+          color: 'text-fg-base',
+          hover: 'hover:bg-neutral-100 dark:hover:bg-neutral-800',
         };
       }
     }

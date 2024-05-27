@@ -1,26 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const CurrencyDollar = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          stroke={color}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M10 5v10m-2.5-2.348.732.549c.976.732 2.559.732 3.536 0 .976-.733.976-1.92 0-2.652C11.28 10.182 10.64 10 10 10c-.604 0-1.208-.183-1.67-.55-.92-.732-.92-1.918 0-2.65.922-.733 2.418-.733 3.34 0l.345.274M17.5 10a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z"
-        />
-      </svg>
-    )
-  }
-)
-CurrencyDollar.displayName = "CurrencyDollar"
-export default CurrencyDollar
+import * as React from "react";
+import type { IconProps } from "../types";
+const CurrencyDollar = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0s1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0" /></svg>;
+});
+CurrencyDollar.displayName = "CurrencyDollar";
+export default CurrencyDollar;

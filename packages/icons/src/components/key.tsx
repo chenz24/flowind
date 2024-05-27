@@ -1,26 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const Key = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          stroke={color}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M12.91 4.761a2.327 2.327 0 0 1 2.327 2.328m2.327 0a4.656 4.656 0 0 1-5.453 4.586c-.437-.075-.9.02-1.213.334l-2.062 2.062H7.091v1.746H5.345v1.745h-2.91v-2.186c0-.463.184-.908.512-1.234L7.989 9.1c.313-.314.409-.776.334-1.213a4.655 4.655 0 1 1 9.241-.798v0Z"
-        />
-      </svg>
-    )
-  }
-)
-Key.displayName = "Key"
-export default Key
+import * as React from "react";
+import type { IconProps } from "../types";
+const Key = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15.491 5.713a2.793 2.793 0 0 1 2.793 2.793m2.793 0a5.587 5.587 0 0 1-6.544 5.504c-.524-.09-1.079.025-1.455.4l-2.474 2.475H8.509v2.095H6.414v2.095H2.923v-2.624c0-.555.22-1.089.613-1.48l6.05-6.052c.377-.376.491-.93.401-1.455a5.587 5.587 0 1 1 11.09-.958" /></svg>;
+});
+Key.displayName = "Key";
+export default Key;

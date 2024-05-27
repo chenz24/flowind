@@ -4,7 +4,7 @@ import { twMerge } from 'tailwind-merge';
 
 import { randomId } from '@flowind/hooks';
 import { useFlowindProviderStyles, useFlowindTheme } from '../../flowind-provider';
-import { ContextStylesParams, FlowindSize, FlowindTheme, Variants } from '../../types';
+import { ContextStylesParams, FlowindSize, FlowindTheme } from '../../types';
 
 type ContextClasses = ReturnType<typeof useFlowindProviderStyles>;
 
@@ -145,7 +145,7 @@ export function createStyles<
 
     const contextParams = { variant: options?.variant, size: options?.size };
     const cssObject: Record<string, any> = options?.unstyled
-      ? {}
+      ? { classes: {}, styles: {} }
       : getCssObject(theme, params, contextParams);
     const componentClasses = getClasses(options?.classNames, theme, params, contextParams);
     const providerClasses = getClasses(context, theme, params, contextParams);
@@ -159,11 +159,12 @@ export function createStyles<
 
     const { classes: inputClasses, styles: inputStyles = {} } = cssObject;
     const componentName = options?.name || randomId();
+    const classId = Array.isArray(componentName) ? componentName.join('-') : componentName;
 
     const classes = Object.fromEntries(
       Object.keys(inputClasses).map((key) => {
         const mergedClasses = twMerge(
-          `flowind-${componentName}-${key}`,
+          `flowind-${classId}-${key}`,
           inputClasses[key],
           contextVariations[key],
           providerClasses[key],

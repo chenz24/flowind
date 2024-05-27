@@ -1,29 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const SwatchSolid = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          fill={color}
-          fillRule="evenodd"
-          d="M1.875 3.438c0-.864.7-1.563 1.563-1.563h4.374c.864 0 1.563.7 1.563 1.563v10.937a3.75 3.75 0 1 1-7.5 0V3.437Zm3.75 11.874a.938.938 0 1 0 0-1.875.938.938 0 0 0 0 1.876Z"
-          clipRule="evenodd"
-        />
-        <path
-          fill={color}
-          d="M8.932 18.125h7.63c.864 0 1.563-.7 1.563-1.563v-4.375c0-.863-.7-1.562-1.563-1.562h-.116L9.16 17.91c-.075.074-.15.146-.229.214Zm1.683-3.438 5.395-5.395a1.562 1.562 0 0 0 0-2.209L12.917 3.99a1.563 1.563 0 0 0-2.21 0l-.083.083v10.303c0 .105-.002.21-.008.312h-.001Z"
-        />
-      </svg>
-    )
-  }
-)
-SwatchSolid.displayName = "SwatchSolid"
-export default SwatchSolid
+import * as React from "react";
+import type { IconProps } from "../types";
+const SwatchSolid = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path fill={color} fillRule="evenodd" d="M2.25 4.125c0-1.036.84-1.875 1.875-1.875h5.25c1.036 0 1.875.84 1.875 1.875V17.25a4.5 4.5 0 1 1-9 0zm4.5 14.25a1.125 1.125 0 1 0 0-2.25 1.125 1.125 0 0 0 0 2.25" clipRule="evenodd" /><path fill={color} d="M10.719 21.75h9.156c1.036 0 1.875-.84 1.875-1.875v-5.25c0-1.036-.84-1.875-1.875-1.875h-.14l-8.742 8.743a6 6 0 0 1-.274.257m2.019-4.125 6.474-6.474a1.875 1.875 0 0 0 0-2.651L15.5 4.787a1.875 1.875 0 0 0-2.651 0l-.1.099V17.25q0 .188-.01.375z" /></svg>;
+});
+SwatchSolid.displayName = "SwatchSolid";
+export default SwatchSolid;

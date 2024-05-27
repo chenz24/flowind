@@ -1,26 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const CloudArrowUp = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          stroke={color}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M10 13.75V8.125m0 0 2.5 2.5m-2.5-2.5-2.5 2.5M5.625 16.25A3.75 3.75 0 0 1 4.45 8.937a4.375 4.375 0 0 1 8.527-1.941 2.5 2.5 0 0 1 3.132 3.207A3.127 3.127 0 0 1 15 16.25H5.625Z"
-        />
-      </svg>
-    )
-  }
-)
-CloudArrowUp.displayName = "CloudArrowUp"
-export default CloudArrowUp
+import * as React from "react";
+import type { IconProps } from "../types";
+const CloudArrowUp = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 16.5V9.75m0 0 3 3m-3-3-3 3M6.75 19.5a4.5 4.5 0 0 1-1.41-8.775 5.25 5.25 0 0 1 10.233-2.33 3 3 0 0 1 3.758 3.848A3.752 3.752 0 0 1 18 19.5z" /></svg>;
+});
+CloudArrowUp.displayName = "CloudArrowUp";
+export default CloudArrowUp;

@@ -1,37 +1,34 @@
-"use client"
+'use client';
 
-import * as React from "react"
-import Primitive from "react-currency-input-field"
+import * as React from 'react';
+import { cva, VariantProps } from 'cva';
+import Primitive from 'react-currency-input-field';
 
-import { Text } from "@/components/text"
-import { clx } from "@/utils/clx"
-import { VariantProps, cva } from "cva"
+import { Text } from '@/components/text';
+import { clx } from '@/utils/clx';
 
 const currencyInputVariants = cva({
   base: clx(
-    "flex items-center gap-x-1",
-    "bg-ui-bg-field hover:bg-ui-bg-field-hover shadow-buttons-neutral placeholder-ui-fg-muted text-ui-fg-base transition-fg relative w-full rounded-md",
-    "focus-within:shadow-borders-interactive-with-active"
+    'flex items-center gap-x-1',
+    'bg-bg-field hover:bg-bg-field-hover shadow-buttons-neutral placeholder-fg-muted text-fg-base transition-fg relative w-full rounded-md',
+    'focus-within:shadow-borders-interactive-with-active',
   ),
   variants: {
     size: {
-      base: "txt-compact-medium h-8",
-      small: "txt-compact-small h-7",
+      base: 'txt-compact-medium h-8',
+      small: 'txt-compact-small h-7',
     },
   },
   defaultVariants: {
-    size: "base",
+    size: 'base',
   },
-})
+});
 
 interface CurrencyInputProps
-  extends Omit<
-      React.ComponentPropsWithoutRef<typeof Primitive>,
-      "prefix" | "suffix" | "size"
-    >,
+  extends Omit<React.ComponentPropsWithoutRef<typeof Primitive>, 'prefix' | 'suffix' | 'size'>,
     VariantProps<typeof currencyInputVariants> {
-  symbol: string
-  code: string
+  symbol: string;
+  code: string;
 }
 
 /**
@@ -45,7 +42,7 @@ const CurrencyInput = React.forwardRef<HTMLInputElement, CurrencyInputProps>(
       /**
        * The input's size.
        */
-      size = "base",
+      size = 'base',
       /**
        * The symbol to show in the input.
        */
@@ -59,63 +56,60 @@ const CurrencyInput = React.forwardRef<HTMLInputElement, CurrencyInputProps>(
       className,
       ...props
     }: CurrencyInputProps,
-    ref
+    ref,
   ) => {
-    const innerRef = React.useRef<HTMLInputElement>(null)
+    const innerRef = React.useRef<HTMLInputElement>(null);
 
     React.useImperativeHandle<HTMLInputElement | null, HTMLInputElement | null>(
       ref,
-      () => innerRef.current
-    )
+      () => innerRef.current,
+    );
 
-    const [valid, setValid] = React.useState(true)
+    const [valid, setValid] = React.useState(true);
 
     const onInnerInvalid = React.useCallback(
       (event: React.FormEvent<HTMLInputElement>) => {
-        setValid(event.currentTarget.validity.valid)
+        setValid(event.currentTarget.validity.valid);
 
         if (onInvalid) {
-          onInvalid(event)
+          onInvalid(event);
         }
       },
-      [onInvalid]
-    )
+      [onInvalid],
+    );
 
     return (
       <div
+        role="presentation"
         onClick={() => {
           if (innerRef.current) {
-            innerRef.current.focus()
+            innerRef.current.focus();
           }
         }}
         className={clx(
-          "w-full cursor-text justify-between overflow-hidden",
+          'w-full cursor-text justify-between overflow-hidden',
           currencyInputVariants({ size }),
           {
-            "text-ui-fg-disabled !bg-ui-bg-disabled !shadow-buttons-neutral !placeholder-ui-fg-disabled cursor-not-allowed":
+            'text-fg-disabled !bg-bg-disabled !shadow-buttons-neutral !placeholder-fg-disabled cursor-not-allowed':
               disabled,
-            "!shadow-borders-error invalid:!shadow-borders-error":
-              props["aria-invalid"] || !valid,
+            '!shadow-borders-error invalid:!shadow-borders-error': props['aria-invalid'] || !valid,
           },
-          className
+          className,
         )}
       >
         <span
-          className={clx("w-fit min-w-[32px] border-r px-2", {
-            "py-[9px]": size === "base",
-            "py-[5px]": size === "small",
+          className={clx('w-fit min-w-[32px] border-r px-2', {
+            'py-[9px]': size === 'base',
+            'py-[5px]': size === 'small',
           })}
           role="presentation"
         >
           <Text
-            size="small"
+            size="sm"
             leading="compact"
-            className={clx(
-              "text-ui-fg-muted pointer-events-none select-none uppercase",
-              {
-                "text-ui-fg-disabled": disabled,
-              }
-            )}
+            className={clx('text-fg-muted pointer-events-none select-none uppercase', {
+              'text-fg-disabled': disabled,
+            })}
           >
             {code}
           </Text>
@@ -129,28 +123,28 @@ const CurrencyInput = React.forwardRef<HTMLInputElement, CurrencyInputProps>(
         />
         <span
           className={clx(
-            "flex w-fit min-w-[32px] items-center justify-center border-l px-2 text-right",
+            'flex w-fit min-w-[32px] items-center justify-center border-l px-2 text-right',
             {
-              "py-[9px]": size === "base",
-              "py-[5px]": size === "small",
-            }
+              'py-[9px]': size === 'base',
+              'py-[5px]': size === 'small',
+            },
           )}
           role="presentation"
         >
           <Text
-            size="small"
+            size="sm"
             leading="compact"
-            className={clx("text-ui-fg-muted pointer-events-none select-none", {
-              "text-ui-fg-disabled": disabled,
+            className={clx('text-fg-muted pointer-events-none select-none', {
+              'text-fg-disabled': disabled,
             })}
           >
             {symbol}
           </Text>
         </span>
       </div>
-    )
-  }
-)
-CurrencyInput.displayName = "CurrencyInput"
+    );
+  },
+);
+CurrencyInput.displayName = 'CurrencyInput';
 
-export { CurrencyInput }
+export { CurrencyInput };

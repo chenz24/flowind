@@ -1,23 +1,10 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const Linkedin = React.forwardRef<SVGSVGElement, Omit<IconProps, "color">>(
-  (props, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          fill="#0077B5"
-          d="M15.25 1H4.75A3.75 3.75 0 0 0 1 4.75v10.5A3.75 3.75 0 0 0 4.75 19h10.5A3.75 3.75 0 0 0 19 15.25V4.75A3.75 3.75 0 0 0 15.25 1ZM7 15.25H4.75V7H7v8.25ZM5.875 6.049a1.318 1.318 0 0 1-1.313-1.323c0-.73.588-1.323 1.313-1.323.724 0 1.313.592 1.313 1.323 0 .73-.588 1.323-1.313 1.323ZM16 15.25h-2.25v-4.203c0-2.526-3-2.335-3 0v4.203H8.5V7h2.25v1.324C11.797 6.384 16 6.24 16 10.18v5.069Z"
-        />
-      </svg>
-    )
-  }
-)
-Linkedin.displayName = "Linkedin"
-export default Linkedin
+import * as React from "react";
+import type { IconProps } from "../types";
+const Linkedin = React.forwardRef<SVGSVGElement, Omit<IconProps, "color">>(({
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path fill="#0077B5" d="M18.3 1.2H5.7a4.5 4.5 0 0 0-4.5 4.5v12.6a4.5 4.5 0 0 0 4.5 4.5h12.6a4.5 4.5 0 0 0 4.5-4.5V5.7a4.5 4.5 0 0 0-4.5-4.5M8.4 18.3H5.7V8.4h2.7zM7.05 7.259c-.87 0-1.575-.711-1.575-1.588 0-.876.706-1.587 1.575-1.587.87 0 1.575.71 1.575 1.587S7.92 7.26 7.05 7.26m12.15 11.04h-2.7v-5.043c0-3.03-3.6-2.801-3.6 0V18.3h-2.7V8.4h2.7v1.588c1.256-2.327 6.3-2.499 6.3 2.229z" /></svg>;
+});
+Linkedin.displayName = "Linkedin";
+export default Linkedin;

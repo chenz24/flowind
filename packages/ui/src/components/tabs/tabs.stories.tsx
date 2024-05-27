@@ -1,40 +1,76 @@
-import type { Meta, StoryObj } from "@storybook/react"
-import * as React from "react"
+import * as React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
 
-import { Container } from "../container"
-import { Tabs } from "./tabs"
+import { Container } from '../container';
+import { Tabs, TabsProps } from './tabs';
+import { TabsList } from './tabs-list/tabs-list';
 
 const meta: Meta<typeof Tabs> = {
-  title: "Components/Tabs",
+  title: 'Components/Tabs',
   component: Tabs,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-}
+};
 
-export default meta
+export default meta;
 
-type Story = StoryObj<typeof Tabs>
+type Story = StoryObj<typeof Tabs>;
 
-const Demo = () => {
-  return (
-    <div className="h-screen max-h-[500px] w-screen max-w-[700px]">
-      <Tabs defaultValue="tab1">
-        <Tabs.List>
-          <Tabs.Trigger value="tab1">Tab 1</Tabs.Trigger>
-          <Tabs.Trigger value="tab2">Tab 2</Tabs.Trigger>
-          <Tabs.Trigger value="tab3">Tab 3</Tabs.Trigger>
-        </Tabs.List>
-        <Container className="txt-compact-medium text-ui-fg-base mt-4 h-full p-3">
-          <Tabs.Content value="tab1">Tab 1 content</Tabs.Content>
-          <Tabs.Content value="tab2">Tab 2 content</Tabs.Content>
-          <Tabs.Content value="tab3">Tab 3 content</Tabs.Content>
-        </Container>
-      </Tabs>
-    </div>
-  )
-}
+const base = (
+  <>
+    <Tabs.List>
+      <Tabs.Tab value="react">React</Tabs.Tab>
+      <Tabs.Tab value="sv">Svelte</Tabs.Tab>
+      <Tabs.Tab value="ng">Wrapped tab</Tabs.Tab>
+      <Tabs.Tab value="ds" disabled>
+        Disabled
+      </Tabs.Tab>
+    </Tabs.List>
+
+    <Tabs.Panel value="react">React Panel</Tabs.Panel>
+    <Tabs.Panel value="sv">Svelte Panel</Tabs.Panel>
+    <Tabs.Panel value="ng">Angular Panel</Tabs.Panel>
+  </>
+);
+
+const verticalBase = (
+  <>
+    <Tabs.List>
+      <Tabs.Tab value="react">React</Tabs.Tab>
+      <Tabs.Tab value="sv">Svelte</Tabs.Tab>
+      <Tabs.Tab value="ng">Wrapped tab</Tabs.Tab>
+      <Tabs.Tab value="ds" disabled>
+        Disabled
+      </Tabs.Tab>
+    </Tabs.List>
+
+    <Tabs.Panel value="react">React Panel</Tabs.Panel>
+    <Tabs.Panel value="sv">Svelte Panel</Tabs.Panel>
+    <Tabs.Panel value="ng">Angular Panel</Tabs.Panel>
+  </>
+);
+
+const Wrapper = (props: TabsProps) => (
+  <Tabs classNames={{ tabsList: 'mb-2' }} style={{ maxWidth: 500 }} {...props} />
+);
+
+const Demo = ({ variant }) => (
+  <div className="h-screen max-h-[500px] w-screen max-w-[700px]">
+    <Wrapper defaultValue="react" variant={variant} loop={false}>
+      {base}
+    </Wrapper>
+  </div>
+);
 
 export const Default: Story = {
-  render: () => <Demo />,
-}
+  render: () => <Demo variant="default" />,
+};
+
+export const Pilled: Story = {
+  render: () => <Demo variant="pills" />,
+};
+
+export const Outline: Story = {
+  render: () => <Demo variant="outline" />,
+};

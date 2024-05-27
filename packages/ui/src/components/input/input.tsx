@@ -1,115 +1,217 @@
 'use client';
 
-import * as React from 'react';
-import { cva, VariantProps } from 'cva';
+import React, { forwardRef } from 'react';
 
-import { Eye, EyeSlash, MagnifyingGlassMini } from '@flowind/icons';
-import { clx } from '@/utils/clx';
+import {
+  DefaultProps,
+  FlowindSize,
+  rem,
+  Selectors,
+  useComponentDefaultProps,
+  Variants,
+} from '@/styles';
+import { createPolymorphicComponent } from '@/utils/create-polymorphic-component';
+import { Box } from '../box';
+import { InputDescription } from './input-description/input-description';
+import { InputError } from './input-error/input-error';
+import { InputLabel } from './input-label/input-label';
+import { InputPlaceholder } from './input-placeholder/input-placeholder';
+import { useInputWrapperContext } from './input-wrapper.context';
+import { InputWrapper } from './input-wrapper/input-wrapper';
+import useStyles from './Input.styles';
 
-const inputBaseStyles = clx(
-  'caret-ui-fg-base bg-ui-bg-field hover:bg-ui-bg-field-hover shadow-borders-base placeholder-ui-fg-muted text-ui-fg-base transition-fg relative w-full appearance-none rounded-md outline-none',
-  'focus-visible:shadow-borders-interactive-with-active',
-  'disabled:text-ui-fg-disabled disabled:!bg-ui-bg-disabled disabled:placeholder-ui-fg-disabled disabled:cursor-not-allowed',
-  'aria-[invalid=true]:!shadow-borders-error  invalid:!shadow-borders-error',
-);
+export type InputStylesNames = Selectors<typeof useStyles>;
 
-const inputVariants = cva({
-  base: clx(
-    inputBaseStyles,
-    '[&::--webkit-search-cancel-button]:hidden [&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden',
-  ),
-  variants: {
-    size: {
-      base: 'txt-compact-small h-8 px-2 py-1.5',
-      small: 'txt-compact-small h-7 px-2 py-1',
-    },
-  },
-  defaultVariants: {
-    size: 'base',
-  },
-});
+export interface InputSharedProps {
+  /** Left section of input */
+  addonBefore?: React.ReactNode;
 
-interface InputProps
-  extends VariantProps<typeof inputVariants>,
-    Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {}
+  /** Right section of input */
+  addonAfter?: React.ReactNode;
 
-/**
- * This component is based on the `input` element and supports all of its props
- */
-const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  (
+  /** Prefix element of input, like icon */
+  prefix?: React.ReactNode;
+
+  /** Suffix element of input, like icon */
+  suffix?: React.ReactNode;
+
+  /** Width of prefix section */
+  prefixWidth?: React.CSSProperties['width'];
+
+  /** Width of suffixWidth section */
+  suffixWidth?: React.CSSProperties['width'];
+
+  /** Right section of input, similar to icon but on the right */
+  rightSection?: React.ReactNode;
+
+  /** Width of right section, is used to calculate input padding-right */
+  rightSectionWidth?: React.CSSProperties['width'];
+
+  /** Props spread to rightSection div element */
+  rightSectionProps?: Record<string, any>;
+
+  /** Properties spread to root element */
+  wrapperProps?: Record<string, any>;
+
+  /** Sets required on input element */
+  required?: boolean;
+
+  /** Key of theme.radius or any valid CSS value to set border-radius, theme.defaultRadius by default */
+  radius?: FlowindSize;
+
+  /** Defines input appearance, defaults to default in light color scheme and filled in dark */
+  variant?: Variants<'default' | 'filled' | 'unstyled'>;
+
+  /** Disabled input state */
+  disabled?: boolean;
+
+  /** Input size */
+  size?: FlowindSize;
+}
+
+export interface InputProps extends InputSharedProps, DefaultProps<InputStylesNames> {
+  /** Static css selector base */
+  __staticSelector?: string;
+
+  /** Determines whether input has error styles */
+  error?: React.ReactNode;
+
+  /** Will input have multiple lines? */
+  multiline?: boolean;
+
+  /** Determines whether cursor on input should be pointer */
+  pointer?: boolean;
+}
+
+const defaultProps: Partial<InputProps> = {
+  size: 'md',
+  variant: 'default',
+  radius: 'sm',
+};
+
+export const _Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
+  const {
+    className,
+    error,
+    required,
+    disabled,
+    variant,
+    suffix,
+    suffixWidth,
+    prefix,
+    prefixWidth,
+    addonBefore,
+    addonAfter,
+    style,
+    radius,
+    size,
+    wrapperProps,
+    classNames,
+    styles,
+    __staticSelector,
+    multiline,
+    // sx,
+    unstyled,
+    pointer,
+    ...others
+  } = useComponentDefaultProps('Input', defaultProps, props);
+  const { offsetBottom, offsetTop, describedBy } = useInputWrapperContext();
+
+  const { classes, styls, cx } = useStyles(
     {
-      className,
-      type,
-      /**
-       * The input's size.
-       */
-      size = 'base',
-      ...props
-    }: InputProps,
-    ref,
-  ) => {
-    const [typeState, setTypeState] = React.useState(type);
+      radius,
+      multiline,
+      invalid: !!error,
+      withSuffix: !!suffix,
+      withPrefix: !!prefix,
+      suffixWidth: suffixWidth ? rem(suffixWidth) : undefined,
+      prefixWidth: prefixWidth ? rem(prefixWidth) : undefined,
+      offsetBottom,
+      offsetTop,
+      pointer,
+    },
+    { classNames, styles, name: ['Input', __staticSelector], unstyled, variant, size },
+  );
 
-    const isPassword = type === 'password';
-    const isSearch = type === 'search';
+  // const { systemStyles, rest } = extractSystemStyles(others);
 
+  const hasAddon = addonBefore || addonAfter;
+
+  const inputInner = (
+    <Box
+      className={cx({
+        [classes.wrapper]: !hasAddon,
+        'relative w-full': hasAddon,
+        [className]: !hasAddon,
+      })}
+    >
+      {prefix && (
+        <Box className={classes.prefixWrapper} style={styls.prefixWrapper}>
+          {prefix}
+        </Box>
+      )}
+      <Box
+        component="input"
+        ref={ref}
+        required={required}
+        aria-invalid={!!error}
+        aria-describedby={describedBy}
+        disabled={disabled}
+        data-disabled={disabled || undefined}
+        data-with-prefix={!!prefix || undefined}
+        data-invalid={!!error || undefined}
+        className={classes.input}
+        style={styls.input}
+        {...others}
+      />
+      {suffix && (
+        <Box className={classes.suffixWrapper} style={styls.suffixWrapper}>
+          {suffix}
+        </Box>
+      )}
+    </Box>
+  );
+
+  if (hasAddon) {
     return (
-      <div className="relative">
-        <input
-          ref={ref}
-          type={isPassword ? typeState : type}
-          className={clx(
-            inputVariants({ size }),
-            {
-              'pl-8': isSearch && size === 'base',
-              'pr-8': isPassword && size === 'base',
-              'pl-7': isSearch && size === 'small',
-              'pr-7': isPassword && size === 'small',
-            },
-            className,
-          )}
-          {...props}
-        />
-        {isSearch && (
-          <div
-            className={clx(
-              'text-ui-fg-muted pointer-events-none absolute bottom-0 left-0 flex items-center justify-center',
-              {
-                'h-8 w-8': size === 'base',
-                'h-7 w-7': size === 'small',
-              },
-            )}
-            role="img"
-          >
-            <MagnifyingGlassMini />
-          </div>
+      <Box
+        className={cx(classes.wrapper, className)}
+        style={{ ...style, ...styls.wrapper }}
+        {...wrapperProps}
+      >
+        {addonBefore && (
+          <Box className={classes.addonBefore} style={styls.addonBefore}>
+            {addonBefore}
+          </Box>
         )}
-        {isPassword && (
-          <div
-            className={clx('absolute bottom-0 right-0 flex items-center justify-center border-l', {
-              'h-8 w-8': size === 'base',
-              'h-7 w-7': size === 'small',
-            })}
-          >
-            <button
-              className="text-ui-fg-muted hover:text-ui-fg-base focus-visible:text-ui-fg-base focus-visible:shadow-borders-interactive-w-focus active:text-ui-fg-base h-fit w-fit rounded-sm outline-none transition-all"
-              type="button"
-              onClick={() => {
-                setTypeState(typeState === 'password' ? 'text' : 'password');
-              }}
-            >
-              <span className="sr-only">
-                {typeState === 'password' ? 'Show password' : 'Hide password'}
-              </span>
-              {typeState === 'password' ? <Eye /> : <EyeSlash />}
-            </button>
-          </div>
+        {inputInner}
+        {addonAfter && (
+          <Box className={classes.addonAfter} style={styls.addonAfter}>
+            {addonAfter}
+          </Box>
         )}
-      </div>
+      </Box>
     );
-  },
-);
-Input.displayName = 'Input';
+  }
 
-export { Input, inputBaseStyles };
+  return inputInner;
+}) as any;
+
+_Input.displayName = 'Input';
+_Input.Wrapper = InputWrapper;
+_Input.Label = InputLabel;
+_Input.Description = InputDescription;
+_Input.Error = InputError;
+_Input.Placeholder = InputPlaceholder;
+
+export const Input = createPolymorphicComponent<
+  'input',
+  InputProps,
+  {
+    Wrapper: typeof InputWrapper;
+    Label: typeof InputLabel;
+    Description: typeof InputDescription;
+    Error: typeof InputError;
+    Placeholder: typeof InputPlaceholder;
+  }
+>(_Input);

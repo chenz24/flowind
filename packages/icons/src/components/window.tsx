@@ -1,26 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const Window = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          stroke={color}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M2.5 6.875V15a1.875 1.875 0 0 0 1.875 1.875h11.25A1.875 1.875 0 0 0 17.5 15V6.875m-15 0V5a1.875 1.875 0 0 1 1.875-1.875h11.25A1.875 1.875 0 0 1 17.5 5v1.875m-15 0h15M4.375 5h.007v.007h-.007V5ZM6.25 5h.007v.007H6.25V5Zm1.875 0h.007v.007h-.007V5Z"
-        />
-      </svg>
-    )
-  }
-)
-Window.displayName = "Window"
-export default Window
+import * as React from "react";
+import type { IconProps } from "../types";
+const Window = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8.25V18a2.25 2.25 0 0 0 2.25 2.25h13.5A2.25 2.25 0 0 0 21 18V8.25m-18 0V6a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 6v2.25m-18 0h18M5.25 6h.008v.008H5.25zM7.5 6h.008v.008H7.5zm2.25 0h.008v.008H9.75z" /></svg>;
+});
+Window.displayName = "Window";
+export default Window;

@@ -1,25 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const StarSolid = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          fill={color}
-          fillRule="evenodd"
-          d="M8.99 2.675c.373-.898 1.647-.898 2.02 0l1.735 4.172 4.503.361c.97.078 1.364 1.288.624 1.921l-3.43 2.94 1.047 4.393c.226.947-.803 1.695-1.633 1.188L10 15.295 6.144 17.65c-.83.507-1.859-.242-1.633-1.188l1.047-4.394-3.43-2.939c-.74-.633-.346-1.843.624-1.92l4.503-.362L8.99 2.676v-.001Z"
-          clipRule="evenodd"
-        />
-      </svg>
-    )
-  }
-)
-StarSolid.displayName = "StarSolid"
-export default StarSolid
+import * as React from "react";
+import type { IconProps } from "../types";
+const StarSolid = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path fill={color} fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433z" clipRule="evenodd" /></svg>;
+});
+StarSolid.displayName = "StarSolid";
+export default StarSolid;

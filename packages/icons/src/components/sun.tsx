@@ -1,26 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const Sun = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          stroke={color}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M10 2.5v1.875m5.303.322-1.326 1.325M17.5 10h-1.875m-.322 5.303-1.326-1.326M10 15.625V17.5m-3.978-3.523-1.325 1.326M4.375 10H2.5m3.522-3.978L4.697 4.697M13.125 10a3.125 3.125 0 1 1-6.25 0 3.125 3.125 0 0 1 6.25 0Z"
-        />
-      </svg>
-    )
-  }
-)
-Sun.displayName = "Sun"
-export default Sun
+import * as React from "react";
+import type { IconProps } from "../types";
+const Sun = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0" /></svg>;
+});
+Sun.displayName = "Sun";
+export default Sun;

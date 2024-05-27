@@ -1,26 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const SquareTwoStackMini = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          stroke={color}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M13.276 7.27V5.632a1.638 1.638 0 0 0-1.638-1.638H5.632a1.638 1.638 0 0 0-1.638 1.638v6.006a1.638 1.638 0 0 0 1.638 1.638H7.27m6.006-6.006h1.092a1.638 1.638 0 0 1 1.638 1.638v5.46a1.638 1.638 0 0 1-1.638 1.638h-5.46a1.638 1.638 0 0 1-1.638-1.638v-1.092m6.006-6.006H8.908A1.638 1.638 0 0 0 7.27 8.908v4.368"
-        />
-      </svg>
-    )
-  }
-)
-SquareTwoStackMini.displayName = "SquareTwoStackMini"
-export default SquareTwoStackMini
+import * as React from "react";
+import type { IconProps } from "../types";
+const SquareTwoStackMini = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15.931 8.724V6.758a1.965 1.965 0 0 0-1.965-1.965H6.758a1.966 1.966 0 0 0-1.965 1.965v7.208a1.966 1.966 0 0 0 1.965 1.965h1.966m7.207-7.207h1.31a1.966 1.966 0 0 1 1.966 1.966v6.552a1.966 1.966 0 0 1-1.965 1.965H10.69a1.966 1.966 0 0 1-1.966-1.965v-1.31m7.207-7.208H10.69a1.966 1.966 0 0 0-1.966 1.966v5.241" /></svg>;
+});
+SquareTwoStackMini.displayName = "SquareTwoStackMini";
+export default SquareTwoStackMini;

@@ -1,25 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const ExclamationCircleSolid = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          fill={color}
-          fillRule="evenodd"
-          d="M18 10a8 8 0 1 1-16.001 0A8 8 0 0 1 18 10Zm-8-5a.75.75 0 0 1 .75.75v4.5a.75.75 0 1 1-1.5 0v-4.5A.75.75 0 0 1 10 5Zm0 10a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"
-          clipRule="evenodd"
-        />
-      </svg>
-    )
-  }
-)
-ExclamationCircleSolid.displayName = "ExclamationCircleSolid"
-export default ExclamationCircleSolid
+import * as React from "react";
+import type { IconProps } from "../types";
+const ExclamationCircleSolid = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path fill={color} fillRule="evenodd" d="M21.6 12a9.6 9.6 0 1 1-19.2 0 9.6 9.6 0 0 1 19.2 0M12 6a.9.9 0 0 1 .9.9v5.4a.9.9 0 1 1-1.8 0V6.9A.9.9 0 0 1 12 6m0 12a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4" clipRule="evenodd" /></svg>;
+});
+ExclamationCircleSolid.displayName = "ExclamationCircleSolid";
+export default ExclamationCircleSolid;

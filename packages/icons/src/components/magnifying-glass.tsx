@@ -1,26 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const MagnifyingGlass = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          stroke={color}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="m17.5 17.5-4.33-4.33m0 0a6.25 6.25 0 1 0-8.84-8.84 6.25 6.25 0 0 0 8.84 8.84v0Z"
-        />
-      </svg>
-    )
-  }
-)
-MagnifyingGlass.displayName = "MagnifyingGlass"
-export default MagnifyingGlass
+import * as React from "react";
+import type { IconProps } from "../types";
+const MagnifyingGlass = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607" /></svg>;
+});
+MagnifyingGlass.displayName = "MagnifyingGlass";
+export default MagnifyingGlass;

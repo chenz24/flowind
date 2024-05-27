@@ -1,25 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const CubeSolid = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          fill={color}
-          fillRule="evenodd"
-          d="M10.346 1.634a.717.717 0 0 0-.692 0l-6.8 3.751L10 9.328l7.146-3.943-6.8-3.751Zm7.3 5.113-6.93 3.823v7.885l6.56-3.618a.717.717 0 0 0 .37-.628V6.747ZM9.283 18.455V10.57l-6.93-3.823v7.462a.717.717 0 0 0 .372.628l6.558 3.618Z"
-          clipRule="evenodd"
-        />
-      </svg>
-    )
-  }
-)
-CubeSolid.displayName = "CubeSolid"
-export default CubeSolid
+import * as React from "react";
+import type { IconProps } from "../types";
+const CubeSolid = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path fill={color} fillRule="evenodd" d="M12.415 1.96a.86.86 0 0 0-.83 0l-8.16 4.502L12 11.193l8.576-4.73zm8.76 6.137-8.315 4.587v9.462l7.87-4.342a.86.86 0 0 0 .445-.753zM11.14 22.147v-9.463L2.825 8.097v8.954a.86.86 0 0 0 .445.753z" clipRule="evenodd" /></svg>;
+});
+CubeSolid.displayName = "CubeSolid";
+export default CubeSolid;

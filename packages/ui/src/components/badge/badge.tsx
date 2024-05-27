@@ -85,6 +85,6 @@ export const _Badge = forwardRef<HTMLDivElement, BadgeProps>((props, ref) => {
   );
 });
 
-_Badge.displayName = '@flowind/core/Badge';
+_Badge.displayName = 'Badge';
 
 export const Badge = createPolymorphicComponent<'div', BadgeProps>(_Badge);

@@ -13,6 +13,7 @@ import { Loader, LoaderProps } from '../loader';
 import { UnstyledButton } from '../unstyled-button';
 import { ButtonGroup } from './button-group/button-group';
 import useStyles, { ButtonStylesParams } from './button.styles';
+import { FancyButton } from './fancy-button';
 
 export type ButtonStylesNames = Selectors<typeof useStyles>;
 
@@ -41,7 +42,7 @@ export interface ButtonProps extends DefaultProps<ButtonStylesNames, ButtonStyle
   radius?: FlowindSize;
 
   /** Controls button appearance */
-  variant?: 'filled' | 'outline' | 'light' | 'default' | 'subtle';
+  variant?: 'filled' | 'outline' | 'light' | 'default' | 'subtle' | 'fancy';
 
   /** Reduces vertical and horizontal spacing */
   compact?: boolean;
@@ -66,7 +67,7 @@ export interface ButtonProps extends DefaultProps<ButtonStylesNames, ButtonStyle
 }
 
 const defaultProps: Partial<ButtonProps> = {
-  size: 'sm',
+  size: 'md',
   radius: 'sm',
   htmlType: 'button',
   variant: 'filled',
@@ -122,6 +123,19 @@ export const _Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) =
 
     onClick && onClick(event);
   };
+
+  if (variant === 'fancy') {
+    return (
+      <FancyButton
+        variant={type}
+        disabled={disabled}
+        className={className}
+        size={size}
+        isLoading={loading}
+        children={children}
+      />
+    );
+  }
 
   return (
     <UnstyledButton

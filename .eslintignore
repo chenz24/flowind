@@ -11,3 +11,4 @@ public
 *.d.ts
 
 packages/icons/src/components
+packages/ui-preset/src/theme

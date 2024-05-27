@@ -1,68 +1,107 @@
-"use client"
+'use client';
 
-import * as TabsPrimitives from "@radix-ui/react-tabs"
-import * as React from "react"
+import React, { forwardRef } from 'react';
 
-import { clx } from "@/utils/clx"
+import { DefaultProps, Selectors, useComponentDefaultProps } from '@/styles';
+import { ForwardRefWithStaticComponents } from '@/utils/forwardRef-with-static-components';
+import { Box } from '../box';
+import { Tab, TabStylesNames } from './tab/tab';
+import { TabsList, TabsListStylesNames } from './tabs-list/tabs-list';
+import { TabsPanel, TabsPanelStylesNames } from './tabs-panel/tabs-panel';
+import { TabsProvider, TabsProviderProps } from './tabs-provider';
+import useStyles from './tabs.styles';
+import { TabsStylesParams } from './tabs.types';
 
-/**
- * This component is based on the [Radix UI Tabs](https://radix-ui.com/primitives/docs/components/tabs) primitves
- */
-const TabsRoot = (
-  props: React.ComponentPropsWithoutRef<typeof TabsPrimitives.Root>
-) => {
-  return <TabsPrimitives.Root {...props} />
-}
-TabsRoot.displayName = "Tabs"
+export type TabsStylesNames =
+  | Selectors<typeof useStyles>
+  | TabsListStylesNames
+  | TabsPanelStylesNames
+  | TabStylesNames;
 
-const TabsTrigger = React.forwardRef<
-  React.ElementRef<typeof TabsPrimitives.Trigger>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitives.Trigger>
->(({ className, children, ...props }, ref) => (
-  <TabsPrimitives.Trigger
-    ref={ref}
-    className={clx(
-      "txt-compact-small-plus transition-fg text-ui-fg-subtle inline-flex items-center justify-center rounded-full border border-transparent bg-transparent px-2.5 py-1 outline-none",
-      "hover:text-ui-fg-base",
-      "focus-visible:border-ui-border-interactive focus-visible:!shadow-borders-focus focus-visible:bg-ui-bg-base",
-      "data-[state=active]:text-ui-fg-base data-[state=active]:bg-ui-bg-base data-[state=active]:shadow-elevation-card-rest",
-      className
-    )}
-    {...props}
-  >
-    {children}
-  </TabsPrimitives.Trigger>
-))
-TabsTrigger.displayName = "Tabs.Trigger"
+export interface TabsProps
+  extends TabsProviderProps,
+    DefaultProps<TabsStylesNames, TabsStylesParams>,
+    Omit<React.ComponentPropsWithRef<'div'>, keyof TabsProviderProps> {}
 
-const TabsList = React.forwardRef<
-  React.ElementRef<typeof TabsPrimitives.List>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitives.List>
->(({ className, ...props }, ref) => (
-  <TabsPrimitives.List
-    ref={ref}
-    className={clx("flex items-center gap-2", className)}
-    {...props}
-  />
-))
-TabsList.displayName = "Tabs.List"
+type TabsComponent = ForwardRefWithStaticComponents<
+  TabsProps,
+  {
+    List: typeof TabsList;
+    Tab: typeof Tab;
+    Panel: typeof TabsPanel;
+  }
+>;
 
-const TabsContent = React.forwardRef<
-  React.ElementRef<typeof TabsPrimitives.Content>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitives.Content>
->(({ className, ...props }, ref) => (
-  <TabsPrimitives.Content
-    ref={ref}
-    className={clx("outline-none", className)}
-    {...props}
-  />
-))
-TabsContent.displayName = "Tabs.Content"
+const defaultProps: Partial<TabsProps> = {
+  orientation: 'horizontal',
+  loop: true,
+  activateTabWithKeyboard: true,
+  allowTabDeactivation: false,
+  unstyled: false,
+  inverted: false,
+  variant: 'default',
+  placement: 'left',
+  radius: 'sm',
+};
 
-const Tabs = Object.assign(TabsRoot, {
-  Trigger: TabsTrigger,
-  List: TabsList,
-  Content: TabsContent,
-})
+export const Tabs: TabsComponent = forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
+  const {
+    defaultValue,
+    value,
+    orientation,
+    loop,
+    activateTabWithKeyboard,
+    allowTabDeactivation,
+    children,
+    id,
+    onTabChange,
+    variant,
+    color,
+    className,
+    unstyled,
+    classNames,
+    styles,
+    radius,
+    inverted,
+    keepMounted,
+    placement,
+    ...others
+  } = useComponentDefaultProps('Tabs', defaultProps, props);
 
-export { Tabs }
+  const { classes, cx } = useStyles(
+    { orientation, color, radius, inverted, placement },
+    { unstyled, name: 'Tabs', classNames, styles, variant },
+  );
+
+  return (
+    <TabsProvider
+      activateTabWithKeyboard={activateTabWithKeyboard}
+      defaultValue={defaultValue}
+      orientation={orientation}
+      onTabChange={onTabChange}
+      value={value}
+      id={id}
+      loop={loop}
+      allowTabDeactivation={allowTabDeactivation}
+      color={color}
+      variant={variant}
+      radius={radius}
+      inverted={inverted}
+      keepMounted={keepMounted}
+      placement={placement}
+      classNames={classNames}
+      styles={styles}
+      unstyled={unstyled}
+    >
+      <Box {...others} className={cx(classes.root, className)} id={id} ref={ref}>
+        {children}
+      </Box>
+    </TabsProvider>
+  );
+}) as any;
+
+Tabs.List = TabsList;
+Tabs.Tab = Tab;
+Tabs.Panel = TabsPanel;
+
+Tabs.displayName = 'Tabs';

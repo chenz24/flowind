@@ -15,9 +15,14 @@ export interface FlowindTheme {
   colorScheme: ColorScheme;
   components: FlowindThemeComponents;
   radius: FlowindSizes;
+  shadows: FlowindSizes;
   fn: FlowindThemeFunctions;
   primaryColor: FlowindColor;
   secondaryColor: FlowindColor;
+  focusRing: string; //
+  focusInput: string; // input, select, textarea
+  respectReducedMotion: boolean;
+  transitionTimingFunction: CSSProperties['transitionTimingFunction'];
 }
 
 export type FlowindThemeComponents = Record<string, ThemeComponent>;

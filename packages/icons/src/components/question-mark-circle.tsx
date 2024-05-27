@@ -1,26 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const QuestionMarkCircle = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          stroke={color}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M8.232 6.266c.976-.854 2.56-.854 3.536 0s.976 2.239 0 3.093c-.17.15-.359.272-.559.368-.62.301-1.208.833-1.208 1.523v.625M17.5 10a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0ZM10 14.375h.007v.007H10v-.007Z"
-        />
-      </svg>
-    )
-  }
-)
-QuestionMarkCircle.displayName = "QuestionMarkCircle"
-export default QuestionMarkCircle
+import * as React from "react";
+import type { IconProps } from "../types";
+const QuestionMarkCircle = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0m-9 5.25h.008v.008H12z" /></svg>;
+});
+QuestionMarkCircle.displayName = "QuestionMarkCircle";
+export default QuestionMarkCircle;

@@ -1,27 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const LockClosedSolidMini = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          fill={color}
-          d="M12.889 10a.667.667 0 0 1-.667-.667V6.444A2.225 2.225 0 0 0 10 4.222a2.225 2.225 0 0 0-2.222 2.222v2.89a.667.667 0 0 1-1.334 0v-2.89A3.56 3.56 0 0 1 10 2.89a3.56 3.56 0 0 1 3.556 3.555v2.89a.667.667 0 0 1-.667.666Z"
-        />
-        <path
-          fill={color}
-          d="M13.333 8.667H6.667a2.446 2.446 0 0 0-2.445 2.444v3.556a2.446 2.446 0 0 0 2.445 2.444h6.666a2.447 2.447 0 0 0 2.445-2.444V11.11a2.446 2.446 0 0 0-2.445-2.444Zm-2.666 4.666a.667.667 0 0 1-1.334 0v-.889a.667.667 0 0 1 1.334 0v.89Z"
-        />
-      </svg>
-    )
-  }
-)
-LockClosedSolidMini.displayName = "LockClosedSolidMini"
-export default LockClosedSolidMini
+import * as React from "react";
+import type { IconProps } from "../types";
+const LockClosedSolidMini = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path fill={color} d="M15.467 12a.8.8 0 0 1-.8-.8V7.733A2.67 2.67 0 0 0 12 5.067a2.67 2.67 0 0 0-2.667 2.666V11.2a.8.8 0 0 1-1.6 0V7.733A4.27 4.27 0 0 1 12 3.467a4.27 4.27 0 0 1 4.267 4.266V11.2a.8.8 0 0 1-.8.8" /><path fill={color} d="M16 10.4H8a2.936 2.936 0 0 0-2.933 2.933V17.6A2.936 2.936 0 0 0 8 20.533h8a2.936 2.936 0 0 0 2.933-2.933v-4.267A2.936 2.936 0 0 0 16 10.4M12.8 16a.8.8 0 0 1-1.6 0v-1.067a.8.8 0 0 1 1.6 0z" /></svg>;
+});
+LockClosedSolidMini.displayName = "LockClosedSolidMini";
+export default LockClosedSolidMini;

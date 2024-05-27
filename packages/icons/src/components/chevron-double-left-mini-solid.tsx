@@ -1,25 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const ChevronDoubleLeftMiniSolid = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          fill={color}
-          fillRule="evenodd"
-          d="M15.79 14.77a.75.75 0 0 1-1.06.02l-4.5-4.25a.751.751 0 0 1 0-1.08l4.5-4.25a.75.75 0 1 1 1.04 1.08L11.832 10l3.938 3.71a.75.75 0 0 1 .02 1.06Zm-6 0a.75.75 0 0 1-1.06.02l-4.5-4.25a.75.75 0 0 1 0-1.08l4.5-4.25a.75.75 0 1 1 1.04 1.08L5.832 10l3.938 3.71a.75.75 0 0 1 .02 1.06Z"
-          clipRule="evenodd"
-        />
-      </svg>
-    )
-  }
-)
-ChevronDoubleLeftMiniSolid.displayName = "ChevronDoubleLeftMiniSolid"
-export default ChevronDoubleLeftMiniSolid
+import * as React from "react";
+import type { IconProps } from "../types";
+const ChevronDoubleLeftMiniSolid = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path fill={color} fillRule="evenodd" d="M18.948 17.724a.9.9 0 0 1-1.272.024l-5.4-5.1a.9.9 0 0 1 0-1.296l5.4-5.1a.901.901 0 1 1 1.248 1.296L14.198 12l4.726 4.452a.9.9 0 0 1 .024 1.272m-7.2 0a.9.9 0 0 1-1.272.024l-5.4-5.1a.9.9 0 0 1 0-1.296l5.4-5.1a.901.901 0 1 1 1.248 1.296L6.998 12l4.726 4.452a.9.9 0 0 1 .024 1.272" clipRule="evenodd" /></svg>;
+});
+ChevronDoubleLeftMiniSolid.displayName = "ChevronDoubleLeftMiniSolid";
+export default ChevronDoubleLeftMiniSolid;

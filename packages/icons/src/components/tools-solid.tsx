@@ -1,35 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const ToolsSolid = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          fill={color}
-          fillRule="evenodd"
-          d="M9.998 6.064a3.937 3.937 0 0 1 5.08-3.769.562.562 0 0 1 .235.936l-2.49 2.489a1.686 1.686 0 0 0 1.456 1.454l2.488-2.489a.563.563 0 0 1 .936.235A3.937 3.937 0 0 1 13.6 9.986c-.764-.064-1.403.075-1.732.476l-5.362 6.513a2.473 2.473 0 1 1-3.483-3.482L9.536 8.13c.4-.33.54-.968.475-1.731a3.994 3.994 0 0 1-.013-.335Zm-5.912 9.28a.563.563 0 0 1 .562-.562h.006a.562.562 0 0 1 .563.562v.006a.563.563 0 0 1-.563.563h-.006a.562.562 0 0 1-.562-.563v-.006Z"
-          clipRule="evenodd"
-        />
-        <path
-          fill={color}
-          d="M8.555 7.48 6.904 5.83V4.658a.562.562 0 0 0-.273-.483L3.819 2.487a.562.562 0 0 0-.687.085l-.563.562a.563.563 0 0 0-.084.687l1.687 2.812a.563.563 0 0 0 .482.273h1.173l1.546 1.547 1.182-.973Z"
-        />
-        <path
-          fill={color}
-          fillRule="evenodd"
-          d="m10.415 13.997 3.137 3.136a2.53 2.53 0 1 0 3.58-3.58l-2.48-2.478c-.38.054-.765.065-1.148.033a1.997 1.997 0 0 0-.65.031.442.442 0 0 0-.125.047l-2.314 2.811Zm2.56-1.02a.562.562 0 0 1 .795 0l1.406 1.407a.563.563 0 1 1-.795.795l-1.406-1.406a.563.563 0 0 1 0-.795Z"
-          clipRule="evenodd"
-        />
-      </svg>
-    )
-  }
-)
-ToolsSolid.displayName = "ToolsSolid"
-export default ToolsSolid
+import * as React from "react";
+import type { IconProps } from "../types";
+const ToolsSolid = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path fill={color} fillRule="evenodd" d="M11.997 7.276a4.724 4.724 0 0 1 6.097-4.522.674.674 0 0 1 .282 1.123l-2.988 2.987a2.02 2.02 0 0 0 1.747 1.745l2.986-2.987a.675.675 0 0 1 1.123.282 4.724 4.724 0 0 1-4.924 6.08c-.917-.078-1.683.09-2.078.57L7.807 20.37a2.968 2.968 0 1 1-4.18-4.178l7.816-6.436c.48-.396.648-1.161.57-2.078a5 5 0 0 1-.016-.402M4.903 18.413a.675.675 0 0 1 .675-.675h.007a.675.675 0 0 1 .675.675v.007a.675.675 0 0 1-.675.675h-.007a.675.675 0 0 1-.675-.675z" clipRule="evenodd" /><path fill={color} d="m10.266 8.977-1.981-1.98v-1.41a.68.68 0 0 0-.328-.578L4.582 2.984a.675.675 0 0 0-.824.102l-.675.675a.675.675 0 0 0-.102.824L5.006 7.96a.68.68 0 0 0 .579.328h1.407l1.856 1.855z" /><path fill={color} fillRule="evenodd" d="m12.497 16.797 3.765 3.763a3.035 3.035 0 0 0 4.954-.985 3.04 3.04 0 0 0-.659-3.31l-2.975-2.975a6 6 0 0 1-1.377.04c-.354-.031-.614-.006-.78.037a.5.5 0 0 0-.15.057zm3.073-1.224a.675.675 0 0 1 .954 0l1.687 1.688a.676.676 0 0 1-.472 1.169.68.68 0 0 1-.482-.215l-1.687-1.687a.675.675 0 0 1 0-.954z" clipRule="evenodd" /></svg>;
+});
+ToolsSolid.displayName = "ToolsSolid";
+export default ToolsSolid;

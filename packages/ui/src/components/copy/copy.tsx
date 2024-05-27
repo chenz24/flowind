@@ -44,13 +44,15 @@ const Copy = React.forwardRef<
   const Component = asChild ? Slot : 'button';
 
   return (
-    <Tooltip content={text} open={done || open} onOpenChange={setOpen}>
+    <Tooltip label={text} opened={done || open}>
       <Component
         ref={ref}
         aria-label="Copy code snippet"
         type="button"
-        className={clx('text-ui-code-icon h-fit w-fit', className)}
+        className={clx('text-code-icon h-fit w-fit', className)}
         onClick={copyToClipboard}
+        onMouseEnter={() => setOpen(true)}
+        onMouseLeave={() => setOpen(false)}
         {...props}
       >
         {children || (done ? <CheckCircleSolid /> : <SquareTwoStack />)}

@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 
 import {
@@ -22,11 +24,11 @@ const LOADERS = {
 };
 
 const sizes = {
-  xs: rem(15),
+  xs: rem(14),
   sm: rem(16),
-  md: rem(30),
-  lg: rem(40),
-  xl: rem(50),
+  md: rem(18),
+  lg: rem(25),
+  xl: rem(30),
 };
 
 export interface LoaderProps

@@ -1,25 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const CheckCircleSolid = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          fill={color}
-          fillRule="evenodd"
-          d="M10 18a8 8 0 1 0 0-16.001A8 8 0 0 0 10 18Zm3.857-9.809a.75.75 0 1 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z"
-          clipRule="evenodd"
-        />
-      </svg>
-    )
-  }
-)
-CheckCircleSolid.displayName = "CheckCircleSolid"
-export default CheckCircleSolid
+import * as React from "react";
+import type { IconProps } from "../types";
+const CheckCircleSolid = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path fill={color} fillRule="evenodd" d="M12 21.6a9.6 9.6 0 1 0 0-19.2 9.6 9.6 0 0 0 0 19.2m4.628-11.77a.9.9 0 1 0-1.457-1.06l-4.18 5.749-2.255-2.256a.902.902 0 0 0-1.48.285.9.9 0 0 0 .208.988l3 3a.9.9 0 0 0 1.364-.107z" clipRule="evenodd" /></svg>;
+});
+CheckCircleSolid.displayName = "CheckCircleSolid";
+export default CheckCircleSolid;

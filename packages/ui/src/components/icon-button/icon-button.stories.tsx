@@ -72,6 +72,18 @@ export const variants = () => (
   </Stack>
 );
 
+export const sizes = () => (
+  <Stack direction="col">
+    <Stack>
+      <IconButton size="xs" children={<Plus />} />
+      <IconButton size="sm" children={<Plus />} />
+      <IconButton size="md" children={<Plus />} />
+      <IconButton size="lg" children={<Plus />} />
+      <IconButton size="xl" children={<Plus />} />
+    </Stack>
+  </Stack>
+);
+
 // export const BaseTransparent: Story = {
 //   args: {
 //     variant: 'transparent',

@@ -1,26 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const ArrowsPointingOut = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          stroke={color}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M3.125 16.875v-3.75m0 3.75h3.75m-3.75 0L7.5 12.5m9.375-9.375h-3.75m3.75 0v3.75m0-3.75L12.5 7.5"
-        />
-      </svg>
-    )
-  }
-)
-ArrowsPointingOut.displayName = "ArrowsPointingOut"
-export default ArrowsPointingOut
+import * as React from "react";
+import type { IconProps } from "../types";
+const ArrowsPointingOut = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9" /></svg>;
+});
+ArrowsPointingOut.displayName = "ArrowsPointingOut";
+export default ArrowsPointingOut;

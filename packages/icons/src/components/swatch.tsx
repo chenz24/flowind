@@ -1,26 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const Swatch = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          stroke={color}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M3.415 16.585a3.124 3.124 0 0 0 2.21.916m-2.21-.916a3.126 3.126 0 0 0 2.21.916m-2.21-.916a3.125 3.125 0 0 1-.915-2.21V3.437c0-.517.42-.937.938-.937h4.374c.518 0 .938.42.938.938V6.83M5.625 17.5a3.125 3.125 0 0 0 2.21-.916m-2.21.916c.829 0 1.624-.33 2.21-.916m-2.21.916 10.938-.001c.517 0 .937-.42.937-.938v-4.375a.938.938 0 0 0-.938-.937H13.17m-5.334 5.335 5.334-5.335m-5.334 5.335a3.125 3.125 0 0 0 .915-2.21V6.831m4.42 4.419 2.398-2.4a.935.935 0 0 0 0-1.325l-3.093-3.094a.937.937 0 0 0-1.325 0l-2.4 2.4m-3.125 7.544h.007v.007h-.007v-.007Z"
-        />
-      </svg>
-    )
-  }
-)
-Swatch.displayName = "Swatch"
-export default Swatch
+import * as React from "react";
+import type { IconProps } from "../types";
+const Swatch = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.098 19.902a3.75 3.75 0 0 0 2.652 1.099m-2.652-1.099a3.75 3.75 0 0 0 2.652 1.099m-2.652-1.099A3.75 3.75 0 0 1 3 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125v4.072M6.75 21.001a3.75 3.75 0 0 0 2.652-1.099M6.75 21.001c.995 0 1.949-.396 2.652-1.099M6.75 21.001 19.875 21c.621 0 1.125-.504 1.125-1.125v-5.25c0-.621-.504-1.125-1.125-1.125h-4.072m-6.401 6.402 6.401-6.402m-6.401 6.402A3.75 3.75 0 0 0 10.5 17.25V8.197m5.303 5.303 2.879-2.88c.44-.438.44-1.15 0-1.59L14.97 5.317a1.124 1.124 0 0 0-1.59 0l-2.88 2.88M6.75 17.25h.008v.008H6.75z" /></svg>;
+});
+Swatch.displayName = "Swatch";
+export default Swatch;

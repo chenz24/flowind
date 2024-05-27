@@ -1,23 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const SquaresPlusSolid = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          fill={color}
-          d="M2 4.25A2.25 2.25 0 0 1 4.25 2h2.5A2.25 2.25 0 0 1 9 4.25v2.5A2.25 2.25 0 0 1 6.75 9h-2.5A2.25 2.25 0 0 1 2 6.75v-2.5Zm0 9A2.25 2.25 0 0 1 4.25 11h2.5A2.25 2.25 0 0 1 9 13.25v2.5A2.25 2.25 0 0 1 6.75 18h-2.5A2.25 2.25 0 0 1 2 15.75v-2.5Zm9-9A2.25 2.25 0 0 1 13.25 2h2.5A2.25 2.25 0 0 1 18 4.25v2.5A2.25 2.25 0 0 1 15.75 9h-2.5A2.25 2.25 0 0 1 11 6.75v-2.5Zm4.25 7.5a.75.75 0 1 0-1.5 0v2h-2a.75.75 0 1 0 0 1.5h2v2a.75.75 0 1 0 1.5 0v-2h2a.75.75 0 1 0 0-1.5h-2v-2Z"
-        />
-      </svg>
-    )
-  }
-)
-SquaresPlusSolid.displayName = "SquaresPlusSolid"
-export default SquaresPlusSolid
+import * as React from "react";
+import type { IconProps } from "../types";
+const SquaresPlusSolid = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path fill={color} d="M2.4 5.1a2.7 2.7 0 0 1 2.7-2.7h3a2.7 2.7 0 0 1 2.7 2.7v3a2.7 2.7 0 0 1-2.7 2.7h-3a2.7 2.7 0 0 1-2.7-2.7zm0 10.8a2.7 2.7 0 0 1 2.7-2.7h3a2.7 2.7 0 0 1 2.7 2.7v3a2.7 2.7 0 0 1-2.7 2.7h-3a2.7 2.7 0 0 1-2.7-2.7zM13.2 5.1a2.7 2.7 0 0 1 2.7-2.7h3a2.7 2.7 0 0 1 2.7 2.7v3a2.7 2.7 0 0 1-2.7 2.7h-3a2.7 2.7 0 0 1-2.7-2.7zm5.1 9a.9.9 0 1 0-1.8 0v2.4h-2.4a.9.9 0 1 0 0 1.8h2.4v2.4a.9.9 0 1 0 1.8 0v-2.4h2.4a.9.9 0 1 0 0-1.8h-2.4z" /></svg>;
+});
+SquaresPlusSolid.displayName = "SquaresPlusSolid";
+export default SquaresPlusSolid;

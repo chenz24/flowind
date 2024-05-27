@@ -25,7 +25,7 @@ const meta: Meta<typeof Avatar> = {
     size: {
       control: {
         type: 'select',
-        options: ['default', 'large'],
+        options: ['default', 'lg'],
       },
     },
   },
@@ -40,7 +40,7 @@ type Story = StoryObj<typeof Avatar>;
 
 export const WithImage: Story = {
   args: {
-    src: 'https://avatars.githubusercontent.com/u/10656202?v=4',
+    src: 'https://avatars.githubusercontent.com/u/10656102?v=4',
     fallback: 'J',
   },
 };

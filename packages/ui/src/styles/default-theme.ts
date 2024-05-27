@@ -34,14 +34,29 @@ export const _DEFAULT_THEME: FlowindThemeBase = {
   components: {},
   loader: 'oval',
   radius: {
+    none: 'rounded-none',
     xs: 'rounded-sm',
     sm: 'rounded',
     md: 'rounded-lg',
     lg: 'rounded-3xl',
     xl: 'rounded-full',
   },
+  shadows: {
+    none: 'shadow-none',
+    xs: 'shadow-sm',
+    sm: 'shadow',
+    md: 'shadow-md',
+    lg: 'shadow-lg',
+    xl: 'shadow-xl',
+  },
   primaryColor: 'blue',
-  secondaryColor: 'gray',
+  secondaryColor: 'neutral',
+  respectReducedMotion: true,
+  transitionTimingFunction: 'ease',
+  focusRing:
+    'outline outline-offset-2 outline-0 focus-visible:outline-2 outline-blue-500 dark:outline-blue-500',
+  focusInput:
+    'focus-within:ring focus-within:ring-blue-200 focus-within:dark:ring-blue-700/30 focus-within:border-blue-500 focus-within:dark:border-blue-700',
 };
 
 export const DEFAULT_THEME = attachFunctions(_DEFAULT_THEME);

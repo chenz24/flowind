@@ -5,11 +5,11 @@ import { ExclamationCircleSolid } from '@flowind/icons';
 import { clx } from '../../utils/clx';
 
 const hintVariants = cva({
-  base: 'txt-small inline-flex items-start gap-x-2',
+  base: 'txt-sm inline-flex items-center gap-x-2',
   variants: {
     variant: {
-      info: 'text-ui-fg-subtle',
-      error: 'text-ui-fg-error',
+      info: 'text-fg-subtle',
+      error: 'text-fg-error',
     },
   },
   defaultVariants: {

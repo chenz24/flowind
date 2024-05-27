@@ -1,25 +1,10 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const Stripe = React.forwardRef<SVGSVGElement, Omit<IconProps, "color">>(
-  (props, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          fill="#6772E5"
-          fillRule="evenodd"
-          d="M8.794 6.555c0-.728.606-1.01 1.584-1.01 1.62.036 3.209.447 4.642 1.202V2.353a12.317 12.317 0 0 0-4.642-.852c-3.772 0-6.301 1.975-6.301 5.274 0 5.162 7.088 4.324 7.088 6.549 0 .87-.744 1.14-1.79 1.14-1.544 0-3.537-.639-5.1-1.489v4.45c1.609.701 3.344 1.067 5.1 1.075 3.876 0 6.548-1.915 6.548-5.271 0-5.571-7.129-4.576-7.129-6.673v-.001Z"
-          clipRule="evenodd"
-        />
-      </svg>
-    )
-  }
-)
-Stripe.displayName = "Stripe"
-export default Stripe
+import * as React from "react";
+import type { IconProps } from "../types";
+const Stripe = React.forwardRef<SVGSVGElement, Omit<IconProps, "color">>(({
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path fill="#6772E5" fillRule="evenodd" d="M10.553 7.866c0-.873.727-1.211 1.901-1.211 1.944.042 3.85.535 5.57 1.441V2.824a14.8 14.8 0 0 0-5.57-1.023c-4.526 0-7.562 2.37-7.562 6.33 0 6.194 8.506 5.188 8.506 7.857 0 1.045-.893 1.368-2.149 1.368-1.852 0-4.244-.766-6.12-1.786v5.341a15.5 15.5 0 0 0 6.12 1.29c4.653 0 7.86-2.3 7.86-6.327 0-6.684-8.556-5.49-8.556-8.007" clipRule="evenodd" /></svg>;
+});
+Stripe.displayName = "Stripe";
+export default Stripe;

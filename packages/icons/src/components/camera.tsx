@@ -1,33 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const Camera = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          stroke={color}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M5.69 5.146a1.925 1.925 0 0 1-1.368.879c-.317.045-.631.093-.945.146-.878.146-1.502.918-1.502 1.807V15a1.875 1.875 0 0 0 1.875 1.875h12.5A1.875 1.875 0 0 0 18.125 15V7.978c0-.889-.625-1.661-1.502-1.807-.314-.053-.63-.101-.945-.146a1.925 1.925 0 0 1-1.366-.88l-.685-1.096a1.827 1.827 0 0 0-1.447-.866 40.643 40.643 0 0 0-4.36 0 1.827 1.827 0 0 0-1.447.866L5.69 5.146Z"
-        />
-        <path
-          stroke={color}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M13.75 10.625a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Zm1.875-1.875h.007v.007h-.007V8.75Z"
-        />
-      </svg>
-    )
-  }
-)
-Camera.displayName = "Camera"
-export default Camera
+import * as React from "react";
+import type { IconProps } from "../types";
+const Camera = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23q-.57.08-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a48 48 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.19 2.19 0 0 0-1.736-1.039 49 49 0 0 0-5.232 0 2.19 2.19 0 0 0-1.736 1.039z" /><path stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0m2.25-2.25h.008v.008h-.008z" /></svg>;
+});
+Camera.displayName = "Camera";
+export default Camera;

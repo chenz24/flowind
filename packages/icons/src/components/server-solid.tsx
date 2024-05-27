@@ -1,29 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const ServerSolid = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          fill={color}
-          d="M3.4 4.356A2.5 2.5 0 0 1 5.816 2.5h8.367A2.5 2.5 0 0 1 16.6 4.356l1.76 6.605A4.357 4.357 0 0 0 15.626 10H4.375a4.357 4.357 0 0 0-2.737.96L3.4 4.357Z"
-        />
-        <path
-          fill={color}
-          fillRule="evenodd"
-          d="M4.375 11.25a3.124 3.124 0 1 0 0 6.25h11.25a3.124 3.124 0 1 0 0-6.25H4.375Zm8.75 3.75a.624.624 0 1 0 0-1.249.624.624 0 0 0 0 1.249Zm3.125-.625a.624.624 0 1 1-1.249 0 .624.624 0 0 1 1.249 0Z"
-          clipRule="evenodd"
-        />
-      </svg>
-    )
-  }
-)
-ServerSolid.displayName = "ServerSolid"
-export default ServerSolid
+import * as React from "react";
+import type { IconProps } from "../types";
+const ServerSolid = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path fill={color} d="M4.08 5.227A3 3 0 0 1 6.979 3H17.02a3 3 0 0 1 2.9 2.227l2.113 7.926A5.23 5.23 0 0 0 18.75 12H5.25a5.23 5.23 0 0 0-3.284 1.153z" /><path fill={color} fillRule="evenodd" d="M5.25 13.5a3.75 3.75 0 1 0 0 7.5h13.5a3.75 3.75 0 1 0 0-7.5zm10.5 4.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5m3.75-.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0" clipRule="evenodd" /></svg>;
+});
+ServerSolid.displayName = "ServerSolid";
+export default ServerSolid;

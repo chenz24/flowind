@@ -1,26 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const GlobeEurope = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          stroke={color}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="m17.41 11.16-.945-.945a1.875 1.875 0 0 1-.35-.487l-.9-1.8a.346.346 0 0 0-.553-.09.69.69 0 0 1-.677.175l-1.06-.302a.742.742 0 0 0-.616 1.33l.49.324a.938.938 0 0 1 .143 1.443l-.167.167a.937.937 0 0 0-.275.663v.342c0 .34-.092.674-.267.965l-1.096 1.826a1.759 1.759 0 0 1-1.508.854.88.88 0 0 1-.879-.88v-.976c0-.766-.467-1.456-1.178-1.74l-.546-.218a1.875 1.875 0 0 1-1.153-2.05l.006-.035c.039-.232.12-.454.242-.656l.075-.125a1.875 1.875 0 0 1 1.975-.873l.982.196a.938.938 0 0 0 1.085-.662l.173-.608a.937.937 0 0 0-.482-1.096l-.554-.277-.076.076a1.875 1.875 0 0 1-1.326.55h-.15a.784.784 0 0 0-.551.227.776.776 0 0 1-1.215-.947l1.175-1.96c.118-.196.198-.41.239-.634m9.94 8.224A7.499 7.499 0 1 0 2.594 8.834a7.499 7.499 0 0 0 14.817 2.327Z"
-        />
-      </svg>
-    )
-  }
-)
-GlobeEurope.displayName = "GlobeEurope"
-export default GlobeEurope
+import * as React from "react";
+import type { IconProps } from "../types";
+const GlobeEurope = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="m20.893 13.393-1.135-1.135a2.3 2.3 0 0 1-.421-.585l-1.08-2.16a.414.414 0 0 0-.663-.107.83.83 0 0 1-.812.21l-1.273-.363a.89.89 0 0 0-.738 1.595l.587.39c.59.395.674 1.23.172 1.732l-.2.2c-.212.212-.33.498-.33.796v.41c0 .41-.11.81-.32 1.158l-1.315 2.191a2.11 2.11 0 0 1-1.81 1.025 1.055 1.055 0 0 1-1.055-1.055v-1.172c0-.92-.56-1.747-1.414-2.089l-.655-.26a2.25 2.25 0 0 1-1.383-2.46l.007-.043a2.3 2.3 0 0 1 .29-.787l.09-.15a2.25 2.25 0 0 1 2.37-1.048l1.178.236a1.125 1.125 0 0 0 1.302-.795l.208-.73a1.125 1.125 0 0 0-.578-1.315l-.665-.332-.091.091a2.25 2.25 0 0 1-1.591.659h-.18a.94.94 0 0 0-.662.274.931.931 0 0 1-1.458-1.137l1.411-2.353a2.3 2.3 0 0 0 .286-.76m11.928 9.87A9 9 0 1 0 3.11 10.6a9 9 0 0 0 17.783 2.792" /></svg>;
+});
+GlobeEurope.displayName = "GlobeEurope";
+export default GlobeEurope;

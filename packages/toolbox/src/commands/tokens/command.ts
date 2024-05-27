@@ -416,9 +416,7 @@ export async function generateTokens({ output }: GenerateTokensArgs) {
 
   const themeExtension = {
     extend: {
-      colors: {
-        ui: colorsExtension,
-      },
+      colors: colorsExtension,
       boxShadow: boxShadowExtension,
     },
   };

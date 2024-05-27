@@ -1,26 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const CircleStack = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          stroke={color}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.25}
-          d="M16.875 5.313c0 1.898-3.078 3.437-6.875 3.437S3.125 7.21 3.125 5.312m13.75 0c0-1.898-3.078-3.437-6.875-3.437s-6.875 1.54-6.875 3.438m13.75 0v9.375c0 1.898-3.078 3.437-6.875 3.437s-6.875-1.54-6.875-3.438V5.313m13.75 0v3.125M3.125 5.312v3.125m13.75 0v3.126C16.875 13.46 13.797 15 10 15s-6.875-1.54-6.875-3.438V8.438m13.75 0c0 1.898-3.078 3.437-6.875 3.437s-6.875-1.54-6.875-3.438"
-        />
-      </svg>
-    )
-  }
-)
-CircleStack.displayName = "CircleStack"
-export default CircleStack
+import * as React from "react";
+import type { IconProps } from "../types";
+const CircleStack = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.25} d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" /></svg>;
+});
+CircleStack.displayName = "CircleStack";
+export default CircleStack;

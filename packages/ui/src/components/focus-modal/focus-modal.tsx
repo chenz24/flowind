@@ -25,7 +25,7 @@ FocusModalRoot.displayName = 'FocusModal';
 const FocusModalTrigger = React.forwardRef<
   React.ElementRef<typeof FocusModalPrimitives.Trigger>,
   React.ComponentPropsWithoutRef<typeof FocusModalPrimitives.Trigger>
->((props, ref) => <FocusModalPrimitives.Trigger ref={ref} {...props} />);
+>((props, ref) => <FocusModalPrimitives.Trigger type={undefined} ref={ref} {...props} />);
 FocusModalTrigger.displayName = 'FocusModal.Trigger';
 
 const FocusModalClose = FocusModalPrimitives.Close;
@@ -48,7 +48,7 @@ const FocusModalOverlay = React.forwardRef<
   <FocusModalPrimitives.Overlay
     ref={ref}
     className={clx(
-      'bg-ui-bg-overlay fixed inset-0',
+      'bg-bg-overlay fixed inset-0',
       'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0',
       className,
     )}
@@ -66,7 +66,7 @@ const FocusModalContent = React.forwardRef<
     <FocusModalPrimitives.Content
       ref={ref}
       className={clx(
-        'bg-ui-bg-base shadow-elevation-modal fixed inset-2 flex flex-col overflow-hidden rounded-lg border focus-visible:outline-none',
+        'bg-bg-base shadow-elevation-modal fixed inset-2 flex flex-col overflow-hidden rounded-lg border focus-visible:outline-none',
         'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=open]:slide-in-from-bottom-0 data-[state=closed]:slide-in-from-bottom-2  duration-200',
         className,
       )}
@@ -84,14 +84,14 @@ const FocusModalHeader = React.forwardRef<HTMLDivElement, React.ComponentPropsWi
     <div
       ref={ref}
       className={clx(
-        'border-ui-border-base flex items-center justify-between gap-x-4 border-b px-4 py-2',
+        'border-border-base flex items-center justify-between gap-x-4 border-b px-4 py-2',
         className,
       )}
       {...props}
     >
       <div className="flex items-center gap-x-2">
-        <FocusModalPrimitives.Close asChild>
-          <IconButton size="small" type="button" variant="transparent">
+        <FocusModalPrimitives.Close type={undefined} asChild>
+          <IconButton size="sm" htmlType="button" variant="subtle">
             <XMark />
           </IconButton>
         </FocusModalPrimitives.Close>

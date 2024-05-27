@@ -1,26 +1,11 @@
-import * as React from "react"
-import type { IconProps } from "../types"
-const Sparkles = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ color = "currentColor", ...props }, ref) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={20}
-        height={20}
-        fill="none"
-        ref={ref}
-        {...props}
-      >
-        <path
-          stroke={color}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M8.178 13.253 7.5 15.625l-.678-2.372a3.75 3.75 0 0 0-2.575-2.575L1.875 10l2.372-.678a3.75 3.75 0 0 0 2.575-2.574L7.5 4.374l.678 2.372a3.75 3.75 0 0 0 2.574 2.575l2.373.678-2.372.678a3.75 3.75 0 0 0-2.575 2.574v.001Zm7.038-5.99L15 8.124l-.216-.862a2.813 2.813 0 0 0-2.046-2.047L11.875 5l.863-.216a2.813 2.813 0 0 0 2.046-2.046L15 1.874l.216.862a2.813 2.813 0 0 0 2.046 2.047l.863.216-.863.216a2.812 2.812 0 0 0-2.046 2.046Zm-1.138 9.876-.328.986-.328-.986a1.875 1.875 0 0 0-1.186-1.186l-.986-.328.986-.328a1.875 1.875 0 0 0 1.186-1.186l.328-.986.328.986a1.875 1.875 0 0 0 1.186 1.186l.986.328-.986.328a1.875 1.875 0 0 0-1.186 1.186Z"
-        />
-      </svg>
-    )
-  }
-)
-Sparkles.displayName = "Sparkles"
-export default Sparkles
+import * as React from "react";
+import type { IconProps } from "../types";
+const Sparkles = React.forwardRef<SVGSVGElement, IconProps>(({
+  color = "currentColor",
+  size = '1rem',
+  ...props
+}, ref) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" ref={ref} width={size} height={size} {...props}><path stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09zm8.446-7.189L18 9.75l-.259-1.035a3.38 3.38 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.38 3.38 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.38 3.38 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.38 3.38 0 0 0-2.456 2.456m-1.365 11.852L16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423" /></svg>;
+});
+Sparkles.displayName = "Sparkles";
+export default Sparkles;
