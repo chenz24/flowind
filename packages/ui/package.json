@@ -42,7 +42,7 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@flowind/ui-preset": "*",
+    "@flowind/ui-preset": "workspace:*",
     "@storybook/addon-essentials": "^7.0.23",
     "@storybook/addon-interactions": "^7.0.23",
     "@storybook/addon-links": "^7.0.23",
@@ -60,8 +60,8 @@
   },
   "dependencies": {
     "@internationalized/date": "^3.5.2",
-    "@flowind/hooks": "*",
-    "@flowind/icons": "*",
+    "@flowind/hooks": "workspace:*",
+    "@flowind/icons": "workspace:*",
     "@floating-ui/react": "^0.26.10",
     "@radix-ui/react-alert-dialog": "^1.0.4",
     "@radix-ui/react-avatar": "^1.0.3",
