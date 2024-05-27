@@ -1,5 +1,19 @@
 # @medusajs/ui
 
+## 0.1.0
+
+### Minor Changes
+
+- a32e231: release 0.1
+
+### Patch Changes
+
+- 18c4f15: ...
+- Updated dependencies [a32e231]
+- Updated dependencies [18c4f15]
+  - @flowind/hooks@0.1.0
+  - @flowind/icons@0.1.0
+
 ## 0.0.2
 
 ### Patch Changes
