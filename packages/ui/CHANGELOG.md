@@ -1,5 +1,17 @@
 # @medusajs/ui
 
+## 0.2.0
+
+### Minor Changes
+
+- 1a778be: release 0.1
+
+### Patch Changes
+
+- Updated dependencies [1a778be]
+  - @flowind/hooks@0.2.0
+  - @flowind/icons@0.2.0
+
 ## 0.1.0
 
 ### Minor Changes

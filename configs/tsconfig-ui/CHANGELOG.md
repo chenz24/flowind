@@ -1,5 +1,11 @@
 # @flowind/tsconfig-ui
 
+## 0.2.0
+
+### Minor Changes
+
+- 1a778be: release 0.1
+
 ## 0.1.0
 
 ### Minor Changes
