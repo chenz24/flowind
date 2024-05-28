@@ -52,5 +52,8 @@
     "react": ">=16.8.0"
   },
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {},
+  "publishConfig": {
+    "access": "public"
+  }
 }
