@@ -1,5 +1,11 @@
 # @flowind/hooks
 
+## 0.2.1
+
+### Patch Changes
+
+- 71dbab7: fix npm publishConfig of hooks package
+
 ## 0.2.0
 
 ### Minor Changes

@@ -1,5 +1,12 @@
 # @medusajs/ui
 
+## 0.2.1
+
+### Patch Changes
+
+- Updated dependencies [71dbab7]
+  - @flowind/hooks@0.2.1
+
 ## 0.2.0
 
 ### Minor Changes
