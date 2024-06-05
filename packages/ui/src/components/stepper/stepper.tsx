@@ -1,3 +1,5 @@
+'use client';
+
 import React, { Children, cloneElement, forwardRef } from 'react';
 
 import { useMediaQuery } from '@flowind/hooks';

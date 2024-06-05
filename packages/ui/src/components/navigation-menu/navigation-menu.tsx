@@ -1,3 +1,5 @@
+'use client';
+
 import React, { forwardRef } from 'react';
 import { NavigationMenuProps as NavProps } from '@radix-ui/react-navigation-menu';
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu';

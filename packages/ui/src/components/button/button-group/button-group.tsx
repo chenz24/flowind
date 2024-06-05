@@ -1,3 +1,5 @@
+'use client';
+
 /* eslint-disable react/no-unused-prop-types */
 import React, { forwardRef } from 'react';
 import cx from 'clsx';
