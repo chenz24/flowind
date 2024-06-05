@@ -20,7 +20,6 @@
       "@flowind/ui": ["./src/index.tsx"],
       "@/components/*": ["./src/components/*"],
       "@/providers/*": ["./src/providers/*"],
-      "@/hooks/*": ["./src/hooks/*"],
       "@/utils/*": ["./src/utils/*"],
       "@/types": ["./src/types"],
       "@/styles": ["./src/styles"],

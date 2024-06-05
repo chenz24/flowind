@@ -77,11 +77,11 @@ export * from './components/tooltip';
 export * from './components/transition';
 export { UnstyledButton } from './components/unstyled-button';
 
-// Hooks
-export { useToggleState } from './hooks/use-toggle-state';
-
 // Utils
 export { clx } from './utils/clx';
+
+// Theme
+export * from '@/styles';
 
 // Types
 export * from './types';
