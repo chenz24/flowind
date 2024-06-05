@@ -1,5 +1,11 @@
 # @medusajs/ui
 
+## 0.2.3
+
+### Patch Changes
+
+- 4f240ac: fix client component bug
+
 ## 0.2.2
 
 ### Patch Changes
