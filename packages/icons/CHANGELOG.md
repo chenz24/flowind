@@ -1,5 +1,11 @@
 # @medusajs/icons
 
+## 0.2.1
+
+### Patch Changes
+
+- 2bfae59: remove unused hooks
+
 ## 0.2.0
 
 ### Minor Changes
