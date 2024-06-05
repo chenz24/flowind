@@ -1,3 +1,5 @@
+'use client';
+
 import React, { forwardRef } from 'react';
 import { MenubarProps as _MenubarProps } from '@radix-ui/react-menubar';
 import * as MenubarPrimitive from '@radix-ui/react-menubar';

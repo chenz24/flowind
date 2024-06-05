@@ -30,7 +30,7 @@ export const SliderRoot = forwardRef<HTMLDivElement, SliderRootProps>(
     ref,
   ) => {
     const { classes, styls, cx } = useStyles(null, {
-      name: 'Slider',
+      name: 'SliderRoot',
       classNames,
       styles,
       unstyled,

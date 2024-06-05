@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useCallback, useReducer, useRef } from 'react';
 
 import { randomId } from '@flowind/hooks';
