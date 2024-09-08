@@ -1,5 +1,11 @@
 # @medusajs/icons
 
+## 0.3.0
+
+### Minor Changes
+
+- 28a840d: 1. add breadcrumbs component 2. add home icon
+
 ## 0.2.1
 
 ### Patch Changes

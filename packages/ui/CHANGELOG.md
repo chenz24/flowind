@@ -1,5 +1,16 @@
 # @medusajs/ui
 
+## 0.3.0
+
+### Minor Changes
+
+- 28a840d: 1. add breadcrumbs component 2. add home icon
+
+### Patch Changes
+
+- Updated dependencies [28a840d]
+  - @flowind/icons@0.3.0
+
 ## 0.2.3
 
 ### Patch Changes
