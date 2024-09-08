@@ -1,5 +1,27 @@
 # @medusajs/ui
 
+## 0.2.3
+
+### Patch Changes
+
+- 4f240ac: fix client component bug
+
+## 0.2.2
+
+### Patch Changes
+
+- 2bfae59: remove unused hooks
+- Updated dependencies [2bfae59]
+  - @flowind/hooks@0.2.2
+  - @flowind/icons@0.2.1
+
+## 0.2.1
+
+### Patch Changes
+
+- Updated dependencies [71dbab7]
+  - @flowind/hooks@0.2.1
+
 ## 0.2.0
 
 ### Minor Changes
