@@ -5,6 +5,7 @@ export * from './components/autocomplete';
 export * from './components/avatar';
 export * from './components/badge';
 export * from './components/box';
+export * from './components/breadcrumbs';
 export * from './components/button';
 export * from './components/calendar';
 export * from './components/checkbox';
