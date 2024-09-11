@@ -26,6 +26,7 @@ export * from './components/divider';
 export * from './components/drawer';
 export * from './components/dropdown-menu';
 export * from './components/file-button';
+export * from './components/file-input';
 export { FocusModal } from './components/focus-modal';
 export * from './components/focus-trap';
 export * from './components/heading';
