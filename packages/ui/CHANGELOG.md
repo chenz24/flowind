@@ -1,5 +1,13 @@
 # @medusajs/ui
 
+## 0.3.1
+
+### Patch Changes
+
+- 5b44e3b: 1. Add FileInput component.
+- Updated dependencies [5b44e3b]
+  - @flowind/icons@0.3.1
+
 ## 0.3.0
 
 ### Minor Changes

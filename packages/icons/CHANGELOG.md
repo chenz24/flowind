@@ -1,5 +1,11 @@
 # @medusajs/icons
 
+## 0.3.1
+
+### Patch Changes
+
+- 5b44e3b: 1. Add FileInput component.
+
 ## 0.3.0
 
 ### Minor Changes
