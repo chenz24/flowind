@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { Puzzle } from '@flowind/icons';
+import { Button } from '../button';
 import { Stack } from '../stack';
 import { TextInput } from './text-input';
 
@@ -72,7 +73,6 @@ export function InputWrapperOrder() {
         value="Text input"
         label="Input label"
         description="Input description"
-        error="Input error"
         inputWrapperOrder={['label', 'description', 'error', 'input']}
         addonAfter={<Puzzle className="text-gray-500" />}
       />
@@ -82,9 +82,23 @@ export function InputWrapperOrder() {
         defaultValue="Text input"
         label="Input label"
         description="Input description"
-        error="Input error"
         inputWrapperOrder={['label', 'error', 'input', 'description']}
         prefix={<Puzzle className="text-gray-500" />}
+      />
+
+      <TextInput
+        className="mt-5"
+        classNames={{ addonAfter: 'bg-slate-100' }}
+        defaultValue="Text input"
+        label="Input label"
+        description="Input description"
+        inputWrapperOrder={['label', 'error', 'input', 'description']}
+        suffixWidth={60}
+        suffix={
+          <Button variant="fancy" type="secondary" size="xs">
+            上传
+          </Button>
+        }
       />
     </div>
   );
