@@ -60,10 +60,11 @@ export function Suffix() {
     <div style={{ width: 300 }}>
       <FileInput
         className="mt-4"
+        width={280}
         multiple
         onChange={setMultipleValue}
         value={multipleValue}
-        placeholder="Controlled multiple"
+        placeholder="从本地文件加载"
         suffix={
           <FileButton multiple onChange={setMultipleValue}>
             {(props) => (

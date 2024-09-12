@@ -2,7 +2,7 @@ import { createStyles } from '@/styles';
 
 export default createStyles(() => ({
   classes: {
-    placeholder: '',
+    placeholder: 'text-fg-muted',
     input: 'cursor-pointer',
   },
   styles: {

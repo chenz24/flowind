@@ -43,6 +43,9 @@ export interface FileInputProps<Multiple extends boolean = false>
   /** Input size */
   size?: FlowindSize;
 
+  /** Input width */
+  width?: number | string | undefined;
+
   /** Determines whether user can pick more than one file */
   multiple?: Multiple;
 
@@ -83,7 +86,7 @@ const DefaultValue: FileInputProps['valueComponent'] = ({ value }) => (
 );
 
 const defaultProps: Partial<FileInputProps> = {
-  size: 'sm',
+  size: 'md',
   valueComponent: DefaultValue,
 };
 
@@ -103,7 +106,7 @@ export const _FileInput = forwardRef<HTMLButtonElement, FileInputProps>((props, 
     styles,
     unstyled,
     valueComponent: ValueComponent,
-    rightSection,
+    // rightSection,
     suffix,
     clearable,
     // clearButtonProps,
