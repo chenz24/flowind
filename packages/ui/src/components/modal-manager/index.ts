@@ -16,4 +16,5 @@ export type {
   FlowindModalsOverride,
   FlowindModals,
   FlowindModal,
+  ModalSettings,
 } from './context';
