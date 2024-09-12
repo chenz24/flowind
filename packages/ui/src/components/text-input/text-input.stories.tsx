@@ -35,6 +35,7 @@ export function Default() {
         label="Input label"
         description="Input description"
         placeholder="Input placeholder"
+        width={280}
       />
       <TextInput placeholder="Enter your password" />
     </Stack>
