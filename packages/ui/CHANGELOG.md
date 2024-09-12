@@ -1,5 +1,11 @@
 # @medusajs/ui
 
+## 0.3.2
+
+### Patch Changes
+
+- 83c1aab: 1. fix width not work in FileInput 2. export toast function
+
 ## 0.3.1
 
 ### Patch Changes
