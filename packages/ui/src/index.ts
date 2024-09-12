@@ -82,6 +82,7 @@ export { UnstyledButton } from './components/unstyled-button';
 
 // Utils
 export { clx } from './utils/clx';
+export * from './utils/toast';
 
 // Theme
 export * from '@/styles';
