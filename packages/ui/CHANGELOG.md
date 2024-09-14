@@ -1,5 +1,11 @@
 # @medusajs/ui
 
+## 0.3.3
+
+### Patch Changes
+
+- 135540d: 1. fix toast props bug. 2. fix fancy button onclick not work
+
 ## 0.3.2
 
 ### Patch Changes
