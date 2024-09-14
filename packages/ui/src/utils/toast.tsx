@@ -34,6 +34,7 @@ function create(variant: ToastVariant, title: string, props: ToastProps = {}) {
       id: props.id,
       position: props.position,
       dismissible: props.dismissable,
+      ...props,
     },
   );
 }
@@ -99,7 +100,7 @@ function warning(
   return create('warning', title, props);
 }
 
-type LoadingToastProps = Omit<ToastProps, 'dismissable' | 'dismissLabel'>;
+export type LoadingToastProps = Omit<ToastProps, 'dismissable' | 'dismissLabel'>;
 
 function loading(
   /**

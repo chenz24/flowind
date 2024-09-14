@@ -20,7 +20,7 @@ export default meta;
 
 type Story = StoryObj<typeof Skeleton>;
 
-export function Default() {
+export function WithContent() {
   const [loading, setLoading] = useState(true);
   console.log(loading);
 
@@ -43,5 +43,16 @@ export function Default() {
         <Button onClick={() => setLoading((l) => !l)}>Toggle Skeleton</Button>
       </Stack>
     </>
+  );
+}
+
+export function Usage() {
+  return (
+    <div className="w-96">
+      <Skeleton height={50} circle className="mb-5" />
+      <Skeleton height={8} radius="xl" className="mb-5" />
+      <Skeleton height={8} className="mb-5" radius="xl" />
+      <Skeleton height={8} className="mb-5" width="70%" radius="xl" />
+    </div>
   );
 }

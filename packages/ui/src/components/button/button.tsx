@@ -135,6 +135,8 @@ export const _Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) =
         size={size}
         isLoading={loading}
         children={children}
+        onClick={handleClick}
+        ref={ref}
       />
     );
   }
