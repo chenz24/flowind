@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { Plus } from '@flowind/icons';
 import { Stack } from '../stack';
+import { Tooltip } from '../tooltip';
 import { Button } from './button';
 import { FancyButton } from './fancy-button';
 
@@ -145,13 +146,29 @@ export function Types() {
 export function FancyButtonDemo() {
   return (
     <Stack>
-      <Button variant="fancy" type="primary" size="xs">
-        Extra small
-      </Button>
+      <Tooltip label="test tooltip">
+        <Button
+          variant="fancy"
+          type="primary"
+          size="xs"
+          onClick={() => {
+            console.log(31);
+          }}
+        >
+          Extra small
+        </Button>
+      </Tooltip>
       <Button variant="fancy" type="secondary" size="sm">
         Button
       </Button>
-      <FancyButton variant="danger">Medium</FancyButton>
+      <FancyButton
+        variant="danger"
+        onClick={() => {
+          console.log(123);
+        }}
+      >
+        Medium
+      </FancyButton>
       <FancyButton variant="secondary">Button</FancyButton>
       <FancyButton variant="success" size="lg">
         Large
