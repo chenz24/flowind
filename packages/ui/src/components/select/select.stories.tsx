@@ -1,6 +1,8 @@
 import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { Button } from '../button';
+import { ModalsProvider, openModal } from '../modal-manager';
 import { Select } from './select';
 
 const meta: Meta<typeof Select> = {
@@ -84,6 +86,34 @@ export const Default: Story = {
       <Select data={data2} clearable defaultValue="React" placeholder="please select" searchable />
     </div>
   ),
+};
+
+export const InModal = () => {
+  const open = () => {
+    console.log('open modal');
+    openModal({
+      modalId: 'content-modal',
+      title: 'Select',
+      children: (
+        <Select
+          withinPortal
+          data={data2}
+          clearable
+          defaultValue="Vue"
+          placeholder="please select"
+          searchable
+          label="Select a framework"
+        />
+      ),
+      onClose: () => console.log('content modal 1 closed'),
+    });
+  };
+
+  return (
+    <ModalsProvider>
+      <Button onClick={open}>打开</Button>
+    </ModalsProvider>
+  );
 };
 
 // export const Disabled: Story = {

@@ -19,8 +19,8 @@ type Story = StoryObj<typeof Radio>;
 
 export const Default: Story = {
   render: () => (
-    <Radio.Group>
-      <Radio label="React" value="react" />
+    <Radio.Group label="Radio Group" required>
+      <Radio label="React" value="react" className="mt-3" />
       <Radio label="Angular" value="ng" className="mt-3" />
       <Radio label="Svelte" value="sv" className="mt-3" />
     </Radio.Group>

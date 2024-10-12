@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { Input } from '../input';
 import { RangeSlider, Slider } from './index';
 
 const meta: Meta<typeof Slider> = {
@@ -92,6 +93,16 @@ export function Scaled() {
         defaultValue={[10, 20]}
         label={valueLabelFormat}
       />
+    </div>
+  );
+}
+
+export function FormLabel() {
+  return (
+    <div style={{ width: 400, padding: 40 }}>
+      <Input.Wrapper label="最大值" required error="asdf">
+        <Slider defaultValue={60} className="mt-1" />
+      </Input.Wrapper>
     </div>
   );
 }

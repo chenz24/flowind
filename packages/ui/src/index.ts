@@ -25,6 +25,7 @@ export * from './components/date-picker';
 export * from './components/divider';
 export * from './components/drawer';
 export * from './components/dropdown-menu';
+export * from './components/dropzone';
 export * from './components/file-button';
 export * from './components/file-input';
 export { FocusModal } from './components/focus-modal';

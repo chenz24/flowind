@@ -62,7 +62,7 @@ export function Asterisk() {
         <Switch value="1" />
       </Switch.Group>
       <Switch.Group label="Required false asterisk on" required={false} withAsterisk>
-        <Switch value="1" />
+        <Switch value="1" className="mt-1" />
       </Switch.Group>
     </div>
   );

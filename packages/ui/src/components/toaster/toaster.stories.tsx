@@ -29,7 +29,7 @@ const meta: Meta<typeof Toaster> = {
     };
 
     const makeErrorToast = () => {
-      toast.error('This is an error toast.');
+      toast.error('This is an error toast.', { duration: 10000 });
     };
 
     const makeActionToast = () => {
