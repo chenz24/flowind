@@ -36,3 +36,12 @@ export function Asterisk() {
     </div>
   );
 }
+
+export function Controlled() {
+  const [value, setValue] = React.useState('');
+  return (
+    <div style={{ width: 300, padding: 20 }}>
+      <Textarea label="Controlled" value={value} onChange={(e) => setValue(e.target.value)} />
+    </div>
+  );
+}
