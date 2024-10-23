@@ -214,7 +214,7 @@ export const Select = forwardRef<HTMLInputElement, SelectProps>((props, ref) => 
     ...others
   } = useInputProps('Select', defaultProps, props);
 
-  const { classes, cx, theme } = useStyles({});
+  const { classes, cx, theme } = useStyles({}, { name: 'select' });
   const [dropdownOpened, _setDropdownOpened] = useState(initiallyOpened);
   const [hovered, setHovered] = useState(-1);
   const inputRef = useRef<HTMLInputElement>();
