@@ -71,7 +71,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, r
   } = useComponentDefaultProps('Textarea', defaultProps, props);
 
   const uuid = useId(id);
-  const { classes, cx } = useStyles({});
+  const { classes, cx } = useStyles({}, { name: 'Textarea' });
   const sharedProps = {
     required,
     ref,

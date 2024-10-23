@@ -1,4 +1,4 @@
-import { ClassNames, FlowindNumberSize, FlowindSize, Styles } from '@/styles';
+import { ClassNames, FlowindSize, Styles } from '@/styles';
 import { createSafeContext } from '@/utils/create-safe-context/create-safe-context';
 import { TransitionOverride } from '../transition';
 import type { ModalBaseStylesNames } from './modal-base';
