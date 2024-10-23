@@ -1,5 +1,11 @@
 # @medusajs/ui
 
+## 0.3.5
+
+### Patch Changes
+
+- 291a074: 1. fix the issue of missing names in useStyle
+
 ## 0.3.4
 
 ### Patch Changes
