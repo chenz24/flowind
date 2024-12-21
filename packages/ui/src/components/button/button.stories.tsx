@@ -4,14 +4,39 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Plus } from '@flowind/icons';
 import { Stack } from '../stack';
 import { Tooltip } from '../tooltip';
-import { Button } from './button';
+import { Button, ButtonProps } from './button';
 import { FancyButton } from './fancy-button';
 
 const meta: Meta<typeof Button> = {
-  title: 'Components/Button',
+  title: 'components/Button',
   component: Button,
   parameters: {
-    layout: 'centered',
+    layout: 'fullscreen',
+  },
+  tags: ['autodocs'],
+  argTypes: {
+    variant: {
+      control: 'select',
+      options: ['filled', 'outline', 'light', 'default'],
+      description: 'Button variant',
+      defaultValue: 'filled',
+    },
+    size: {
+      control: 'select',
+      options: ['sm', 'md', 'lg', 'xl'],
+      description: 'Button size',
+      defaultValue: 'md',
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Disabled button',
+      defaultValue: false,
+    },
+    loading: {
+      control: 'boolean',
+      description: 'Loading state',
+      defaultValue: false,
+    },
   },
 };
 
@@ -19,129 +44,102 @@ export default meta;
 
 type Story = StoryObj<typeof Button>;
 
-export function types() {
-  return (
-    <>
-      <Stack>
-        <Button variant="filled" type="primary">
-          Primary
-        </Button>
-        <Button variant="filled" type="secondary">
-          Secondary
-        </Button>
-        <Button variant="filled" type="danger">
-          Danger
-        </Button>
-        <Button variant="filled" type="warning">
-          Warning
-        </Button>
-        <Button variant="filled" type="info">
-          Info
-        </Button>
-        <Button variant="filled" type="success">
-          Success
-        </Button>
-      </Stack>
-      <Stack className="mt-3.5">
-        <Button variant="light" type="primary">
-          Primary
-        </Button>
-        <Button variant="light" type="secondary">
-          Secondary
-        </Button>
-        <Button variant="light" type="danger">
-          Danger
-        </Button>
-        <Button variant="light" type="warning">
-          Warning
-        </Button>
-        <Button variant="light" type="info">
-          Info
-        </Button>
-        <Button variant="light" type="success">
-          Success
-        </Button>
-      </Stack>
-    </>
-  );
-}
-
-export function Variants() {
-  return (
-    <Stack>
-      <Button variant="filled">Filled</Button>
-      <Button variant="outline">Outlined</Button>
-      <Button variant="light">Light</Button>
-      <Button variant="default">Default</Button>
-      <Button variant="subtle">Subtle</Button>
-    </Stack>
-  );
-}
-
-export const Transparent: Story = {
+export const Default: Story = {
   args: {
-    children: 'Action',
+    children: 'Button',
+    variant: 'filled',
+  },
+};
+
+export const Variants: Story = {
+  render: (args: ButtonProps) => (
+    <div
+      style={{
+        display: 'flex',
+        gap: '10px',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+        padding: '20px',
+        textAlign: 'center',
+      }}
+    >
+      <Button {...args} variant="filled">
+        Filled
+      </Button>
+      <Button {...args} variant="outline">
+        Outline
+      </Button>
+      <Button {...args} variant="light">
+        Light
+      </Button>
+      <Button {...args} variant="default">
+        Default
+      </Button>
+    </div>
+  ),
+};
+
+export const Sizes: Story = {
+  render: (args: ButtonProps) => (
+    <div
+      style={{
+        display: 'flex',
+        gap: '10px',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+        padding: '20px',
+        textAlign: 'center',
+      }}
+    >
+      <Button {...args} size="sm">
+        Small
+      </Button>
+      <Button {...args} size="md">
+        Medium
+      </Button>
+      <Button {...args} size="lg">
+        Large
+      </Button>
+      <Button {...args} size="xl">
+        Extra Large
+      </Button>
+    </div>
+  ),
+};
+
+export const Disabled: Story = {
+  args: {
+    children: 'Disabled Button',
+    variant: 'filled',
+    disabled: true,
+  },
+};
+
+export const Loading: Story = {
+  args: {
+    children: 'Loading...',
+    variant: 'filled',
+    loading: true,
+  },
+};
+
+export const WithIcon: Story = {
+  args: {
+    children: 'With Icon',
+    leftIcon: <Plus key={1} />,
     variant: 'filled',
   },
 };
 
 export const Compact: Story = {
   args: {
-    children: 'Action',
+    children: 'Compact Button',
     compact: true,
+    variant: 'filled',
   },
 };
-
-export const Disabled: Story = {
-  args: {
-    children: 'Action',
-    disabled: true,
-  },
-};
-
-export const WithIcon: Story = {
-  args: {
-    children: 'Action',
-    leftIcon: <Plus key={1} />,
-  },
-};
-
-export function Sizes() {
-  return (
-    <Stack>
-      <Button size="xs">Extra small</Button>
-      <Button size="sm">Small</Button>
-      <Button size="md">Medium</Button>
-      <Button size="lg">Large</Button>
-      <Button size="xl">Extra large</Button>
-    </Stack>
-  );
-}
-
-export function Types() {
-  return (
-    <Stack>
-      <Button variant="filled" type="primary">
-        Filled
-      </Button>
-      <Button variant="filled" type="secondary">
-        Filled
-      </Button>
-      <Button variant="filled" type="danger">
-        Filled
-      </Button>
-      <Button variant="filled" type="warning">
-        Filled
-      </Button>
-      <Button variant="filled" type="info">
-        Filled
-      </Button>
-      <Button variant="filled" type="success">
-        Filled
-      </Button>
-    </Stack>
-  );
-}
 
 export function FancyButtonDemo() {
   return (
@@ -181,7 +179,7 @@ export function FancyButtonDemo() {
   );
 }
 
-export const ButtonGroup: Story = {
+export const ButtonGroup: StoryObj<typeof Button> = {
   render: () => (
     <Button.Group>
       <Button variant="filled">First</Button>
@@ -191,26 +189,4 @@ export const ButtonGroup: Story = {
       <Button variant="outline">Last</Button>
     </Button.Group>
   ),
-};
-
-export const Loading: Story = {
-  args: {
-    children: 'Action',
-    loading: true,
-    size: 'md',
-  },
-};
-
-export const Large: Story = {
-  args: {
-    children: 'Action',
-    size: 'lg',
-  },
-};
-
-export const XLarge: Story = {
-  args: {
-    children: 'Action',
-    size: 'xl',
-  },
 };

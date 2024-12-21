@@ -7,19 +7,36 @@ import { Alert } from './alert';
 const meta: Meta<typeof Alert> = {
   title: 'Components/Alert',
   component: Alert,
-  // argTypes: {
-  //   variant: {
-  //     control: {
-  //       type: 'select',
-  //       options: ['info', 'error', 'success', 'warning'],
-  //     },
-  //   },
-  //   dismissible: {
-  //     control: {
-  //       type: 'boolean',
-  //     },
-  //   },
-  // },
+  tags: ['autodocs'],
+  argTypes: {
+    type: {
+      control: 'select',
+      options: ['primary', 'secondary', 'success', 'warning', 'danger', 'info'],
+      description: 'Alert type',
+      defaultValue: 'primary',
+    },
+    variant: {
+      control: 'select',
+      options: ['light', 'filled', 'default'],
+      description: 'Alert variant style',
+      defaultValue: 'light',
+    },
+    radius: {
+      control: 'select',
+      options: ['xs', 'sm', 'md', 'lg', 'xl'],
+      description: 'Border radius size',
+      defaultValue: 'sm',
+    },
+    dismissible: {
+      control: 'boolean',
+      description: 'Whether to show close button',
+      defaultValue: false,
+    },
+    title: {
+      control: 'text',
+      description: 'Alert title',
+    },
+  },
   parameters: {
     layout: 'centered',
   },
@@ -29,181 +46,110 @@ export default meta;
 
 type Story = StoryObj<typeof Alert>;
 
-const Text =
-  "We have sent you an email with instructions on how to reset your password. If you don't receive an email, please check your spam folder or try again.";
+interface AlertDemoProps {
+  variant?: 'light' | 'filled' | 'default';
+  type?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'info';
+  title?: string;
+  dismissible?: boolean;
+  radius?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+}
 
-export const Info: Story = {
+const AlertDemo = ({
+  variant = 'light',
+  type = 'primary',
+  title,
+  dismissible = false,
+  radius = 'sm',
+}: AlertDemoProps) => (
+  <Alert
+    variant={variant}
+    type={type}
+    title={title}
+    dismissible={dismissible}
+    radius={radius}
+    className="w-[400px]"
+  >
+    This is a {variant} {type} alert with {title ? 'a title' : 'no title'}. You can use it to show
+    important messages to users.
+  </Alert>
+);
+
+export const Default: Story = {
+  render: () => <AlertDemo />,
+  args: {},
+};
+
+export const WithTitle: Story = {
+  render: () => <AlertDemo title="Alert Title" />,
   args: {
-    variant: 'light',
-    children: Text,
+    title: 'Alert Title',
   },
-  render: (args) => (
-    <div className="max-w-[300px]">
-      <Alert {...args} />
-    </div>
+};
+
+export const Dismissible: Story = {
+  render: () => <AlertDemo dismissible />,
+  args: {
+    dismissible: true,
+  },
+};
+
+export const AllVariants: Story = {
+  render: () => (
+    <Stack direction="col" spacing="md">
+      <AlertDemo variant="light" title="Light Variant" />
+      <AlertDemo variant="filled" title="Filled Variant" />
+      <AlertDemo variant="default" title="Default Variant" />
+    </Stack>
   ),
 };
 
-export function types() {
-  return (
-    <Stack direction="col">
-      <Alert variant="filled" type="primary" dismissible className="w-[400px]" title="这是标题">
-        使用 Figma 的 Transform 功能：在 Figma 的 Editor 视图中，选择多个图片，并在 Transform
-        面板中输入相同的尺寸值。这将将所有选定的图片calaulated to the same size.
-      </Alert>
-      <Alert variant="filled" type="secondary" className="w-[400px]" dismissible>
-        Secondary
-      </Alert>
-      <Alert variant="filled" type="danger" className="w-[400px]" dismissible>
-        Danger
-      </Alert>
-      <Alert variant="filled" type="warning" className="w-[400px]" dismissible>
-        使用 Figma 的 Transform 功能：在 Figma 的 Editor 视图中，选择多个图片，并在 Transform
-        面板中输入相同的尺寸值。这将将所有选定的图片calaulated to the same size.
-      </Alert>
-      <Alert variant="filled" type="info" className="w-[400px]" dismissible>
-        使用 Figma 的 Transform 功能：在 Figma 的 Editor 视图中，选择多个图片，并在 Transform
-        面板中输入相同的尺寸值。这将将所有选定的图片calaulated to the same size.
-      </Alert>
-      <Alert variant="filled" type="success" className="w-[400px]" dismissible>
-        使用 Figma 的 Transform 功能：在 Figma 的 Editor 视图中，选择多个图片，并在 Transform
-        面板中输入相同的尺寸值。这将将所有选定的图片calaulated to the same size.
-      </Alert>
-
-      <Alert variant="light" type="primary" dismissible className="w-[400px]" title="这是标题">
-        使用 Figma 的 Transform 功能：在 Figma 的 Editor 视图中，选择多个图片，并在 Transform
-        面板中输入相同的尺寸值。这将将所有选定的图片calaulated to the same size.
-      </Alert>
-      <Alert variant="light" type="secondary" className="w-[400px]" title="这是标题" dismissible>
-        使用 Figma 的 Transform 功能：在 Figma 的 Editor 视图中，选择多个图片，并在 Transform
-        面板中输入相同的尺寸值。这将将所有选定的图片calaulated to the same size.
-      </Alert>
-      <Alert variant="light" type="danger" className="w-[400px]" title="这是标题" dismissible>
-        使用 Figma 的 Transform 功能：在 Figma 的 Editor 视图中，选择多个图片，并在 Transform
-        面板中输入相同的尺寸值。这将将所有选定的图片calaulated to the same size.
-      </Alert>
-      <Alert variant="light" type="warning" className="w-[400px]" title="这是标题" dismissible>
-        使用 Figma 的 Transform 功能：在 Figma 的 Editor 视图中，选择多个图片，并在 Transform
-        面板中输入相同的尺寸值。这将将所有选定的图片calaulated to the same size.
-      </Alert>
-      <Alert variant="light" type="info" className="w-[400px]" title="这是标题" dismissible>
-        使用 Figma 的 Transform 功能：在 Figma 的 Editor 视图中，选择多个图片，并在 Transform
-        面板中输入相同的尺寸值。这将将所有选定的图片calaulated to the same size.
-      </Alert>
-      <Alert variant="light" type="success" className="w-[400px]" title="这是标题" dismissible>
-        使用 Figma 的 Transform 功能：在 Figma 的 Editor 视图中，选择多个图片，并在 Transform
-        面板中输入相同的尺寸值。这将将所有选定的图片calaulated to the same size.
-      </Alert>
-      <Alert variant="default" type="success" className="w-[400px]" title="这是标题" dismissible>
-        使用 Figma 的 Transform 功能：在 Figma 的 Editor 视图中，选择多个图片，并在 Transform
-        面板中输入相同的尺寸值。这将将所有选定的图片calaulated to the same size.
-      </Alert>
+export const AllTypes: Story = {
+  render: () => (
+    <Stack direction="col" spacing="md">
+      <AlertDemo type="primary" title="Primary Alert" />
+      <AlertDemo type="secondary" title="Secondary Alert" />
+      <AlertDemo type="success" title="Success Alert" />
+      <AlertDemo type="warning" title="Warning Alert" />
+      <AlertDemo type="danger" title="Danger Alert" />
+      <AlertDemo type="info" title="Info Alert" />
     </Stack>
-  );
-}
+  ),
+};
 
-export function lighter() {
-  return (
-    <Stack direction="col">
-      <Alert variant="lighter" type="primary" className="w-[400px]" title="这是标题" dismissible>
-        使用 Figma 的 Transform 功能：在 Figma 的 Editor 视图中，选择多个图片，并在 Transform
-        面板中输入相同的尺寸值。这将将所有选定的图片calaulated to the same size.
-      </Alert>
-      <Alert variant="lighter" type="secondary" className="w-[400px]" title="这是标题" dismissible>
-        使用 Figma 的 Transform 功能：在 Figma 的 Editor 视图中，选择多个图片，并在 Transform
-        面板中输入相同的尺寸值。这将将所有选定的图片calaulated to the same size.
-      </Alert>
-      <Alert variant="lighter" type="danger" className="w-[400px]" title="这是标题" dismissible>
-        使用 Figma 的 Transform 功能：在 Figma 的 Editor 视图中，选择多个图片，并在 Transform
-        面板中输入相同的尺寸值。这将将所有选定的图片calaulated to the same size.
-      </Alert>
-      <Alert variant="lighter" type="warning" className="w-[400px]" title="这是标题" dismissible>
-        使用 Figma 的 Transform 功能：在 Figma 的 Editor 视图中，选择多个图片，并在 Transform
-        面板中输入相同的尺寸值。这将将所有选定的图片calaulated to the same size.
-      </Alert>
-      <Alert variant="lighter" type="info" className="w-[400px]" title="这是标题" dismissible>
-        使用 Figma 的 Transform 功能：在 Figma 的 Editor 视图中，选择多个图片，并在 Transform
-        面板中输入相同的尺寸值。这将将所有选定的图片calaulated to the same size.
-      </Alert>
-      <Alert variant="lighter" type="success" className="w-[400px]" title="这是标题" dismissible>
-        使用 Figma 的 Transform 功能：在 Figma 的 Editor 视图中，选择多个图片，并在 Transform
-        面板中输入相同的尺寸值。这将将所有选定的图片calaulated to the same size.
-      </Alert>
+export const AllRadiusSizes: Story = {
+  render: () => (
+    <Stack direction="col" spacing="md">
+      <AlertDemo radius="xs" title="Extra Small Radius" />
+      <AlertDemo radius="sm" title="Small Radius" />
+      <AlertDemo radius="md" title="Medium Radius" />
+      <AlertDemo radius="lg" title="Large Radius" />
+      <AlertDemo radius="xl" title="Extra Large Radius" />
     </Stack>
-  );
-}
+  ),
+};
 
-export function outline() {
-  return (
-    <Stack direction="col">
-      <Alert variant="outline" type="primary" className="w-[400px]" title="这是标题" dismissible>
-        使用 Figma 的 Transform 功能：在 Figma 的 Editor 视图中，选择多个图片，并在 Transform
-        面板中输入相同的尺寸值。这将将所有选定的图片calaulated to the same size.
-      </Alert>
-      <Alert variant="outline" type="secondary" className="w-[400px]" title="这是标题" dismissible>
-        使用 Figma 的 Transform 功能：在 Figma 的 Editor 视图中，选择多个图片，并在 Transform
-        面板中输入相同的尺寸值。这将将所有选定的图片calaulated to the same size.
-      </Alert>
-      <Alert variant="outline" type="info" className="w-[400px]" title="这是标题" dismissible>
-        使用 Figma 的 Transform 功能：在 Figma 的 Editor 视图中，选择多个图片，并在 Transform
-        面板中输入相同的尺寸值。这将将所有选定的图片calaulated to the same size.
-      </Alert>
-      <Alert variant="outline" type="warning" className="w-[400px]" title="这是标题" dismissible>
-        使用 Figma 的 Transform 功能：在 Figma 的 Editor 视图中，选择多个图片，并在 Transform
-        面板中输入相同的尺寸值。这将将所有选定的图片calaulated to the same size.
-      </Alert>
-      <Alert variant="outline" type="danger" className="w-[400px]" title="这是标题" dismissible>
-        使用 Figma 的 Transform 功能：在 Figma 的 Editor 视图中，选择多个图片，并在 Transform
-        面板中输入相同的尺寸值。这将将所有选定的图片calaulated to the same size.
-      </Alert>
+export const FilledVariants: Story = {
+  render: () => (
+    <Stack direction="col" spacing="md">
+      <AlertDemo variant="filled" type="primary" title="Primary Filled" />
+      <AlertDemo variant="filled" type="secondary" title="Secondary Filled" />
+      <AlertDemo variant="filled" type="success" title="Success Filled" />
+      <AlertDemo variant="filled" type="warning" title="Warning Filled" />
+      <AlertDemo variant="filled" type="danger" title="Danger Filled" />
+      <AlertDemo variant="filled" type="info" title="Info Filled" />
     </Stack>
-  );
-}
+  ),
+};
 
-// export const Error: Story = {
-//   args: {
-//     variant: 'error',
-//     children: Text,
-//   },
-//   render: (args) => (
-//     <div className="max-w-[300px]">
-//       <Alert {...args} />
-//     </div>
-//   ),
-// };
-//
-// export const Success: Story = {
-//   args: {
-//     variant: 'success',
-//     children: Text,
-//   },
-//   render: (args) => (
-//     <div className="max-w-[300px]">
-//       <Alert {...args} />
-//     </div>
-//   ),
-// };
-//
-// export const Warning: Story = {
-//   args: {
-//     variant: 'warning',
-//     children: Text,
-//   },
-//   render: (args) => (
-//     <div className="max-w-[300px]">
-//       <Alert {...args} />
-//     </div>
-//   ),
-// };
-//
-// export const Dismissible: Story = {
-//   args: {
-//     dismissible: true,
-//     children: Text,
-//   },
-//   render: (args) => (
-//     <div className="max-w-[300px]">
-//       <Alert {...args} />
-//     </div>
-//   ),
-// };
+export const DefaultVariants: Story = {
+  render: () => (
+    <Stack direction="col" spacing="md">
+      <AlertDemo variant="default" type="primary" title="Primary Default" />
+      <AlertDemo variant="default" type="secondary" title="Secondary Default" />
+      <AlertDemo variant="default" type="success" title="Success Default" />
+      <AlertDemo variant="default" type="warning" title="Warning Default" />
+      <AlertDemo variant="default" type="danger" title="Danger Default" />
+      <AlertDemo variant="default" type="info" title="Info Default" />
+    </Stack>
+  ),
+};

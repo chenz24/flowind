@@ -13,7 +13,7 @@ export interface InlineInputStylesParams {
 }
 
 export default createStyles((theme, { labelPosition }: InlineInputStylesParams, { size }) => {
-  const padding = labelPosition === 'left' ? 'pr-3' : 'pl-3';
+  const padding = labelPosition === 'left' ? 'pr-2' : 'pl-2';
   return {
     classes: {
       root: '',
