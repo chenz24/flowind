@@ -45,8 +45,9 @@ const CodeBlockContext = React.createContext<CodeBlockState>(null);
 const useCodeBlockContext = () => {
   const context = React.useContext(CodeBlockContext);
 
-  if (context === null)
+  if (context === null) {
     throw new Error('useCodeBlockContext can only be used within a CodeBlockContext');
+  }
 
   return context;
 };
@@ -112,6 +113,7 @@ const HeaderComponent = ({
     >
       {!hideLabels &&
         snippets.map((snippet) => (
+          // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
           <div
             className={clx(
               'text-code-fg-subtle txt-compact-sm-plus transition-fg cursor-pointer rounded-full border border-transparent px-3 py-2',
