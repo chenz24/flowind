@@ -57,15 +57,15 @@ const dot = cva({
 });
 
 const root = cva({
-  base: 'no-underline box-border items-center justify-center font-medium text-ellipsis overflow-hidden border border-solid',
+  base: 'no-underline box-border items-center justify-center font-medium text-ellipsis overflow-hidden border border-solid leading-normal',
   variants: {
     size: {
       none: '',
-      xs: 'text-[9px] h-4 px-1',
-      sm: 'text-[10px] h-[18px] px-1.5',
-      md: 'text-[11px] h-5 px-2',
-      lg: 'text-[13px] h-[26px] px-2.5',
-      xl: 'text-[16px] h-8 px-3',
+      xs: 'text-[9px] px-1',
+      sm: 'text-[10px] px-1.5',
+      md: 'text-xs leading-normal px-2',
+      lg: 'text-[13px] px-2.5',
+      xl: 'text-[16px] px-3',
     },
     fullWidth: {
       true: 'w-full flex',
@@ -73,8 +73,8 @@ const root = cva({
     },
     variant: {
       lighter: '',
-      light: '',
-      filled: '',
+      light: 'py-px',
+      filled: 'py-px',
       outline: '',
       dot: 'bg-transparent border border-solid border-border-neutral-lighter text-fg-subtle',
     },

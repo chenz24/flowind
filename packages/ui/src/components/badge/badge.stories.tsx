@@ -67,6 +67,18 @@ export function lighterColors() {
   );
 }
 
+export function sizes() {
+  return (
+    <Stack>
+      <Badge size="xs">XS</Badge>
+      <Badge size="sm">Small</Badge>
+      <Badge size="md">Medium</Badge>
+      <Badge size="lg">Large</Badge>
+      <Badge size="xl">Extra Large</Badge>
+    </Stack>
+  );
+}
+
 export function radius() {
   return (
     <Stack>
