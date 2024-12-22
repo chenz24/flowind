@@ -68,12 +68,12 @@ const innerVariants = cva({
       rounded: 'rounded-full',
     },
     size: {
-      '2xs': 'txt-compact-xs-plus h-4 w-4',
-      xs: 'txt-compact-xs-plus h-5 w-5',
-      sm: 'txt-compact-sm-plus h-6 w-6',
-      md: 'txt-compact-sm-plus h-7 w-7',
-      lg: 'txt-compact-md-plus h-9 w-9',
-      xl: 'txt-compact-lg-plus h-11 w-11',
+      '2xs': 'txt-compact-xs h-4 w-4',
+      xs: 'txt-compact-xs h-5 w-5',
+      sm: 'txt-compact-sm h-6 w-6',
+      md: 'txt-compact-sm h-7 w-7',
+      lg: 'txt-compact-md h-9 w-9',
+      xl: 'txt-compact-lg h-11 w-11',
     },
   },
   compoundVariants: [

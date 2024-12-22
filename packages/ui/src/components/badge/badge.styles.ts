@@ -63,7 +63,7 @@ const root = cva({
       none: '',
       xs: 'text-[9px] px-1',
       sm: 'text-[10px] px-1.5',
-      md: 'text-xs leading-normal px-2',
+      md: 'text-xs leading-normal px-1.5',
       lg: 'text-[13px] px-2.5',
       xl: 'text-[16px] px-3',
     },

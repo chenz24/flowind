@@ -3,14 +3,7 @@
 import React, { forwardRef, useEffect, useState } from 'react';
 
 import { useDidUpdate, useEyeDropper, useUncontrolled } from '@flowind/hooks';
-import {
-  DefaultProps,
-  FlowindSize,
-  getDefaultZIndex,
-  getSize,
-  // useFlowindTheme,
-  rem,
-} from '@/styles';
+import { DefaultProps, FlowindSize, getDefaultZIndex, getSize, rem } from '@/styles';
 import { noop } from '@/utils/noop/noop';
 import { ColorPicker, ColorPickerBaseProps, ColorPickerStylesNames } from '../color-picker';
 import { convertHsvaTo, isColorValid, parseColor } from '../color-picker/converters';
@@ -24,7 +17,7 @@ import {
   InputWrapperStylesNames,
   useInputProps,
 } from '../input';
-import { Popover, PopoverStylesNames } from '../popover';
+import { Popover } from '../popover';
 import { PortalProps } from '../portal';
 import { TransitionOverride } from '../transition';
 import { EyeDropperIcon } from './eye-dropper-icon';
@@ -32,8 +25,7 @@ import { EyeDropperIcon } from './eye-dropper-icon';
 export type ColorInputStylesNames =
   | InputWrapperStylesNames
   | InputStylesNames
-  | ColorPickerStylesNames
-  | PopoverStylesNames;
+  | ColorPickerStylesNames;
 
 export interface ColorInputProps
   extends InputWrapperBaseProps,
@@ -129,12 +121,7 @@ export const ColorInput = forwardRef<HTMLInputElement, ColorInputProps>((props, 
     swatchesPerRow,
     withPicker,
     prefix,
-    transitionProps,
-    dropdownZIndex,
-    withinPortal,
-    portalProps,
     swatches,
-    shadow,
     classNames,
     styles,
     unstyled,
@@ -209,26 +196,13 @@ export const ColorInput = forwardRef<HTMLInputElement, ColorInputProps>((props, 
     }
   }, [format]);
 
+  const disabledPopover =
+    readOnly || (withPicker === false && (!Array.isArray(swatches) || swatches.length === 0));
+
   return (
     <Input.Wrapper {...wrapperProps} __staticSelector="ColorInput">
-      <Popover
-        __staticSelector="ColorInput"
-        position="bottom-start"
-        offset={5}
-        zIndex={dropdownZIndex}
-        withinPortal={withinPortal}
-        portalProps={portalProps}
-        transitionProps={transitionProps}
-        opened={dropdownOpened}
-        shadow={shadow}
-        classNames={classNames}
-        styles={styles}
-        unstyled={unstyled}
-        disabled={
-          readOnly || (withPicker === false && (!Array.isArray(swatches) || swatches.length === 0))
-        }
-      >
-        <Popover.Target>
+      <Popover open={dropdownOpened && !disabledPopover}>
+        <Popover.Trigger>
           <div>
             <Input<'input'>
               autoComplete="off"
@@ -259,7 +233,6 @@ export const ColorInput = forwardRef<HTMLInputElement, ColorInputProps>((props, 
                 ) : null)
               }
               readOnly={disallowInput || readOnly}
-              // sx={{ cursor: disallowInput ? 'pointer' : undefined }}
               unstyled={unstyled}
               classNames={classNames}
               styles={styles}
@@ -271,9 +244,14 @@ export const ColorInput = forwardRef<HTMLInputElement, ColorInputProps>((props, 
               }
             />
           </div>
-        </Popover.Target>
+        </Popover.Trigger>
 
-        <Popover.Dropdown onMouseDown={(event) => event.preventDefault()}>
+        <Popover.Content
+          side="bottom"
+          align="start"
+          sideOffset={5}
+          onOpenAutoFocus={(event) => event.preventDefault()}
+        >
           <ColorPicker
             __staticSelector="ColorInput"
             value={_value}
@@ -290,7 +268,7 @@ export const ColorInput = forwardRef<HTMLInputElement, ColorInputProps>((props, 
             classNames={classNames}
             onColorSwatchClick={() => closeOnColorSwatchClick && setDropdownOpened(false)}
           />
-        </Popover.Dropdown>
+        </Popover.Content>
       </Popover>
     </Input.Wrapper>
   );
