@@ -25,7 +25,7 @@ export const Default: Story = {
 export const AsChild: Story = {
   args: {
     content: 'Hello world',
-    asChild: false,
+    asChild: true,
     children: (
       <Button className="text-fg-on-color" color="blue">
         Copy

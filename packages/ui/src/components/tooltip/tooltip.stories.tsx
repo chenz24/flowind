@@ -12,9 +12,8 @@ const meta: Meta<typeof Tooltip> = {
     layout: 'centered',
   },
   argTypes: {
-    position: {
+    side: {
       options: ['top', 'bottom', 'left', 'right'],
-      control: { type: 'radio' },
     },
     children: {
       table: {
@@ -30,9 +29,9 @@ type Story = StoryObj<typeof Tooltip>;
 
 export const Default: Story = {
   args: {
-    label: 'The quick brown fox jumps over the lazy dog.',
-    position: 'top',
-    withArrow: true,
+    content: 'The quick brown fox jumps over the lazy dog.',
+    side: 'top',
+    showArrow: true,
     children: <InformationCircleSolid />,
   },
 };
@@ -41,27 +40,22 @@ export function Usage() {
   return (
     <div style={{ padding: 40 }}>
       <Tooltip
-        label="The quick brown fox jumps over the lazy dog."
-        withArrow
-        width={200}
-        arrowSize={8}
+        content={
+          <div className="space-y-1 p-1">
+            <p className="text-[13px] font-medium">Tooltip with title</p>
+            <p className="text-xs text-fg-muted">
+              Tooltips are made to be highly customizable, with features like dynamic placement,
+              rich content, and a robust API. You can even use them as a full-featured dropdown menu
+              by setting the <code>trigger</code> prop to <code>click</code>.
+            </p>
+          </div>
+        }
+        showArrow={false}
+        width={290}
+        color="dark"
       >
         <Button>target</Button>
       </Tooltip>
     </div>
   );
 }
-
-export const TooltipGroup = () => (
-  <Tooltip.Group openDelay={500}>
-    <Tooltip label="Tooltip 1">
-      <Button>Button 1</Button>
-    </Tooltip>
-    <Tooltip label="Tooltip 2">
-      <Button>Button 2</Button>
-    </Tooltip>
-    <Tooltip label="Tooltip 3">
-      <Button>Button 3</Button>
-    </Tooltip>
-  </Tooltip.Group>
-);

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Pencil } from '@flowind/icons';
+import { Check, Pencil } from '@flowind/icons';
 import { Stack } from '../stack';
 import { Badge } from './badge';
 
@@ -25,7 +25,31 @@ export function variants() {
       <Badge variant="lighter">Light</Badge>
       <Badge variant="filled">Filled</Badge>
       <Badge variant="outline">Outline</Badge>
-      <Badge variant="dot">Dot</Badge>
+      <Badge variant="dot" color="red">
+        Dot
+      </Badge>
+    </Stack>
+  );
+}
+
+export function dot() {
+  return (
+    <Stack>
+      <Badge color="neutral" variant="dot">
+        Gray
+      </Badge>
+      <Badge color="red" variant="dot">
+        Red
+      </Badge>
+      <Badge color="emerald" variant="dot">
+        Green
+      </Badge>
+      <Badge color="blue" variant="dot">
+        Blue
+      </Badge>
+      <Badge color="yellow" variant="dot" radius="sm">
+        Yellow
+      </Badge>
     </Stack>
   );
 }
@@ -94,8 +118,12 @@ export function radius() {
 export function icon() {
   return (
     <Stack>
-      <Badge leftSection={<Pencil />}>Left Section</Badge>
-      <Badge rightSection={<Pencil />}>Right Section</Badge>
+      <Badge leftSection={<Check size={12} />} variant="lighter">
+        Left Section
+      </Badge>
+      <Badge rightSection={<Pencil size={12} />} variant="outline">
+        Right Section
+      </Badge>
     </Stack>
   );
 }

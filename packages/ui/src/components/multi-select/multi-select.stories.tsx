@@ -20,7 +20,13 @@ const data = ['React', 'Angular', 'Vue', 'Svelte'];
 export const Default: Story = {
   render: () => (
     <div className="w-[350px]">
-      <MultiSelect data={data} clearable={false} defaultValue={['React', 'Angular']} searchable />
+      <MultiSelect
+        width={300}
+        data={data}
+        clearable={false}
+        defaultValue={['React', 'Angular']}
+        searchable
+      />
     </div>
   ),
 };

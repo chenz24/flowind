@@ -16,7 +16,7 @@ type CopyProps = {
 const Copy = React.forwardRef<
   HTMLButtonElement,
   React.HTMLAttributes<HTMLButtonElement> & CopyProps
->(({ children, className, content, asChild = false, ...props }, ref) => {
+>(({ children, content, className, asChild = false, ...props }, ref) => {
   const [done, setDone] = useState(false);
   const [open, setOpen] = useState(false);
   const [text, setText] = useState('Copy');
@@ -44,15 +44,15 @@ const Copy = React.forwardRef<
   const Component = asChild ? Slot : 'button';
 
   return (
-    <Tooltip label={text} opened={done || open}>
+    <Tooltip content={text} open={done || open}>
       <Component
         ref={ref}
-        aria-label="Copy code snippet"
+        aria-label="Copy to clipboard"
         type="button"
-        className={clx('text-code-icon h-fit w-fit', className)}
         onClick={copyToClipboard}
         onMouseEnter={() => setOpen(true)}
         onMouseLeave={() => setOpen(false)}
+        className={clx(className, { 'pointer-events-none cursor-default': done })}
         {...props}
       >
         {children || (done ? <CheckCircleSolid /> : <SquareTwoStack />)}

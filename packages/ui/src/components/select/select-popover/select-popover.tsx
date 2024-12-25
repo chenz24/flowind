@@ -1,10 +1,9 @@
 import React from 'react';
 
-import { ClassNames, DefaultProps, FlowindSize, rem, Selectors, Styles } from '@/styles';
+import { ClassNames, DefaultProps, rem, Selectors, Styles } from '@/styles';
 import { Box } from '../../box';
 import { Popover } from '../../popover';
 import { PortalProps } from '../../portal';
-import { TransitionOverride } from '../../transition';
 import { SelectScrollArea } from '../select-scroll-area/select-scroll-area';
 import useStyles from './select-popover.styles';
 
@@ -36,9 +35,10 @@ function SelectPopoverDropdown({
   const { classes } = useStyles(null, { name: __staticSelector, styles, classNames, unstyled });
 
   return (
-    <Popover.Dropdown
-      style={{ padding: 0 }}
+    <Popover.Content
+      style={{ padding: 0, width: 'var(--radix-popover-trigger-width)', zIndex: 999 }}
       onMouseDown={(event) => event.preventDefault()}
+      onOpenAutoFocus={(event) => event.preventDefault()}
       {...others}
     >
       <div style={{ maxHeight: rem(maxHeight), display: 'flex' }}>
@@ -58,77 +58,27 @@ function SelectPopoverDropdown({
           </div>
         </Box>
       </div>
-    </Popover.Dropdown>
+    </Popover.Content>
   );
 }
 
 interface SelectPopoverProps {
   opened: boolean;
-  transitionProps: TransitionOverride;
-  shadow?: FlowindSize;
-  withinPortal?: boolean;
-  portalProps?: Omit<PortalProps, 'children' | 'withinPortal'>;
   children: React.ReactNode;
   __staticSelector?: string;
-  onDirectionChange?: (direction: React.CSSProperties['flexDirection']) => void;
-  switchDirectionOnFlip?: boolean;
   zIndex?: React.CSSProperties['zIndex'];
-  dropdownPosition?: 'bottom' | 'top' | 'flip';
-  positionDependencies?: any[];
-  classNames?: ClassNames<SelectPopoverStylesNames>;
-  styles?: Styles<SelectPopoverStylesNames>;
-  unstyled?: boolean;
+  dropdownPosition?: 'bottom' | 'top' | 'left' | 'right';
   readOnly?: boolean;
-  variant: string;
 }
 
 export function SelectPopover({
   opened,
-  transitionProps = { transition: 'fade', duration: 0 },
-  shadow,
-  withinPortal,
-  portalProps,
   children,
   __staticSelector,
-  onDirectionChange,
-  switchDirectionOnFlip,
-  zIndex,
-  dropdownPosition,
-  positionDependencies = [],
-  classNames,
-  styles,
-  unstyled,
   readOnly,
-  variant,
 }: SelectPopoverProps) {
-  return (
-    <Popover
-      unstyled={unstyled}
-      classNames={classNames}
-      styles={styles}
-      width="target"
-      withRoles={false}
-      opened={opened}
-      middlewares={{ flip: dropdownPosition === 'flip', shift: false }}
-      position={dropdownPosition === 'flip' ? 'bottom' : dropdownPosition}
-      positionDependencies={positionDependencies}
-      zIndex={zIndex}
-      __staticSelector={__staticSelector}
-      withinPortal={withinPortal}
-      portalProps={portalProps}
-      transitionProps={transitionProps}
-      shadow={shadow}
-      disabled={readOnly}
-      onPositionChange={(nextPosition) =>
-        switchDirectionOnFlip &&
-        onDirectionChange?.(nextPosition === 'top' ? 'column-reverse' : 'column')
-      }
-      variant={variant}
-    >
-      {children}
-    </Popover>
-  );
+  return <Popover open={opened && !readOnly}>{children}</Popover>;
 }
 
-SelectPopover.Target = Popover.Target;
+SelectPopover.Target = Popover.Trigger;
 SelectPopover.Dropdown = SelectPopoverDropdown;

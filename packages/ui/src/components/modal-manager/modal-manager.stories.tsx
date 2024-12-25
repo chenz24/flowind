@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { ExclamationCircle } from '@flowind/icons';
 import { openErrorModal, openWarningModal } from '@/components/modal-manager/events';
 import { Button } from '../button';
 import { Stack } from '../stack';
@@ -51,6 +52,39 @@ export function Usage() {
         <Text color="blue" onClick={() => closeModal('content-modal')}>
           My content modal
         </Text>
+      ),
+      onClose: () => console.log('content modal 1 closed'),
+    });
+
+  const showAlertModal = () =>
+    openModal({
+      modalId: 'alert-modal',
+      title: null,
+      withCloseButton: false,
+      width: 400,
+      children: (
+        <div className="p-3">
+          <div className="flex flex-col gap-2 max-sm:items-center sm:flex-row sm:gap-4">
+            <div
+              className="flex size-9 shrink-0 items-center justify-center rounded-full border border-border"
+              aria-hidden="true"
+            >
+              <ExclamationCircle className="opacity-80" size={18} />
+            </div>
+            <div className="flex flex-col space-y-1 text-center sm:text-left">
+              <h2 className="text-lg font-semibold text-fg-base">Are you sure?</h2>
+              <p className="text-sm text-fg-muted">
+                Are you sure you want to delete your account? All your data will be removed.
+              </p>
+            </div>
+          </div>
+          <div className="flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-3 mt-5">
+            <Button variant="default" onClick={() => closeModal('alert-modal')}>
+              Cancel
+            </Button>
+            <Button type="secondary">Delete account</Button>
+          </div>
+        </div>
       ),
       onClose: () => console.log('content modal 1 closed'),
     });
@@ -166,6 +200,9 @@ export function Usage() {
         </Button>
         <Button onClick={showErrorModal} color="red">
           Open error modal
+        </Button>
+        <Button onClick={showAlertModal} color="red">
+          Open alert modal
         </Button>
       </Stack>
     </ModalsProvider>

@@ -18,13 +18,41 @@ type Story = StoryObj<typeof Slider>;
 
 export function Usage() {
   return (
-    <div style={{ width: 400, padding: 40 }}>
+    <div style={{ width: 400, padding: 40 }} className="space-y-10">
       <Slider
         marks={[
           { value: 20, label: '20%' },
           { value: 50, label: '50%' },
           { value: 80, label: '80%' },
         ]}
+      />
+      <Slider
+        thumbSize={19}
+        marks={[
+          { value: 20, label: '20%' },
+          { value: 50, label: '50%' },
+          { value: 80, label: '80%' },
+        ]}
+        classNames={{
+          thumb: 'border-fg-base border-2 !bg-fg-on-inverted',
+          trackLine: 'bg-bg-subtle-hover',
+          bar: 'bg-fg-base',
+          mark: 'bg-bg-base',
+        }}
+      />
+      <Slider
+        thumbSize={18}
+        marks={[
+          { value: 20, label: '20%' },
+          { value: 50, label: '50%' },
+          { value: 80, label: '80%' },
+        ]}
+        classNames={{
+          thumb: 'border-fg-base border-2 !bg-fg-on-inverted rounded',
+          trackLine: 'bg-bg-subtle-hover',
+          bar: 'bg-fg-base',
+          mark: 'bg-bg-base',
+        }}
       />
     </div>
   );

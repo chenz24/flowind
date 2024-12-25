@@ -1,302 +1,138 @@
-import React, { useState } from 'react';
+import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Box } from '../box';
 import { Button } from '../button';
-import { MultiSelect } from '../multi-select';
-import { Stack } from '../stack';
-import { Tooltip } from '../tooltip';
 import { Popover } from './popover';
 
-const meta: Meta<typeof Popover> = {
+const meta = {
   title: 'Components/Popover',
   component: Popover,
   parameters: {
     layout: 'centered',
   },
-};
+} satisfies Meta<typeof Popover>;
 
 export default meta;
-
 type Story = StoryObj<typeof Popover>;
 
-export const Default: Story = {
-  args: {},
+export const Basic: Story = {
+  render: () => (
+    <div className="p-10">
+      <Popover>
+        <Popover.Trigger asChild>
+          <Button type="primary">打开 Popover</Button>
+        </Popover.Trigger>
+        <Popover.Content side="top">
+          <div className="space-y-3">
+            <div className="space-y-1">
+              <p className="text-[13px] font-medium">基础 Popover</p>
+              <p className="text-xs text-muted-foreground">
+                这是一个基础的 Popover 示例，展示了最基本的用法。
+              </p>
+            </div>
+            <Button size="sm" className="h-7 px-2">
+              了解更多
+            </Button>
+          </div>
+        </Popover.Content>
+      </Popover>
+    </div>
+  ),
 };
 
-export function Uncontrolled() {
-  return (
-    <div style={{ padding: 40 }}>
+export const WithArrow: Story = {
+  render: () => (
+    <div className="p-10">
       <Popover>
-        <Popover.Target>
-          <Button>Toggle popover</Button>
-        </Popover.Target>
-
-        <Popover.Dropdown>Dropdown</Popover.Dropdown>
+        <Popover.Trigger asChild>
+          <Button type="primary">带箭头的 Popover</Button>
+        </Popover.Trigger>
+        <Popover.Content showArrow className="w-[200px]">
+          <p>这是一个带箭头指示的 Popover</p>
+        </Popover.Content>
       </Popover>
     </div>
-  );
-}
+  ),
+};
 
-export function withFloatingAutoUpdate() {
-  return (
-    <div style={{ padding: 40, height: 400, overflow: 'scroll' }}>
-      <div style={{ height: 150 }} />
+export const Positions: Story = {
+  render: () => (
+    <div className="flex gap-4 p-10">
       <Popover>
-        <Popover.Target>
-          <Button>Toggle popover</Button>
-        </Popover.Target>
-
-        <Popover.Dropdown>Dropdown</Popover.Dropdown>
-      </Popover>
-      <div style={{ height: 300 }} />
-    </div>
-  );
-}
-
-export function Disabled() {
-  return (
-    <div style={{ padding: 40 }}>
-      <Popover disabled>
-        <Popover.Target>
-          <Button>Toggle popover</Button>
-        </Popover.Target>
-
-        <Popover.Dropdown>Dropdown</Popover.Dropdown>
-      </Popover>
-    </div>
-  );
-}
-
-export function WithArrow() {
-  return (
-    <div style={{ padding: 40 }}>
-      <Popover withArrow width={200}>
-        <Popover.Target>
-          <Button>arrow popover</Button>
-        </Popover.Target>
-
-        <Popover.Dropdown>Dropdown with arrow</Popover.Dropdown>
-      </Popover>
-    </div>
-  );
-}
-
-export function WithArrowRadius() {
-  return (
-    <div style={{ padding: 40 }}>
-      <Popover withArrow width={400} arrowRadius={4}>
-        <Popover.Target>
-          <Button>arrow popover</Button>
-        </Popover.Target>
-
-        <Popover.Dropdown>Dropdown with arrow radius</Popover.Dropdown>
-      </Popover>
-    </div>
-  );
-}
-
-export function Controlled() {
-  const [opened, setState] = useState(false);
-
-  return (
-    <div style={{ padding: 100, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <Popover
-        opened={opened}
-        onChange={setState}
-        middlewares={{ shift: false, flip: false }}
-        position="bottom"
-        withArrow
-        trapFocus
-        radius="md"
-        returnFocus
-      >
-        <Popover.Target>
-          <Button onClick={() => setState((c) => !c)}>Toggle popover</Button>
-        </Popover.Target>
-
-        <Popover.Dropdown>
-          <Button onClick={() => setState(false)}>Close</Button>
-        </Popover.Dropdown>
-      </Popover>
-    </div>
-  );
-}
-
-export function SameWidth() {
-  const [opened, setState] = useState(false);
-
-  return (
-    <div style={{ padding: 40 }}>
-      <Popover opened={opened} width="target" onChange={setState}>
-        <Popover.Target>
-          <Button onClick={() => setState((c) => !c)} fullWidth>
-            Toggle popover
-          </Button>
-        </Popover.Target>
-
-        <Popover.Dropdown>Dropdown</Popover.Dropdown>
-      </Popover>
-    </div>
-  );
-}
-
-export function WithinGroup() {
-  return (
-    <Stack grow>
-      <Popover>
-        <Popover.Target>
-          <Button>Toggle popover</Button>
-        </Popover.Target>
-
-        <Popover.Dropdown>Dropdown</Popover.Dropdown>
-      </Popover>
-      <Button>Regular button</Button>
-    </Stack>
-  );
-}
-
-export function PopoverTargetWithTooltip() {
-  return (
-    <div style={{ padding: 40 }}>
-      <Popover>
-        <Tooltip label="Tooltip first">
-          <Popover.Target>
-            <Button>Tooltip first</Button>
-          </Popover.Target>
-        </Tooltip>
-
-        <Popover.Dropdown>Dropdown</Popover.Dropdown>
+        <Popover.Trigger asChild>
+          <Button type="primary">上方显示</Button>
+        </Popover.Trigger>
+        <Popover.Content side="top" showArrow>
+          <p>Popover 内容</p>
+        </Popover.Content>
       </Popover>
 
       <Popover>
-        <Popover.Target>
-          <Tooltip label="Tooltip last">
-            <Button className="ml-3">Tooltip last</Button>
-          </Tooltip>
-        </Popover.Target>
+        <Popover.Trigger asChild>
+          <Button type="primary">右侧显示</Button>
+        </Popover.Trigger>
+        <Popover.Content side="right" showArrow>
+          <p>Popover 内容</p>
+        </Popover.Content>
+      </Popover>
 
-        <Popover.Dropdown>Dropdown</Popover.Dropdown>
+      <Popover>
+        <Popover.Trigger asChild>
+          <Button type="primary">下方显示</Button>
+        </Popover.Trigger>
+        <Popover.Content side="bottom" showArrow>
+          <p>Popover 内容</p>
+        </Popover.Content>
+      </Popover>
+
+      <Popover>
+        <Popover.Trigger asChild>
+          <Button type="primary">左侧显示</Button>
+        </Popover.Trigger>
+        <Popover.Content side="left" showArrow>
+          <p>Popover 内容</p>
+        </Popover.Content>
       </Popover>
     </div>
-  );
-}
+  ),
+};
 
-export function WithMultiSelect() {
-  return (
-    <div style={{ padding: 40 }}>
-      <Popover width={400}>
-        <Popover.Target>
-          <Button>Toggle popover</Button>
-        </Popover.Target>
-
-        <Popover.Dropdown>
-          <MultiSelect data={['react', 'ng']} defaultValue={['ng']} withinPortal />
-        </Popover.Dropdown>
+export const CustomWidth: Story = {
+  render: () => (
+    <div className="p-10">
+      <Popover>
+        <Popover.Trigger asChild>
+          <Button type="primary">自定义宽度</Button>
+        </Popover.Trigger>
+        <Popover.Content className="w-[300px]" showArrow>
+          <div className="space-y-2">
+            <h4 className="font-medium">自定义宽度的 Popover</h4>
+            <p className="text-sm text-muted-foreground">
+              通过设置 className="w-[300px]" 来控制 Popover 的宽度。
+              这样可以更好地控制内容的展示效果。
+            </p>
+          </div>
+        </Popover.Content>
       </Popover>
     </div>
-  );
-}
+  ),
+};
 
-export function Inline() {
-  return (
-    <div style={{ padding: 40, maxWidth: 400 }}>
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae ipsam in quos aperiam magni
-      quas neque{' '}
-      <Popover middlewares={{ shift: true, flip: true, inline: true }} position="top">
-        <Popover.Target>
-          <span style={{ background: 'pink' }}>aliquid laboriosam dolorum</span>
-        </Popover.Target>
-        <Popover.Dropdown>Inline popover</Popover.Dropdown>
-      </Popover>
-      , eum voluptate, perferendis placeat repudiandae nesciunt explicabo quibusdam deserunt, animi
-      dicta.
-    </div>
-  );
-}
-
-export function Size() {
-  const [opened, setState] = useState(false);
-
-  return (
-    <div style={{ padding: 40 }}>
-      <Popover
-        opened={opened}
-        middlewares={{ shift: true, flip: true, size: true }}
-        onChange={setState}
-      >
-        <Popover.Target>
-          <button type="button" onClick={() => setState((c) => !c)}>
-            Toggle popover
-          </button>
-        </Popover.Target>
-
-        <Popover.Dropdown style={{ overflow: 'auto' }}>
-          <div style={{ width: 100, height: 2000, background: 'pink' }} />
-        </Popover.Dropdown>
+export const WithAnchor: Story = {
+  render: () => (
+    <div className="p-10">
+      <Popover>
+        <Popover.Anchor className="inline-flex gap-2">
+          <Button variant="outline">锚点 1</Button>
+          <Popover.Trigger asChild>
+            <Button type="primary">打开 Popover</Button>
+          </Popover.Trigger>
+          <Button variant="outline">锚点 2</Button>
+        </Popover.Anchor>
+        <Popover.Content showArrow>
+          <p>使用 Anchor 组件可以更灵活地控制 Popover 的定位参考点</p>
+        </Popover.Content>
       </Popover>
     </div>
-  );
-}
-
-export function PopoverEvents() {
-  const [opened, setState] = useState(false);
-  const [toggle1, setToggle1] = useState(false);
-  const [toggle2, setToggle2] = useState(false);
-
-  return (
-    <div style={{ padding: 100, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <Stack>
-        <Popover
-          opened={opened}
-          onChange={setState}
-          onOpen={() => setToggle1(true)}
-          onClose={() => setToggle1(false)}
-          middlewares={{ shift: false, flip: false }}
-          position="bottom"
-          withArrow
-          trapFocus
-          radius="md"
-          returnFocus
-        >
-          <Popover.Target>
-            <Box>
-              <Button onClick={() => setState((c) => !c)}>Toggle controlled popover</Button>
-              <br />
-              <div>Controlled State: {toggle1 ? 'Open' : 'Closed'}</div>
-            </Box>
-          </Popover.Target>
-
-          <Popover.Dropdown>
-            <Button onClick={() => setState(false)}>Close</Button>
-          </Popover.Dropdown>
-        </Popover>
-        <Popover onOpen={() => setToggle2(true)} onClose={() => setToggle2(false)}>
-          <Popover.Target>
-            <Box>
-              <Button>Toggle uncontrolled popover</Button>
-              <br />
-              <div>Uncontrolled State: {toggle2 ? 'Open' : 'Closed'}</div>
-            </Box>
-          </Popover.Target>
-
-          <Popover.Dropdown>Dropdown</Popover.Dropdown>
-        </Popover>
-      </Stack>
-    </div>
-  );
-}
-
-export function AxisOffset() {
-  return (
-    <div style={{ padding: 40 }}>
-      <Popover offset={{ mainAxis: 50, crossAxis: 50 }}>
-        <Popover.Target>
-          <Button>Toggle popover</Button>
-        </Popover.Target>
-
-        <Popover.Dropdown>Dropdown</Popover.Dropdown>
-      </Popover>
-    </div>
-  );
-}
+  ),
+};

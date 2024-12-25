@@ -1,248 +1,185 @@
 'use client';
 
-import React, { cloneElement, forwardRef, useRef } from 'react';
+import React, { cloneElement, forwardRef } from 'react';
+import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 
-import { useMergedRef } from '@flowind/hooks';
-import { getDefaultZIndex, useComponentDefaultProps } from '@/styles';
+import { DefaultProps, FlowindSize, Selectors, useComponentDefaultProps } from '@/styles';
 import { ForwardRefWithStaticComponents } from '@/utils/forwardRef-with-static-components';
 import { isElement } from '@/utils/is-element/is-element';
-import { Box } from '../box';
-import {
-  ArrowPosition,
-  FloatingArrow,
-  FloatingAxesOffsets,
-  FloatingPosition,
-  FloatingStrategy,
-  getFloatingPosition,
-  getFloatingSide,
-} from '../floating';
-import { OptionalPortal } from '../portal';
-import { Transition, TransitionOverride } from '../transition';
-import { TooltipFloating } from './tooltip-floating/tooltip-floating';
-import { TooltipGroup } from './tooltip-group/tooltip-group';
 import { TOOLTIP_ERRORS } from './tooltip.errors';
-import useStyles from './tooltip.styles';
-import { TooltipBaseProps } from './tooltip.types';
-import { useTooltip } from './use-tooltip';
+import useStyles, { TooltipStylesParams } from './tooltip.styles';
 
-export interface TooltipProps extends TooltipBaseProps {
-  variant?: string;
+export type TooltipStylesNames = Selectors<typeof useStyles>;
 
-  /** Called when tooltip position changes */
-  onPositionChange?: (position: FloatingPosition) => void;
+type ContentProps = React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content>;
+
+interface TooltipContentProps extends Omit<ContentProps, 'content'> {
+  showArrow?: boolean;
+}
+
+export interface TooltipProps
+  extends TooltipContentProps,
+    DefaultProps<TooltipStylesNames, TooltipStylesParams> {
+  /** Tooltip content */
+  content: React.ReactNode;
 
   /** Open delay in ms */
-  openDelay?: number;
+  delayDuration?: number;
 
   /** Close delay in ms, `0` by default */
   closeDelay?: number;
 
+  /** How much time a user has to enter another trigger without incurring a delay again. */
+  skipDelayDuration?: number;
+
+  /** Prevents Tooltip.Content from remaining open when hovering. Disabling this has accessibility consequences. */
+  disableHoverableContent?: boolean;
+
   /** Controlled opened state */
-  opened?: boolean;
+  open?: boolean;
+
+  defaultOpen?: boolean;
+
+  /** Event handler called when the open state of the tooltip changes. */
+  onOpenChange?: (open: boolean) => void;
 
   /** Space between target element and tooltip in px, `5` by default */
-  offset?: number | FloatingAxesOffsets;
+  sideOffset?: number;
 
   /** Determines whether the tooltip should have an arrow, `false` by default */
-  withArrow?: boolean;
-
-  /** Arrow size in px, `4` by default */
-  arrowSize?: number;
-
-  /** Arrow offset in px, `5` by default */
-  arrowOffset?: number;
-
-  /** Arrow `border-radius` in px, `0` by default */
-  arrowRadius?: number;
-
-  /** Arrow position relative to the tooltip, `side` by default */
-  arrowPosition?: ArrowPosition;
-
-  /** Props passed down to the `Transition` component that used to animate tooltip presence, use to configure duration and animation type, `{ duration: 100, transition: 'fade' }` by default */
-  transitionProps?: TransitionOverride;
+  showArrow?: boolean;
 
   /** Determines which events will be used to show tooltip, `{ hover: true, focus: false, touch: false }` by default */
   events?: { hover: boolean; focus: boolean; touch: boolean };
 
-  /** `useEffect` dependencies to force update tooltip position */
-  positionDependencies?: any[];
-
-  /** Must be set if the tooltip target is an inline element */
-  inline?: boolean;
+  // /** Must be set if the tooltip target is an inline element */
+  // inline?: boolean;
 
   /** If set, the tooltip will not be unmounted from the DOM when it is hidden, `display: none` styles will be applied instead */
   keepMounted?: boolean;
 
-  /** Changes floating ui [position strategy](https://floating-ui.com/docs/usefloating#strategy), `'absolute'` by default */
-  floatingStrategy?: FloatingStrategy;
+  width?: number;
+
+  color?: 'light' | 'dark';
+
+  /** Key of theme.radius or any valid CSS value to set border-radius, theme.defaultRadius by default */
+  radius?: FlowindSize;
+
+  disabled?: boolean;
 }
 
 const defaultProps: Partial<TooltipProps> = {
-  position: 'top',
-  refProp: 'ref',
-  withinPortal: true,
-  inline: false,
-  arrowSize: 8,
-  arrowOffset: 5,
-  arrowRadius: 0,
-  arrowPosition: 'side',
-  offset: 5,
-  transitionProps: { duration: 100, transition: 'fade' },
-  width: 'auto',
-  events: { hover: true, focus: false, touch: false },
-  zIndex: getDefaultZIndex('popover'),
-  positionDependencies: [],
+  side: 'top',
+  sideOffset: 5,
+  delayDuration: 0,
   radius: 'sm',
   color: 'light',
-  multiline: true,
-  classNames: {
-    tooltip: `animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 
-      data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 
-      data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2`,
-    arrow: '',
-  },
 };
 
-const _Tooltip = forwardRef<HTMLElement, TooltipProps>((props, ref) => {
-  const arrowRef = useRef<HTMLDivElement | null>(null);
-  const {
-    children,
-    position,
-    refProp,
-    label,
-    openDelay,
-    closeDelay,
-    onPositionChange,
-    opened,
-    withinPortal,
-    portalProps,
-    radius,
-    color,
-    classNames,
-    styles,
-    unstyled,
-    style,
-    className,
-    withArrow,
-    arrowSize,
-    arrowOffset,
-    arrowRadius,
-    arrowPosition,
-    offset,
-    transitionProps,
-    multiline,
-    width,
-    events,
-    zIndex,
-    disabled,
-    positionDependencies,
-    onClick,
-    onMouseEnter,
-    onMouseLeave,
-    inline,
-    variant,
-    keepMounted,
-    floatingStrategy,
-    ...others
-  } = useComponentDefaultProps('Tooltip', defaultProps, props);
+const TooltipProviderContext = React.createContext(false);
 
-  const { classes, styls, cx, theme } = useStyles(
-    { radius, color, width, multiline },
-    { name: 'Tooltip', classNames, styles, unstyled, variant },
-  );
+export const TooltipProvider = ({ children, ...props }: TooltipPrimitive.TooltipProviderProps) => (
+  <TooltipProviderContext.Provider value>
+    <TooltipPrimitive.Provider {...props}>{children}</TooltipPrimitive.Provider>
+  </TooltipProviderContext.Provider>
+);
 
-  const tooltip = useTooltip({
-    position: getFloatingPosition(theme.dir, position),
-    closeDelay,
-    openDelay,
-    onPositionChange,
-    opened,
-    events,
-    arrowRef,
-    arrowOffset,
-    offset: typeof offset === 'number' ? offset! + (withArrow ? arrowSize! / 2 : 0) : offset!,
-    positionDependencies: [...positionDependencies!, children],
-    inline,
-    strategy: floatingStrategy,
-  });
+const useTooltipProvider = () => React.useContext(TooltipProviderContext);
 
-  if (!isElement(children)) {
-    throw new Error(TOOLTIP_ERRORS.children);
+const removeUndefined = <T extends Record<string, any>>(obj: T): Partial<T> => {
+  const result: Partial<T> = {};
+  for (const [key, value] of Object.entries(obj)) {
+    if (value !== undefined) {
+      result[key as keyof T] = value;
+    }
   }
+  return result;
+};
 
-  const targetRef = useMergedRef(tooltip.reference, (children as any).ref, ref);
-  const floatingSide = getFloatingSide(theme.dir, position);
+const _Tooltip = forwardRef<React.ElementRef<typeof TooltipPrimitive.Content>, TooltipProps>(
+  (props, ref) => {
+    const hasProvider = useTooltipProvider();
+    const {
+      children,
+      side,
+      content,
+      delayDuration,
+      skipDelayDuration,
+      disableHoverableContent,
+      open,
+      onOpenChange,
+      defaultOpen,
+      radius,
+      width,
+      color,
+      classNames,
+      styles,
+      unstyled,
+      // style,
+      className,
+      showArrow,
+      sideOffset,
+      disabled,
+      ...others
+    } = useComponentDefaultProps('Tooltip', defaultProps, props);
 
-  return (
-    <>
-      <OptionalPortal {...portalProps} withinPortal={withinPortal}>
-        <Transition
-          keepMounted={keepMounted}
-          mounted={!disabled && tooltip.opened}
-          {...transitionProps}
-          transition={transitionProps.transition || 'fade'}
-          duration={tooltip.isGroupPhase ? 10 : transitionProps.duration ?? 100}
+    const { classes, styls, cx } = useStyles(
+      { radius, color, width },
+      { name: 'Tooltip', classNames, styles, unstyled },
+    );
+
+    if (!isElement(children)) {
+      throw new Error(TOOLTIP_ERRORS.children);
+    }
+
+    const rootProps = removeUndefined({
+      open,
+      onOpenChange,
+      defaultOpen,
+      delayDuration,
+      disableHoverableContent,
+    });
+
+    if (disabled || !content) {
+      rootProps.open = false;
+    }
+
+    const tooltipContent = (
+      <TooltipPrimitive.Root {...rootProps}>
+        <TooltipPrimitive.Trigger asChild>{cloneElement(children, {})}</TooltipPrimitive.Trigger>
+        <TooltipPrimitive.Portal>
+          <TooltipPrimitive.Content
+            ref={ref}
+            side={side}
+            sideOffset={sideOffset}
+            className={cx(classes.content, className)}
+            {...others}
+          >
+            {content}
+            {showArrow && <TooltipPrimitive.Arrow className={classes.arrow} style={styls.arrow} />}
+          </TooltipPrimitive.Content>
+        </TooltipPrimitive.Portal>
+      </TooltipPrimitive.Root>
+    );
+
+    if (!hasProvider) {
+      return (
+        <TooltipProvider
+          delayDuration={delayDuration}
+          skipDelayDuration={skipDelayDuration}
+          disableHoverableContent={disableHoverableContent}
         >
-          {(transitionStyles) => (
-            <Box
-              data-side={floatingSide}
-              {...others}
-              {...tooltip.getFloatingProps({
-                ref: tooltip.floating,
-                className: classes.tooltip,
-                style: {
-                  ...style,
-                  ...transitionStyles,
-                  ...styls.tooltip,
-                  zIndex,
-                  top: tooltip.y ?? 0,
-                  left: tooltip.x ?? 0,
-                },
-              })}
-            >
-              {label}
+          {tooltipContent}
+        </TooltipProvider>
+      );
+    }
 
-              <FloatingArrow
-                ref={arrowRef}
-                arrowX={tooltip.arrowX}
-                arrowY={tooltip.arrowY}
-                visible={withArrow}
-                position={tooltip.placement}
-                arrowSize={arrowSize}
-                arrowOffset={arrowOffset}
-                arrowRadius={arrowRadius}
-                arrowPosition={arrowPosition}
-                className={classes.arrow}
-              />
-            </Box>
-          )}
-        </Transition>
-      </OptionalPortal>
-
-      {cloneElement(
-        children,
-        tooltip.getReferenceProps({
-          onClick,
-          onMouseEnter,
-          onMouseLeave,
-          onMouseMove: props.onMouseMove,
-          onPointerDown: props.onPointerDown,
-          onPointerEnter: props.onPointerEnter,
-          [refProp!]: targetRef,
-          className: cx(className, children.props.className),
-          ...children.props,
-        }),
-      )}
-    </>
-  );
-}) as any;
-
-_Tooltip.Group = TooltipGroup;
-_Tooltip.Floating = TooltipFloating;
+    return tooltipContent;
+  },
+) as any;
 
 _Tooltip.displayName = 'Tooltip';
 
-export const Tooltip: ForwardRefWithStaticComponents<
-  TooltipProps,
-  { Group: typeof TooltipGroup; Floating: typeof TooltipFloating }
-> = _Tooltip;
+_Tooltip.Provider = TooltipProvider;
+
+export const Tooltip: ForwardRefWithStaticComponents<TooltipProps, {}> = _Tooltip;
