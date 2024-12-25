@@ -3,11 +3,10 @@
 import React, { forwardRef, useEffect, useRef, useState } from 'react';
 
 import { useDidUpdate, useMergedRef, useScrollIntoView, useUncontrolled } from '@flowind/hooks';
-import { DefaultProps, FlowindSize, getDefaultZIndex } from '@/styles';
+import { DefaultProps, FlowindSize } from '@/styles';
 import { groupOptions } from '@/utils/group-options/group-options';
 import { Input, useInputProps } from '../input';
 import { PortalProps } from '../portal';
-import { TransitionOverride } from '../transition';
 import { DefaultItem } from './default-Item/default-Item';
 import { filterData } from './filter-data/filter-data';
 import { SelectItems } from './select-items/select-items';
@@ -35,12 +34,6 @@ export interface SelectSharedProps<Item, Value> {
 
   /** Input size */
   size?: FlowindSize;
-
-  /** Props added to Transition component that used to animate dropdown presence, use to configure duration and animation type, { duration: 0, transition: 'fade' } by default */
-  transitionProps?: TransitionOverride;
-
-  /** Dropdown shadow from theme or any value to set box-shadow */
-  shadow?: FlowindSize;
 
   /** Initial dropdown opened state */
   initiallyOpened?: boolean;
@@ -140,9 +133,7 @@ export function defaultShouldCreate(query: string, data: SelectItem[]) {
 const defaultProps: Partial<SelectProps> = {
   required: false,
   size: 'md',
-  shadow: 'xs',
   itemComponent: DefaultItem,
-  transitionProps: { transition: 'fade', duration: 0 },
   initiallyOpened: false,
   filter: defaultFilter,
   maxDropdownHeight: 220,
@@ -195,9 +186,6 @@ export const Select = forwardRef<HTMLInputElement, SelectProps>((props, ref) => 
     dropdownComponent,
     onDropdownClose,
     onDropdownOpen,
-    withinPortal,
-    portalProps,
-    switchDirectionOnFlip,
     zIndex,
     name,
     dropdownPosition,
@@ -205,7 +193,6 @@ export const Select = forwardRef<HTMLInputElement, SelectProps>((props, ref) => 
     placeholder,
     filterDataOnExactSearchMatch,
     form,
-    positionDependencies,
     readOnly,
     clearButtonProps,
     hoverOnSearchChange,
@@ -217,8 +204,9 @@ export const Select = forwardRef<HTMLInputElement, SelectProps>((props, ref) => 
   const [hovered, setHovered] = useState(-1);
   const inputRef = useRef<HTMLInputElement>();
   const itemsRefs = useRef<Record<string, HTMLDivElement>>({});
-  const [direction, setDirection] = useState<React.CSSProperties['flexDirection']>('column');
-  const isColumn = direction === 'column';
+  // const [direction, setDirection] = useState<React.CSSProperties['flexDirection']>('column');
+  // const isColumn = direction === 'column';
+  const isColumn = true;
   const { scrollIntoView, targetRef, scrollableRef } = useScrollIntoView({
     duration: 0,
     offset: 5,
@@ -543,18 +531,9 @@ export const Select = forwardRef<HTMLInputElement, SelectProps>((props, ref) => 
     <Input.Wrapper {...wrapperProps} __staticSelector="Select">
       <SelectPopover
         opened={shouldShowDropdown}
-        withinPortal={withinPortal}
-        portalProps={portalProps}
         __staticSelector="Select"
-        onDirectionChange={setDirection}
-        switchDirectionOnFlip={switchDirectionOnFlip}
         zIndex={zIndex}
         dropdownPosition={dropdownPosition}
-        positionDependencies={[...positionDependencies, inputValue]}
-        classNames={classNames}
-        styles={styles}
-        unstyled={unstyled}
-        variant={inputProps.variant}
       >
         <SelectPopover.Target asChild>
           <div
@@ -617,7 +596,6 @@ export const Select = forwardRef<HTMLInputElement, SelectProps>((props, ref) => 
         <SelectPopover.Dropdown
           component={dropdownComponent || SelectScrollArea}
           maxHeight={maxDropdownHeight}
-          direction={direction}
           id={inputProps.id}
           innerRef={scrollableRef}
           __staticSelector="Select"

@@ -126,9 +126,7 @@ const defaultProps: Partial<MultiSelectProps> = {
   size: 'md',
   valueComponent: DefaultValue,
   itemComponent: DefaultItem,
-  transitionProps: { transition: 'fade', duration: 0 },
   maxDropdownHeight: 220,
-  shadow: 'sm',
   searchable: false,
   filter: defaultFilter,
   limit: Infinity,
@@ -142,7 +140,6 @@ const defaultProps: Partial<MultiSelectProps> = {
   switchDirectionOnFlip: false,
   zIndex: getDefaultZIndex('popover'),
   selectOnBlur: false,
-  positionDependencies: [],
   dropdownPosition: 'bottom',
 };
 
@@ -194,9 +191,6 @@ export const MultiSelect = forwardRef<HTMLInputElement, MultiSelectProps>((props
     onDropdownClose,
     onDropdownOpen,
     maxSelectedValues,
-    withinPortal,
-    portalProps,
-    switchDirectionOnFlip,
     zIndex,
     selectOnBlur,
     name,
@@ -205,7 +199,6 @@ export const MultiSelect = forwardRef<HTMLInputElement, MultiSelectProps>((props
     labelProps,
     descriptionProps,
     form,
-    positionDependencies,
     onKeyDown,
     unstyled,
     inputContainer,
@@ -227,7 +220,7 @@ export const MultiSelect = forwardRef<HTMLInputElement, MultiSelectProps>((props
   const uuid = useId(id);
   const [dropdownOpened, setDropdownOpened] = useState(initiallyOpened);
   const [_hovered, setHovered] = useState(-1);
-  const [direction, setDirection] = useState<React.CSSProperties['flexDirection']>('column');
+  // const [direction, setDirection] = useState<React.CSSProperties['flexDirection']>('column');
   const [_searchValue, handleSearchChange] = useUncontrolled({
     value: searchValue,
     defaultValue: '',
@@ -390,7 +383,8 @@ export const MultiSelect = forwardRef<HTMLInputElement, MultiSelectProps>((props
       return;
     }
 
-    const isColumn = direction === 'column';
+    // const isColumn = direction === 'column';
+    const isColumn = true;
 
     const handleNext = () => {
       setHovered((current) => {
@@ -605,18 +599,9 @@ export const MultiSelect = forwardRef<HTMLInputElement, MultiSelectProps>((props
     >
       <SelectPopover
         opened={shouldRenderDropdown}
-        withinPortal={withinPortal}
-        portalProps={portalProps}
         __staticSelector="MultiSelect"
-        onDirectionChange={setDirection}
-        switchDirectionOnFlip={switchDirectionOnFlip}
         zIndex={zIndex}
         dropdownPosition={dropdownPosition}
-        positionDependencies={[...positionDependencies, _searchValue]}
-        classNames={classNames}
-        styles={styles}
-        unstyled={unstyled}
-        variant={variant}
       >
         <SelectPopover.Target asChild>
           <div
@@ -708,7 +693,6 @@ export const MultiSelect = forwardRef<HTMLInputElement, MultiSelectProps>((props
         <SelectPopover.Dropdown
           component={dropdownComponent || SelectScrollArea}
           maxHeight={maxDropdownHeight}
-          direction={direction}
           id={uuid}
           innerRef={scrollableRef}
           __staticSelector="MultiSelect"

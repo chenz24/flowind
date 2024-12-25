@@ -64,20 +64,11 @@ function SelectPopoverDropdown({
 
 interface SelectPopoverProps {
   opened: boolean;
-  withinPortal?: boolean;
-  portalProps?: Omit<PortalProps, 'children' | 'withinPortal'>;
   children: React.ReactNode;
   __staticSelector?: string;
-  onDirectionChange?: (direction: React.CSSProperties['flexDirection']) => void;
-  switchDirectionOnFlip?: boolean;
   zIndex?: React.CSSProperties['zIndex'];
   dropdownPosition?: 'bottom' | 'top' | 'left' | 'right';
-  positionDependencies?: any[];
-  classNames?: ClassNames<SelectPopoverStylesNames>;
-  styles?: Styles<SelectPopoverStylesNames>;
-  unstyled?: boolean;
   readOnly?: boolean;
-  variant: string;
 }
 
 export function SelectPopover({

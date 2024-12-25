@@ -51,17 +51,13 @@ export function defaultFilter(value: string, item: AutocompleteItem) {
 const defaultProps: Partial<AutocompleteProps> = {
   required: false,
   size: 'md',
-  shadow: 'sm',
   limit: 5,
   itemComponent: DefaultItem,
-  transitionProps: { transition: 'fade', duration: 0 },
   initiallyOpened: false,
   filter: defaultFilter,
-  switchDirectionOnFlip: false,
   zIndex: getDefaultZIndex('popover'),
-  dropdownPosition: 'flip',
+  dropdownPosition: 'bottom',
   maxDropdownHeight: 'auto',
-  positionDependencies: [],
 };
 
 export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>((props, ref) => {
@@ -81,7 +77,6 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>((pro
     onFocus,
     onBlur,
     onClick,
-    transitionProps,
     initiallyOpened,
     classNames,
     styles,
@@ -89,13 +84,10 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>((pro
     nothingFound,
     onDropdownClose,
     onDropdownOpen,
-    withinPortal,
-    switchDirectionOnFlip,
     zIndex,
     dropdownPosition,
     maxDropdownHeight,
     dropdownComponent,
-    positionDependencies,
     readOnly,
     hoverOnSearchChange,
     ...others
@@ -103,7 +95,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>((pro
   const { classes } = useStyles(null, { classNames, styles, name: 'Autocomplete', unstyled });
   const [dropdownOpened, _setDropdownOpened] = useState(initiallyOpened);
   const [hovered, setHovered] = useState(-1);
-  const [direction, setDirection] = useState<React.CSSProperties['flexDirection']>('column');
+  // const [direction, setDirection] = useState<React.CSSProperties['flexDirection']>('column');
   const inputRef = useRef<HTMLInputElement>(null);
   const [IMEOpen, setIMEOpen] = useState(false);
   const [_value, handleChange] = useUncontrolled({
@@ -145,7 +137,9 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>((pro
 
     typeof onKeyDown === 'function' && onKeyDown(event);
 
-    const isColumn = direction === 'column';
+    // const isColumn = direction === 'column';
+
+    const isColumn = true;
 
     const handleNext = () => {
       setHovered((current) => (current < filteredData.length - 1 ? current + 1 : current));
@@ -209,22 +203,12 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>((pro
     <Input.Wrapper {...wrapperProps} __staticSelector="Autocomplete">
       <SelectPopover
         opened={shouldRenderDropdown}
-        transitionProps={transitionProps}
-        shadow="sm"
-        withinPortal={withinPortal}
         __staticSelector="Autocomplete"
-        onDirectionChange={setDirection}
-        switchDirectionOnFlip={switchDirectionOnFlip}
         zIndex={zIndex}
         dropdownPosition={dropdownPosition}
-        positionDependencies={positionDependencies}
-        classNames={classNames}
-        styles={styles}
-        unstyled={unstyled}
         readOnly={readOnly}
-        variant={inputProps.variant}
       >
-        <SelectPopover.Target>
+        <SelectPopover.Target asChild>
           <div
             className={classes.wrapper}
             aria-controls={inputProps.id}
@@ -267,7 +251,6 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>((pro
         <SelectPopover.Dropdown
           component={dropdownComponent || SelectScrollArea}
           maxHeight={maxDropdownHeight}
-          direction={direction}
           id={inputProps.id}
           __staticSelector="Autocomplete"
           classNames={classNames}
