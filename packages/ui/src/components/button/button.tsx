@@ -75,7 +75,7 @@ const defaultProps: Partial<ButtonProps> = {
   variant: 'filled',
   loaderPosition: 'left',
   type: 'primary',
-  color: 'blue',
+  // color: 'blue',
 };
 
 export const _Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {

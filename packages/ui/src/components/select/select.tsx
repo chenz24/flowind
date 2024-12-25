@@ -70,7 +70,7 @@ export interface SelectSharedProps<Item, Value> {
   zIndex?: React.CSSProperties['zIndex'];
 
   /** Dropdown positioning behavior */
-  dropdownPosition?: 'bottom' | 'top' | 'flip';
+  dropdownPosition?: 'bottom' | 'top' | 'left' | 'right';
 
   /** Whether to switch item order and keyboard navigation on dropdown position flip */
   switchDirectionOnFlip?: boolean;
@@ -155,16 +155,15 @@ const defaultProps: Partial<SelectProps> = {
   selectOnBlur: false,
   switchDirectionOnFlip: false,
   filterDataOnExactSearchMatch: false,
-  zIndex: getDefaultZIndex('popover'),
+  // zIndex: getDefaultZIndex('popover'),
   positionDependencies: [],
-  dropdownPosition: 'flip',
+  dropdownPosition: 'bottom',
 };
 
 export const Select = forwardRef<HTMLInputElement, SelectProps>((props, ref) => {
   const {
     inputProps,
     wrapperProps,
-    shadow,
     data,
     value,
     defaultValue,
@@ -173,7 +172,6 @@ export const Select = forwardRef<HTMLInputElement, SelectProps>((props, ref) => 
     onKeyDown,
     onBlur,
     onFocus,
-    transitionProps,
     initiallyOpened,
     unstyled,
     classNames,
@@ -545,8 +543,6 @@ export const Select = forwardRef<HTMLInputElement, SelectProps>((props, ref) => 
     <Input.Wrapper {...wrapperProps} __staticSelector="Select">
       <SelectPopover
         opened={shouldShowDropdown}
-        transitionProps={transitionProps}
-        shadow={shadow}
         withinPortal={withinPortal}
         portalProps={portalProps}
         __staticSelector="Select"
@@ -560,7 +556,7 @@ export const Select = forwardRef<HTMLInputElement, SelectProps>((props, ref) => 
         unstyled={unstyled}
         variant={inputProps.variant}
       >
-        <SelectPopover.Target>
+        <SelectPopover.Target asChild>
           <div
             role="combobox"
             aria-haspopup="listbox"

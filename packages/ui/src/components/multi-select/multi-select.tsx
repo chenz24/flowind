@@ -143,7 +143,7 @@ const defaultProps: Partial<MultiSelectProps> = {
   zIndex: getDefaultZIndex('popover'),
   selectOnBlur: false,
   positionDependencies: [],
-  dropdownPosition: 'flip',
+  dropdownPosition: 'bottom',
 };
 
 export const MultiSelect = forwardRef<HTMLInputElement, MultiSelectProps>((props, ref) => {
@@ -165,7 +165,6 @@ export const MultiSelect = forwardRef<HTMLInputElement, MultiSelectProps>((props
     valueComponent: Value,
     itemComponent,
     id,
-    transitionProps,
     maxDropdownHeight,
     // shadow,
     nothingFound,
@@ -606,8 +605,6 @@ export const MultiSelect = forwardRef<HTMLInputElement, MultiSelectProps>((props
     >
       <SelectPopover
         opened={shouldRenderDropdown}
-        transitionProps={transitionProps}
-        shadow="sm"
         withinPortal={withinPortal}
         portalProps={portalProps}
         __staticSelector="MultiSelect"
@@ -621,7 +618,7 @@ export const MultiSelect = forwardRef<HTMLInputElement, MultiSelectProps>((props
         unstyled={unstyled}
         variant={variant}
       >
-        <SelectPopover.Target>
+        <SelectPopover.Target asChild>
           <div
             className={classes.wrapper}
             role="combobox"

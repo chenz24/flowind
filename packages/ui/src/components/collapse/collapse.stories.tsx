@@ -9,7 +9,7 @@ const meta: Meta<typeof Collapse> = {
   title: 'Components/Collapse',
   component: Collapse,
   parameters: {
-    layout: 'fullscreen',
+    layout: 'centered',
   },
 };
 

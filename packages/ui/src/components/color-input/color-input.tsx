@@ -3,7 +3,7 @@
 import React, { forwardRef, useEffect, useState } from 'react';
 
 import { useDidUpdate, useEyeDropper, useUncontrolled } from '@flowind/hooks';
-import { DefaultProps, FlowindSize, getDefaultZIndex, getSize, rem } from '@/styles';
+import { DefaultProps, getSize, rem } from '@/styles';
 import { noop } from '@/utils/noop/noop';
 import { ColorPicker, ColorPickerBaseProps, ColorPickerStylesNames } from '../color-picker';
 import { convertHsvaTo, isColorValid, parseColor } from '../color-picker/converters';
@@ -18,8 +18,6 @@ import {
   useInputProps,
 } from '../input';
 import { Popover } from '../popover';
-import { PortalProps } from '../portal';
-import { TransitionOverride } from '../transition';
 import { EyeDropperIcon } from './eye-dropper-icon';
 
 export type ColorInputStylesNames =
@@ -42,23 +40,11 @@ export interface ColorInputProps
   /** call onChange with last valid value onBlur */
   fixOnBlur?: boolean;
 
-  /** Dropdown element z-index */
-  dropdownZIndex?: number;
-
   /** Display swatch with color preview on the left side of input */
   withPreview?: boolean;
 
-  /** Props added to Transition component that used to animate dropdown presence, use to configure duration and animation type, { duration: 0, transition: 'fade' } by default */
-  transitionProps?: TransitionOverride;
-
   /** Whether to render the dropdown in a Portal */
-  withinPortal?: boolean;
-
-  /** Props to pass down to the portal when withinPortal is true */
-  portalProps?: Omit<PortalProps, 'children' | 'withinPortal'>;
-
-  /** Dropdown box-shadow, key of theme.shadows */
-  shadow?: FlowindSize;
+  // withinPortal?: boolean;
 
   /** Determines whether eye dropper button should be displayed in the right section, true by default */
   withEyeDropper?: boolean;
@@ -96,10 +82,8 @@ const defaultProps: Partial<ColorInputProps> = {
   withPreview: true,
   swatchesPerRow: 10,
   withPicker: true,
-  transitionProps: { transition: 'fade', duration: 0 },
-  dropdownZIndex: getDefaultZIndex('popover'),
-  withinPortal: true,
-  shadow: 'md',
+  // withinPortal: true,
+  // shadow: 'md',
   withEyeDropper: true,
 };
 
@@ -149,7 +133,6 @@ export const ColorInput = forwardRef<HTMLInputElement, ColorInputProps>((props, 
 
   const eyeDropper = (
     <IconButton
-      // sx={{ color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.black }}
       size={inputProps.size}
       aria-label={eyeDropperLabel}
       onClick={() =>
@@ -163,7 +146,10 @@ export const ColorInput = forwardRef<HTMLInputElement, ColorInputProps>((props, 
       }
     >
       {eyeDropperIcon || (
-        <EyeDropperIcon size={getSize({ size: inputProps.size, sizes: EYE_DROPPER_SIZES })} />
+        <EyeDropperIcon
+          className="text-fg-subtle"
+          size={getSize({ size: inputProps.size, sizes: EYE_DROPPER_SIZES })}
+        />
       )}
     </IconButton>
   );
@@ -202,7 +188,7 @@ export const ColorInput = forwardRef<HTMLInputElement, ColorInputProps>((props, 
   return (
     <Input.Wrapper {...wrapperProps} __staticSelector="ColorInput">
       <Popover open={dropdownOpened && !disabledPopover}>
-        <Popover.Trigger>
+        <Popover.Trigger asChild>
           <div>
             <Input<'input'>
               autoComplete="off"
@@ -249,7 +235,7 @@ export const ColorInput = forwardRef<HTMLInputElement, ColorInputProps>((props, 
         <Popover.Content
           side="bottom"
           align="start"
-          sideOffset={5}
+          sideOffset={8}
           onOpenAutoFocus={(event) => event.preventDefault()}
         >
           <ColorPicker

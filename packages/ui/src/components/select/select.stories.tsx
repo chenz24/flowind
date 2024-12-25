@@ -83,7 +83,9 @@ const data2 = ['React', 'Angular', 'Vue', 'Svelte'];
 export const Default: Story = {
   render: () => (
     <div className="w-[250px]">
-      <Select data={data2} clearable defaultValue="React" placeholder="please select" />
+      <div className="h-[850px]"></div>
+      <Select data={data2} clearable searchable defaultValue="React" placeholder="please select" />
+      <div className="h-[350px]"></div>
     </div>
   ),
 };

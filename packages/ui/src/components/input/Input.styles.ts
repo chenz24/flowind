@@ -156,8 +156,8 @@ export default createStyles(
           suffixWidth,
           prefixWidth,
         })}`,
-        addonBefore: `${radiusClasses} px-3 flex items-center h-full bg-gray-50 dark:bg-slate-800`,
-        addonAfter: `${radiusClasses} px-3 flex items-center h-full bg-gray-50 dark:bg-slate-800`,
+        addonBefore: `${radiusClasses} px-3 flex items-center h-full border-e border-border-base`,
+        addonAfter: `${radiusClasses} px-3 flex items-center h-full border-s border-border-base`,
       },
       styles: {
         wrapper: {},

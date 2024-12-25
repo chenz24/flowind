@@ -130,6 +130,7 @@ export const Checkbox: CheckboxComponent = forwardRef<HTMLInputElement, Checkbox
             className={classes.input}
             checked={checked}
             disabled={disabled}
+            data-checked={contextProps.checked || undefined}
             {...others}
             {...contextProps}
           />

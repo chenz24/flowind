@@ -20,7 +20,7 @@ export const Basic: Story = {
     <div className="p-10">
       <Popover>
         <Popover.Trigger asChild>
-          <Button>打开 Popover</Button>
+          <Button type="primary">打开 Popover</Button>
         </Popover.Trigger>
         <Popover.Content side="top">
           <div className="space-y-3">
@@ -45,7 +45,7 @@ export const WithArrow: Story = {
     <div className="p-10">
       <Popover>
         <Popover.Trigger asChild>
-          <Button>带箭头的 Popover</Button>
+          <Button type="primary">带箭头的 Popover</Button>
         </Popover.Trigger>
         <Popover.Content showArrow className="w-[200px]">
           <p>这是一个带箭头指示的 Popover</p>
@@ -60,7 +60,7 @@ export const Positions: Story = {
     <div className="flex gap-4 p-10">
       <Popover>
         <Popover.Trigger asChild>
-          <Button>上方显示</Button>
+          <Button type="primary">上方显示</Button>
         </Popover.Trigger>
         <Popover.Content side="top" showArrow>
           <p>Popover 内容</p>
@@ -69,7 +69,7 @@ export const Positions: Story = {
 
       <Popover>
         <Popover.Trigger asChild>
-          <Button>右侧显示</Button>
+          <Button type="primary">右侧显示</Button>
         </Popover.Trigger>
         <Popover.Content side="right" showArrow>
           <p>Popover 内容</p>
@@ -78,7 +78,7 @@ export const Positions: Story = {
 
       <Popover>
         <Popover.Trigger asChild>
-          <Button>下方显示</Button>
+          <Button type="primary">下方显示</Button>
         </Popover.Trigger>
         <Popover.Content side="bottom" showArrow>
           <p>Popover 内容</p>
@@ -87,7 +87,7 @@ export const Positions: Story = {
 
       <Popover>
         <Popover.Trigger asChild>
-          <Button>左侧显示</Button>
+          <Button type="primary">左侧显示</Button>
         </Popover.Trigger>
         <Popover.Content side="left" showArrow>
           <p>Popover 内容</p>
@@ -102,7 +102,7 @@ export const CustomWidth: Story = {
     <div className="p-10">
       <Popover>
         <Popover.Trigger asChild>
-          <Button>自定义宽度</Button>
+          <Button type="primary">自定义宽度</Button>
         </Popover.Trigger>
         <Popover.Content className="w-[300px]" showArrow>
           <div className="space-y-2">
@@ -125,7 +125,7 @@ export const WithAnchor: Story = {
         <Popover.Anchor className="inline-flex gap-2">
           <Button variant="outline">锚点 1</Button>
           <Popover.Trigger asChild>
-            <Button>打开 Popover</Button>
+            <Button type="primary">打开 Popover</Button>
           </Popover.Trigger>
           <Button variant="outline">锚点 2</Button>
         </Popover.Anchor>

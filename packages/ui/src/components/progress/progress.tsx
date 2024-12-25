@@ -121,7 +121,7 @@ export const Progress = forwardRef<HTMLDivElement, ProgressProps>((props, ref) =
                 ? 'rounded-s-none'
                 : 'rounded-none';
           return (
-            <Tooltip.Floating label={tooltip} disabled={!tooltip} key={index}>
+            <Tooltip content={tooltip} disabled={!tooltip} key={index}>
               <Box
                 {...sectionProps}
                 className={cx(classes.bar, sectionProps.className, background, borderRadius)}
@@ -134,7 +134,7 @@ export const Progress = forwardRef<HTMLDivElement, ProgressProps>((props, ref) =
               >
                 {sectionLabel && <Text className={classes.label}>{sectionLabel}</Text>}
               </Box>
-            </Tooltip.Floating>
+            </Tooltip>
           );
         },
       )

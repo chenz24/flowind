@@ -205,10 +205,10 @@ type NestedProps = {
 };
 const Nested = ({ value, onChange }: NestedProps) => (
   <Popover>
-    <Popover.Target>
+    <Popover.Trigger>
       <Button>Open</Button>
-    </Popover.Target>
-    <Popover.Dropdown>
+    </Popover.Trigger>
+    <Popover.Content>
       <div className="px-3 py-2">
         <DatePicker value={value} onChange={onChange} />
       </div>
@@ -222,7 +222,7 @@ const Nested = ({ value, onChange }: NestedProps) => (
         <Button type="secondary">Clear</Button>
         <Button>Apply</Button>
       </div>
-    </Popover.Dropdown>
+    </Popover.Content>
   </Popover>
 );
 

@@ -1,5 +1,4 @@
 import { DefaultProps, FlowindSize, Selectors } from '@/styles';
-import { FloatingPosition } from '../floating';
 import { PortalProps } from '../portal';
 import useStyles, { TooltipStylesParams } from './tooltip.styles';
 
@@ -12,7 +11,7 @@ export interface TooltipBaseProps
   children: React.ReactNode;
 
   /** Tooltip position relative to target element (default) or mouse (floating) */
-  position?: FloatingPosition;
+  side?: 'top' | 'right' | 'bottom' | 'left';
 
   /** Key of the prop that should be used to get element ref */
   refProp?: string;
