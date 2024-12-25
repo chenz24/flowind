@@ -1,5 +1,11 @@
 # @flowind/hooks
 
+## 0.2.3
+
+### Patch Changes
+
+- a7486e3: 1. refine floating components
+
 ## 0.2.2
 
 ### Patch Changes

@@ -1,5 +1,13 @@
 # @medusajs/ui
 
+## 0.3.6
+
+### Patch Changes
+
+- a7486e3: 1. refine floating components
+- Updated dependencies [a7486e3]
+  - @flowind/hooks@0.2.3
+
 ## 0.3.5
 
 ### Patch Changes
