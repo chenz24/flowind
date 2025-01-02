@@ -1,5 +1,11 @@
 # @medusajs/ui
 
+## 0.3.7
+
+### Patch Changes
+
+- c8c9d38: 1. refine tooltip component
+
 ## 0.3.6
 
 ### Patch Changes
