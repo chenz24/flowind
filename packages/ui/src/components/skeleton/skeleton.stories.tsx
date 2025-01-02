@@ -50,7 +50,11 @@ export function Usage() {
   return (
     <div className="w-96">
       <Skeleton height={50} circle className="mb-5" />
-      <Skeleton height={8} radius="xl" className="mb-5" />
+      <Skeleton
+        height={8}
+        radius="xl"
+        className="rounded-md h-8 flex gap-2 px-2 items-center mb-5"
+      />
       <Skeleton height={8} className="mb-5" radius="xl" />
       <Skeleton height={8} className="mb-5" width="70%" radius="xl" />
     </div>

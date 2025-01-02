@@ -12,6 +12,9 @@ import { DropdownMenu } from './dropdown-menu';
 const meta: Meta<typeof DropdownMenu> = {
   title: 'Components/DropdownMenu',
   component: DropdownMenu,
+  parameters: {
+    layout: 'centered',
+  },
 };
 
 export default meta;

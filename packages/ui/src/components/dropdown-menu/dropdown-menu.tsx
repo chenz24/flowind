@@ -119,7 +119,7 @@ const Item = React.forwardRef<
     ref={ref}
     className={clx(
       `bg-bg-base hover:bg-bg-base-hover focus-visible:bg-bg-base-pressed text-fg-base data-[disabled]:text-fg-disabled 
-      txt-compact-sm relative flex cursor-pointer select-none items-center rounded-md px-2 py-1.5 outline-none transition-colors 
+      txt-compact-sm relative flex gap-2 cursor-pointer select-none items-center rounded-md px-2 py-1.5 outline-none transition-colors 
       data-[disabled]:pointer-events-none`,
       className,
     )}
@@ -192,7 +192,7 @@ const Label = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <Primitives.Label
     ref={ref}
-    className={clx('text-fg-subtle txt-compact-xs-plus', className)}
+    className={clx('text-fg-subtle txt-compact-xs-plus px-2 py-1.5', className)}
     {...props}
   />
 ));

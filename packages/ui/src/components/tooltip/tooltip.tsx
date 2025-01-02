@@ -96,6 +96,31 @@ const removeUndefined = <T extends Record<string, any>>(obj: T): Partial<T> => {
   return result;
 };
 
+const TooltipContent = forwardRef<
+  React.ElementRef<typeof TooltipPrimitive.Content>,
+  TooltipProps & {
+    arrowClassName?: string;
+  }
+>(
+  (
+    { className, arrowClassName, side, sideOffset = 4, showArrow = false, content, ...props },
+    ref,
+  ) => (
+    <TooltipPrimitive.Portal>
+      <TooltipPrimitive.Content
+        ref={ref}
+        side={side}
+        sideOffset={sideOffset}
+        className={className}
+        {...props}
+      >
+        {content}
+        {showArrow && <TooltipPrimitive.Arrow className={arrowClassName} />}
+      </TooltipPrimitive.Content>
+    </TooltipPrimitive.Portal>
+  ),
+);
+
 const _Tooltip = forwardRef<React.ElementRef<typeof TooltipPrimitive.Content>, TooltipProps>(
   (props, ref) => {
     const hasProvider = useTooltipProvider();
@@ -123,7 +148,7 @@ const _Tooltip = forwardRef<React.ElementRef<typeof TooltipPrimitive.Content>, T
       ...others
     } = useComponentDefaultProps('Tooltip', defaultProps, props);
 
-    const { classes, styls, cx } = useStyles(
+    const { classes, cx } = useStyles(
       { radius, color, width },
       { name: 'Tooltip', classNames, styles, unstyled },
     );
@@ -147,18 +172,16 @@ const _Tooltip = forwardRef<React.ElementRef<typeof TooltipPrimitive.Content>, T
     const tooltipContent = (
       <TooltipPrimitive.Root {...rootProps}>
         <TooltipPrimitive.Trigger asChild>{cloneElement(children, {})}</TooltipPrimitive.Trigger>
-        <TooltipPrimitive.Portal>
-          <TooltipPrimitive.Content
-            ref={ref}
-            side={side}
-            sideOffset={sideOffset}
-            className={cx(classes.content, className)}
-            {...others}
-          >
-            {content}
-            {showArrow && <TooltipPrimitive.Arrow className={classes.arrow} style={styls.arrow} />}
-          </TooltipPrimitive.Content>
-        </TooltipPrimitive.Portal>
+        <TooltipContent
+          ref={ref}
+          side={side}
+          sideOffset={sideOffset}
+          showArrow={showArrow}
+          content={content}
+          className={cx(classes.content, className)}
+          arrowClassName={classes.arrow}
+          {...others}
+        />
       </TooltipPrimitive.Root>
     );
 
@@ -182,4 +205,12 @@ _Tooltip.displayName = 'Tooltip';
 
 _Tooltip.Provider = TooltipProvider;
 
-export const Tooltip: ForwardRefWithStaticComponents<TooltipProps, {}> = _Tooltip;
+export const Tooltip: ForwardRefWithStaticComponents<
+  TooltipProps,
+  {
+    Provider: typeof TooltipProvider;
+    Root: typeof TooltipPrimitive.Root;
+    Trigger: typeof TooltipPrimitive.Trigger;
+    Content: typeof TooltipContent;
+  }
+> = _Tooltip;
