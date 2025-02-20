@@ -39,7 +39,7 @@
     "rollup-plugin-visualizer": "^5.9.2"
   },
   "peerDependencies": {
-    "react": "^16.x || ^17.x || ^18.x"
+    "react": "^16.x || ^17.x || ^18.x || ^19.x"
   },
   "publishConfig": {
     "access": "public"

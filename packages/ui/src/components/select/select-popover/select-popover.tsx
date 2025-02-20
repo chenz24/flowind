@@ -1,9 +1,8 @@
 import React from 'react';
 
-import { ClassNames, DefaultProps, rem, Selectors, Styles } from '@/styles';
+import { DefaultProps, rem, Selectors } from '@/styles';
 import { Box } from '../../box';
 import { Popover } from '../../popover';
-import { PortalProps } from '../../portal';
 import { SelectScrollArea } from '../select-scroll-area/select-scroll-area';
 import useStyles from './select-popover.styles';
 

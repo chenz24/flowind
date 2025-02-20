@@ -2,3 +2,4 @@ packages:
   - 'packages/*'
   - 'configs/*'
   - 'tools/*'
+  - 'docs'

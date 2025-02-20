@@ -45,6 +45,7 @@ module.exports = {
     'react/jsx-no-constructed-context-values': 'off',
     'react/no-unstable-nested-components': 'off',
     'react/jsx-no-useless-fragment': 'off',
+    'react/react-in-jsx-scope': 'off',
     'no-nested-ternary': 'off',
     'default-case': 'off',
     'arrow-parens': 'off',
