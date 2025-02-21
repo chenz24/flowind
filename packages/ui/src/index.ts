@@ -20,7 +20,6 @@ export * from './components/command';
 export * from './components/command-bar';
 export * from './components/container';
 export * from '@/components/copy';
-export { CurrencyInput } from './components/currency-input';
 export * from './components/date-picker';
 export * from './components/divider';
 export * from './components/drawer';

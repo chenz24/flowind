@@ -202,7 +202,7 @@ export const Select = forwardRef<HTMLInputElement, SelectProps>((props, ref) => 
   const { classes, cx, theme } = useStyles({}, { name: 'select' });
   const [dropdownOpened, _setDropdownOpened] = useState(initiallyOpened);
   const [hovered, setHovered] = useState(-1);
-  const inputRef = useRef<HTMLInputElement>();
+  const inputRef = useRef<HTMLInputElement>(null);
   const itemsRefs = useRef<Record<string, HTMLDivElement>>({});
   // const [direction, setDirection] = useState<React.CSSProperties['flexDirection']>('column');
   // const isColumn = direction === 'column';

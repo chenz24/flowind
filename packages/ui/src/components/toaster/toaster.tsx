@@ -1,13 +1,11 @@
 'use client';
 
 import * as React from 'react';
-import { Toaster as Primitive } from 'sonner';
-
-import { clx } from '@/utils/clx';
+import { Toaster as Primitive, ToasterProps as PrimitiveProps } from 'sonner';
 
 interface ToasterProps
   extends Omit<
-    React.ComponentPropsWithoutRef<typeof Primitive>,
+    PrimitiveProps,
     | 'richColors'
     | 'closeButton'
     | 'icons'
@@ -21,6 +19,8 @@ interface ToasterProps
 /**
  * This component is based on the [Toaster component of the Sonner library](https://sonner.emilkowal.ski/toaster).
  */
+const ToasterComponent = Primitive as React.ComponentType<PrimitiveProps>;
+
 const Toaster = ({
   /**
    * The position of the created toasts.
@@ -43,11 +43,10 @@ const Toaster = ({
   duration,
   ...props
 }: ToasterProps) => (
-  <Primitive
+  <ToasterComponent
     position={position}
     gap={gap}
     offset={offset}
-    cn={clx}
     toastOptions={{
       duration,
     }}

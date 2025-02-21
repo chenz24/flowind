@@ -1,6 +1,10 @@
 import { createStyles } from '@/styles';
 
-export default createStyles(() => ({
+export interface TimelineStylesParams {
+  variant?: string;
+}
+
+export default createStyles((_theme, { variant }: TimelineStylesParams = {}) => ({
   classes: {
     root: '',
   },

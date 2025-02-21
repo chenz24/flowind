@@ -115,7 +115,7 @@ export const _FileInput = forwardRef<HTMLButtonElement, FileInputProps>((props, 
     fileInputProps,
     ...others
   } = useInputProps('FileInput', defaultProps, props);
-  const resetRef = useRef<() => void>();
+  const resetRef = useRef<() => void>(null);
   const { classes, cx } = useStyles(null, {
     name: 'FileInput',
     classNames,

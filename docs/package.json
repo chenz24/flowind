@@ -9,6 +9,7 @@
     "postinstall": "fumadocs-mdx"
   },
   "dependencies": {
+    "@flowind/ui": "workspace:*",
     "next": "15.1.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

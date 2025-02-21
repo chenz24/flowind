@@ -171,8 +171,8 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>((props, ref) => {
   });
 
   const valueRef = useRef(_value);
-  const root = useRef<HTMLDivElement>();
-  const thumb = useRef<HTMLDivElement>();
+  const root = useRef<HTMLDivElement>(null);
+  const thumb = useRef<HTMLDivElement>(null);
   const position = getPosition({ value: _value, min, max });
   const scaledValue = scale(_value);
   const _label = typeof label === 'function' ? label(scaledValue) : label;

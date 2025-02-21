@@ -30,7 +30,7 @@ export function Portal(props: PortalProps): ReactPortal {
 
   const theme = useFlowindTheme();
   const [mounted, setMounted] = useState(false);
-  const ref = useRef<HTMLElement>();
+  const ref = useRef<HTMLElement>(null);
 
   useIsomorphicEffect(() => {
     setMounted(true);

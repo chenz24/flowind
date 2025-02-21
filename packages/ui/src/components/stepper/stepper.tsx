@@ -13,7 +13,7 @@ import {
 import { ForwardRefWithStaticComponents } from '@/utils/forwardRef-with-static-components';
 import { Box } from '../box';
 import { StepCompleted } from './step-completed/step-completed';
-import { Step, StepFragmentComponent, StepStylesNames } from './step/step';
+import { Step, StepFragmentComponent, StepProps, StepStylesNames } from './step/step';
 import useStyles from './stepper.styles';
 
 export type StepperStylesNames = Selectors<typeof useStyles> | StepStylesNames;
@@ -118,11 +118,11 @@ export const Stepper: StepperComponent = forwardRef<HTMLDivElement, StepperProps
     { name: 'Stepper', classNames, styles, unstyled, variant, size },
   );
 
-  const convertedChildren = Children.toArray(children) as React.ReactElement[];
+  const convertedChildren = Children.toArray(children) as React.ReactElement<StepProps>[];
   const _children = convertedChildren.filter((child) => child.type !== StepCompleted);
   const completedStep = convertedChildren.find((item) => item.type === StepCompleted);
 
-  const items = _children.reduce<React.ReactElement[]>((acc, item, index) => {
+  const items = _children.reduce<React.ReactElement<StepProps>[]>((acc, item, index) => {
     const state =
       active === index ? 'stepProgress' : active > index ? 'stepCompleted' : 'stepInactive';
 

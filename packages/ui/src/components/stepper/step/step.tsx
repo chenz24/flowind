@@ -50,17 +50,17 @@ export interface StepProps
   /** Component size */
   size?: FlowindSize;
 
-  /** Key of theme.radius or any valid CSS value to set border-radius, "xl" by default */
+  /** Key of theme.radius or any valid CSS value to set border-radius */
   radius?: FlowindSize;
+
+  /** Allow step selection */
+  allowStepSelect?: boolean;
 
   /** Indicates loading state on step */
   loading?: boolean;
 
   /** Set to false to disable clicks on step */
   allowStepClick?: boolean;
-
-  /** Should step selection be allowed */
-  allowStepSelect?: boolean;
 
   /** Static selector base */
   __staticSelector?: string;

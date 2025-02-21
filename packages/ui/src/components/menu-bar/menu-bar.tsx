@@ -15,7 +15,9 @@ export interface MenubarProps extends DefaultProps<MenubarStylesNames>, _Menubar
 
 const defaultProps: Partial<MenubarProps> = {};
 
-const MenubarMenu = MenubarPrimitive.Menu;
+function MenubarMenu({ ...props }: React.ComponentProps<typeof MenubarPrimitive.Menu>) {
+  return <MenubarPrimitive.Menu {...props} />;
+}
 
 const MenubarGroup = MenubarPrimitive.Group;
 

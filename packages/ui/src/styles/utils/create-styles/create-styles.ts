@@ -88,15 +88,19 @@ function getContextVariation({ ctx, theme, params, variant, size }: GetContextVa
 }
 
 function getClasses<Key extends string>(
-  classNames: UseStylesOptions<Key>['classNames'] | ContextClasses,
+  classNames: UseStylesOptions<Key>['classNames'] | ContextClasses | Record<string, string>,
   theme: FlowindTheme,
   params: Record<string, any>,
   contextParams: ContextStylesParams,
 ): Record<string, string> {
-  const extractClasses = (classNamesPartial: UseStylesOptions<Key>['classNames']) =>
-    typeof classNamesPartial === 'function'
-      ? classNamesPartial(theme, params || {}, contextParams)
-      : classNamesPartial || {};
+  const extractClasses = (
+    classNamesPartial: UseStylesOptions<Key>['classNames'] | Record<string, string>,
+  ) => {
+    if (typeof classNamesPartial === 'function') {
+      return classNamesPartial(theme, params || {}, contextParams);
+    }
+    return classNamesPartial || {};
+  };
 
   if (Array.isArray(classNames)) {
     return classNames
@@ -108,15 +112,19 @@ function getClasses<Key extends string>(
 }
 
 function getStyles<Key extends string>(
-  styles: UseStylesOptions<Key>['styles'] | ContextClasses,
+  styles: UseStylesOptions<Key>['styles'] | ContextClasses | Record<string, CSSProperties>,
   theme: FlowindTheme,
   params: Record<string, any>,
   contextParams: ContextStylesParams,
-): CSSProperties {
-  const extractStyles = (stylesPartial: UseStylesOptions<Key>['styles']) =>
-    typeof stylesPartial === 'function'
-      ? stylesPartial(theme, params || {}, contextParams)
-      : stylesPartial || {};
+): Record<string, CSSProperties> {
+  const extractStyles = (
+    stylesPartial: UseStylesOptions<Key>['styles'] | Record<string, CSSProperties>,
+  ) => {
+    if (typeof stylesPartial === 'function') {
+      return stylesPartial(theme, params || {}, contextParams);
+    }
+    return stylesPartial || {};
+  };
 
   if (Array.isArray(styles)) {
     return styles

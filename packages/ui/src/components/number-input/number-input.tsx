@@ -217,7 +217,7 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>((props
   // Value of input field. Gets changed through user input and on internalValue change
   const [inputValue, setInputValue] = useState(() => formatInternalValue(internalValue));
 
-  const inputRef = useRef<HTMLInputElement>();
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const [isFocussed, setIsFocussed] = useState(false);
 
@@ -239,7 +239,7 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>((props
   const _min = typeof min === 'number' ? min : -Infinity;
   const _max = typeof max === 'number' ? max : Infinity;
 
-  const incrementRef = useRef<() => void>();
+  const incrementRef = useRef<() => void>(null);
   incrementRef.current = () => {
     let newInternalValue: number;
     if (internalValue === '') {
@@ -252,7 +252,7 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>((props
     onChange?.(newInternalValue);
   };
 
-  const decrementRef = useRef<() => void>();
+  const decrementRef = useRef<() => void>(null);
   decrementRef.current = () => {
     let newInternalValue: number;
     if (internalValue === '') {

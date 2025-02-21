@@ -45,8 +45,8 @@ const defaultProps: Partial<TextareaProps> = {
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, ref) => {
   const {
     autosize,
-    maxRows,
-    minRows,
+    // maxRows,
+    // minRows,
     label,
     error,
     description,
@@ -111,14 +111,9 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, r
       {...wrapperProps}
     >
       {autosize ? (
-        <Input<typeof TextareaAutosize>
-          {...sharedProps}
-          component={TextareaAutosize}
-          maxRows={maxRows}
-          minRows={minRows}
-        />
+        <Input component={TextareaAutosize as any} {...sharedProps} />
       ) : (
-        <Input<'textarea'> {...sharedProps} component="textarea" rows={minRows} />
+        <Input<'textarea'> {...sharedProps} component="textarea" />
       )}
     </Input.Wrapper>
   );

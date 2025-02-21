@@ -118,7 +118,7 @@ export const SegmentedControl = forwardRef<HTMLDivElement, SegmentedControlProps
     (item: string | SegmentedControlItem): SegmentedControlItem =>
       typeof item === 'string' ? { label: item, value: item } : item,
   );
-  const mounted = useRef<Boolean>();
+  const mounted = useRef<boolean>(false);
 
   const [shouldAnimate, setShouldAnimate] = useState(false);
   const [_value, handleValueChange] = useUncontrolled({

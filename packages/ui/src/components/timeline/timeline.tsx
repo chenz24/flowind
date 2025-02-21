@@ -12,7 +12,11 @@ import {
 } from '@/styles';
 import { ForwardRefWithStaticComponents } from '@/utils/forwardRef-with-static-components';
 import { Box } from '../box';
-import { TimelineItem, TimelineItemStylesNames } from './timeline-item/timeline-item';
+import {
+  TimelineItem,
+  TimelineItemStylesNames,
+  type TimelineItemProps,
+} from './timeline-item/timeline-item';
 import useStyles from './timeline.styles';
 
 export type TimelineStylesNames = Selectors<typeof useStyles> | TimelineItemStylesNames;
@@ -35,13 +39,13 @@ export interface TimelineProps
   radius?: FlowindSize;
 
   /** Bullet size */
-  bulletSize?: number | string;
+  bulletSize?: number;
 
   /** Timeline alignment */
   align?: 'right' | 'left';
 
   /** Line width */
-  lineWidth?: number | string;
+  lineWidth?: number;
 
   /** Reverse active direction without reversing items */
   reverseActive?: boolean;
@@ -81,16 +85,19 @@ export const Timeline: TimelineComponent = forwardRef<HTMLDivElement, TimelinePr
       ...others
     } = useComponentDefaultProps('Timeline', defaultProps, props);
 
-    const { classes, cx } = useStyles(null, {
-      name: 'Timeline',
-      classNames,
-      styles,
-      unstyled,
-      variant,
-    });
+    const { classes, cx } = useStyles(
+      { variant },
+      {
+        name: 'Timeline',
+        classNames,
+        styles,
+        unstyled,
+        variant,
+      },
+    );
 
     const _children = Children.toArray(children);
-    const items = _children.map((item: React.ReactElement, index) =>
+    const items = _children.map((item: React.ReactElement<TimelineItemProps>, index) =>
       React.cloneElement(item, {
         variant,
         classNames,

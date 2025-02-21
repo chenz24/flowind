@@ -60,9 +60,11 @@ export const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>((props, 
         (child, index) =>
           React.isValidElement(child) &&
           React.cloneElement(child, {
-            ...child.props,
-            className: twMerge(getChildClasses(index), child.props.className),
-          }),
+            className: twMerge(
+              getChildClasses(index),
+              (child.props as { className?: string }).className,
+            ),
+          } as { className: string }),
       )}
     </Box>
   );

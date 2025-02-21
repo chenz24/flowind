@@ -43,9 +43,9 @@ export const Breadcrumbs = forwardRef<HTMLDivElement, BreadcrumbsProps>(
       (acc, child, index, array) => {
         const item = isElement(child) ? (
           React.cloneElement(child, {
-            className: cx(classes.breadcrumb, child.props?.className),
+            className: cx(classes.breadcrumb, (child.props as { className?: string })?.className),
             key: index,
-          })
+          } as React.HTMLAttributes<HTMLElement>)
         ) : (
           <div className={classes.breadcrumb} key={index}>
             {child}

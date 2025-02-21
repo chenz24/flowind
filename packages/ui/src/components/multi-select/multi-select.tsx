@@ -215,7 +215,7 @@ export const MultiSelect = forwardRef<HTMLInputElement, MultiSelectProps>((props
     { invalid: !!error },
     { name: 'MultiSelect', classNames, styles, unstyled, size, variant },
   );
-  const inputRef = useRef<HTMLInputElement>();
+  const inputRef = useRef<HTMLInputElement>(null);
   const itemsRefs = useRef<Record<string, HTMLDivElement>>({});
   const uuid = useId(id);
   const [dropdownOpened, setDropdownOpened] = useState(initiallyOpened);

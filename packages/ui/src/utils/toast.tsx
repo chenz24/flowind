@@ -35,6 +35,8 @@ function create(variant: ToastVariant, title: string, props: ToastProps = {}) {
       position: props.position,
       dismissible: props.dismissable,
       ...props,
+      description: null,
+      action: null,
     },
   );
 }

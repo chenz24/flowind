@@ -12,18 +12,26 @@ function getFullscreenElement(): HTMLElement | null {
   return fullscreenElement;
 }
 
-async function exitFullscreen() {
+function exitFullscreen() {
   const _document = window.document as any;
 
-  if (typeof _document.exitFullscreen === 'function') return _document.exitFullscreen();
-  if (typeof _document.msExitFullscreen === 'function') return _document.msExitFullscreen();
-  if (typeof _document.webkitExitFullscreen === 'function') return _document.webkitExitFullscreen();
-  if (typeof _document.mozCancelFullScreen === 'function') return _document.mozCancelFullScreen();
+  if (typeof _document.exitFullscreen === 'function') {
+    return _document.exitFullscreen();
+  }
+  if (typeof _document.msExitFullscreen === 'function') {
+    return _document.msExitFullscreen();
+  }
+  if (typeof _document.webkitExitFullscreen === 'function') {
+    return _document.webkitExitFullscreen();
+  }
+  if (typeof _document.mozCancelFullScreen === 'function') {
+    return _document.mozCancelFullScreen();
+  }
 
   return null;
 }
 
-async function enterFullScreen(element: HTMLElement) {
+function enterFullScreen(element: HTMLElement) {
   const _element = element as any;
 
   return (
@@ -60,7 +68,7 @@ function addEvents(
 export function useFullscreen<T extends HTMLElement = any>() {
   const [fullscreen, setFullscreen] = useState<boolean>(false);
 
-  const _ref = useRef<T>();
+  const _ref = useRef<T>(null);
 
   const handleFullscreenChange = useCallback(
     (event: Event) => {
@@ -74,7 +82,7 @@ export function useFullscreen<T extends HTMLElement = any>() {
       setFullscreen(false);
       // eslint-disable-next-line no-console
       console.error(
-        `[@flowind/hooks] use-fullscreen: Error attempting full-screen mode method: ${event} (${event.target})`,
+        `[@mantine/hooks] use-fullscreen: Error attempting full-screen mode method: ${event} (${event.target})`,
       );
     },
     [setFullscreen],
@@ -113,7 +121,7 @@ export function useFullscreen<T extends HTMLElement = any>() {
     }
 
     return undefined;
-  }, []);
+  }, [_ref.current]);
 
   return { ref, toggle, fullscreen } as const;
 }
